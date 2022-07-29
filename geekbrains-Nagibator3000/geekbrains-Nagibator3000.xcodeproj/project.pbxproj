@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		E18A82552893F86100D2B0BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82542893F86100D2B0BB /* AppDelegate.swift */; };
 		E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82562893F86100D2B0BB /* SceneDelegate.swift */; };
-		E18A82592893F86100D2B0BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82582893F86100D2B0BB /* ViewController.swift */; };
+		E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82582893F86100D2B0BB /* AnimationViewController.swift */; };
 		E18A825C2893F86100D2B0BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825A2893F86100D2B0BB /* Main.storyboard */; };
 		E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18A825D2893F86400D2B0BB /* Assets.xcassets */; };
 		E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */; };
+		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "geekbrains-Nagibator3000.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18A82542893F86100D2B0BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E18A82562893F86100D2B0BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E18A82582893F86100D2B0BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E18A82582893F86100D2B0BB /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		E18A825B2893F86100D2B0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E18A825D2893F86400D2B0BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E18A82602893F86400D2B0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E18A82622893F86400D2B0BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				E18A82542893F86100D2B0BB /* AppDelegate.swift */,
 				E18A82562893F86100D2B0BB /* SceneDelegate.swift */,
-				E18A82582893F86100D2B0BB /* ViewController.swift */,
+				E18A82582893F86100D2B0BB /* AnimationViewController.swift */,
+				E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */,
 				E18A825A2893F86100D2B0BB /* Main.storyboard */,
 				E18A825D2893F86400D2B0BB /* Assets.xcassets */,
 				E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */,
@@ -138,7 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E18A82592893F86100D2B0BB /* ViewController.swift in Sources */,
+				E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */,
+				E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */,
 				E18A82552893F86100D2B0BB /* AppDelegate.swift in Sources */,
 				E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */,
 			);
@@ -303,7 +307,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -330,7 +334,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
