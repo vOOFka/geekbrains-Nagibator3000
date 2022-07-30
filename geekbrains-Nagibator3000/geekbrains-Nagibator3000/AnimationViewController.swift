@@ -9,7 +9,6 @@ import UIKit
 
 class AnimationViewController: UIViewController {
     
-    
     private var current: UIViewController
     init() {
         self.current = MainTabBarViewController()
