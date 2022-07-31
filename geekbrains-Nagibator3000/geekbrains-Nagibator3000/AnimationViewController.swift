@@ -1,15 +1,8 @@
-//
-//  AnimationViewController.swift
-//  geekbrains-Nagibator3000
-//
-//  Created by Константин Каменчуков on 29.07.2022.
-//
-
 import UIKit
 
 class AnimationViewController: UIViewController {
-    
     private var current: UIViewController
+    
     init() {
         self.current = MainTabBarViewController()
         super.init(nibName: nil, bundle: nil)
@@ -23,14 +16,12 @@ class AnimationViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .blue
         makeServiceCall()
-        
     }
 
     private func makeServiceCall() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
             self.transitionToMain()
         }
-       
     }
   
    private func transitionToMain() {
