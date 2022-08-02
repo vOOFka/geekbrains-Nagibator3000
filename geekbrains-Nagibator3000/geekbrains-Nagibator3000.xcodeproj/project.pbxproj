@@ -21,6 +21,9 @@
 		F4D62A27289719F50000B690 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A26289719F50000B690 /* TrainingViewController.swift */; };
 		F4D62A2C2897210D0000B690 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4D62A2E2897210D0000B690 /* Localizable.strings */; };
 		F4D82C5A289998D700FFFFA7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C59289998D700FFFFA7 /* String+Ext.swift */; };
+		F4D82C5C2899A4BE00FFFFA7 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5B2899A4BE00FFFFA7 /* TranslateViewModel.swift */; };
+		F4D82C5E2899A66E00FFFFA7 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5D2899A66E00FFFFA7 /* Language.swift */; };
+		F4D82C602899B1D400FFFFA7 /* UIResponder+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5F2899B1D400FFFFA7 /* UIResponder+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		F4D62A2D2897210D0000B690 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4D62A2F289721270000B690 /* ru */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4D82C59289998D700FFFFA7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		F4D82C5B2899A4BE00FFFFA7 /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
+		F4D82C5D2899A66E00FFFFA7 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		F4D82C5F2899B1D400FFFFA7 /* UIResponder+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D82C59289998D700FFFFA7 /* String+Ext.swift */,
+				F4D82C5F2899B1D400FFFFA7 /* UIResponder+Ext.swift */,
 			);
 			path = "Utils&Helpers";
 			sourceTree = "<group>";
@@ -139,6 +146,7 @@
 		F4D62A16289700020000B690 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				F4D82C5D2899A66E00FFFFA7 /* Language.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -175,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D62A222897199D0000B690 /* TranslateViewController.swift */,
+				F4D82C5B2899A4BE00FFFFA7 /* TranslateViewModel.swift */,
 			);
 			path = Translate;
 			sourceTree = "<group>";
@@ -276,6 +285,7 @@
 			files = (
 				F4D82C5A289998D700FFFFA7 /* String+Ext.swift in Sources */,
 				E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */,
+				F4D82C602899B1D400FFFFA7 /* UIResponder+Ext.swift in Sources */,
 				F4D62A1E289710C90000B690 /* ColorScheme.swift in Sources */,
 				F4D62A27289719F50000B690 /* TrainingViewController.swift in Sources */,
 				E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */,
@@ -283,6 +293,8 @@
 				E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */,
 				F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */,
 				F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */,
+				F4D82C5C2899A4BE00FFFFA7 /* TranslateViewModel.swift in Sources */,
+				F4D82C5E2899A66E00FFFFA7 /* Language.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
