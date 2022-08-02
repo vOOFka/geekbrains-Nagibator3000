@@ -9,16 +9,16 @@ final class MainTabBarViewController: UITabBarController {
     //MARK: - Config
     
     private func initialConfig() {
-        tabBar.backgroundColor = ColorScheme.greenPantone.color
-        tabBar.tintColor = ColorScheme.white.color
+        tabBar.backgroundColor = Constants.greenColor
+        tabBar.tintColor = Constants.whiteColor
         
         let translateViewController = UINavigationController(rootViewController: TranslateViewController())
         let dictionaryViewController = UINavigationController(rootViewController: DictionaryViewController())
         let trainingViewController = UINavigationController(rootViewController: TrainingViewController())
         
-        translateViewController.title = String(localized: "Translate")
-        dictionaryViewController.title = String(localized: "Dictionary")
-        trainingViewController.title = String(localized: "Training")
+        translateViewController.title = Constants.titleTranslateViewController
+        dictionaryViewController.title = Constants.titleDictionaryViewController
+        trainingViewController.title = Constants.titleTranslateViewController
         
         setViewControllers([translateViewController, dictionaryViewController, trainingViewController], animated: false)
         
@@ -26,10 +26,25 @@ final class MainTabBarViewController: UITabBarController {
             return
         }
         
-        let icons = ["doc.text.magnifyingglass","book.closed","rectangle.3.group.fill"]
+        let icons = [Constants.iconTranslateViewController,
+                     Constants.iconDictionaryViewController,
+                     Constants.iconTrainingViewController]
         
         items.enumerated().forEach { index, item in
             item.image = UIImage(systemName: icons[index])
         }
     }
+}
+
+private enum Constants {
+    static let titleTranslateViewController = "Translate".localized
+    static let titleDictionaryViewController = "Dictionary".localized
+    static let titleTrainingViewController = "Training".localized
+    
+    static let greenColor = ColorScheme.greenPantone.color
+    static let whiteColor = ColorScheme.white.color
+    
+    static let iconTranslateViewController = "doc.text.magnifyingglass"
+    static let iconDictionaryViewController = "book.closed"
+    static let iconTrainingViewController = "rectangle.3.group.fill"
 }
