@@ -2,11 +2,9 @@ import UIKit
 import Lottie
 
 class AnimationViewController: UIViewController {
-    private var current: UIViewController
     private var animationView: AnimationView?
     
     init() {
-        self.current = MainTabBarViewController()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,13 +26,16 @@ class AnimationViewController: UIViewController {
         animationView.loopMode = .playOnce
         animationView.animationSpeed = 1.1
         view.addSubview(animationView)
-        animationView.play(completion: { [self] _ in
-                animationView.stop()
-                addChild(self.current)
-                current.view.frame = view.bounds
-                view.addSubview(current.view)
-                current.didMove(toParent: self)
-            })
+        animationView.play { [weak self] _ in
+            self?.completionAnimation()
+            }
+    }
+    
+    private func completionAnimation() {
+        animationView?.stop()
+        let navVC = UINavigationController(rootViewController: MainTabBarViewController())
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
     }
 }
 
