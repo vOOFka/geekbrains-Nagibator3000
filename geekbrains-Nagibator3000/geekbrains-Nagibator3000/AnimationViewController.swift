@@ -32,7 +32,6 @@ class AnimationViewController: UIViewController {
     }
     
     private func completionAnimation() {
-        animationView?.stop()
         let navVC = UINavigationController(rootViewController: MainTabBarViewController())
         navVC.modalPresentationStyle = .fullScreen
         self.present(navVC, animated: true)
