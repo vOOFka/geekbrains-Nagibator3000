@@ -16,32 +16,25 @@ class AnimationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeServiceCall()
+        configAnimation()
     }
 
-    private func makeServiceCall() {
-        animationSet()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
-            self.animationView?.stop()
-            self.transitionToMain()
-        }
-    }
-    
-    private func animationSet() {
+    private func configAnimation() {
         animationView = .init(name: "Book")
-        animationView?.frame = view.bounds
-        animationView?.contentMode = .scaleAspectFit
-        animationView?.loopMode = .playOnce
-        animationView?.animationSpeed = 1.1
-        view.addSubview(animationView!)
-        animationView?.play()
-    }
-  
-   private func transitionToMain() {
-        addChild(current)
-        current.view.frame = view.bounds
-        view.addSubview(current.view)
-        current.didMove(toParent: self)
+        guard let animationView = animationView else { return }
+        animationView.frame = view.bounds
+        animationView.backgroundColor = .white
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .playOnce
+        animationView.animationSpeed = 1.1
+        view.addSubview(animationView)
+        animationView.play(completion: { [self] _ in
+                animationView.stop()
+                addChild(self.current)
+                current.view.frame = view.bounds
+                view.addSubview(current.view)
+                current.didMove(toParent: self)
+            })
     }
 }
 
