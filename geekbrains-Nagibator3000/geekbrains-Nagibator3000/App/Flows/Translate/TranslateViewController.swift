@@ -11,8 +11,9 @@ import PinLayout
 final class TranslateViewController: UIViewController {
     var viewModel: TranslateViewModel
     
-    private let buttonSourceLanguage = UIButton()
-    private let buttonDestinationLanguage = UIButton()
+    private let sourceLanguageButton = UIButton()
+    private let swapLanguageButton = UIButton()
+    private let destinationLanguageButton = UIButton()
     
     // MARK: - Init
 
@@ -33,18 +34,31 @@ final class TranslateViewController: UIViewController {
     //MARK: - Config
     
     private func initialConfig() {
-        navigationController?.navigationBar.standardAppearance
         view.backgroundColor = Constants.backgroundColor
         title = Constants.title
         
-        buttonSourceLanguage.setTitle(viewModel.sourceLanguage?.code, for: .normal)
-        buttonDestinationLanguage.setTitle(viewModel.destinationLanguage?.code, for: .normal)
+        configLanguageButtons()
         
-        buttonSourceLanguage.addTarget(self, action:#selector(buttonSelectLanguageTap), for: .touchUpInside)
-        buttonDestinationLanguage.addTarget(self, action:#selector(buttonSelectLanguageTap), for: .touchUpInside)
+        view.addSubview(sourceLanguageButton)
+        view.addSubview(destinationLanguageButton)
+        view.addSubview(swapLanguageButton)
+    }
+    
+    private func configLanguageButtons() {
+        swapLanguageButton.setImage(Constants.swapIcon, for: .normal)
+        swapLanguageButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         
-        view.addSubview(buttonSourceLanguage)
-        view.addSubview(buttonDestinationLanguage)
+        var configuration = UIButton.Configuration.plain()
+        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 30.0)
+        swapLanguageButton.configuration = configuration
+        
+        swapLanguageButton.addTarget(self, action:#selector(swapLanguageButtonTap), for: .touchUpInside)
+        
+        sourceLanguageButton.setTitle(viewModel.sourceLanguage?.code, for: .normal)
+        destinationLanguageButton.setTitle(viewModel.destinationLanguage?.code, for: .normal)
+        
+        sourceLanguageButton.addTarget(self, action:#selector(selectLanguageButtonTap), for: .touchUpInside)
+        destinationLanguageButton.addTarget(self, action:#selector(selectLanguageButtonTap), for: .touchUpInside)
     }
     
     //MARK: - Layout
@@ -55,16 +69,23 @@ final class TranslateViewController: UIViewController {
         guard let navigationBar = navigationController?.navigationBar else {
             return
         }
+        let buttonHeight: CGFloat = 60.0
+        let buttonWidth: CGFloat = (UIScreen.main.bounds.width / 2) - buttonHeight / 2
         
         view.pin.all()
-        buttonSourceLanguage.pin.below(of: navigationBar).left().width(UIScreen.main.bounds.width / 2).height(60.0)
-        buttonDestinationLanguage.pin.below(of: navigationBar).right().width(UIScreen.main.bounds.width / 2).height(60.0)
+        sourceLanguageButton.pin.below(of: navigationBar).left().width(buttonWidth).height(buttonHeight)
+        destinationLanguageButton.pin.below(of: navigationBar).right().width(buttonWidth).height(buttonHeight)
+        swapLanguageButton.pin.horizontallyBetween(sourceLanguageButton, and: destinationLanguageButton, aligned: .center).height(buttonHeight)
     }
     
     // MARK: - Button actions
-    @objc private func buttonSelectLanguageTap(sender : UIButton) {
-        print("+++++++++++++")
+    @objc private func selectLanguageButtonTap(sender : UIButton) {
+        print("++", sender.titleLabel?.text ?? "")
         //private let selectLanguageViewController: UIViewController? = nil
+    }
+    
+    @objc private func swapLanguageButtonTap(sender : UIButton) {
+        print("++", "swap tap")
     }
 }
 
@@ -72,6 +93,8 @@ final class TranslateViewController: UIViewController {
 
 private enum Constants {
     static let title = "Translate".localized
+    
+    static let swapIcon = UIImage(systemName: "arrow.left.and.right.square")
     
     static let backgroundColor = ColorScheme.fuchsiaBlue.color
     static let whiteColor = ColorScheme.white.color
