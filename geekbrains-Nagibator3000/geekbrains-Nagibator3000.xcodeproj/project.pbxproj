@@ -14,6 +14,13 @@
 		E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18A825D2893F86400D2B0BB /* Assets.xcassets */; };
 		E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */; };
 		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
+		F4D62A1C289703EC0000B690 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = F4D62A1B289703EC0000B690 /* PinLayout */; };
+		F4D62A1E289710C90000B690 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A1D289710C90000B690 /* ColorScheme.swift */; };
+		F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A222897199D0000B690 /* TranslateViewController.swift */; };
+		F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A24289719D10000B690 /* DictionaryViewController.swift */; };
+		F4D62A27289719F50000B690 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A26289719F50000B690 /* TrainingViewController.swift */; };
+		F4D62A2C2897210D0000B690 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4D62A2E2897210D0000B690 /* Localizable.strings */; };
+		F4D82C5A289998D700FFFFA7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C59289998D700FFFFA7 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +33,13 @@
 		E18A82602893F86400D2B0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E18A82622893F86400D2B0BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		F4D62A1D289710C90000B690 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		F4D62A222897199D0000B690 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		F4D62A24289719D10000B690 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
+		F4D62A26289719F50000B690 /* TrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
+		F4D62A2D2897210D0000B690 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F4D62A2F289721270000B690 /* ru */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F4D82C59289998D700FFFFA7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D62A1C289703EC0000B690 /* PinLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,16 +73,126 @@
 		E18A82532893F86000D2B0BB /* geekbrains-Nagibator3000 */ = {
 			isa = PBXGroup;
 			children = (
+				F4D62A102896FF6D0000B690 /* App */,
+				F4D62A142896FFBC0000B690 /* Resources */,
+				F4D62A132896FF9C0000B690 /* Environments */,
+				F4D62A112896FF760000B690 /* Core */,
+				F4D62A122896FF860000B690 /* Utils&Helpers */,
+			);
+			path = "geekbrains-Nagibator3000";
+			sourceTree = "<group>";
+		};
+		F4D62A102896FF6D0000B690 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F4D62A152896FFF30000B690 /* BusinessLogic */,
+				F4D62A16289700020000B690 /* Entity */,
+				F4D62A172897002D0000B690 /* Flows */,
 				E18A82542893F86100D2B0BB /* AppDelegate.swift */,
 				E18A82562893F86100D2B0BB /* SceneDelegate.swift */,
-				E18A82582893F86100D2B0BB /* AnimationViewController.swift */,
-				E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F4D62A112896FF760000B690 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F4D62A122896FF860000B690 /* Utils&Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F4D82C59289998D700FFFFA7 /* String+Ext.swift */,
+			);
+			path = "Utils&Helpers";
+			sourceTree = "<group>";
+		};
+		F4D62A132896FF9C0000B690 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				E18A82622893F86400D2B0BB /* Info.plist */,
+			);
+			path = Environments;
+			sourceTree = "<group>";
+		};
+		F4D62A142896FFBC0000B690 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				E18A825A2893F86100D2B0BB /* Main.storyboard */,
 				E18A825D2893F86400D2B0BB /* Assets.xcassets */,
 				E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */,
-				E18A82622893F86400D2B0BB /* Info.plist */,
+				F4D62A1D289710C90000B690 /* ColorScheme.swift */,
+				F4D62A2E2897210D0000B690 /* Localizable.strings */,
 			);
-			path = "geekbrains-Nagibator3000";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F4D62A152896FFF30000B690 /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		F4D62A16289700020000B690 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		F4D62A172897002D0000B690 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				F4D62A18289700440000B690 /* Welcome */,
+				F4D62A19289700770000B690 /* MainTab */,
+				F4D62A1F289719590000B690 /* Translate */,
+				F4D62A20289719680000B690 /* Dictionary */,
+				F4D62A21289719710000B690 /* Training */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		F4D62A18289700440000B690 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				E18A82582893F86100D2B0BB /* AnimationViewController.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		F4D62A19289700770000B690 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		F4D62A1F289719590000B690 /* Translate */ = {
+			isa = PBXGroup;
+			children = (
+				F4D62A222897199D0000B690 /* TranslateViewController.swift */,
+			);
+			path = Translate;
+			sourceTree = "<group>";
+		};
+		F4D62A20289719680000B690 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				F4D62A24289719D10000B690 /* DictionaryViewController.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		F4D62A21289719710000B690 /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				F4D62A26289719F50000B690 /* TrainingViewController.swift */,
+			);
+			path = Training;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +211,9 @@
 			dependencies = (
 			);
 			name = "geekbrains-Nagibator3000";
+			packageProductDependencies = (
+				F4D62A1B289703EC0000B690 /* PinLayout */,
+			);
 			productName = "geekbrains-Nagibator3000";
 			productReference = E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */;
 			productType = "com.apple.product-type.application";
@@ -112,8 +240,12 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = E18A82482893F86000D2B0BB;
+			packageReferences = (
+				F4D62A1A289703EC0000B690 /* XCRemoteSwiftPackageReference "PinLayout" */,
+			);
 			productRefGroup = E18A82522893F86000D2B0BB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */,
+				F4D62A2C2897210D0000B690 /* Localizable.strings in Resources */,
 				E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */,
 				E18A825C2893F86100D2B0BB /* Main.storyboard in Resources */,
 			);
@@ -141,10 +274,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D82C5A289998D700FFFFA7 /* String+Ext.swift in Sources */,
 				E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */,
+				F4D62A1E289710C90000B690 /* ColorScheme.swift in Sources */,
+				F4D62A27289719F50000B690 /* TrainingViewController.swift in Sources */,
 				E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */,
 				E18A82552893F86100D2B0BB /* AppDelegate.swift in Sources */,
 				E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */,
+				F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */,
+				F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +305,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		F4D62A2E2897210D0000B690 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4D62A2D2897210D0000B690 /* en */,
+				F4D62A2F289721270000B690 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -174,6 +321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -220,7 +368,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				INFOPLIST_FILE = "Environments\\";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -234,6 +383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -274,7 +424,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				INFOPLIST_FILE = "Environments\\";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -292,10 +443,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "geekbrains-Nagibator3000/Info.plist";
+				INFOPLIST_FILE = "geekbrains-Nagibator3000/Environments/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -320,10 +472,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "geekbrains-Nagibator3000/Info.plist";
+				INFOPLIST_FILE = "geekbrains-Nagibator3000/Environments/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -362,6 +515,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F4D62A1A289703EC0000B690 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4D62A1B289703EC0000B690 /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4D62A1A289703EC0000B690 /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E18A82492893F86000D2B0BB /* Project object */;
 }
