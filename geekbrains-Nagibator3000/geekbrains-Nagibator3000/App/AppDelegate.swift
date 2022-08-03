@@ -1,3 +1,10 @@
+//
+//  AppDelegate.swift
+//  geekbrains-Nagibator3000
+//
+//  Created by Constantin on 29.07.2022.
+//
+
 import UIKit
 
 @main

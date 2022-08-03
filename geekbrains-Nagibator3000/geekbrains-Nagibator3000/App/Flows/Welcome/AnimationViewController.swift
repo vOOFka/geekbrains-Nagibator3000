@@ -1,3 +1,10 @@
+//
+//  AnimationViewController.swift
+//  geekbrains-Nagibator3000
+//
+//  Created by Constantin on 29.07.2022.
+//
+
 import UIKit
 import Lottie
 
@@ -37,4 +44,3 @@ class AnimationViewController: UIViewController {
         self.present(navVC, animated: true)
     }
 }
-
