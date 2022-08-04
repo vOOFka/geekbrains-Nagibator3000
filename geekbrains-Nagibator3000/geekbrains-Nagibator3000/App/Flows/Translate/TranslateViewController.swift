@@ -7,9 +7,12 @@
 
 import UIKit
 import PinLayout
+import RxCocoa
+import RxSwift
 
 final class TranslateViewController: UIViewController {
     var viewModel: TranslateViewModel
+    private let disposeBag = DisposeBag()
     
     private let sourceLanguageButton = UIButton()
     private let swapLanguageButton = UIButton()
@@ -29,6 +32,8 @@ final class TranslateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialConfig()
+        bindViewModelInput()
+    //    bindViewModelOutput()
     }
     
     //MARK: - Config
@@ -54,11 +59,18 @@ final class TranslateViewController: UIViewController {
         
         swapLanguageButton.addTarget(self, action:#selector(swapLanguageButtonTap), for: .touchUpInside)
         
-        sourceLanguageButton.setTitle(viewModel.sourceLanguage?.code, for: .normal)
-        destinationLanguageButton.setTitle(viewModel.destinationLanguage?.code, for: .normal)
-        
         sourceLanguageButton.addTarget(self, action:#selector(selectLanguageButtonTap), for: .touchUpInside)
         destinationLanguageButton.addTarget(self, action:#selector(selectLanguageButtonTap), for: .touchUpInside)
+    }
+    
+    private func bindViewModelInput() {
+        viewModel.sourceLanguage.asObservable().bind { [weak self] lang in
+            self?.sourceLanguageButton.setTitle(lang.code, for: .normal)
+        }.disposed(by: disposeBag)
+        
+        viewModel.destinationLanguage.asObservable().bind { [weak self] lang in
+            self?.destinationLanguageButton.setTitle(lang.code, for: .normal)
+        }.disposed(by: disposeBag)
     }
     
     //MARK: - Layout
@@ -85,7 +97,6 @@ final class TranslateViewController: UIViewController {
     }
     
     @objc private func swapLanguageButtonTap(sender : UIButton) {
-        print("++", "swap tap")
         viewModel.swapLanguages()
     }
 }
