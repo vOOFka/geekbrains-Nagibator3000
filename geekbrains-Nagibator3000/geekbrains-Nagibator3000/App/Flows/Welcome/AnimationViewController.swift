@@ -39,8 +39,10 @@ class AnimationViewController: UIViewController {
     }
     
     private func completionAnimation() {
-        let navVC = UINavigationController(rootViewController: MainTabBarViewController())
-        navVC.modalPresentationStyle = .fullScreen
-        self.present(navVC, animated: true)
+        let mainTabBarViewController = MainTabBarViewController()
+        addChild(mainTabBarViewController)
+        mainTabBarViewController.view.frame = view.bounds
+        view.addSubview(mainTabBarViewController.view)
+        mainTabBarViewController.didMove(toParent: self)
     }
 }
