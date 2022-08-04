@@ -6,12 +6,12 @@
 //
 
 import UIKit
+import Lottie
 
 class AnimationViewController: UIViewController {
-    private var current: UIViewController
+    private var animationView: AnimationView?
     
     init() {
-        self.current = MainTabBarViewController()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -21,21 +21,26 @@ class AnimationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
-        makeServiceCall()
+        configAnimation()
     }
 
-    private func makeServiceCall() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
-            self.transitionToMain()
-        }
+    private func configAnimation() {
+        animationView = .init(name: "Book")
+        guard let animationView = animationView else { return }
+        animationView.frame = view.bounds
+        animationView.backgroundColor = .white
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .playOnce
+        animationView.animationSpeed = 1.1
+        view.addSubview(animationView)
+        animationView.play { [weak self] _ in
+            self?.completionAnimation()
+            }
     }
-  
-   private func transitionToMain() {
-        addChild(current)
-        current.view.frame = view.bounds
-        view.addSubview(current.view)
-        current.didMove(toParent: self)
+    
+    private func completionAnimation() {
+        let navVC = UINavigationController(rootViewController: MainTabBarViewController())
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
     }
 }
-

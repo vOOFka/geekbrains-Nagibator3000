@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9919CB3289AAE050047A41F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A9919CB2289AAE050047A41F /* Lottie */; };
+		A9919CB6289AAE540047A41F /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = A9919CB5289AAE540047A41F /* PinLayout */; };
 		E18A82552893F86100D2B0BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82542893F86100D2B0BB /* AppDelegate.swift */; };
 		E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82562893F86100D2B0BB /* SceneDelegate.swift */; };
 		E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82582893F86100D2B0BB /* AnimationViewController.swift */; };
@@ -14,7 +16,6 @@
 		E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18A825D2893F86400D2B0BB /* Assets.xcassets */; };
 		E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */; };
 		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
-		F4D62A1C289703EC0000B690 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = F4D62A1B289703EC0000B690 /* PinLayout */; };
 		F4D62A1E289710C90000B690 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A1D289710C90000B690 /* ColorScheme.swift */; };
 		F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A222897199D0000B690 /* TranslateViewController.swift */; };
 		F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A24289719D10000B690 /* DictionaryViewController.swift */; };
@@ -53,7 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4D62A1C289703EC0000B690 /* PinLayout in Frameworks */,
+				A9919CB6289AAE540047A41F /* PinLayout in Frameworks */,
+				A9919CB3289AAE050047A41F /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +223,8 @@
 			);
 			name = "geekbrains-Nagibator3000";
 			packageProductDependencies = (
-				F4D62A1B289703EC0000B690 /* PinLayout */,
+				A9919CB2289AAE050047A41F /* Lottie */,
+				A9919CB5289AAE540047A41F /* PinLayout */,
 			);
 			productName = "geekbrains-Nagibator3000";
 			productReference = E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */;
@@ -253,7 +256,8 @@
 			);
 			mainGroup = E18A82482893F86000D2B0BB;
 			packageReferences = (
-				F4D62A1A289703EC0000B690 /* XCRemoteSwiftPackageReference "PinLayout" */,
+				A9919CB1289AAE050047A41F /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				A9919CB4289AAE540047A41F /* XCRemoteSwiftPackageReference "PinLayout" */,
 			);
 			productRefGroup = E18A82522893F86000D2B0BB /* Products */;
 			projectDirPath = "";
@@ -529,7 +533,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F4D62A1A289703EC0000B690 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+		A9919CB1289AAE050047A41F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		A9919CB4289AAE540047A41F /* XCRemoteSwiftPackageReference "PinLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/layoutBox/PinLayout.git";
 			requirement = {
@@ -540,9 +552,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F4D62A1B289703EC0000B690 /* PinLayout */ = {
+		A9919CB2289AAE050047A41F /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4D62A1A289703EC0000B690 /* XCRemoteSwiftPackageReference "PinLayout" */;
+			package = A9919CB1289AAE050047A41F /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		A9919CB5289AAE540047A41F /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9919CB4289AAE540047A41F /* XCRemoteSwiftPackageReference "PinLayout" */;
 			productName = PinLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
