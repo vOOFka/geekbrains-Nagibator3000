@@ -86,6 +86,7 @@ final class TranslateViewController: UIViewController {
     
     @objc private func swapLanguageButtonTap(sender : UIButton) {
         print("++", "swap tap")
+        viewModel.swapLanguages()
     }
 }
 

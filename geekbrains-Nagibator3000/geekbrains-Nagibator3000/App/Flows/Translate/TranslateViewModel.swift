@@ -15,4 +15,8 @@ final class TranslateViewModel {
         self.sourceLanguage = Language(id: "1", code: "ENG", name: "English", nativeName: "English", icon: nil)
         self.destinationLanguage = Language(id: "2", code: "RUS", name: "Russian", nativeName: "Русский", icon: nil)
     }
+    
+    public func swapLanguages() {
+        swap(&sourceLanguage, &destinationLanguage)
+    }
 }
