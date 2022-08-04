@@ -25,6 +25,8 @@
 		F4D82C5C2899A4BE00FFFFA7 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5B2899A4BE00FFFFA7 /* TranslateViewModel.swift */; };
 		F4D82C5E2899A66E00FFFFA7 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5D2899A66E00FFFFA7 /* Language.swift */; };
 		F4D82C602899B1D400FFFFA7 /* UIResponder+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5F2899B1D400FFFFA7 /* UIResponder+Ext.swift */; };
+		F4D82C69289C569400FFFFA7 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4D82C68289C569400FFFFA7 /* RxCocoa */; };
+		F4D82C6B289C569400FFFFA7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4D82C6A289C569400FFFFA7 /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +56,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D82C69289C569400FFFFA7 /* RxCocoa in Frameworks */,
 				A9919CB6289AAE540047A41F /* PinLayout in Frameworks */,
+				F4D82C6B289C569400FFFFA7 /* RxSwift in Frameworks */,
 				A9919CB3289AAE050047A41F /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +229,8 @@
 			packageProductDependencies = (
 				A9919CB2289AAE050047A41F /* Lottie */,
 				A9919CB5289AAE540047A41F /* PinLayout */,
+				F4D82C68289C569400FFFFA7 /* RxCocoa */,
+				F4D82C6A289C569400FFFFA7 /* RxSwift */,
 			);
 			productName = "geekbrains-Nagibator3000";
 			productReference = E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */;
@@ -258,6 +264,7 @@
 			packageReferences = (
 				A9919CB1289AAE050047A41F /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				A9919CB4289AAE540047A41F /* XCRemoteSwiftPackageReference "PinLayout" */,
+				F4D82C67289C569400FFFFA7 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = E18A82522893F86000D2B0BB /* Products */;
 			projectDirPath = "";
@@ -549,6 +556,14 @@
 				kind = branch;
 			};
 		};
+		F4D82C67289C569400FFFFA7 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -561,6 +576,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A9919CB4289AAE540047A41F /* XCRemoteSwiftPackageReference "PinLayout" */;
 			productName = PinLayout;
+		};
+		F4D82C68289C569400FFFFA7 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4D82C67289C569400FFFFA7 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		F4D82C6A289C569400FFFFA7 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4D82C67289C569400FFFFA7 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
