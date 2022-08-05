@@ -13,12 +13,13 @@ final class TranslateViewModel {
     private(set) var sourceLanguage: BehaviorRelay<Language>
     private(set) var destinationLanguage: BehaviorRelay<Language>
     
-    init() {
-        let sourceLanguage = Language(code: "ENG", name: "English", nativeName: "English", icon: nil)
-        let destinationLanguage = Language(code: "RUS", name: "Russian", nativeName: "Русский", icon: nil)
+    init?() {
+        guard let languages = RepositoryLanguages.loadJson() else {
+            return nil
+        }
     
-        self.sourceLanguage = BehaviorRelay<Language>(value: sourceLanguage)
-        self.destinationLanguage = BehaviorRelay<Language>(value: destinationLanguage)
+        self.sourceLanguage = BehaviorRelay<Language>(value: languages[0])
+        self.destinationLanguage = BehaviorRelay<Language>(value: languages[0])
     }
     
     public func swapLanguages() {

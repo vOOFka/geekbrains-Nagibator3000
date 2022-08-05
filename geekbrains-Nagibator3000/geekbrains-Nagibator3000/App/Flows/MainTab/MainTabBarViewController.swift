@@ -19,7 +19,9 @@ final class MainTabBarViewController: UITabBarController {
         tabBar.backgroundColor = Constants.greenColor
         tabBar.tintColor = Constants.whiteColor
         
-        let translateViewModel = TranslateViewModel()
+        guard let translateViewModel = TranslateViewModel() else {
+            return            
+        }
         
         let translateViewController = UINavigationController(rootViewController: TranslateViewController(viewModel: translateViewModel))
         let dictionaryViewController = UINavigationController(rootViewController: DictionaryViewController())

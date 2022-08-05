@@ -54,12 +54,6 @@ final class SelectLanguageCell: UITableViewCell {
         super.layoutSubviews()
         iconImageView.pin.centerLeft().margin(20.0).height(30.0).width(30.0)
         nameLabel.pin.after(of: iconImageView, aligned: .center).margin(20.0).right().sizeToFit()
-        contentView.pin.height(iconImageView.frame.maxY + 12.0)
-    }
-    
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        layoutSubviews()
-        return CGSize(width: size.width, height: iconImageView.frame.maxY + 12.0)
     }
 }
 

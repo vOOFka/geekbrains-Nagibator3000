@@ -16,7 +16,7 @@ final class SelectLanguageViewController: UITableViewController {
     // MARK: - Init & Lifecycle
     
     init(viewModel: TranslateViewModel, type: LanguageType) {
-        self.viewModel = SelectLanguageViewModel(translateViewModel: viewModel)
+        self.viewModel = SelectLanguageViewModel(translateViewModel: viewModel, type: type)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -26,6 +26,10 @@ final class SelectLanguageViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "sdsdsd"
+        self.navigationController?.navigationBar.isHidden = false
+        
         configTableView()
         updateUI()
     }
@@ -35,8 +39,7 @@ final class SelectLanguageViewController: UITableViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorColor = .clear
         tableView.separatorStyle = .none
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.allowsMultipleSelection = false
     }
     
     private func updateUI() {
@@ -48,24 +51,24 @@ final class SelectLanguageViewController: UITableViewController {
     // MARK: - Table view delegate & datasourse
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.cellsArray?.count ?? 0
+        viewModel.cellsArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(SelectLanguageCell.self, for: indexPath)
-        guard let cellsViewModels = viewModel.cellsArray else {
-            return cell
-        }
-        cell.config(with: cellsViewModels[indexPath.row])
+        cell.config(with: viewModel.cellsArray[indexPath.row])
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let previousIndex = IndexPath(row: viewModel.selectIndex, section: indexPath.section)
+
+        viewModel.updateCell(with: indexPath.row)
+        tableView.reloadRows(at: [indexPath, previousIndex], with: .none)
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 52.0
     }
     
     override func viewDidLayoutSubviews() {
