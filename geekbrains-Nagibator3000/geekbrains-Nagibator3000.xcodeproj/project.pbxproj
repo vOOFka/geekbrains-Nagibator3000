@@ -9,6 +9,25 @@
 /* Begin PBXBuildFile section */
 		A9919CB3289AAE050047A41F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A9919CB2289AAE050047A41F /* Lottie */; };
 		A9919CB6289AAE540047A41F /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = A9919CB5289AAE540047A41F /* PinLayout */; };
+		E0EAEA00289C4DB300F8D918 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E0EAE9FF289C4DB300F8D918 /* Alamofire */; };
+		E0EAEA03289C4E5600F8D918 /* TRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA02289C4E5600F8D918 /* TRError.swift */; };
+		E0EAEA05289C4E9F00F8D918 /* GenericNetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA04289C4E9F00F8D918 /* GenericNetworkingError.swift */; };
+		E0EAEA08289C56AE00F8D918 /* AFErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA07289C56AE00F8D918 /* AFErrorMapper.swift */; };
+		E0EAEA0C289D91BA00F8D918 /* TranslateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA0B289D91BA00F8D918 /* TranslateResponse.swift */; };
+		E0EAEA0E289D91EE00F8D918 /* TranslateParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA0D289D91EE00F8D918 /* TranslateParams.swift */; };
+		E0EAEA10289D92C500F8D918 /* TranslateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA0F289D92C500F8D918 /* TranslateApi.swift */; };
+		E0EAEA14289D935E00F8D918 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E0EAEA13289D935E00F8D918 /* RxCocoa */; };
+		E0EAEA16289D935E00F8D918 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = E0EAEA15289D935E00F8D918 /* RxRelay */; };
+		E0EAEA18289D935E00F8D918 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E0EAEA17289D935E00F8D918 /* RxSwift */; };
+		E0EAEA1A289D93CB00F8D918 /* WebUrlPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA19289D93CB00F8D918 /* WebUrlPath.swift */; };
+		E0EAEA1C289D9BFF00F8D918 /* AFTranslateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA1B289D9BFF00F8D918 /* AFTranslateApi.swift */; };
+		E0EAEA21289DA28100F8D918 /* TranslaterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA20289DA28100F8D918 /* TranslaterUseCase.swift */; };
+		E0EAEA25289DA2AB00F8D918 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA24289DA2AB00F8D918 /* Translate.swift */; };
+		E0EAEA27289DA34300F8D918 /* TranslateMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA26289DA34300F8D918 /* TranslateMapper.swift */; };
+		E0EAEA2A289DAAC500F8D918 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = E0EAEA29289DAAC500F8D918 /* Swinject */; };
+		E0EAEA2D289DACA300F8D918 /* Flow+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA2C289DACA300F8D918 /* Flow+DI.swift */; };
+		E0EAEA30289DAD7D00F8D918 /* MainFlow+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA2F289DAD7D00F8D918 /* MainFlow+DI.swift */; };
+		E0EAEA33289DAD9D00F8D918 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA32289DAD9D00F8D918 /* MainFlow.swift */; };
 		E18A82552893F86100D2B0BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82542893F86100D2B0BB /* AppDelegate.swift */; };
 		E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82562893F86100D2B0BB /* SceneDelegate.swift */; };
 		E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82582893F86100D2B0BB /* AnimationViewController.swift */; };
@@ -25,6 +44,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E0EAEA02289C4E5600F8D918 /* TRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRError.swift; sourceTree = "<group>"; };
+		E0EAEA04289C4E9F00F8D918 /* GenericNetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericNetworkingError.swift; sourceTree = "<group>"; };
+		E0EAEA07289C56AE00F8D918 /* AFErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFErrorMapper.swift; sourceTree = "<group>"; };
+		E0EAEA0B289D91BA00F8D918 /* TranslateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateResponse.swift; sourceTree = "<group>"; };
+		E0EAEA0D289D91EE00F8D918 /* TranslateParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateParams.swift; sourceTree = "<group>"; };
+		E0EAEA0F289D92C500F8D918 /* TranslateApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateApi.swift; sourceTree = "<group>"; };
+		E0EAEA19289D93CB00F8D918 /* WebUrlPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebUrlPath.swift; sourceTree = "<group>"; };
+		E0EAEA1B289D9BFF00F8D918 /* AFTranslateApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFTranslateApi.swift; sourceTree = "<group>"; };
+		E0EAEA20289DA28100F8D918 /* TranslaterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslaterUseCase.swift; sourceTree = "<group>"; };
+		E0EAEA24289DA2AB00F8D918 /* Translate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
+		E0EAEA26289DA34300F8D918 /* TranslateMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateMapper.swift; sourceTree = "<group>"; };
+		E0EAEA2C289DACA300F8D918 /* Flow+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flow+DI.swift"; sourceTree = "<group>"; };
+		E0EAEA2F289DAD7D00F8D918 /* MainFlow+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainFlow+DI.swift"; sourceTree = "<group>"; };
+		E0EAEA32289DAD9D00F8D918 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "geekbrains-Nagibator3000.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18A82542893F86100D2B0BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E18A82562893F86100D2B0BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,7 +81,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0EAEA18289D935E00F8D918 /* RxSwift in Frameworks */,
+				E0EAEA16289D935E00F8D918 /* RxRelay in Frameworks */,
+				E0EAEA2A289DAAC500F8D918 /* Swinject in Frameworks */,
+				E0EAEA00289C4DB300F8D918 /* Alamofire in Frameworks */,
 				A9919CB6289AAE540047A41F /* PinLayout in Frameworks */,
+				E0EAEA14289D935E00F8D918 /* RxCocoa in Frameworks */,
 				A9919CB3289AAE050047A41F /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +94,143 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E0EAE9F9289C4C0800F8D918 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAE9FA289C4C1400F8D918 /* Remoute */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		E0EAE9FA289C4C1400F8D918 /* Remoute */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAE9FB289C4C3700F8D918 /* Translater */,
+			);
+			path = Remoute;
+			sourceTree = "<group>";
+		};
+		E0EAE9FB289C4C3700F8D918 /* Translater */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAE9FD289C4D9600F8D918 /* Alamofire */,
+				E0EAE9FC289C4D7300F8D918 /* Error */,
+			);
+			path = Translater;
+			sourceTree = "<group>";
+		};
+		E0EAE9FC289C4D7300F8D918 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA04289C4E9F00F8D918 /* GenericNetworkingError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		E0EAE9FD289C4D9600F8D918 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA11289D931E00F8D918 /* Constants */,
+				E0EAEA0A289C59E200F8D918 /* Api */,
+				E0EAEA09289C59DB00F8D918 /* Model */,
+				E0EAEA06289C569800F8D918 /* Error */,
+				E0EAEA1B289D9BFF00F8D918 /* AFTranslateApi.swift */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		E0EAEA01289C4E3800F8D918 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA02289C4E5600F8D918 /* TRError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		E0EAEA06289C569800F8D918 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA07289C56AE00F8D918 /* AFErrorMapper.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		E0EAEA09289C59DB00F8D918 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA0B289D91BA00F8D918 /* TranslateResponse.swift */,
+				E0EAEA0D289D91EE00F8D918 /* TranslateParams.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E0EAEA0A289C59E200F8D918 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA0F289D92C500F8D918 /* TranslateApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		E0EAEA11289D931E00F8D918 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA19289D93CB00F8D918 /* WebUrlPath.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		E0EAEA1D289DA20700F8D918 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA1E289DA24F00F8D918 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		E0EAEA1E289DA24F00F8D918 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA1F289DA26C00F8D918 /* Remoute */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		E0EAEA1F289DA26C00F8D918 /* Remoute */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA23289DA29500F8D918 /* Model */,
+				E0EAEA22289DA28800F8D918 /* Mapper */,
+				E0EAEA20289DA28100F8D918 /* TranslaterUseCase.swift */,
+			);
+			path = Remoute;
+			sourceTree = "<group>";
+		};
+		E0EAEA22289DA28800F8D918 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA26289DA34300F8D918 /* TranslateMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		E0EAEA23289DA29500F8D918 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA24289DA2AB00F8D918 /* Translate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E0EAEA2E289DAD5A00F8D918 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAEA2F289DAD7D00F8D918 /* MainFlow+DI.swift */,
+				E0EAEA32289DAD9D00F8D918 /* MainFlow.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		E18A82482893F86000D2B0BB = {
 			isa = PBXGroup;
 			children = (
@@ -78,7 +253,6 @@
 				F4D62A102896FF6D0000B690 /* App */,
 				F4D62A142896FFBC0000B690 /* Resources */,
 				F4D62A132896FF9C0000B690 /* Environments */,
-				F4D62A112896FF760000B690 /* Core */,
 				F4D62A122896FF860000B690 /* Utils&Helpers */,
 			);
 			path = "geekbrains-Nagibator3000";
@@ -87,7 +261,9 @@
 		F4D62A102896FF6D0000B690 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				F4D62A152896FFF30000B690 /* BusinessLogic */,
+				E0EAE9F9289C4C0800F8D918 /* Data */,
+				F4D62A112896FF760000B690 /* Core */,
+				E0EAEA1D289DA20700F8D918 /* Domain */,
 				F4D62A16289700020000B690 /* Entity */,
 				F4D62A172897002D0000B690 /* Flows */,
 				E18A82542893F86100D2B0BB /* AppDelegate.swift */,
@@ -99,6 +275,7 @@
 		F4D62A112896FF760000B690 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E0EAEA01289C4E3800F8D918 /* Error */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -131,13 +308,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		F4D62A152896FFF30000B690 /* BusinessLogic */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BusinessLogic;
-			sourceTree = "<group>";
-		};
 		F4D62A16289700020000B690 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +323,7 @@
 				F4D62A1F289719590000B690 /* Translate */,
 				F4D62A20289719680000B690 /* Dictionary */,
 				F4D62A21289719710000B690 /* Training */,
+				E0EAEA2C289DACA300F8D918 /* Flow+DI.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -168,6 +339,7 @@
 		F4D62A19289700770000B690 /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
+				E0EAEA2E289DAD5A00F8D918 /* Navigation */,
 				E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */,
 			);
 			path = MainTab;
@@ -216,6 +388,11 @@
 			packageProductDependencies = (
 				A9919CB2289AAE050047A41F /* Lottie */,
 				A9919CB5289AAE540047A41F /* PinLayout */,
+				E0EAE9FF289C4DB300F8D918 /* Alamofire */,
+				E0EAEA13289D935E00F8D918 /* RxCocoa */,
+				E0EAEA15289D935E00F8D918 /* RxRelay */,
+				E0EAEA17289D935E00F8D918 /* RxSwift */,
+				E0EAEA29289DAAC500F8D918 /* Swinject */,
 			);
 			productName = "geekbrains-Nagibator3000";
 			productReference = E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */;
@@ -249,6 +426,9 @@
 			packageReferences = (
 				A9919CB1289AAE050047A41F /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				A9919CB4289AAE540047A41F /* XCRemoteSwiftPackageReference "PinLayout" */,
+				E0EAE9FE289C4DB300F8D918 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				E0EAEA12289D935E00F8D918 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				E0EAEA28289DAAC500F8D918 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = E18A82522893F86000D2B0BB /* Products */;
 			projectDirPath = "";
@@ -278,15 +458,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0EAEA1C289D9BFF00F8D918 /* AFTranslateApi.swift in Sources */,
 				F4D82C5A289998D700FFFFA7 /* String+Ext.swift in Sources */,
 				E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */,
 				F4D62A1E289710C90000B690 /* ColorScheme.swift in Sources */,
+				E0EAEA27289DA34300F8D918 /* TranslateMapper.swift in Sources */,
 				F4D62A27289719F50000B690 /* TrainingViewController.swift in Sources */,
+				E0EAEA25289DA2AB00F8D918 /* Translate.swift in Sources */,
 				E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */,
+				E0EAEA21289DA28100F8D918 /* TranslaterUseCase.swift in Sources */,
+				E0EAEA0C289D91BA00F8D918 /* TranslateResponse.swift in Sources */,
+				E0EAEA05289C4E9F00F8D918 /* GenericNetworkingError.swift in Sources */,
+				E0EAEA30289DAD7D00F8D918 /* MainFlow+DI.swift in Sources */,
 				E18A82552893F86100D2B0BB /* AppDelegate.swift in Sources */,
 				E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */,
+				E0EAEA1A289D93CB00F8D918 /* WebUrlPath.swift in Sources */,
+				E0EAEA08289C56AE00F8D918 /* AFErrorMapper.swift in Sources */,
 				F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */,
+				E0EAEA03289C4E5600F8D918 /* TRError.swift in Sources */,
+				E0EAEA2D289DACA300F8D918 /* Flow+DI.swift in Sources */,
+				E0EAEA0E289D91EE00F8D918 /* TranslateParams.swift in Sources */,
 				F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */,
+				E0EAEA33289DAD9D00F8D918 /* MainFlow.swift in Sources */,
+				E0EAEA10289D92C500F8D918 /* TranslateApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +731,30 @@
 				kind = branch;
 			};
 		};
+		E0EAE9FE289C4DB300F8D918 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		E0EAEA12289D935E00F8D918 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		E0EAEA28289DAAC500F8D918 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -549,6 +767,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A9919CB4289AAE540047A41F /* XCRemoteSwiftPackageReference "PinLayout" */;
 			productName = PinLayout;
+		};
+		E0EAE9FF289C4DB300F8D918 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E0EAE9FE289C4DB300F8D918 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		E0EAEA13289D935E00F8D918 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E0EAEA12289D935E00F8D918 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		E0EAEA15289D935E00F8D918 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E0EAEA12289D935E00F8D918 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		E0EAEA17289D935E00F8D918 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E0EAEA12289D935E00F8D918 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		E0EAEA29289DAAC500F8D918 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E0EAEA28289DAAC500F8D918 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
