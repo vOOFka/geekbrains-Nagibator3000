@@ -61,6 +61,9 @@ final class TranslateViewController: UIViewController {
         
         sourceLanguageButton.addTarget(self, action:#selector(selectLanguageButtonTap), for: .touchUpInside)
         destinationLanguageButton.addTarget(self, action:#selector(selectLanguageButtonTap), for: .touchUpInside)
+        
+        sourceLanguageButton.accessibilityLabel = "source"
+        destinationLanguageButton.accessibilityLabel = "destination"
     }
     
     private func bindViewModelInput() {
@@ -92,9 +95,12 @@ final class TranslateViewController: UIViewController {
     
     // MARK: - Button actions
     @objc private func selectLanguageButtonTap(sender : UIButton) {
-        print("++", sender.titleLabel?.text ?? "")
-        //TODO: open selectLanguageViewController
-        //private let selectLanguageViewController: UIViewController? = nil
+        let type: LanguageType = (sender.accessibilityLabel == "source") ? .source : .destination
+        let selectLanguageViewController = SelectLanguageViewController(viewModel: viewModel, type: type)
+        let navigationController = self.navigationController
+        
+        navigationController?.modalPresentationStyle = .popover
+        navigationController?.present(selectLanguageViewController, animated: true)
     }
     
     @objc private func swapLanguageButtonTap(sender : UIButton) {

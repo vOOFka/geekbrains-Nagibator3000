@@ -15,8 +15,9 @@ final class SelectLanguageViewModel {
         self.translateViewModel = translateViewModel
     }
     
-    public func update() {
+    public func update(completion: @escaping () -> Void) {
         self.cellsArray = RepositoryLanguages.loadJson()?
             .compactMap{ SelectLanguageCellModel(language: $0, selected: false) }
+        completion()
     }
 }

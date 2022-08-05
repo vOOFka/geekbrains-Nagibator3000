@@ -7,10 +7,7 @@
 
 import UIKit
 
-final class SelectLanguageCell: UITableViewCell {
-    // MARK: - Public properties
-    public static let reuseIdentifier = "SelectLanguageCell"
-    
+final class SelectLanguageCell: UITableViewCell {   
     // MARK: - Private properties
     private var viewModel: SelectLanguageCellModel?
     private var nameLabel = UILabel()
@@ -28,8 +25,11 @@ final class SelectLanguageCell: UITableViewCell {
     }
     
     private func initialConfig() {
-        contentView.backgroundColor = .orange
         nameLabel.numberOfLines = 1
+        
+        iconImageView.layer.borderWidth = 1.0
+        iconImageView.layer.borderColor = Constants.greenColor.cgColor
+        iconImageView.layer.cornerRadius = 6.0
         
         contentView.addSubview(nameLabel)
         contentView.addSubview(iconImageView)
@@ -53,13 +53,13 @@ final class SelectLanguageCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         iconImageView.pin.centerLeft().margin(20.0).height(30.0).width(30.0)
-        nameLabel.pin.below(of: iconImageView, aligned: .center).horizontally()
-        contentView.pin.height(nameLabel.frame.maxY + 12.0)
+        nameLabel.pin.after(of: iconImageView, aligned: .center).margin(20.0).right().sizeToFit()
+        contentView.pin.height(iconImageView.frame.maxY + 12.0)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         layoutSubviews()
-        return CGSize(width: size.width, height: nameLabel.frame.maxY + 12.0)
+        return CGSize(width: size.width, height: iconImageView.frame.maxY + 12.0)
     }
 }
 
@@ -67,8 +67,7 @@ final class SelectLanguageCell: UITableViewCell {
 
 private enum Constants {
     static let checkmarkIcon = UIImage(systemName: "checkmark")
-    
-    static let backgroundColor = ColorScheme.fuchsiaBlue.color
+
     static let whiteColor = ColorScheme.white.color
     static let greenColor = ColorScheme.greenPantone.color
 }
