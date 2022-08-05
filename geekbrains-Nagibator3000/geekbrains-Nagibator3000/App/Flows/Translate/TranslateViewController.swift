@@ -97,10 +97,12 @@ final class TranslateViewController: UIViewController {
     @objc private func selectLanguageButtonTap(sender : UIButton) {
         let type: LanguageType = (sender.accessibilityLabel == "source") ? .source : .destination
         let selectLanguageViewController = SelectLanguageViewController(viewModel: viewModel, type: type)
-        let navigationController = self.navigationController
         
-        navigationController?.modalPresentationStyle = .popover
-        navigationController?.present(selectLanguageViewController, animated: true)
+        let navigationController = UINavigationController(rootViewController: selectLanguageViewController)
+        navigationController.isNavigationBarHidden = false
+        navigationController.modalPresentationStyle = .automatic
+        
+        present(navigationController, animated: true)
     }
     
     @objc private func swapLanguageButtonTap(sender : UIButton) {

@@ -26,9 +26,9 @@ final class SelectLanguageViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = Constants.title
         
-        self.navigationItem.title = "sdsdsd"
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Constants.doneButtonTitle, style: .done, target: self, action: #selector(dismissVC))
         
         configTableView()
         updateUI()
@@ -79,12 +79,18 @@ final class SelectLanguageViewController: UITableViewController {
     private func layoutSubviews() {
         tableView.pin.all()
     }
+    
+    // MARK: - Button actions
+    @objc private func dismissVC() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 //MARK: - Constants
 
 private enum Constants {
     static let title = "Select language".localized
+    static let doneButtonTitle = "Done".localized
     
     static let backgroundColor = ColorScheme.fuchsiaBlue.color
     static let whiteColor = ColorScheme.white.color
