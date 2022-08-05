@@ -14,8 +14,8 @@ final class TranslateViewModel {
     private(set) var destinationLanguage: BehaviorRelay<Language>
     
     init() {
-        let sourceLanguage = Language(id: "1", code: "ENG", name: "English", nativeName: "English", icon: nil)
-        let destinationLanguage = Language(id: "2", code: "RUS", name: "Russian", nativeName: "Русский", icon: nil)
+        let sourceLanguage = Language(code: "ENG", name: "English", nativeName: "English", icon: nil)
+        let destinationLanguage = Language(code: "RUS", name: "Russian", nativeName: "Русский", icon: nil)
     
         self.sourceLanguage = BehaviorRelay<Language>(value: sourceLanguage)
         self.destinationLanguage = BehaviorRelay<Language>(value: destinationLanguage)
@@ -28,4 +28,12 @@ final class TranslateViewModel {
         self.sourceLanguage.accept(sourceLanguage)
         self.destinationLanguage.accept(destinationLanguage)
     }
+    
+    public func configTranslateLanguage(language: Language, type: LanguageType) {
+        type == .source ? sourceLanguage.accept(language) : destinationLanguage.accept(language)
+    }
+}
+
+enum LanguageType {
+    case source, destination
 }
