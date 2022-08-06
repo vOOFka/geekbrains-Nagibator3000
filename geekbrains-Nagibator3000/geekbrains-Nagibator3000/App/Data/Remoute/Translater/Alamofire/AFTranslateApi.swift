@@ -1,0 +1,52 @@
+//
+//  AFTranslateApi.swift
+//  geekbrains-Nagibator3000
+//
+//  Created by Valera Vvedenskiy on 05.08.2022.
+//
+
+import Foundation
+import Alamofire
+import RxSwift
+
+public class AFTranslateApi: TranslateApi {
+  let session: Session
+  let mapper: AFErrorMapper
+
+  public init(session: Session, mapper: AFErrorMapper) {
+    self.session = session
+    self.mapper = mapper
+  }
+
+  public func traslate(translate: TranslateParams) -> Observable<TranslateResponse> {
+    Observable<TranslateResponse>
+      .create { [weak self] observable in
+        guard let self = self else {
+          observable.onError(OtherError())
+          observable.onCompleted()
+          return Disposables.create()
+        }
+
+        self.session
+          .request(
+            self.path,
+            method: .post,
+            parameters: translate.params,
+            encoder: JSONParameterEncoder.default
+          )
+          .validate(statusCode: 200..<300)
+          .responseDecodable(of: TranslateResponse.self) { result in
+            if let response = result.value {
+              observable.onNext(response)
+            } else if let error = result.error {
+              let mappedError = self.mapper.map(error: error)
+              observable.onError(mappedError)
+            }
+          }
+
+        observable.onCompleted()
+        return Disposables.create()
+      }
+  }
+}
+
