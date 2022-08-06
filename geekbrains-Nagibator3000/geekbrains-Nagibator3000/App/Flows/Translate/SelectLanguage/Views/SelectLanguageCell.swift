@@ -46,7 +46,7 @@ final class SelectLanguageCell: UITableViewCell {
     public func config(with viewModel: SelectLanguageCellModel) {
         self.viewModel = viewModel
         
-        nameLabel.text = viewModel.language.nativeName
+        nameLabel.text = viewModel.language.nativeName?.capitalized
         iconImageView.image = viewModel.isSelected ? Constants.checkmarkIcon : nil
     }
     

@@ -68,11 +68,11 @@ final class TranslateViewController: UIViewController {
     
     private func bindViewModelInput() {
         viewModel.sourceLanguage.asObservable().bind { [weak self] lang in
-            self?.sourceLanguageButton.setTitle(lang.code?.capitalized, for: .normal)
+            self?.sourceLanguageButton.setTitle(lang.code?.uppercased(), for: .normal)
         }.disposed(by: disposeBag)
         
         viewModel.destinationLanguage.asObservable().bind { [weak self] lang in
-            self?.destinationLanguageButton.setTitle(lang.code?.capitalized, for: .normal)
+            self?.destinationLanguageButton.setTitle(lang.code?.uppercased(), for: .normal)
         }.disposed(by: disposeBag)
     }
     
