@@ -28,6 +28,12 @@
 		E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18A825D2893F86400D2B0BB /* Assets.xcassets */; };
 		E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */; };
 		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
+		F4C1A51128A07050003C771C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4C1A51028A07050003C771C /* RxCocoa */; };
+		F4C1A51328A07050003C771C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4C1A51228A07050003C771C /* RxSwift */; };
+		F4C1A51628A07061003C771C /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = F4C1A51528A07061003C771C /* PinLayout */; };
+		F4C1A51928A0706F003C771C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F4C1A51828A0706F003C771C /* Alamofire */; };
+		F4C1A51C28A07084003C771C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F4C1A51B28A07084003C771C /* Lottie */; };
+		F4C1A51F28A07096003C771C /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F4C1A51E28A07096003C771C /* Swinject */; };
 		F4D62A1E289710C90000B690 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A1D289710C90000B690 /* ColorScheme.swift */; };
 		F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A222897199D0000B690 /* TranslateViewController.swift */; };
 		F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A24289719D10000B690 /* DictionaryViewController.swift */; };
@@ -92,6 +98,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C1A51C28A07084003C771C /* Lottie in Frameworks */,
+				F4C1A51628A07061003C771C /* PinLayout in Frameworks */,
+				F4C1A51928A0706F003C771C /* Alamofire in Frameworks */,
+				F4C1A51328A07050003C771C /* RxSwift in Frameworks */,
+				F4C1A51128A07050003C771C /* RxCocoa in Frameworks */,
+				F4C1A51F28A07096003C771C /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +435,12 @@
 			);
 			name = "geekbrains-Nagibator3000";
 			packageProductDependencies = (
+				F4C1A51028A07050003C771C /* RxCocoa */,
+				F4C1A51228A07050003C771C /* RxSwift */,
+				F4C1A51528A07061003C771C /* PinLayout */,
+				F4C1A51828A0706F003C771C /* Alamofire */,
+				F4C1A51B28A07084003C771C /* Lottie */,
+				F4C1A51E28A07096003C771C /* Swinject */,
 			);
 			productName = "geekbrains-Nagibator3000";
 			productReference = E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */;
@@ -454,6 +472,11 @@
 			);
 			mainGroup = E18A82482893F86000D2B0BB;
 			packageReferences = (
+				F4C1A50F28A07050003C771C /* XCRemoteSwiftPackageReference "RxSwift" */,
+				F4C1A51428A07061003C771C /* XCRemoteSwiftPackageReference "PinLayout" */,
+				F4C1A51728A0706F003C771C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F4C1A51A28A07084003C771C /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				F4C1A51D28A07096003C771C /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = E18A82522893F86000D2B0BB /* Products */;
 			projectDirPath = "";
@@ -747,6 +770,82 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F4C1A50F28A07050003C771C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		F4C1A51428A07061003C771C /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		F4C1A51728A0706F003C771C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		F4C1A51A28A07084003C771C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		F4C1A51D28A07096003C771C /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4C1A51028A07050003C771C /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C1A50F28A07050003C771C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		F4C1A51228A07050003C771C /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C1A50F28A07050003C771C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		F4C1A51528A07061003C771C /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C1A51428A07061003C771C /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+		F4C1A51828A0706F003C771C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C1A51728A0706F003C771C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		F4C1A51B28A07084003C771C /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C1A51A28A07084003C771C /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		F4C1A51E28A07096003C771C /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C1A51D28A07096003C771C /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E18A82492893F86000D2B0BB /* Project object */;
 }
