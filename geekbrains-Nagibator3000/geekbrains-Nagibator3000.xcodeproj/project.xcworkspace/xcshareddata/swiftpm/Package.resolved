@@ -1,12 +1,21 @@
 {
   "pins" : [
     {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "8dd85aee02e39dd280c75eef88ffdb86eed4b07b"
+      }
+    },
+    {
       "identity" : "lottie-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/airbnb/lottie-ios.git",
       "state" : {
         "branch" : "master",
-        "revision" : "6de67b5332dec0632c041b08ccc158ddf373ce68"
+        "revision" : "2edfa5f6803e8b5acb178a760a5428d1c608febe"
       }
     },
     {
@@ -25,6 +34,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "e0ab8c4e18baf6679a65b325155923276b832687"
+      }
+    },
+    {
+      "identity" : "swinject",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Swinject/Swinject.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "11e65d83ba100459a41837119a8af32f182339f1"
       }
     }
   ],
