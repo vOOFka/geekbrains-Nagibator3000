@@ -36,7 +36,7 @@
 		F4D82C5A289998D700FFFFA7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C59289998D700FFFFA7 /* String+Ext.swift */; };
 		F4D82C5C2899A4BE00FFFFA7 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5B2899A4BE00FFFFA7 /* TranslateViewModel.swift */; };
 		F4D82C5E2899A66E00FFFFA7 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5D2899A66E00FFFFA7 /* Language.swift */; };
-		F4D82C602899B1D400FFFFA7 /* UIResponder+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5F2899B1D400FFFFA7 /* UIResponder+Ext.swift */; };
+		F4D82C602899B1D400FFFFA7 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5F2899B1D400FFFFA7 /* UIViewController+Ext.swift */; };
 		F4D82C6E289D9D5900FFFFA7 /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C6D289D9D5800FFFFA7 /* SelectLanguageViewController.swift */; };
 		F4D82C70289D9EC700FFFFA7 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C6F289D9EC700FFFFA7 /* Reusable.swift */; };
 		F4D82C72289DA31700FFFFA7 /* SelectLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C71289DA31700FFFFA7 /* SelectLanguageCell.swift */; };
@@ -84,7 +84,7 @@
 		F4D82C59289998D700FFFFA7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		F4D82C5B2899A4BE00FFFFA7 /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		F4D82C5D2899A66E00FFFFA7 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
-		F4D82C5F2899B1D400FFFFA7 /* UIResponder+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Ext.swift"; sourceTree = "<group>"; };
+		F4D82C5F2899B1D400FFFFA7 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		F4D82C6D289D9D5800FFFFA7 /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		F4D82C6F289D9EC700FFFFA7 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		F4D82C71289DA31700FFFFA7 /* SelectLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageCell.swift; sourceTree = "<group>"; };
@@ -269,7 +269,6 @@
 				F4D62A102896FF6D0000B690 /* App */,
 				F4D62A142896FFBC0000B690 /* Resources */,
 				F4D62A132896FF9C0000B690 /* Environments */,
-				F4D62A122896FF860000B690 /* Utils&Helpers */,
 			);
 			path = "geekbrains-Nagibator3000";
 			sourceTree = "<group>";
@@ -291,6 +290,7 @@
 		F4D62A112896FF760000B690 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F4D62A122896FF860000B690 /* Utils&Helpers */,
 				E0EAEA01289C4E3800F8D918 /* Error */,
 			);
 			path = Core;
@@ -300,7 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D82C59289998D700FFFFA7 /* String+Ext.swift */,
-				F4D82C5F2899B1D400FFFFA7 /* UIResponder+Ext.swift */,
+				F4D82C5F2899B1D400FFFFA7 /* UIViewController+Ext.swift */,
 				F4D82C6F289D9EC700FFFFA7 /* Reusable.swift */,
 			);
 			path = "Utils&Helpers";
@@ -512,7 +512,7 @@
 				F4D82C5A289998D700FFFFA7 /* String+Ext.swift in Sources */,
 				F4D82C6E289D9D5900FFFFA7 /* SelectLanguageViewController.swift in Sources */,
 				E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */,
-				F4D82C602899B1D400FFFFA7 /* UIResponder+Ext.swift in Sources */,
+				F4D82C602899B1D400FFFFA7 /* UIViewController+Ext.swift in Sources */,
 				F4D62A1E289710C90000B690 /* ColorScheme.swift in Sources */,
 				E0EAEA27289DA34300F8D918 /* TranslateMapper.swift in Sources */,
 				F4D62A27289719F50000B690 /* TrainingViewController.swift in Sources */,

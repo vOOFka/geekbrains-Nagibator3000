@@ -10,14 +10,6 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let newNavBarAppearance = customNavBarAppearance()
-            
-        let appearance = UINavigationBar.appearance()
-        appearance.scrollEdgeAppearance = newNavBarAppearance
-        appearance.compactAppearance = newNavBarAppearance
-        appearance.standardAppearance = newNavBarAppearance
-        appearance.compactScrollEdgeAppearance = newNavBarAppearance
-
         return true
     }
 

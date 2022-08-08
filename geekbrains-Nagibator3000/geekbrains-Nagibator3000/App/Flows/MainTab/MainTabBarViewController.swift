@@ -16,6 +16,8 @@ final class MainTabBarViewController: UITabBarController {
     //MARK: - Config
     
     private func initialConfig() {
+        configNavBarAppearance()
+        
         tabBar.backgroundColor = Constants.greenColor
         tabBar.tintColor = Constants.whiteColor
         
