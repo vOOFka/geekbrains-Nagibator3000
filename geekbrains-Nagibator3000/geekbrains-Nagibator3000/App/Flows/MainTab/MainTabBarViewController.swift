@@ -19,7 +19,11 @@ final class MainTabBarViewController: UITabBarController {
         tabBar.backgroundColor = Constants.greenColor
         tabBar.tintColor = Constants.whiteColor
         
-        let translateViewController = UINavigationController(rootViewController: TranslateViewController())
+        guard let translateViewModel = TranslateViewModel() else {
+            return            
+        }
+        
+        let translateViewController = UINavigationController(rootViewController: TranslateViewController(viewModel: translateViewModel))
         let dictionaryViewController = UINavigationController(rootViewController: DictionaryViewController())
         let trainingViewController = UINavigationController(rootViewController: TrainingViewController())
         
@@ -42,6 +46,8 @@ final class MainTabBarViewController: UITabBarController {
         }
     }
 }
+
+//MARK: - Constants
 
 private enum Constants {
     static let titleTranslateViewController = "Translate".localized
