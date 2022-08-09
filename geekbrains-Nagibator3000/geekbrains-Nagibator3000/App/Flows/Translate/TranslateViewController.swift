@@ -44,6 +44,9 @@ final class TranslateViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         title = Constants.title
         
+        sourceTextView.delegate = self
+        destinationTextView.isEditable = false
+        
         configLanguageButtons()
         
         view.addSubview(sourceLanguageButton)
@@ -118,6 +121,15 @@ final class TranslateViewController: UIViewController {
     
     @objc private func swapLanguageButtonTap(sender : UIButton) {
         viewModel.swapLanguages()
+    }
+}
+
+extension TranslateViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        }
+        return true
     }
 }
 

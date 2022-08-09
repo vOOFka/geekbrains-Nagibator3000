@@ -33,6 +33,8 @@ final class CustomTextView: UITextView {
         layer.shadowOpacity = 0.4
         layer.shadowRadius = Constants.cornerRadius
         layer.masksToBounds = true
+        
+        returnKeyType = UIReturnKeyType.done
     }
 }
 
