@@ -6,13 +6,15 @@
 //
 
 import UIKit
-import PinLayout
 import RxCocoa
 import RxSwift
+import Swinject
 
 final class TranslateViewController: UIViewController {
     var viewModel: TranslateViewModel
     private let disposeBag = DisposeBag()
+    
+    private let translaterUseCase: TranslaterUseCase?
     
     private let sourceLanguageButton = UIButton()
     private let swapLanguageButton = UIButton()
@@ -23,8 +25,9 @@ final class TranslateViewController: UIViewController {
     
     // MARK: - Init
 
-    init(viewModel: TranslateViewModel) {
+    init(viewModel: TranslateViewModel, translaterUseCase: TranslaterUseCase) {
         self.viewModel = viewModel
+        self.translaterUseCase = translaterUseCase
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -55,7 +58,6 @@ final class TranslateViewController: UIViewController {
         
         view.addSubview(sourceTextView)
         view.addSubview(destinationTextView)
-        
     }
     
     private func configLanguageButtons() {
@@ -126,8 +128,20 @@ final class TranslateViewController: UIViewController {
 
 extension TranslateViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if (text == "\n") {
+        if text == "\n" {
             textView.resignFirstResponder()
+            
+            guard let from = viewModel.sourceLanguage.value.code,
+                  let to = viewModel.destinationLanguage.value.code else {
+                return true
+            }
+            
+            let tanslateParams = TranslateParams(from: from, to: to, text: textView.text)
+            let tanslate = translaterUseCase?.traslate(fromText: textView.text, params: tanslateParams)
+            
+            let _ = tanslate?.values.compactMap { tanslate in
+                print("++",tanslate.fromText, tanslate.toText)
+            }
         }
         return true
     }

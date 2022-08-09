@@ -6,8 +6,21 @@
 //
 
 import UIKit
+import Swinject
 
 final class MainTabBarViewController: UITabBarController {
+    let container: Container = {
+        let mainFlow = MainFlow()
+        mainFlow.setUpDiContainer()
+        
+        mainFlow.container.register(TranslateViewController.self) { resolver in            
+            let translateViewController = TranslateViewController(viewModel: TranslateViewModel()!,
+                                                                  translaterUseCase: resolver.resolve(TranslaterUseCase.self)!)
+            return translateViewController
+        }
+        return mainFlow.container
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialConfig()
@@ -21,11 +34,7 @@ final class MainTabBarViewController: UITabBarController {
         tabBar.backgroundColor = Constants.greenColor
         tabBar.tintColor = Constants.whiteColor
         
-        guard let translateViewModel = TranslateViewModel() else {
-            return            
-        }
-        
-        let translateViewController = UINavigationController(rootViewController: TranslateViewController(viewModel: translateViewModel))
+        let translateViewController = UINavigationController(rootViewController: container.resolve(TranslateViewController.self)!)
         let dictionaryViewController = UINavigationController(rootViewController: DictionaryViewController())
         let trainingViewController = UINavigationController(rootViewController: TrainingViewController())
         
