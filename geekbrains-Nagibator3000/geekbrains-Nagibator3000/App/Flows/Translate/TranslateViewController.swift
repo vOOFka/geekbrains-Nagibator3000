@@ -137,11 +137,24 @@ extension TranslateViewController: UITextViewDelegate {
             }
             
             let tanslateParams = TranslateParams(from: from, to: to, text: textView.text)
-            let tanslate = translaterUseCase?.traslate(fromText: textView.text, params: tanslateParams)
-            
-            let _ = tanslate?.values.compactMap { tanslate in
+            translaterUseCase?.traslate(fromText: textView.text, params: tanslateParams)
+            .subscribe { event in
+              switch event {
+              case .next(let tanslate):
                 print("++",tanslate.fromText, tanslate.toText)
+                break
+
+              case .error(let error):
+                print(error)
+                break
+              
+              default:
+                break
+              }
+              textView.becomeFirstResponder()
             }
+            .disposed(by: disposeBag)
+
         }
         return true
     }
