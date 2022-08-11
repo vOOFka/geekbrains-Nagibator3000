@@ -9,17 +9,26 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-final class TranslateViewModel {   
+final class TranslateViewModel {
+    private let disposeBag = DisposeBag()
+    
+    private let translaterUseCase: TranslaterUseCase?
+    
     private(set) var sourceLanguage: BehaviorRelay<Language>
     private(set) var destinationLanguage: BehaviorRelay<Language>
     
-    init?() {
+    private(set) var translatedText: BehaviorRelay<String>
+    
+    init?(translaterUseCase: TranslaterUseCase) {
         guard let languages = RepositoryLanguages.loadJson() else {
             return nil
         }
+        
+        self.translaterUseCase = translaterUseCase
     
         self.sourceLanguage = BehaviorRelay<Language>(value: languages[0])
         self.destinationLanguage = BehaviorRelay<Language>(value: languages[0])
+        self.translatedText = BehaviorRelay<String>(value: String())
     }
     
     public func swapLanguages() {
@@ -32,6 +41,31 @@ final class TranslateViewModel {
     
     public func configTranslateLanguage(language: Language, type: LanguageType) {
         type == .source ? sourceLanguage.accept(language) : destinationLanguage.accept(language)
+    }
+    
+    public func translate(text: String) {
+        guard let from = self.sourceLanguage.value.code,
+              let to = self.destinationLanguage.value.code else {
+            return
+        }
+        
+        let tanslateParams = TranslateParams(from: from, to: to, text: text)
+        translaterUseCase?.traslate(fromText: text, params: tanslateParams)
+            .subscribe { [weak self] event in
+                switch event {
+                case .next(let tanslate):
+                    self?.translatedText.accept(tanslate.toText)
+                    break
+                    
+                case .error(let error):
+                    print(error)
+                    break
+                    
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
 

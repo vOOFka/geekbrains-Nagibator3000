@@ -14,8 +14,6 @@ final class TranslateViewController: UIViewController {
     var viewModel: TranslateViewModel
     private let disposeBag = DisposeBag()
     
-    private let translaterUseCase: TranslaterUseCase?
-    
     private let sourceLanguageButton = UIButton()
     private let swapLanguageButton = UIButton()
     private let destinationLanguageButton = UIButton()
@@ -25,9 +23,8 @@ final class TranslateViewController: UIViewController {
     
     // MARK: - Init
 
-    init(viewModel: TranslateViewModel, translaterUseCase: TranslaterUseCase) {
+    init(viewModel: TranslateViewModel) {
         self.viewModel = viewModel
-        self.translaterUseCase = translaterUseCase
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -85,6 +82,10 @@ final class TranslateViewController: UIViewController {
         viewModel.destinationLanguage.asObservable().bind { [weak self] lang in
             self?.destinationLanguageButton.setTitle(lang.code?.uppercased(), for: .normal)
         }.disposed(by: disposeBag)
+        
+        viewModel.translatedText.asObservable().bind { [weak self] text in
+            self?.destinationTextView.text = text
+        }.disposed(by: disposeBag)
     }
     
     //MARK: - Layout
@@ -129,32 +130,8 @@ final class TranslateViewController: UIViewController {
 extension TranslateViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
+            viewModel.translate(text: textView.text)
             textView.resignFirstResponder()
-            
-            guard let from = viewModel.sourceLanguage.value.code,
-                  let to = viewModel.destinationLanguage.value.code else {
-                return true
-            }
-            
-            let tanslateParams = TranslateParams(from: from, to: to, text: textView.text)
-            translaterUseCase?.traslate(fromText: textView.text, params: tanslateParams)
-            .subscribe { event in
-              switch event {
-              case .next(let tanslate):
-                print("++",tanslate.fromText, tanslate.toText)
-                break
-
-              case .error(let error):
-                print(error)
-                break
-              
-              default:
-                break
-              }
-              textView.becomeFirstResponder()
-            }
-            .disposed(by: disposeBag)
-
         }
         return true
     }
