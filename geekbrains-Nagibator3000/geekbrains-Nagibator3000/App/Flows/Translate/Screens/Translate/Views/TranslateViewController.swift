@@ -11,23 +11,12 @@ import RxCocoa
 import RxSwift
 
 final class TranslateViewController: UIViewController {
-    var viewModel: TranslateViewModel
+    var viewModel: TranslateViewModel!
     private let disposeBag = DisposeBag()
     
     private let sourceLanguageButton = UIButton()
     private let swapLanguageButton = UIButton()
     private let destinationLanguageButton = UIButton()
-    
-    // MARK: - Init
-
-    init(viewModel: TranslateViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

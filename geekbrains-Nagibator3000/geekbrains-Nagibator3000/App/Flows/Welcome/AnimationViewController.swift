@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import RxFlow
 
 class AnimationViewController: UIViewController {
     private var animationView: AnimationView?
@@ -39,10 +40,14 @@ class AnimationViewController: UIViewController {
     }
     
     private func completionAnimation() {
-        let mainTabBarViewController = MainTabBarViewController()
-        addChild(mainTabBarViewController)
-        mainTabBarViewController.view.frame = view.bounds
-        view.addSubview(mainTabBarViewController.view)
-        mainTabBarViewController.didMove(toParent: self)
+      let coordinator = FlowCoordinator()
+      let flow = MainFlow(window: self.view.window!) // это временная строка запуск флоу будет происходить из главного флоу после анимации
+      
+      coordinator.coordinate(
+        flow: flow,
+        with: OneStepper(
+          withSingleStep: MainStep.goToApp
+        )
+      )
     }
 }

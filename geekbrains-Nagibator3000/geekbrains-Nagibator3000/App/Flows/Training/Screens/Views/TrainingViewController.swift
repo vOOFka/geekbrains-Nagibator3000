@@ -8,6 +8,8 @@
 import UIKit
 
 final class TrainingViewController: UIViewController {
+  var viewModel: TrainingViewModel!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorScheme.white.color

@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		E002B8ED28A4435200FBCBDD /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B8EC28A4435200FBCBDD /* LanguageModel.swift */; };
+		E002B8F028A596CB00FBCBDD /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = E002B8EF28A596CB00FBCBDD /* RxFlow */; };
+		E002B8F328A5972500FBCBDD /* TranslateFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B8F228A5972500FBCBDD /* TranslateFlow.swift */; };
+		E002B8F528A5974900FBCBDD /* TranslateStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B8F428A5974900FBCBDD /* TranslateStep.swift */; };
+		E002B8FF28A5980900FBCBDD /* DictionaryFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B8FE28A5980900FBCBDD /* DictionaryFlow.swift */; };
+		E002B90128A5981600FBCBDD /* DictionaryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B90028A5981600FBCBDD /* DictionaryStep.swift */; };
+		E002B90728A5988000FBCBDD /* TrainingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B90628A5988000FBCBDD /* TrainingFlow.swift */; };
+		E002B90A28A5989600FBCBDD /* TrainingStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B90928A5989600FBCBDD /* TrainingStep.swift */; };
+		E002B90C28A5A2A200FBCBDD /* MainStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B90B28A5A2A200FBCBDD /* MainStep.swift */; };
+		E002B90E28A5A67300FBCBDD /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B90D28A5A67300FBCBDD /* DictionaryViewModel.swift */; };
+		E002B91028A5A6C700FBCBDD /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B90F28A5A6C700FBCBDD /* TrainingViewModel.swift */; };
 		E00DE06828A2EF5400C3608C /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06728A2EF5400C3608C /* Language.swift */; };
 		E00DE06B28A2EFCB00C3608C /* LanguageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06A28A2EFCB00C3608C /* LanguageMapper.swift */; };
 		E00DE06F28A2F0B200C3608C /* TranslationStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06E28A2F0B200C3608C /* TranslationStorageModel.swift */; };
@@ -70,6 +80,15 @@
 
 /* Begin PBXFileReference section */
 		E002B8EC28A4435200FBCBDD /* LanguageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
+		E002B8F228A5972500FBCBDD /* TranslateFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateFlow.swift; sourceTree = "<group>"; };
+		E002B8F428A5974900FBCBDD /* TranslateStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateStep.swift; sourceTree = "<group>"; };
+		E002B8FE28A5980900FBCBDD /* DictionaryFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryFlow.swift; sourceTree = "<group>"; };
+		E002B90028A5981600FBCBDD /* DictionaryStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryStep.swift; sourceTree = "<group>"; };
+		E002B90628A5988000FBCBDD /* TrainingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingFlow.swift; sourceTree = "<group>"; };
+		E002B90928A5989600FBCBDD /* TrainingStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingStep.swift; sourceTree = "<group>"; };
+		E002B90B28A5A2A200FBCBDD /* MainStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStep.swift; sourceTree = "<group>"; };
+		E002B90D28A5A67300FBCBDD /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
+		E002B90F28A5A6C700FBCBDD /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
 		E00DE06728A2EF5400C3608C /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		E00DE06A28A2EFCB00C3608C /* LanguageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMapper.swift; sourceTree = "<group>"; };
 		E00DE06E28A2F0B200C3608C /* TranslationStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationStorageModel.swift; sourceTree = "<group>"; };
@@ -133,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FE6CB528A07BDB005D6DDF /* Lottie in Frameworks */,
+				E002B8F028A596CB00FBCBDD /* RxFlow in Frameworks */,
 				F4FE6CAF28A07B8B005D6DDF /* RxSwift in Frameworks */,
 				F4FE6CAD28A07B8B005D6DDF /* RxCocoa in Frameworks */,
 				F4FE6CB228A07BB7005D6DDF /* PinLayout in Frameworks */,
@@ -150,6 +170,117 @@
 				E002B8EC28A4435200FBCBDD /* LanguageModel.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		E002B8F128A596FD00FBCBDD /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E002B8F228A5972500FBCBDD /* TranslateFlow.swift */,
+				E002B8F428A5974900FBCBDD /* TranslateStep.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		E002B8F628A5975600FBCBDD /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E002B8F728A5976900FBCBDD /* Translate */,
+				F4D82C6C289D9A4400FFFFA7 /* SelectLanguage */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E002B8F728A5976900FBCBDD /* Translate */ = {
+			isa = PBXGroup;
+			children = (
+				E002B8F928A5979000FBCBDD /* Views */,
+				E002B8F828A5977700FBCBDD /* ViewModel */,
+			);
+			path = Translate;
+			sourceTree = "<group>";
+		};
+		E002B8F828A5977700FBCBDD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4D82C5B2899A4BE00FFFFA7 /* TranslateViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E002B8F928A5979000FBCBDD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4D62A222897199D0000B690 /* TranslateViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E002B8FA28A597B100FBCBDD /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E002B8FC28A597CA00FBCBDD /* Views */,
+				E002B8FB28A597BC00FBCBDD /* ViewModel */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E002B8FB28A597BC00FBCBDD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E002B90D28A5A67300FBCBDD /* DictionaryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E002B8FC28A597CA00FBCBDD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4D62A24289719D10000B690 /* DictionaryViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E002B8FD28A597EE00FBCBDD /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E002B8FE28A5980900FBCBDD /* DictionaryFlow.swift */,
+				E002B90028A5981600FBCBDD /* DictionaryStep.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		E002B90228A5984A00FBCBDD /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E002B90428A5985C00FBCBDD /* ViewModel */,
+				E002B90328A5985200FBCBDD /* Views */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E002B90328A5985200FBCBDD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4D62A26289719F50000B690 /* TrainingViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E002B90428A5985C00FBCBDD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E002B90F28A5A6C700FBCBDD /* TrainingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E002B90528A5986700FBCBDD /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E002B90628A5988000FBCBDD /* TrainingFlow.swift */,
+				E002B90928A5989600FBCBDD /* TrainingStep.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		E00DE06528A2EF3A00C3608C /* Language */ = {
@@ -362,6 +493,7 @@
 			children = (
 				E0EAEA2F289DAD7D00F8D918 /* MainFlow+DI.swift */,
 				E0EAEA32289DAD9D00F8D918 /* MainFlow.swift */,
+				E002B90B28A5A2A200FBCBDD /* MainStep.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -571,9 +703,8 @@
 		F4D62A1F289719590000B690 /* Translate */ = {
 			isa = PBXGroup;
 			children = (
-				F4D82C6C289D9A4400FFFFA7 /* SelectLanguage */,
-				F4D62A222897199D0000B690 /* TranslateViewController.swift */,
-				F4D82C5B2899A4BE00FFFFA7 /* TranslateViewModel.swift */,
+				E002B8F628A5975600FBCBDD /* Screens */,
+				E002B8F128A596FD00FBCBDD /* Navigation */,
 			);
 			path = Translate;
 			sourceTree = "<group>";
@@ -581,7 +712,8 @@
 		F4D62A20289719680000B690 /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
-				F4D62A24289719D10000B690 /* DictionaryViewController.swift */,
+				E002B8FD28A597EE00FBCBDD /* Navigation */,
+				E002B8FA28A597B100FBCBDD /* Screens */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -589,7 +721,8 @@
 		F4D62A21289719710000B690 /* Training */ = {
 			isa = PBXGroup;
 			children = (
-				F4D62A26289719F50000B690 /* TrainingViewController.swift */,
+				E002B90528A5986700FBCBDD /* Navigation */,
+				E002B90228A5984A00FBCBDD /* Screens */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -644,6 +777,7 @@
 				F4FE6CB128A07BB7005D6DDF /* PinLayout */,
 				F4FE6CB428A07BDB005D6DDF /* Lottie */,
 				F4FE6CB728A07C05005D6DDF /* Swinject */,
+				E002B8EF28A596CB00FBCBDD /* RxFlow */,
 			);
 			productName = "geekbrains-Nagibator3000";
 			productReference = E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */;
@@ -680,6 +814,7 @@
 				F4FE6CB028A07BB7005D6DDF /* XCRemoteSwiftPackageReference "PinLayout" */,
 				F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				F4FE6CB628A07C05005D6DDF /* XCRemoteSwiftPackageReference "Swinject" */,
+				E002B8EE28A596CB00FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */,
 			);
 			productRefGroup = E18A82522893F86000D2B0BB /* Products */;
 			projectDirPath = "";
@@ -711,6 +846,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4D82C72289DA31700FFFFA7 /* SelectLanguageCell.swift in Sources */,
+				E002B90128A5981600FBCBDD /* DictionaryStep.swift in Sources */,
 				E0EAEA1C289D9BFF00F8D918 /* AFTranslateApi.swift in Sources */,
 				F4D82C5A289998D700FFFFA7 /* String+Ext.swift in Sources */,
 				E0EAEA4B28A1B14100F8D918 /* DataStorage.swift in Sources */,
@@ -718,8 +854,12 @@
 				E0EAEA3928A1A54B00F8D918 /* StorageKeys.swift in Sources */,
 				E00DE07E28A302B300C3608C /* LanguageUseCase.swift in Sources */,
 				E0EAEA5028A1B72A00F8D918 /* LanguageStorageModel.swift in Sources */,
+				E002B90728A5988000FBCBDD /* TrainingFlow.swift in Sources */,
+				E002B8F528A5974900FBCBDD /* TranslateStep.swift in Sources */,
 				E0EAEA3E28A1A63600F8D918 /* UserDefaultsWrapper.swift in Sources */,
 				F4D82C6E289D9D5900FFFFA7 /* SelectLanguageViewController.swift in Sources */,
+				E002B90A28A5989600FBCBDD /* TrainingStep.swift in Sources */,
+				E002B8F328A5972500FBCBDD /* TranslateFlow.swift in Sources */,
 				E00DE07228A2F15900C3608C /* TranslationMapper.swift in Sources */,
 				E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */,
 				F4D82C602899B1D400FFFFA7 /* UIResponder+Ext.swift in Sources */,
@@ -744,12 +884,15 @@
 				E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */,
 				E0EAEA4D28A1B6B100F8D918 /* FileDataStorage.swift in Sources */,
 				E0EAEA5228A1B87800F8D918 /* ObjectBasedAdapter.swift in Sources */,
+				E002B8FF28A5980900FBCBDD /* DictionaryFlow.swift in Sources */,
 				F4D82C79289DA90900FFFFA7 /* SelectLanguageViewModel.swift in Sources */,
 				E0EAEA1A289D93CB00F8D918 /* WebUrlPath.swift in Sources */,
 				E0EAEA08289C56AE00F8D918 /* AFErrorMapper.swift in Sources */,
 				F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */,
+				E002B91028A5A6C700FBCBDD /* TrainingViewModel.swift in Sources */,
 				E0EAEA03289C4E5600F8D918 /* TRError.swift in Sources */,
 				E00DE07828A2F50500C3608C /* TranslationRepository.swift in Sources */,
+				E002B90E28A5A67300FBCBDD /* DictionaryViewModel.swift in Sources */,
 				E00DE06F28A2F0B200C3608C /* TranslationStorageModel.swift in Sources */,
 				E0EAEA0E289D91EE00F8D918 /* TranslateParams.swift in Sources */,
 				F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */,
@@ -758,6 +901,7 @@
 				E002B8ED28A4435200FBCBDD /* LanguageModel.swift in Sources */,
 				E0EAEA33289DAD9D00F8D918 /* MainFlow.swift in Sources */,
 				E0EAEA10289D92C500F8D918 /* TranslateApi.swift in Sources */,
+				E002B90C28A5A2A200FBCBDD /* MainStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -992,6 +1136,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E002B8EE28A596CB00FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F4FE6CA828A07B6D005D6DDF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1035,6 +1187,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E002B8EF28A596CB00FBCBDD /* RxFlow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E002B8EE28A596CB00FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */;
+			productName = RxFlow;
+		};
 		F4FE6CA928A07B6D005D6DDF /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F4FE6CA828A07B6D005D6DDF /* XCRemoteSwiftPackageReference "Alamofire" */;
