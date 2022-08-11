@@ -14,8 +14,8 @@ final class TranslateViewModel {
     
     private let translaterUseCase: TranslaterUseCase?
     
-    private(set) var sourceLanguage: BehaviorRelay<Language>
-    private(set) var destinationLanguage: BehaviorRelay<Language>
+    private(set) var sourceLanguage: BehaviorRelay<LanguageModel>
+    private(set) var destinationLanguage: BehaviorRelay<LanguageModel>
     
     private(set) var translatedText: BehaviorRelay<String>
     
@@ -26,9 +26,9 @@ final class TranslateViewModel {
         
         self.translaterUseCase = translaterUseCase
     
-        self.sourceLanguage = BehaviorRelay<Language>(value: languages[0])
-        self.destinationLanguage = BehaviorRelay<Language>(value: languages[0])
         self.translatedText = BehaviorRelay<String>(value: String())
+        self.sourceLanguage = BehaviorRelay<LanguageModel>(value: languages[0])
+        self.destinationLanguage = BehaviorRelay<LanguageModel>(value: languages[0])
     }
     
     public func swapLanguages() {
@@ -39,7 +39,7 @@ final class TranslateViewModel {
         self.destinationLanguage.accept(destinationLanguage)
     }
     
-    public func configTranslateLanguage(language: Language, type: LanguageType) {
+    public func configTranslateLanguage(language: LanguageModel, type: LanguageType) {
         type == .source ? sourceLanguage.accept(language) : destinationLanguage.accept(language)
     }
     

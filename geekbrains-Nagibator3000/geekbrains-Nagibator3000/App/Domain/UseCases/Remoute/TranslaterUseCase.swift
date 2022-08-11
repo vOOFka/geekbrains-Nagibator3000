@@ -17,7 +17,7 @@ public class TranslaterUseCase {
     self.mapper = mapper
   }
 
-  func traslate(fromText: String, params: TranslateParams) -> Observable<Translation> {
+  func traslate(fromText: String, params: TranslateParams) -> Observable<TranslationModel> {
     mapper.map(
       fromText: fromText ,
       observableResponse: api.traslate(translate: params)
