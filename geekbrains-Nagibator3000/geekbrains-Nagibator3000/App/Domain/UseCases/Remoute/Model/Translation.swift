@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Translate {
+public struct Translation {
   let fromText: String
   let toText: String
 }

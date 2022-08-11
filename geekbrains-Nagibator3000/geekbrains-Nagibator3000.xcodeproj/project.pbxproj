@@ -16,7 +16,7 @@
 		E0EAEA1A289D93CB00F8D918 /* WebUrlPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA19289D93CB00F8D918 /* WebUrlPath.swift */; };
 		E0EAEA1C289D9BFF00F8D918 /* AFTranslateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA1B289D9BFF00F8D918 /* AFTranslateApi.swift */; };
 		E0EAEA21289DA28100F8D918 /* TranslaterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA20289DA28100F8D918 /* TranslaterUseCase.swift */; };
-		E0EAEA25289DA2AB00F8D918 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA24289DA2AB00F8D918 /* Translate.swift */; };
+		E0EAEA25289DA2AB00F8D918 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA24289DA2AB00F8D918 /* Translation.swift */; };
 		E0EAEA27289DA34300F8D918 /* TranslateMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA26289DA34300F8D918 /* TranslateMapper.swift */; };
 		E0EAEA2D289DACA300F8D918 /* Flow+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA2C289DACA300F8D918 /* Flow+DI.swift */; };
 		E0EAEA30289DAD7D00F8D918 /* MainFlow+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA2F289DAD7D00F8D918 /* MainFlow+DI.swift */; };
@@ -64,7 +64,7 @@
 		E0EAEA19289D93CB00F8D918 /* WebUrlPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebUrlPath.swift; sourceTree = "<group>"; };
 		E0EAEA1B289D9BFF00F8D918 /* AFTranslateApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFTranslateApi.swift; sourceTree = "<group>"; };
 		E0EAEA20289DA28100F8D918 /* TranslaterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslaterUseCase.swift; sourceTree = "<group>"; };
-		E0EAEA24289DA2AB00F8D918 /* Translate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
+		E0EAEA24289DA2AB00F8D918 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		E0EAEA26289DA34300F8D918 /* TranslateMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateMapper.swift; sourceTree = "<group>"; };
 		E0EAEA2C289DACA300F8D918 /* Flow+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flow+DI.swift"; sourceTree = "<group>"; };
 		E0EAEA2F289DAD7D00F8D918 /* MainFlow+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainFlow+DI.swift"; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 		E0EAEA23289DA29500F8D918 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E0EAEA24289DA2AB00F8D918 /* Translate.swift */,
+				E0EAEA24289DA2AB00F8D918 /* Translation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -528,7 +528,7 @@
 				F4D62A27289719F50000B690 /* TrainingViewController.swift in Sources */,
 				F4A5B37428A1A20D00D0293E /* CustomTextView.swift in Sources */,
 				F4D82C70289D9EC700FFFFA7 /* Reusable.swift in Sources */,
-				E0EAEA25289DA2AB00F8D918 /* Translate.swift in Sources */,
+				E0EAEA25289DA2AB00F8D918 /* Translation.swift in Sources */,
 				E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */,
 				E0EAEA21289DA28100F8D918 /* TranslaterUseCase.swift in Sources */,
 				E0EAEA0C289D91BA00F8D918 /* TranslateResponse.swift in Sources */,

@@ -12,10 +12,10 @@ public class TranslateMapper {
   public func map(
     fromText: String,
     observableResponse: Observable<TranslateResponse>
-  ) -> Observable<Translate> {
+  ) -> Observable<Translation> {
     observableResponse
       .map { response in
-          Translate(fromText: fromText, toText: response.translations?.first?.text ?? "Error")
+          Translation(fromText: fromText, toText: response.translations?.first?.text ?? "Error")
       }
   }
 }

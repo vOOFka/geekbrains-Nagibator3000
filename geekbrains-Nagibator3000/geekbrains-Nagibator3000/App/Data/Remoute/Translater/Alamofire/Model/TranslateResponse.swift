@@ -24,13 +24,13 @@ import Foundation
 //}
 
 public struct TranslateResponse: Codable {
-    let translations: [Translation]?
+    let translations: [TranslationMMM]?
     let code: Int?
     let message: String?
     let details: [Detail]?
 }
 
-public struct Translation: Codable {
+public struct TranslationMMM: Codable {
     let text, detectedLanguageCode: String
 }
 
