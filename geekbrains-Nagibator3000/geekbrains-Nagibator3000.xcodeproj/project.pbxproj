@@ -30,6 +30,7 @@
 		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
 		F4A5B37428A1A20D00D0293E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A5B37328A1A20D00D0293E /* CustomTextView.swift */; };
 		F4A5B37628A58C9300D0293E /* YandexService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A5B37528A58C9300D0293E /* YandexService-Info.plist */; };
+		F4A5B37828A5A08100D0293E /* Locale+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A5B37728A5A08100D0293E /* Locale+Ext.swift */; };
 		F4D62A1E289710C90000B690 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A1D289710C90000B690 /* ColorScheme.swift */; };
 		F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A222897199D0000B690 /* TranslateViewController.swift */; };
 		F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A24289719D10000B690 /* DictionaryViewController.swift */; };
@@ -79,6 +80,7 @@
 		E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		F4A5B37328A1A20D00D0293E /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		F4A5B37528A58C9300D0293E /* YandexService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YandexService-Info.plist"; sourceTree = "<group>"; };
+		F4A5B37728A5A08100D0293E /* Locale+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Ext.swift"; sourceTree = "<group>"; };
 		F4D62A1D289710C90000B690 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		F4D62A222897199D0000B690 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		F4D62A24289719D10000B690 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				F4D82C5F2899B1D400FFFFA7 /* UIViewController+Ext.swift */,
 				F4D82C6F289D9EC700FFFFA7 /* Reusable.swift */,
 				F4A5B37328A1A20D00D0293E /* CustomTextView.swift */,
+				F4A5B37728A5A08100D0293E /* Locale+Ext.swift */,
 			);
 			path = "Utils&Helpers";
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				F4D82C5E2899A66E00FFFFA7 /* Language.swift in Sources */,
 				E0EAEA33289DAD9D00F8D918 /* MainFlow.swift in Sources */,
 				E0EAEA10289D92C500F8D918 /* TranslateApi.swift in Sources */,
+				F4A5B37828A5A08100D0293E /* Locale+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

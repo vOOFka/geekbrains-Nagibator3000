@@ -36,7 +36,6 @@ public class AFTranslateApi: TranslateApi {
           .validate(statusCode: 200..<300)
           .responseDecodable(of: TranslateResponse.self) { result in
             if let response = result.value {
-              print(response.description ?? "")
               observable.onNext(response)
               observable.onCompleted()
             } else if let error = result.error {

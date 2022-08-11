@@ -15,7 +15,7 @@ public class TranslateMapper {
   ) -> Observable<Translate> {
     observableResponse
       .map { response in
-        Translate(fromText: fromText, toText: response.text ?? "Error")
+          Translate(fromText: fromText, toText: response.translations?.first?.text ?? "Error")
       }
   }
 }

@@ -44,12 +44,12 @@ final class TranslateViewModel {
     }
     
     public func translate(text: String) {
-        guard let from = self.sourceLanguage.value.code,
-              let to = self.destinationLanguage.value.code else {
-            return
-        }
-        
-        let tanslateParams = TranslateParams(from: from, to: to, text: text)
+        let sourceLanguageCode = (self.sourceLanguage.value.code == "auto") ? nil : self.sourceLanguage.value.code
+        let targetLanguageCode = (self.destinationLanguage.value.code == "auto") ? Locale.preferredLanguageCode : self.destinationLanguage.value.code
+
+        let tanslateParams = TranslateParams(texts: text,
+                                             sourceLanguageCode: sourceLanguageCode,
+                                             targetLanguageCode: targetLanguageCode ?? Locale.preferredLanguageCode)
         translaterUseCase?.traslate(fromText: text, params: tanslateParams)
             .subscribe { [weak self] event in
                 switch event {

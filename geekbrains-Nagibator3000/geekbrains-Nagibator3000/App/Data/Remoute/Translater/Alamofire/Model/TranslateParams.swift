@@ -11,15 +11,15 @@ import SwiftUI
 public struct TranslateParams {
     let params: [String : String]
     
-    init(from: String, to: String, text: String) {
-        self.params = [TranslateParamsKey.from.rawValue : from,
-                       TranslateParamsKey.to.rawValue : to,
-                       TranslateParamsKey.text.rawValue : text]
+    init(texts: String, sourceLanguageCode: String?, targetLanguageCode: String) {
+        self.params = [TranslateParamsKey.texts.rawValue : texts,
+                       TranslateParamsKey.sourceLanguageCode.rawValue : sourceLanguageCode ?? "",
+                       TranslateParamsKey.targetLanguageCode.rawValue : targetLanguageCode]
     }
 }
 
 enum TranslateParamsKey: String {
-  case from = "from"
-  case to = "to"
-  case text = "text"
+    case texts = "texts"
+    case targetLanguageCode = "targetLanguageCode"
+    case sourceLanguageCode = "sourceLanguageCode"
 }

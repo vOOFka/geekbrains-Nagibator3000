@@ -8,6 +8,6 @@
 import Foundation
 
 public enum WebUrlPath {
-  static let translate = "https://api.cloudapi.stream/v2"
-  static let domen = "api.cloudapi.stream"
+  static let translate = "https://translate.api.cloud.yandex.net/translate/v2/translate"
+  static let languages = "https://translate.api.cloud.yandex.net/translate/v2/languages"
 }
