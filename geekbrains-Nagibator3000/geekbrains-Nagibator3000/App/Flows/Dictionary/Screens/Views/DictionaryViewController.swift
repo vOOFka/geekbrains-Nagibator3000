@@ -8,6 +8,8 @@
 import UIKit
 
 final class DictionaryViewController: UIViewController {
+  var viewModel: DictionaryViewModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorScheme.raspberryRose.color
