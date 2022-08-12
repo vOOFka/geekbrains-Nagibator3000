@@ -21,6 +21,8 @@
 		E002B93828A6D65100FBCBDD /* TrainingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B93728A6D65100FBCBDD /* TrainingFlow.swift */; };
 		E002B93E28A6D69B00FBCBDD /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B93D28A6D69B00FBCBDD /* TrainingViewModel.swift */; };
 		E002B94028A6D70300FBCBDD /* MainStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B93F28A6D70300FBCBDD /* MainStep.swift */; };
+		E002B94428A6DD5800FBCBDD /* RxViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B94328A6DD5800FBCBDD /* RxViewModelProtocol.swift */; };
+		E002B94628A6E00900FBCBDD /* RXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B94528A6E00900FBCBDD /* RXViewController.swift */; };
 		E00DE06828A2EF5400C3608C /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06728A2EF5400C3608C /* Language.swift */; };
 		E00DE06B28A2EFCB00C3608C /* LanguageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06A28A2EFCB00C3608C /* LanguageMapper.swift */; };
 		E00DE06F28A2F0B200C3608C /* TranslationStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06E28A2F0B200C3608C /* TranslationStorageModel.swift */; };
@@ -98,6 +100,8 @@
 		E002B93728A6D65100FBCBDD /* TrainingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingFlow.swift; sourceTree = "<group>"; };
 		E002B93D28A6D69B00FBCBDD /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
 		E002B93F28A6D70300FBCBDD /* MainStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStep.swift; sourceTree = "<group>"; };
+		E002B94328A6DD5800FBCBDD /* RxViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewModelProtocol.swift; sourceTree = "<group>"; };
+		E002B94528A6E00900FBCBDD /* RXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXViewController.swift; sourceTree = "<group>"; };
 		E00DE06728A2EF5400C3608C /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		E00DE06A28A2EFCB00C3608C /* LanguageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMapper.swift; sourceTree = "<group>"; };
 		E00DE06E28A2F0B200C3608C /* TranslationStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationStorageModel.swift; sourceTree = "<group>"; };
@@ -327,6 +331,23 @@
 				E002B93D28A6D69B00FBCBDD /* TrainingViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E002B94128A6DD3000FBCBDD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E002B94228A6DD4400FBCBDD /* RXUITools */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E002B94228A6DD4400FBCBDD /* RXUITools */ = {
+			isa = PBXGroup;
+			children = (
+				E002B94328A6DD5800FBCBDD /* RxViewModelProtocol.swift */,
+				E002B94528A6E00900FBCBDD /* RXViewController.swift */,
+			);
+			path = RXUITools;
 			sourceTree = "<group>";
 		};
 		E00DE06528A2EF3A00C3608C /* Language */ = {
@@ -723,6 +744,7 @@
 		F4D62A172897002D0000B690 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				E002B94128A6DD3000FBCBDD /* Components */,
 				F4D62A18289700440000B690 /* Welcome */,
 				F4D62A19289700770000B690 /* MainTab */,
 				F4D62A1F289719590000B690 /* Translate */,
@@ -899,6 +921,7 @@
 				E002B94028A6D70300FBCBDD /* MainStep.swift in Sources */,
 				F4D82C72289DA31700FFFFA7 /* SelectLanguageCell.swift in Sources */,
 				E0EAEA1C289D9BFF00F8D918 /* AFTranslateApi.swift in Sources */,
+				E002B94428A6DD5800FBCBDD /* RxViewModelProtocol.swift in Sources */,
 				F4D82C5A289998D700FFFFA7 /* String+Ext.swift in Sources */,
 				E0EAEA4B28A1B14100F8D918 /* DataStorage.swift in Sources */,
 				E0EAEA5428A1BC0F00F8D918 /* FileObjectBasedAdapter.swift in Sources */,
@@ -921,6 +944,7 @@
 				E0EAEA3B28A1A5B200F8D918 /* Mapper.swift in Sources */,
 				E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */,
 				E0EAEA21289DA28100F8D918 /* TranslaterUseCase.swift in Sources */,
+				E002B94628A6E00900FBCBDD /* RXViewController.swift in Sources */,
 				E002B92728A6D39800FBCBDD /* TranslateStep.swift in Sources */,
 				E00DE06B28A2EFCB00C3608C /* LanguageMapper.swift in Sources */,
 				E00DE07B28A2FFCC00C3608C /* DictionaryUseCase.swift in Sources */,
