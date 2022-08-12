@@ -26,15 +26,20 @@ final class TranslateViewController: UIViewController {
         initialConfig()
         bindViewModel()
     }
-    
+  
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      
+      tabBarController?.navigationItem.setupTitle(text: Constants.title)
+    }
+  
     //MARK: - Config
     
     private func initialConfig() {
         view.backgroundColor = Constants.backgroundColor
-        title = Constants.title
-        
         sourceTextView.delegate = self
         destinationTextView.isEditable = false
+   
         
         configLanguageButtons()
         

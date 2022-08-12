@@ -13,6 +13,11 @@ final class TrainingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = ColorScheme.white.color
-    title = String(localized: "Training")
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    tabBarController?.navigationItem.setupTitle(text: String(localized: "Training"))
   }
 }

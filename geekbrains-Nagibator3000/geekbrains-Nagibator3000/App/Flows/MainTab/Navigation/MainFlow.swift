@@ -79,7 +79,6 @@ class MainFlow: Flow {
     let dictionaryFlow = DictionaryFlow(viewController: dictionaryViewController)
     let trainingFlow = TrainingFlow(viewController: trainingViewController)
 
-
     let tabController = MainTabBarViewController()
 
     tabController.setViewControllers(
@@ -91,7 +90,9 @@ class MainFlow: Flow {
       animated: false
     )
 
-    window.rootViewController = tabController
+    let navController = UINavigationController()
+    navController.pushViewController(tabController, animated: true)
+    window.rootViewController = navController
 
     return .multiple(flowContributors: [
       .contribute(

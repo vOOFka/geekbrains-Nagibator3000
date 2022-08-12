@@ -13,14 +13,13 @@ final class MainTabBarViewController: UITabBarController {
      initialConfig()
    }
 
-
    private func initialConfig() {
      tabBar.backgroundColor = Constants.greenColor
      tabBar.tintColor = Constants.whiteColor
+
+     configNavBarAppearance()
    }
 }
-
-//MARK: - Constants
 
 private enum Constants {
   // Color
