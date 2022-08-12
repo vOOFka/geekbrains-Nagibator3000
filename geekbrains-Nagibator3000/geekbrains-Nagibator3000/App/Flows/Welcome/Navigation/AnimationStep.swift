@@ -5,4 +5,9 @@
 //  Created by Константин Каменчуков on 12.08.2022.
 //
 
-import Foundation
+import RxFlow
+
+enum AnimationStep: Step {
+    case animationScreen
+}
+

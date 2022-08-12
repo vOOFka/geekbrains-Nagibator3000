@@ -10,7 +10,7 @@ import Lottie
 
 class AnimationViewController: UIViewController {
     private var animationView: AnimationView?
-    
+    public var viewModel: AnimationViewModel!
     init() {
         super.init(nibName: nil, bundle: nil)
     }

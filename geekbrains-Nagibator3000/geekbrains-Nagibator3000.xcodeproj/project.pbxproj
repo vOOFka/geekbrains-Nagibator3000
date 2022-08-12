@@ -29,12 +29,15 @@
 		E0EAEA30289DAD7D00F8D918 /* MainFlow+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA2F289DAD7D00F8D918 /* MainFlow+DI.swift */; };
 		E0EAEA33289DAD9D00F8D918 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA32289DAD9D00F8D918 /* MainFlow.swift */; };
 		E18A82552893F86100D2B0BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82542893F86100D2B0BB /* AppDelegate.swift */; };
-		E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82562893F86100D2B0BB /* SceneDelegate.swift */; };
 		E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82582893F86100D2B0BB /* AnimationViewController.swift */; };
 		E18A825C2893F86100D2B0BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825A2893F86100D2B0BB /* Main.storyboard */; };
 		E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18A825D2893F86400D2B0BB /* Assets.xcassets */; };
 		E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */; };
 		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
+		E18A82D128A6648E00D2B0BB /* AnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82D028A6648E00D2B0BB /* AnimationViewModel.swift */; };
+		E18A82D328A664E100D2B0BB /* AnimationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82D228A664E100D2B0BB /* AnimationFlow.swift */; };
+		E18A82D528A664EE00D2B0BB /* AnimationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82D428A664EE00D2B0BB /* AnimationStep.swift */; };
+		E18A82D828A665DA00D2B0BB /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = E18A82D728A665DA00D2B0BB /* RxFlow */; };
 		F4D62A1E289710C90000B690 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A1D289710C90000B690 /* ColorScheme.swift */; };
 		F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A222897199D0000B690 /* TranslateViewController.swift */; };
 		F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D62A24289719D10000B690 /* DictionaryViewController.swift */; };
@@ -60,13 +63,15 @@
 		E0EAEA32289DAD9D00F8D918 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "geekbrains-Nagibator3000.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18A82542893F86100D2B0BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E18A82562893F86100D2B0BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E18A82582893F86100D2B0BB /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		E18A825B2893F86100D2B0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E18A825D2893F86400D2B0BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E18A82602893F86400D2B0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E18A82622893F86400D2B0BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		E18A82D028A6648E00D2B0BB /* AnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewModel.swift; sourceTree = "<group>"; };
+		E18A82D228A664E100D2B0BB /* AnimationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFlow.swift; sourceTree = "<group>"; };
+		E18A82D428A664EE00D2B0BB /* AnimationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationStep.swift; sourceTree = "<group>"; };
 		F4D62A1D289710C90000B690 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		F4D62A222897199D0000B690 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		F4D62A24289719D10000B690 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E18A82D828A665DA00D2B0BB /* RxFlow in Frameworks */,
 				E0EAEA18289D935E00F8D918 /* RxSwift in Frameworks */,
 				E0EAEA16289D935E00F8D918 /* RxRelay in Frameworks */,
 				E0EAEA2A289DAAC500F8D918 /* Swinject in Frameworks */,
@@ -258,6 +264,40 @@
 			path = "geekbrains-Nagibator3000";
 			sourceTree = "<group>";
 		};
+		E18A82CC28A663F400D2B0BB /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E18A82D228A664E100D2B0BB /* AnimationFlow.swift */,
+				E18A82D428A664EE00D2B0BB /* AnimationStep.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		E18A82CD28A6641000D2B0BB /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E18A82CE28A6641C00D2B0BB /* Views */,
+				E18A82CF28A6642600D2B0BB /* ViewModel */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E18A82CE28A6641C00D2B0BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E18A82582893F86100D2B0BB /* AnimationViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E18A82CF28A6642600D2B0BB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E18A82D028A6648E00D2B0BB /* AnimationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		F4D62A102896FF6D0000B690 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,7 +307,6 @@
 				F4D62A16289700020000B690 /* Entity */,
 				F4D62A172897002D0000B690 /* Flows */,
 				E18A82542893F86100D2B0BB /* AppDelegate.swift */,
-				E18A82562893F86100D2B0BB /* SceneDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -331,7 +370,8 @@
 		F4D62A18289700440000B690 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				E18A82582893F86100D2B0BB /* AnimationViewController.swift */,
+				E18A82CC28A663F400D2B0BB /* Navigation */,
+				E18A82CD28A6641000D2B0BB /* Screens */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -393,6 +433,7 @@
 				E0EAEA15289D935E00F8D918 /* RxRelay */,
 				E0EAEA17289D935E00F8D918 /* RxSwift */,
 				E0EAEA29289DAAC500F8D918 /* Swinject */,
+				E18A82D728A665DA00D2B0BB /* RxFlow */,
 			);
 			productName = "geekbrains-Nagibator3000";
 			productReference = E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */;
@@ -429,6 +470,7 @@
 				E0EAE9FE289C4DB300F8D918 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E0EAEA12289D935E00F8D918 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				E0EAEA28289DAAC500F8D918 /* XCRemoteSwiftPackageReference "Swinject" */,
+				E18A82D628A665DA00D2B0BB /* XCRemoteSwiftPackageReference "RxFlow" */,
 			);
 			productRefGroup = E18A82522893F86000D2B0BB /* Products */;
 			projectDirPath = "";
@@ -465,17 +507,19 @@
 				E0EAEA27289DA34300F8D918 /* TranslateMapper.swift in Sources */,
 				F4D62A27289719F50000B690 /* TrainingViewController.swift in Sources */,
 				E0EAEA25289DA2AB00F8D918 /* Translate.swift in Sources */,
+				E18A82D128A6648E00D2B0BB /* AnimationViewModel.swift in Sources */,
 				E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */,
 				E0EAEA21289DA28100F8D918 /* TranslaterUseCase.swift in Sources */,
+				E18A82D328A664E100D2B0BB /* AnimationFlow.swift in Sources */,
 				E0EAEA0C289D91BA00F8D918 /* TranslateResponse.swift in Sources */,
 				E0EAEA05289C4E9F00F8D918 /* GenericNetworkingError.swift in Sources */,
 				E0EAEA30289DAD7D00F8D918 /* MainFlow+DI.swift in Sources */,
 				E18A82552893F86100D2B0BB /* AppDelegate.swift in Sources */,
-				E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */,
 				E0EAEA1A289D93CB00F8D918 /* WebUrlPath.swift in Sources */,
 				E0EAEA08289C56AE00F8D918 /* AFErrorMapper.swift in Sources */,
 				F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */,
 				E0EAEA03289C4E5600F8D918 /* TRError.swift in Sources */,
+				E18A82D528A664EE00D2B0BB /* AnimationStep.swift in Sources */,
 				E0EAEA2D289DACA300F8D918 /* Flow+DI.swift in Sources */,
 				E0EAEA0E289D91EE00F8D918 /* TranslateParams.swift in Sources */,
 				F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */,
@@ -755,6 +799,14 @@
 				kind = branch;
 			};
 		};
+		E18A82D628A665DA00D2B0BB /* XCRemoteSwiftPackageReference "RxFlow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -792,6 +844,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E0EAEA28289DAAC500F8D918 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		E18A82D728A665DA00D2B0BB /* RxFlow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E18A82D628A665DA00D2B0BB /* XCRemoteSwiftPackageReference "RxFlow" */;
+			productName = RxFlow;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
