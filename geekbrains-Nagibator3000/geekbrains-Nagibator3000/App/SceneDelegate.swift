@@ -6,17 +6,24 @@
 //
 
 import UIKit
+import RxFlow
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    var coordinator = FlowCoordinator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = AnimationViewController()
         window.makeKeyAndVisible()
         window.overrideUserInterfaceStyle = .light
         self.window = window
+      
+        let animationFlow = AnimationFlow(window: self.window!)
+        coordinator.coordinate(
+          flow: animationFlow,
+          with: OneStepper(withSingleStep: AnimationStep.animationScreen)
+        )
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
