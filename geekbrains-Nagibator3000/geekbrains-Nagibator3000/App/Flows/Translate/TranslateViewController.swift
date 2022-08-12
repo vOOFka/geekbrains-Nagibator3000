@@ -20,6 +20,7 @@ final class TranslateViewController: UIViewController {
     
     private let sourceTextView = CustomTextView()
     private let destinationTextView = CustomTextView()
+    private let actionView = CustomActionsView()
     
     // MARK: - Init
 
@@ -48,6 +49,7 @@ final class TranslateViewController: UIViewController {
         destinationTextView.isEditable = false
         
         configLanguageButtons()
+        actionView.delegate = self
         
         view.addSubview(sourceLanguageButton)
         view.addSubview(destinationLanguageButton)
@@ -55,6 +57,8 @@ final class TranslateViewController: UIViewController {
         
         view.addSubview(sourceTextView)
         view.addSubview(destinationTextView)
+        
+        view.addSubview(actionView)
     }
     
     private func configLanguageButtons() {
@@ -108,6 +112,8 @@ final class TranslateViewController: UIViewController {
         
         sourceTextView.pin.below(of: swapLanguageButton, aligned: .center).width(mainWidth - 40.0).height(mainWidth / 3).margin(20.0)
         destinationTextView.pin.below(of: sourceTextView, aligned: .center).width(mainWidth - 40.0).height(mainWidth / 3).margin(20.0)
+        
+        actionView.pin.below(of: destinationTextView, aligned: .right).width(mainWidth).height(buttonHeight * 0.6).marginTop(16.0)
     }
     
     // MARK: - Button actions
@@ -124,6 +130,12 @@ final class TranslateViewController: UIViewController {
     
     @objc private func swapLanguageButtonTap(sender : UIButton) {
         viewModel.swapLanguages()
+    }
+}
+
+extension TranslateViewController: CustomActionsDelegate {
+    func someActionButtonTap(sender: UIButton) {
+        print("+++")
     }
 }
 
