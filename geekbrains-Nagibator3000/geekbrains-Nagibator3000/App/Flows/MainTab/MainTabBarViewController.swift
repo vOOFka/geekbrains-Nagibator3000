@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Swinject
 
 final class MainTabBarViewController: UITabBarController {
+  let mainFlow = MainFlow()
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialConfig()
@@ -16,12 +20,13 @@ final class MainTabBarViewController: UITabBarController {
     //MARK: - Config
     
     private func initialConfig() {
+        configNavBarAppearance()
+        
         tabBar.backgroundColor = Constants.greenColor
         tabBar.tintColor = Constants.whiteColor
         
-        guard let translateViewModel = TranslateViewModel() else {
-            return            
-        }
+        let translaterUseCase = mainFlow.container.resolve(TranslaterUseCase.self)!
+        let translateViewModel = TranslateViewModel(translaterUseCase: translaterUseCase)!
         
         let translateViewController = UINavigationController(rootViewController: TranslateViewController(viewModel: translateViewModel))
         let dictionaryViewController = UINavigationController(rootViewController: DictionaryViewController())

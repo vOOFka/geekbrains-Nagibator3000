@@ -23,7 +23,6 @@ public class AFTranslateApi: TranslateApi {
       .create { [weak self] observable in
         guard let self = self else {
           observable.onError(OtherError())
-          observable.onCompleted()
           return Disposables.create()
         }
 
@@ -38,13 +37,13 @@ public class AFTranslateApi: TranslateApi {
           .responseDecodable(of: TranslateResponse.self) { result in
             if let response = result.value {
               observable.onNext(response)
+              observable.onCompleted()
             } else if let error = result.error {
               let mappedError = self.mapper.map(error: error)
               observable.onError(mappedError)
             }
           }
 
-        observable.onCompleted()
         return Disposables.create()
       }
   }

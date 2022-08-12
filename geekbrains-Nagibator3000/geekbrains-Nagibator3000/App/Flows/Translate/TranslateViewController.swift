@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import PinLayout
 import RxCocoa
 import RxSwift
+import Swinject
 
 final class TranslateViewController: UIViewController {
     var viewModel: TranslateViewModel
@@ -17,6 +17,9 @@ final class TranslateViewController: UIViewController {
     private let sourceLanguageButton = UIButton()
     private let swapLanguageButton = UIButton()
     private let destinationLanguageButton = UIButton()
+    
+    private let sourceTextView = CustomTextView()
+    private let destinationTextView = CustomTextView()
     
     // MARK: - Init
 
@@ -32,8 +35,7 @@ final class TranslateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialConfig()
-        bindViewModelInput()
-    //    bindViewModelOutput()
+        bindViewModel()
     }
     
     //MARK: - Config
@@ -42,11 +44,17 @@ final class TranslateViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         title = Constants.title
         
+        sourceTextView.delegate = self
+        destinationTextView.isEditable = false
+        
         configLanguageButtons()
         
         view.addSubview(sourceLanguageButton)
         view.addSubview(destinationLanguageButton)
         view.addSubview(swapLanguageButton)
+        
+        view.addSubview(sourceTextView)
+        view.addSubview(destinationTextView)
     }
     
     private func configLanguageButtons() {
@@ -66,13 +74,17 @@ final class TranslateViewController: UIViewController {
         destinationLanguageButton.accessibilityLabel = "destination"
     }
     
-    private func bindViewModelInput() {
+    private func bindViewModel() {
         viewModel.sourceLanguage.asObservable().bind { [weak self] lang in
             self?.sourceLanguageButton.setTitle(lang.code?.uppercased(), for: .normal)
         }.disposed(by: disposeBag)
         
         viewModel.destinationLanguage.asObservable().bind { [weak self] lang in
             self?.destinationLanguageButton.setTitle(lang.code?.uppercased(), for: .normal)
+        }.disposed(by: disposeBag)
+        
+        viewModel.translatedText.asObservable().bind { [weak self] text in
+            self?.destinationTextView.text = text
         }.disposed(by: disposeBag)
     }
     
@@ -84,13 +96,18 @@ final class TranslateViewController: UIViewController {
         guard let navigationBar = navigationController?.navigationBar else {
             return
         }
+        let mainWidth = UIScreen.main.bounds.width
+        
         let buttonHeight: CGFloat = 60.0
-        let buttonWidth: CGFloat = (UIScreen.main.bounds.width / 2) - buttonHeight / 2
+        let buttonWidth: CGFloat = (mainWidth / 2) - buttonHeight / 2
         
         view.pin.all()
         sourceLanguageButton.pin.below(of: navigationBar).left().width(buttonWidth).height(buttonHeight)
         destinationLanguageButton.pin.below(of: navigationBar).right().width(buttonWidth).height(buttonHeight)
         swapLanguageButton.pin.horizontallyBetween(sourceLanguageButton, and: destinationLanguageButton, aligned: .center).height(buttonHeight)
+        
+        sourceTextView.pin.below(of: swapLanguageButton, aligned: .center).width(mainWidth - 40.0).height(mainWidth / 3).margin(20.0)
+        destinationTextView.pin.below(of: sourceTextView, aligned: .center).width(mainWidth - 40.0).height(mainWidth / 3).margin(20.0)
     }
     
     // MARK: - Button actions
@@ -110,14 +127,24 @@ final class TranslateViewController: UIViewController {
     }
 }
 
+extension TranslateViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            viewModel.translate(text: textView.text)
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+}
+
 //MARK: - Constants
 
 private enum Constants {
     static let title = "Translate".localized
     
-    static let swapIcon = UIImage(systemName: "arrow.left.and.right.square")
+    static let swapIcon = UIImage(systemName: "arrow.left.and.right.square")?.withTintColor(whiteColor, renderingMode: .alwaysOriginal)
     
-    static let backgroundColor = ColorScheme.fuchsiaBlue.color
+    static let backgroundColor = ColorScheme.greenPantone.color
     static let whiteColor = ColorScheme.white.color
     static let greenColor = ColorScheme.greenPantone.color
 }

@@ -11,7 +11,15 @@ final class SelectLanguageCell: UITableViewCell {
     // MARK: - Private properties
     private var viewModel: SelectLanguageCellModel?
     private var nameLabel = UILabel()
-    private var iconImageView = UIImageView()
+    
+    private var iconImageView: UIImageView = {
+        let iconImageView = UIImageView()
+        iconImageView.layer.borderWidth = 1.0
+        iconImageView.layer.borderColor = Constants.greenColor.cgColor
+        iconImageView.layer.cornerRadius = 6.0
+        iconImageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration.init(weight: .bold)
+        return iconImageView
+    }()
     
     // MARK: - Init & Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -26,10 +34,6 @@ final class SelectLanguageCell: UITableViewCell {
     
     private func initialConfig() {
         nameLabel.numberOfLines = 1
-        
-        iconImageView.layer.borderWidth = 1.0
-        iconImageView.layer.borderColor = Constants.greenColor.cgColor
-        iconImageView.layer.cornerRadius = 6.0
         
         contentView.addSubview(nameLabel)
         contentView.addSubview(iconImageView)
@@ -60,7 +64,7 @@ final class SelectLanguageCell: UITableViewCell {
 //MARK: - Constants
 
 private enum Constants {
-    static let checkmarkIcon = UIImage(systemName: "checkmark")
+    static let checkmarkIcon = UIImage(systemName: "checkmark")?.withTintColor(greenColor, renderingMode: .alwaysOriginal)
 
     static let whiteColor = ColorScheme.white.color
     static let greenColor = ColorScheme.greenPantone.color

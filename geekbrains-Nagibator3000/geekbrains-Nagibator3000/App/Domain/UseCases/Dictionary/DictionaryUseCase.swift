@@ -15,15 +15,15 @@ class DictionaryUseCase {
     self.repository = repository
   }
   
-  func get() -> Observable<[Translation]> {
+  func get() -> Observable<[TranslationModel]> {
     repository.get()
   }
 
-  func add(model: Translation) -> Observable<Bool> {
+  func add(model: TranslationModel) -> Observable<Bool> {
     repository.add(model: model)
   }
 
-  func delete(model: Translation) -> Observable<Bool> {
+  func delete(model: TranslationModel) -> Observable<Bool> {
     repository.delete(model: model)
   }
 

@@ -11,4 +11,8 @@ import Swinject
 // В будущем тут будет реализация навигации по экранам
 class MainFlow {
   let container = Container()
+  
+  init() {
+    setUpDiContainer()
+  }
 }

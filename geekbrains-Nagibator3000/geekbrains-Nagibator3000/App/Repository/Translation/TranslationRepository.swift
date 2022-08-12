@@ -9,19 +9,19 @@ import Foundation
 import RxSwift
 
 class TranslationRepository {
-  let objectAdapter: ObjectBasedAdapter<Translation, TranslationStorageModel>
+  let objectAdapter: ObjectBasedAdapter<TranslationModel, TranslationStorageModel>
 
-  init (objectAdapter: ObjectBasedAdapter<Translation, TranslationStorageModel>) {
+  init (objectAdapter: ObjectBasedAdapter<TranslationModel, TranslationStorageModel>) {
     self.objectAdapter = objectAdapter
   }
 
-  func get() -> Observable<[Translation]> {
+  func get() -> Observable<[TranslationModel]> {
     objectAdapter.read()
   }
 
-  func add(model: Translation) -> Observable<Bool> {
+  func add(model: TranslationModel) -> Observable<Bool> {
     let translations = objectAdapter.read()
-      .map { translations -> [Translation] in
+      .map { translations -> [TranslationModel] in
         var newTranslations = translations
         newTranslations.append(model)
         
@@ -31,9 +31,9 @@ class TranslationRepository {
     return objectAdapter.write(model: translations)
   }
 
-  func delete(model: Translation) -> Observable<Bool> {
+  func delete(model: TranslationModel) -> Observable<Bool> {
     let translations = objectAdapter.read()
-      .map { translations -> [Translation] in
+      .map { translations -> [TranslationModel] in
         let index = translations.firstIndex { translation in
           translation.toText == model.toText
           && translation.fromText == model.toText

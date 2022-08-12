@@ -7,13 +7,13 @@
 
 import Foundation
 
-class TranslationMapper: Mapper<Translation, TranslationStorageModel> {
-  override func mapFromStorage(model: [TranslationStorageModel]) -> [Translation] {
-    model.map { model in Translation(fromText: model.fromText, toText: model.toText) }
+class TranslationMapper: Mapper<TranslationModel, TranslationStorageModel> {
+  override func mapFromStorage(model: [TranslationStorageModel]) -> [TranslationModel] {
+    model.map { model in TranslationModel(fromText: model.fromText, toText: model.toText) }
     
   }
   
-  override func mapFromRepository(model: [Translation]) -> [TranslationStorageModel] {
+  override func mapFromRepository(model: [TranslationModel]) -> [TranslationStorageModel] {
     model.map { model in TranslationStorageModel(fromText: model.fromText, toText: model.toText) }
   }
 }
