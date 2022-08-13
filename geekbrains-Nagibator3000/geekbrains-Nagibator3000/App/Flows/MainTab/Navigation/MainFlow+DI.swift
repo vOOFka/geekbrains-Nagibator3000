@@ -67,16 +67,14 @@ extension MainFlow {
             )
         }
         
-        typealias  TranslationModelMapper = Mapper<TranslationModel, TranslationStorageModel>
-        container.register(TranslationModelMapper.self) { container in
-            Mapper()
+        container.register(TranslationMapper.self) { container in
+            TranslationMapper()
         }
         
-        typealias  TranslationModelObjectBasedAdapter = ObjectBasedAdapter<TranslationModel, TranslationStorageModel>
-        container.register(TranslationModelObjectBasedAdapter.self) { container in
-            ObjectBasedAdapter(
+        container.register(ObjectBasedAdapter.self) { container in
+            ObjectBasedAdapter<TranslationModel, TranslationStorageModel>(
                 dataStorage: container.resolve(DataStorage.self)!,
-                mapper: container.resolve(Mapper.self)!
+                mapper: container.resolve(TranslationMapper.self)!
             )
         }
         
