@@ -30,7 +30,6 @@ final class TranslateViewController: UIViewController {
   
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      
       tabBarController?.navigationItem.setupTitle(text: Constants.title)
     }
   
@@ -40,7 +39,6 @@ final class TranslateViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         sourceTextView.delegate = self
         destinationTextView.isEditable = false
-   
         
         configLanguageButtons()
         actionView.delegate = self
@@ -90,7 +88,6 @@ final class TranslateViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         guard let navigationBar = navigationController?.navigationBar else {
             return
         }
@@ -110,7 +107,7 @@ final class TranslateViewController: UIViewController {
         actionView.pin.below(of: destinationTextView, aligned: .right).width(mainWidth).height(buttonHeight * 0.6).marginTop(16.0)
     }
     
-    // MARK: - Button actions
+    // MARK: - Buttons actions
     @objc private func selectLanguageButtonTap(sender : UIButton) {
         let type: LanguageType = (sender.accessibilityLabel == "source") ? .source : .destination
         let selectLanguageViewController = SelectLanguageViewController(viewModel: viewModel, type: type)
@@ -139,7 +136,7 @@ extension TranslateViewController: CustomActionsDelegate {
         case .copyButton:
             UIPasteboard.general.string = destinationTextView.text
         case .saveButton:
-            print("++saveButton")
+            viewModel?.saveToDictionary(fromText: sourceTextView.text, toText: destinationTextView.text)
         }
     }
     

@@ -70,6 +70,27 @@ final class TranslateViewModel: Stepper {
             }
             .disposed(by: disposeBag)
     }
+    
+    public func saveToDictionary(fromText: String, toText: String) {
+        let model = TranslationModel(fromText: fromText, toText: toText)
+        
+        dictionaryUseCase?.add(model: model)
+            .subscribe { event in
+                switch event {
+                case .next(_):
+                    print("next")
+                    break
+                case .error(let error):
+                    print(error)
+                    break
+                    
+                case .completed:
+                    print("++completed")
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
 enum LanguageType {
