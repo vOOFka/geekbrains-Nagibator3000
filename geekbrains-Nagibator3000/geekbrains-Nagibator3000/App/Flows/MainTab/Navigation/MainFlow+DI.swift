@@ -10,6 +10,7 @@ import Alamofire
 
 extension MainFlow {
     func setUpDiContainer() {
+        //Remoute
         container.register(Session.self) { [weak self] _ in
             guard let self = self else { return Session() }
             
@@ -40,6 +41,54 @@ extension MainFlow {
             TranslaterUseCase(
                 api: container.resolve(AFTranslateApi.self)!,
                 mapper: container.resolve(TranslateMapper.self)!
+            )
+        }
+        
+        //Storage
+        container.register(UserDefaultsWrapper.self) { _ in
+            UserDefaultsWrapper()
+        }
+        
+        container.register(StorageController.self) { container in
+            StorageController(
+                userDefaults: container.resolve(UserDefaultsWrapper.self)!,
+                key: String()
+            )
+        }
+        
+        container.register(JSONSerialiser.self) { _ in
+            JSONSerialiser()
+        }
+        
+        container.register(DataStorage.self) { container in
+            DataStorage(
+                controller: container.resolve(StorageController.self)!,
+                serialiser: container.resolve(JSONSerialiser.self)!
+            )
+        }
+        
+        typealias  TranslationModelMapper = Mapper<TranslationModel, TranslationStorageModel>
+        container.register(TranslationModelMapper.self) { container in
+            Mapper()
+        }
+        
+        typealias  TranslationModelObjectBasedAdapter = ObjectBasedAdapter<TranslationModel, TranslationStorageModel>
+        container.register(TranslationModelObjectBasedAdapter.self) { container in
+            ObjectBasedAdapter(
+                dataStorage: container.resolve(DataStorage.self)!,
+                mapper: container.resolve(Mapper.self)!
+            )
+        }
+        
+        container.register(TranslationRepository.self) { container in
+            TranslationRepository(
+                objectAdapter: container.resolve(ObjectBasedAdapter.self)!
+            )
+        }
+        
+        container.register(DictionaryUseCase.self) { container in
+            DictionaryUseCase(
+                repository: container.resolve(TranslationRepository.self)!
             )
         }
     }

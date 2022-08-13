@@ -35,7 +35,8 @@ class MainFlow: Flow {
   private func goTotheApp() -> FlowContributors {
     // create view models
     let translateViewModel = TranslateViewModel(
-      translaterUseCase: container.resolve(TranslaterUseCase.self)!
+      translaterUseCase: container.resolve(TranslaterUseCase.self)!,
+      dictionaryUseCase: container.resolve(DictionaryUseCase.self)!
     )
     
     let dictionaryViewModel = DictionaryViewModel()

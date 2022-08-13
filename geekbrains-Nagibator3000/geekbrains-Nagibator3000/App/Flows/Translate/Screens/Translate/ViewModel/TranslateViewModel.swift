@@ -16,16 +16,18 @@ final class TranslateViewModel: Stepper {
     var steps = PublishRelay<Step>()
     
     private let translaterUseCase: TranslaterUseCase?
+    private let dictionaryUseCase: DictionaryUseCase?
     
     private(set) var sourceLanguage: BehaviorRelay<LanguageModel>
     private(set) var destinationLanguage: BehaviorRelay<LanguageModel>
     
     private(set) var translatedText: BehaviorRelay<String>
     
-    init(translaterUseCase: TranslaterUseCase) {
+    init(translaterUseCase: TranslaterUseCase, dictionaryUseCase: DictionaryUseCase) {
         let languages = RepositoryLanguages.loadJson()
         
         self.translaterUseCase = translaterUseCase
+        self.dictionaryUseCase = dictionaryUseCase
     
         self.translatedText = BehaviorRelay<String>(value: String())
         self.sourceLanguage = BehaviorRelay<LanguageModel>(value: languages[0])
