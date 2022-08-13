@@ -7,43 +7,49 @@
 
 import UIKit
 import Lottie
+import RxSwift
 
 class AnimationViewController: UIViewController {
-    private var animationView: AnimationView?
-    public var viewModel: AnimationViewModel!
+  public var viewModel: AnimationViewModel!
+  private var animationView: AnimationView!
+  private let disposeBag = DisposeBag()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configAnimation()
-    }
+    setupAnimation()
+    setupBindings()
+  }
+  
+  private func setupAnimation() {
+    animationView = AnimationView(name: "Book")
+    animationView.frame = view.bounds
+    animationView.backgroundColor = .white
+    animationView.contentMode = .scaleAspectFit
+    animationView.loopMode = .playOnce
+    animationView.animationSpeed = 1.1
+    view.addSubview(animationView)
+  }
+  
+  private func setupBindings() {
+    bindLifeCycle()
+    bindStartAnimation()
+  }
+  
+  private func bindLifeCycle() {
+    rx.viewWillAppear
+      .bind(to: viewModel.input.enterScreen)
+      .disposed(by: disposeBag)
+  }
 
-    private func configAnimation() {
-        animationView = .init(name: "Book")
-        guard let animationView = animationView else { return }
-        animationView.frame = view.bounds
-        animationView.backgroundColor = .white
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .playOnce
-        animationView.animationSpeed = 1.1
-        view.addSubview(animationView)
-        animationView.play { [weak self] _ in
-            self?.completionAnimation()
-            }
-    }
-    
-    private func completionAnimation() {
-        let mainTabBarViewController = MainTabBarViewController()
-        addChild(mainTabBarViewController)
-        mainTabBarViewController.view.frame = view.bounds
-        view.addSubview(mainTabBarViewController.view)
-        mainTabBarViewController.didMove(toParent: self)
-    }
+  private func bindStartAnimation() {
+    viewModel.output.startAnimation
+      .filter { $0 != nil }
+      .drive { [weak self] _ in
+        self?.animationView.play { [weak self] _ in
+          self?.viewModel.input.completionAnimation.accept(Void())
+        }
+      }
+      .disposed(by: disposeBag)
+  }
 }

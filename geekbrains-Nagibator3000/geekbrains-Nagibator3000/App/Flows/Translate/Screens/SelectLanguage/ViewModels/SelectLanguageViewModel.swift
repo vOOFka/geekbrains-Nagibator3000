@@ -22,9 +22,7 @@ final class SelectLanguageViewModel {
     }
     
     public func update(completion: @escaping () -> Void) {
-        guard let repositoryLanguages = RepositoryLanguages.loadJson() else {
-            return
-        }
+        let repositoryLanguages = RepositoryLanguages.loadJson()
         cellsArray.removeAll()
         for (index, lang) in repositoryLanguages.enumerated() {
             if lang.code == selectLanguage.code {

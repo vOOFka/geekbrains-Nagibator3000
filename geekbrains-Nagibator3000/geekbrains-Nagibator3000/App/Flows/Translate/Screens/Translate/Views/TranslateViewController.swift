@@ -11,7 +11,7 @@ import RxSwift
 import Swinject
 
 final class TranslateViewController: UIViewController {
-    var viewModel: TranslateViewModel
+    var viewModel: TranslateViewModel!
     private let disposeBag = DisposeBag()
     
     private let sourceLanguageButton = UIButton()
@@ -22,31 +22,25 @@ final class TranslateViewController: UIViewController {
     private let destinationTextView = CustomTextView()
     private let actionView = CustomActionsView()
     
-    // MARK: - Init
-
-    init(viewModel: TranslateViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialConfig()
         bindViewModel()
     }
-    
+  
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      
+      tabBarController?.navigationItem.setupTitle(text: Constants.title)
+    }
+  
     //MARK: - Config
     
     private func initialConfig() {
         view.backgroundColor = Constants.backgroundColor
-        title = Constants.title
-        
         sourceTextView.delegate = self
         destinationTextView.isEditable = false
+   
         
         configLanguageButtons()
         actionView.delegate = self
