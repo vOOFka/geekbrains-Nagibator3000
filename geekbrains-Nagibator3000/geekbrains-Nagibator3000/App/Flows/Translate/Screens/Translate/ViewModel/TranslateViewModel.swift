@@ -8,9 +8,12 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import RxFlow
+import RxRelay
 
-final class TranslateViewModel {
+final class TranslateViewModel: Stepper {
     private let disposeBag = DisposeBag()
+    var steps = PublishRelay<Step>()
     
     private let translaterUseCase: TranslaterUseCase?
     
@@ -19,10 +22,8 @@ final class TranslateViewModel {
     
     private(set) var translatedText: BehaviorRelay<String>
     
-    init?(translaterUseCase: TranslaterUseCase) {
-        guard let languages = RepositoryLanguages.loadJson() else {
-            return nil
-        }
+    init(translaterUseCase: TranslaterUseCase) {
+        let languages = RepositoryLanguages.loadJson()
         
         self.translaterUseCase = translaterUseCase
     
