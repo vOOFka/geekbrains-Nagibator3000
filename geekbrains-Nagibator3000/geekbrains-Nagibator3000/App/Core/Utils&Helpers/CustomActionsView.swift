@@ -66,8 +66,21 @@ public final class CustomActionsView: UIView, CustomActionsDelegate {
     }
 }
 
-private enum ActionButtonType: String, CaseIterable {
+public enum ActionButtonType: String, CaseIterable {
     case shareButton, copyButton, saveButton
+    
+    static func actionType(from string: String) -> ActionButtonType? {
+        switch string {
+        case shareButton.rawValue:
+            return shareButton
+        case copyButton.rawValue:
+            return copyButton
+        case saveButton.rawValue:
+            return saveButton
+        default:
+            return nil
+        }
+    }
 }
 
 //MARK: - Constants

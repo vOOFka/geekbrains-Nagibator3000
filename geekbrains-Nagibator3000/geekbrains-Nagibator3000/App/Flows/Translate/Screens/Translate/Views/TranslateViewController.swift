@@ -129,7 +129,25 @@ final class TranslateViewController: UIViewController {
 
 extension TranslateViewController: CustomActionsDelegate {
     func someActionButtonTap(sender: UIButton) {
-        print("+++")
+        guard let label = sender.accessibilityLabel,
+              let senderType = ActionButtonType.actionType(from: label) else {
+            return
+        }
+        switch senderType {
+        case .shareButton:
+            shareButtonTap(text: destinationTextView.text)
+        case .copyButton:
+            UIPasteboard.general.string = destinationTextView.text
+        case .saveButton:
+            print("++saveButton")
+        }
+    }
+    
+    func shareButtonTap(text: String) {
+        let objectsToShare = [text]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.excludedActivityTypes = [.airDrop, .addToReadingList]
+        self.present(activityVC, animated: true, completion: nil)        
     }
 }
 
