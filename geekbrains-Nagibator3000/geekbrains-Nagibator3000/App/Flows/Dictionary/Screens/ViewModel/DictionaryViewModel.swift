@@ -6,9 +6,18 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 import RxFlow
 import RxRelay
 
 class DictionaryViewModel: Stepper {
-  var steps = PublishRelay<Step>()
+    private let disposeBag = DisposeBag()
+    var steps = PublishRelay<Step>()
+    
+    private let dictionaryUseCase: DictionaryUseCase?
+    
+    init(dictionaryUseCase: DictionaryUseCase) {
+        self.dictionaryUseCase = dictionaryUseCase
+    }
 }
