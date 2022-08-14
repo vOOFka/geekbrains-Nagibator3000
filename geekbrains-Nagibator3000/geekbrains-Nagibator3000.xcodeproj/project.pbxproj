@@ -62,6 +62,7 @@
 		E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18A825D2893F86400D2B0BB /* Assets.xcassets */; };
 		E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */; };
 		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
+		F49F2FD928A8FD0A00F2D6FC /* DictionaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */; };
 		F4A5B37428A1A20D00D0293E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A5B37328A1A20D00D0293E /* CustomTextView.swift */; };
 		F4A5B37628A58C9300D0293E /* YandexService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A5B37528A58C9300D0293E /* YandexService-Info.plist */; };
 		F4A5B37828A5A08100D0293E /* Locale+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A5B37728A5A08100D0293E /* Locale+Ext.swift */; };
@@ -145,6 +146,7 @@
 		E18A82602893F86400D2B0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E18A82622893F86400D2B0BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTableViewCell.swift; sourceTree = "<group>"; };
 		F4A5B37328A1A20D00D0293E /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		F4A5B37528A58C9300D0293E /* YandexService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YandexService-Info.plist"; sourceTree = "<group>"; };
 		F4A5B37728A5A08100D0293E /* Locale+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Ext.swift"; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D62A24289719D10000B690 /* DictionaryViewController.swift */,
+				F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				E0EAEA4428A1A73B00F8D918 /* StorageController.swift in Sources */,
 				E0EAEA30289DAD7D00F8D918 /* MainFlow+DI.swift in Sources */,
 				E18A82552893F86100D2B0BB /* AppDelegate.swift in Sources */,
+				F49F2FD928A8FD0A00F2D6FC /* DictionaryTableViewCell.swift in Sources */,
 				E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */,
 				E002B93128A6D4EA00FBCBDD /* DictionaryStep.swift in Sources */,
 				E0EAEA4D28A1B6B100F8D918 /* FileDataStorage.swift in Sources */,

@@ -6,16 +6,19 @@
 //
 
 import UIKit
+import RxSwift
 
 final class DictionaryViewController: UIViewController {
     var viewModel: DictionaryViewModel!
     
+    private let disposeBag = DisposeBag()
     private let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialConfig()
-        //   bindViewModel()
+        bindLifeCycle()
+        bindViewModel()
     }
     
     //MARK: - Config
@@ -24,16 +27,33 @@ final class DictionaryViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         
         view.addSubview(tableView)
-        tableView.dataSource = self
-        tableView.delegate = self
+ //       tableView.dataSource = self
+ //       tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
+        
+        tableView.registerClass(DictionaryTableViewCell.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tabBarController?.navigationItem.setupTitle(text: Constants.title)
+    }
+    
+    private func bindLifeCycle() {
+      rx.viewWillAppear
+        .bind(to: viewModel.input.enterScreen)
+        .disposed(by: disposeBag)
+    }
+    
+    private func bindViewModel() {
+        viewModel.translations.asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: DictionaryTableViewCell.reuseIdentifier,
+                                         cellType: DictionaryTableViewCell.self)) {
+                row, translation, cell in
+                cell.config(with: translation)
+            }.disposed(by: disposeBag)
     }
     
     //MARK: - Layout
@@ -44,16 +64,16 @@ final class DictionaryViewController: UIViewController {
     }
 }
 
-extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "123")
-        return cell
-    }
-}
+//extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        viewModel.translations
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = UITableViewCell(style: .default, reuseIdentifier: "123")
+//        return cell
+//    }
+//}
 
 //MARK: - Constants
 
