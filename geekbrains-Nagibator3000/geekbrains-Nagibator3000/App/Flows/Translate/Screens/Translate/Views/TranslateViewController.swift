@@ -8,7 +8,6 @@
 import UIKit
 import RxCocoa
 import RxSwift
-import Swinject
 
 final class TranslateViewController: UIViewController {
     var viewModel: TranslateViewModel!

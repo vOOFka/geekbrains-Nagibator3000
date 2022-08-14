@@ -24,7 +24,7 @@ class ObjectBasedAdapter<RepositoryModel, StorageModel: Codable> {
         Observable<[RepositoryModel]>.create { [weak self] observable in
             self?.dataStorage.read { (storageModel: StorageModel?) in
                 let storageModel = storageModel as? [StorageModel] ?? []
-                let repositoryModel = (storageModel.isEmpty) ? [] : self?.mapper.mapFromStorage(model: storageModel)
+                let repositoryModel = self?.mapper.mapFromStorage(model: storageModel)
                 
                 observable.onNext(repositoryModel!)
                 observable.onCompleted()

@@ -52,7 +52,7 @@ extension MainFlow {
         container.register(StorageController.self) { container in
             StorageController(
                 userDefaults: container.resolve(UserDefaultsWrapper.self)!,
-                key: "StorageController"
+                key: "TranslationStorage"
             )
         }
         
