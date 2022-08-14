@@ -27,8 +27,6 @@ final class DictionaryViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         
         view.addSubview(tableView)
- //       tableView.dataSource = self
- //       tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         
@@ -63,17 +61,6 @@ final class DictionaryViewController: UIViewController {
         tableView.pin.all()
     }
 }
-
-//extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        viewModel.translations
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell(style: .default, reuseIdentifier: "123")
-//        return cell
-//    }
-//}
 
 //MARK: - Constants
 
