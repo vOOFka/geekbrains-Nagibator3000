@@ -67,22 +67,23 @@ extension MainFlow {
             )
         }
         
-        container.register(TranslationMapper.self) { container in
+        container.register(Mapper<TranslationModel, TranslationStorageModel>.self) { _ in
             TranslationMapper()
         }
+        .inObjectScope(.container)
         
-        container.register(ObjectBasedAdapter.self) { container in
+        container.register(ObjectBasedAdapter<TranslationModel, TranslationStorageModel>.self) { container in
             ObjectBasedAdapter<TranslationModel, TranslationStorageModel>(
                 dataStorage: container.resolve(DataStorage.self)!,
-                mapper: container.resolve(TranslationMapper.self)!
+                mapper: container.resolve(Mapper<TranslationModel, TranslationStorageModel>.self)!
             )
-        }
+        }.inObjectScope(.container)
         
         container.register(TranslationRepository.self) { container in
-            TranslationRepository(
-                objectAdapter: container.resolve(ObjectBasedAdapter.self)!
-            )
-        }
+                    TranslationRepository(
+                        objectAdapter: container.resolve(ObjectBasedAdapter<TranslationModel, TranslationStorageModel>.self)!
+                    )
+        }.inObjectScope(.container)
         
         container.register(DictionaryUseCase.self) { container in
             DictionaryUseCase(
