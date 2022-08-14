@@ -22,7 +22,7 @@ class DataStorage {
   func read<T: Decodable>(completion: @escaping (T?) -> Void) {
     DispatchQueue.global().async {
       guard let storedString = self.controller.read(),
-            let storedData = Data(base64Encoded: storedString),
+            let storedData = storedString.data(using: .utf8),
             let deserialised = self.serialiser.deserialise(T.self, from: storedData)
       else {
         DispatchQueue.main.async {
@@ -49,7 +49,8 @@ class DataStorage {
         return
       }
 
-      self.controller.write(string: serialised.base64EncodedString())
+      let storedData = String(data: serialised, encoding: .utf8)!
+      self.controller.write(string: storedData)
 
       DispatchQueue.main.async {
         completion(true)

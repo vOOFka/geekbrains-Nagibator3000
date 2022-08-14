@@ -22,9 +22,8 @@ class ObjectBasedAdapter<RepositoryModel, StorageModel: Codable> {
     
     func read() -> Observable<[RepositoryModel]> {
         Observable<[RepositoryModel]>.create { [weak self] observable in
-            self?.dataStorage.read { (storageModel: StorageModel?) in
-                let storageModel = storageModel as? [StorageModel] ?? []
-                let repositoryModel = self?.mapper.mapFromStorage(model: storageModel)
+            self?.dataStorage.read { (storageModel: [StorageModel]?) in
+                let repositoryModel = self?.mapper.mapFromStorage(model: storageModel ?? [])
                 
                 observable.onNext(repositoryModel!)
                 observable.onCompleted()
