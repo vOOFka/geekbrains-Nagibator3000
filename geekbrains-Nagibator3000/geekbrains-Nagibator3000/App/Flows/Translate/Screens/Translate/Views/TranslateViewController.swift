@@ -8,7 +8,6 @@
 import UIKit
 import RxCocoa
 import RxSwift
-import Swinject
 
 final class TranslateViewController: UIViewController {
     var viewModel: TranslateViewModel!
@@ -20,7 +19,8 @@ final class TranslateViewController: UIViewController {
     
     private let sourceTextView = CustomTextView()
     private let destinationTextView = CustomTextView()
-     
+    private let actionView = CustomActionsView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialConfig()
@@ -29,7 +29,6 @@ final class TranslateViewController: UIViewController {
   
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      
       tabBarController?.navigationItem.setupTitle(text: Constants.title)
     }
   
@@ -39,9 +38,9 @@ final class TranslateViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         sourceTextView.delegate = self
         destinationTextView.isEditable = false
-   
         
         configLanguageButtons()
+        actionView.delegate = self
         
         view.addSubview(sourceLanguageButton)
         view.addSubview(destinationLanguageButton)
@@ -49,6 +48,8 @@ final class TranslateViewController: UIViewController {
         
         view.addSubview(sourceTextView)
         view.addSubview(destinationTextView)
+        
+        view.addSubview(actionView)
     }
     
     private func configLanguageButtons() {
@@ -86,7 +87,6 @@ final class TranslateViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         guard let navigationBar = navigationController?.navigationBar else {
             return
         }
@@ -102,9 +102,11 @@ final class TranslateViewController: UIViewController {
         
         sourceTextView.pin.below(of: swapLanguageButton, aligned: .center).width(mainWidth - 40.0).height(mainWidth / 3).margin(20.0)
         destinationTextView.pin.below(of: sourceTextView, aligned: .center).width(mainWidth - 40.0).height(mainWidth / 3).margin(20.0)
+        
+        actionView.pin.below(of: destinationTextView, aligned: .right).width(mainWidth).height(buttonHeight * 0.6).marginTop(16.0)
     }
     
-    // MARK: - Button actions
+    // MARK: - Buttons actions
     @objc private func selectLanguageButtonTap(sender : UIButton) {
         let type: LanguageType = (sender.accessibilityLabel == "source") ? .source : .destination
         let selectLanguageViewController = SelectLanguageViewController(viewModel: viewModel, type: type)
@@ -118,6 +120,30 @@ final class TranslateViewController: UIViewController {
     
     @objc private func swapLanguageButtonTap(sender : UIButton) {
         viewModel.swapLanguages()
+    }
+}
+
+extension TranslateViewController: CustomActionsDelegate {
+    func someActionButtonTap(sender: UIButton) {
+        guard let label = sender.accessibilityLabel,
+              let senderType = ActionButtonType.actionType(from: label) else {
+            return
+        }
+        switch senderType {
+        case .shareButton:
+            shareButtonTap(text: destinationTextView.text)
+        case .copyButton:
+            UIPasteboard.general.string = destinationTextView.text
+        case .saveButton:
+            viewModel?.saveToDictionary(fromText: sourceTextView.text, toText: destinationTextView.text)
+        }
+    }
+    
+    func shareButtonTap(text: String) {
+        let objectsToShare = [text]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.excludedActivityTypes = [.airDrop, .addToReadingList]
+        self.present(activityVC, animated: true, completion: nil)        
     }
 }
 
