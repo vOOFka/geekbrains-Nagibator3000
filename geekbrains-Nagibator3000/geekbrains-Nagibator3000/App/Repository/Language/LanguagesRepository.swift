@@ -9,13 +9,52 @@ import Foundation
 import RxSwift
 
 class LanguagesRepository {
-  let fileObjectAdapter: FileObjectBasedAdapter<Language, LanguageStorageModel>
+  private let disposeBag = DisposeBag()
+  let objectAdapter: ObjectBasedAdapter<LanguageModel, LanguageStorageModel>
+  let api: AFLanguagesApi
+  let mapper: LanguagesMapperRepository
 
-  init (fileObjectAdapter: FileObjectBasedAdapter<Language, LanguageStorageModel>) {
-    self.fileObjectAdapter = fileObjectAdapter
+  init (
+    objectAdapter: ObjectBasedAdapter<LanguageModel, LanguageStorageModel>,
+    api: AFLanguagesApi,
+    mapper: LanguagesMapperRepository
+  ) {
+    self.objectAdapter = objectAdapter
+    self.api = api
+    self.mapper = mapper
   }
 
-  func get() -> Observable<[Language]> {
-    fileObjectAdapter.read()
+  func load() -> Observable<Bool> {
+    Observable<Bool>.create { [weak self] observable in
+      guard let self = self else { return Disposables.create() }
+      
+      self.api.get()
+        .subscribe { [weak self] event in
+          guard let self = self else { return }
+          
+          switch event {
+          case .next(let values):
+            self.objectAdapter.write(model: self.mapper.map(response: values))
+              .subscribe(onNext: { completed in
+                observable.onNext(completed)
+                observable.onCompleted()
+              })
+              .disposed(by: self.disposeBag)
+            
+          case .error(let error):
+            observable.onError(error)
+            
+          default:
+            break
+          }
+        }
+        .disposed(by: self.disposeBag)
+      
+      return Disposables.create()
+    }
+  }
+  
+  func get() -> Observable<[LanguageModel]> {
+    objectAdapter.read()
   }
 }

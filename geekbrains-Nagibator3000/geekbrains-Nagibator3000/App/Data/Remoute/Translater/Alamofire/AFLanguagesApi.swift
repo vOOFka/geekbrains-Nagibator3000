@@ -1,15 +1,15 @@
 //
-//  AFTranslateApi.swift
+//  AFLanguagesApi.swift
 //  geekbrains-Nagibator3000
 //
-//  Created by Valera Vvedenskiy on 05.08.2022.
+//  Created by Valera Vvedenskiy on 16.08.2022.
 //
 
 import Foundation
 import Alamofire
 import RxSwift
 
-public class AFTranslateApi: TranslateApi {
+public class AFLanguagesApi: LanguagesApi {
   let session: AFSession
   let mapper: AFErrorMapper
 
@@ -18,8 +18,8 @@ public class AFTranslateApi: TranslateApi {
     self.mapper = mapper
   }
 
-  public func traslate(translate: TranslateParams) -> Observable<TranslateResponse> {
-    Observable<TranslateResponse>
+  public func get() -> Observable<LanguagesResponse> {
+    Observable<LanguagesResponse>
       .create { [weak self] observable in
         guard let self = self else {
           observable.onError(OtherError())
@@ -29,12 +29,10 @@ public class AFTranslateApi: TranslateApi {
         self.session.session
           .request(
             WebUrlPath.baseUrl + self.path,
-            method: .post,
-            parameters: translate.params,
-            encoder: JSONParameterEncoder.default
+            method: .post
           )
           .validate(statusCode: 200..<300)
-          .responseDecodable(of: TranslateResponse.self) { result in
+          .responseDecodable(of: LanguagesResponse.self) { result in
             if let response = result.value {
               observable.onNext(response)
               observable.onCompleted()
@@ -48,4 +46,5 @@ public class AFTranslateApi: TranslateApi {
       }
   }
 }
+
 

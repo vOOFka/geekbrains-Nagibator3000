@@ -70,12 +70,12 @@ final class TranslateViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel.sourceLanguage.asObservable().bind { [weak self] lang in
-            self?.sourceLanguageButton.setTitle(lang.code?.uppercased(), for: .normal)
+        viewModel.sourceLanguage.asObservable().bind { [weak self] value in
+          self?.sourceLanguageButton.setTitle(value.code?.uppercased(), for: .normal)
         }.disposed(by: disposeBag)
-        
-        viewModel.destinationLanguage.asObservable().bind { [weak self] lang in
-            self?.destinationLanguageButton.setTitle(lang.code?.uppercased(), for: .normal)
+      
+        viewModel.destinationLanguage.asObservable().bind { [weak self] value in
+            self?.destinationLanguageButton.setTitle(value.code?.uppercased(), for: .normal)
         }.disposed(by: disposeBag)
         
         viewModel.translatedText.asObservable().bind { [weak self] text in

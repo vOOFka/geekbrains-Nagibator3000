@@ -8,10 +8,10 @@
 import Foundation
 
 final class SelectLanguageCellModel {
-    private(set) var language: LanguageModel
+    private(set) var language: LanguageModelTemp
     private(set) var isSelected: Bool
     
-    init(language: LanguageModel, selected: Bool) {
+    init(language: LanguageModelTemp, selected: Bool) {
         self.language = language
         self.isSelected = selected
     }

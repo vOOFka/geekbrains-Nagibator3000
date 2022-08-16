@@ -18,8 +18,8 @@ final class TranslateViewModel: Stepper {
     private let translaterUseCase: TranslaterUseCase?
     private let dictionaryUseCase: DictionaryUseCase?
     
-    private(set) var sourceLanguage: BehaviorRelay<LanguageModel>
-    private(set) var destinationLanguage: BehaviorRelay<LanguageModel>
+    private(set) var sourceLanguage: BehaviorRelay<LanguageModelTemp>
+    private(set) var destinationLanguage: BehaviorRelay<LanguageModelTemp>
     
     private(set) var translatedText: BehaviorRelay<String>
     
@@ -30,8 +30,8 @@ final class TranslateViewModel: Stepper {
         self.dictionaryUseCase = dictionaryUseCase
     
         self.translatedText = BehaviorRelay<String>(value: String())
-        self.sourceLanguage = BehaviorRelay<LanguageModel>(value: languages[0])
-        self.destinationLanguage = BehaviorRelay<LanguageModel>(value: languages[0])
+        self.sourceLanguage = BehaviorRelay<LanguageModelTemp>(value: languages[0])
+        self.destinationLanguage = BehaviorRelay<LanguageModelTemp>(value: languages[0])
     }
     
     public func swapLanguages() {
@@ -42,7 +42,7 @@ final class TranslateViewModel: Stepper {
         self.destinationLanguage.accept(destinationLanguage)
     }
     
-    public func configTranslateLanguage(language: LanguageModel, type: LanguageType) {
+    public func configTranslateLanguage(language: LanguageModelTemp, type: LanguageType) {
         type == .source ? sourceLanguage.accept(language) : destinationLanguage.accept(language)
     }
     
