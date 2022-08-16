@@ -62,6 +62,7 @@
 		E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18A825D2893F86400D2B0BB /* Assets.xcassets */; };
 		E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */; };
 		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
+		F44FFB5628AC3A9F00200E63 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = F44FFB5528AC3A9F00200E63 /* RxDataSources */; };
 		F49F2FD928A8FD0A00F2D6FC /* DictionaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */; };
 		F4A5B37428A1A20D00D0293E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A5B37328A1A20D00D0293E /* CustomTextView.swift */; };
 		F4A5B37628A58C9300D0293E /* YandexService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A5B37528A58C9300D0293E /* YandexService-Info.plist */; };
@@ -178,6 +179,7 @@
 				F4FE6CAF28A07B8B005D6DDF /* RxSwift in Frameworks */,
 				F4FE6CAD28A07B8B005D6DDF /* RxCocoa in Frameworks */,
 				F4FE6CB228A07BB7005D6DDF /* PinLayout in Frameworks */,
+				F44FFB5628AC3A9F00200E63 /* RxDataSources in Frameworks */,
 				F4FE6CAA28A07B6D005D6DDF /* Alamofire in Frameworks */,
 				F4FE6CB828A07C05005D6DDF /* Swinject in Frameworks */,
 			);
@@ -859,6 +861,7 @@
 				F4FE6CB428A07BDB005D6DDF /* Lottie */,
 				F4FE6CB728A07C05005D6DDF /* Swinject */,
 				E002B91C28A69A7200FBCBDD /* RxFlow */,
+				F44FFB5528AC3A9F00200E63 /* RxDataSources */,
 			);
 			productName = "geekbrains-Nagibator3000";
 			productReference = E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */;
@@ -896,6 +899,7 @@
 				F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				F4FE6CB628A07C05005D6DDF /* XCRemoteSwiftPackageReference "Swinject" */,
 				E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */,
+				F44FFB5428AC3A9F00200E63 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = E18A82522893F86000D2B0BB /* Products */;
 			projectDirPath = "";
@@ -1236,6 +1240,14 @@
 				kind = branch;
 			};
 		};
+		F44FFB5428AC3A9F00200E63 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F4FE6CA828A07B6D005D6DDF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1283,6 +1295,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */;
 			productName = RxFlow;
+		};
+		F44FFB5528AC3A9F00200E63 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F44FFB5428AC3A9F00200E63 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		F4FE6CA928A07B6D005D6DDF /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
