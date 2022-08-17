@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-class LanguagesMapperRepository {
+class LanguagesMapper {
   func map(response: LanguagesResponse) -> Observable<[LanguageModel]> {
     Observable<[LanguageModel]>.create { observable in
       guard let languages = response.languages else {

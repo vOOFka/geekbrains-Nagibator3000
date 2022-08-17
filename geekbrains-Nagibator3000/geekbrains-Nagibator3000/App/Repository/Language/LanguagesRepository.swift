@@ -12,12 +12,12 @@ class LanguagesRepository {
   private let disposeBag = DisposeBag()
   let objectAdapter: ObjectBasedAdapter<LanguageModel, LanguageStorageModel>
   let api: AFLanguagesApi
-  let mapper: LanguagesMapperRepository
+  let mapper: LanguagesMapper
 
   init (
     objectAdapter: ObjectBasedAdapter<LanguageModel, LanguageStorageModel>,
     api: AFLanguagesApi,
-    mapper: LanguagesMapperRepository
+    mapper: LanguagesMapper
   ) {
     self.objectAdapter = objectAdapter
     self.api = api

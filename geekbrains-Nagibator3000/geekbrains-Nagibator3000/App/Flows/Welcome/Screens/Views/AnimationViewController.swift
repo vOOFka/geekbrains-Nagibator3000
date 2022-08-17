@@ -26,7 +26,7 @@ class AnimationViewController: UIViewController {
     animationView.frame = view.bounds
     animationView.backgroundColor = .white
     animationView.contentMode = .scaleAspectFit
-    animationView.loopMode = .playOnce
+    animationView.loopMode = .autoReverse
     animationView.animationSpeed = 1.1
     view.addSubview(animationView)
   }
@@ -34,6 +34,7 @@ class AnimationViewController: UIViewController {
   private func setupBindings() {
     bindLifeCycle()
     bindStartAnimation()
+    bindStopAnimation()
   }
   
   private func bindLifeCycle() {
@@ -46,9 +47,16 @@ class AnimationViewController: UIViewController {
     viewModel.output.startAnimation
       .filter { $0 != nil }
       .drive { [weak self] _ in
-        self?.animationView.play { [weak self] _ in
-          self?.viewModel.input.completionAnimation.accept(Void())
-        }
+        self?.animationView.play()
+      }
+      .disposed(by: disposeBag)
+  }
+
+  private func bindStopAnimation() {
+    viewModel.output.stopAnimation
+      .filter { $0 != nil }
+      .drive { [weak self] _ in
+        self?.animationView.stop()
       }
       .disposed(by: disposeBag)
   }

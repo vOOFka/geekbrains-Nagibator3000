@@ -27,9 +27,9 @@
 		E002B94E28AAEFE400FBCBDD /* LanguagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B94D28AAEFE400FBCBDD /* LanguagesResponse.swift */; };
 		E002B95028AAF0A000FBCBDD /* LanguagesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B94F28AAF0A000FBCBDD /* LanguagesApi.swift */; };
 		E002B95228AAF0EB00FBCBDD /* AFLanguagesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95128AAF0EB00FBCBDD /* AFLanguagesApi.swift */; };
-		E002B95428AAF2DF00FBCBDD /* LanguagesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95328AAF2DF00FBCBDD /* LanguagesMapper.swift */; };
-		E002B95728AC1F7D00FBCBDD /* LanguagesMapperRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95628AC1F7D00FBCBDD /* LanguagesMapperRepository.swift */; };
+		E002B95728AC1F7D00FBCBDD /* LanguagesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95628AC1F7D00FBCBDD /* LanguagesMapper.swift */; };
 		E002B95C28AC308200FBCBDD /* LanguageModelTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95A28AC308200FBCBDD /* LanguageModelTemp.swift */; };
+		E002B95E28AD7F6400FBCBDD /* AnimationFlow+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95D28AD7F6400FBCBDD /* AnimationFlow+DI.swift */; };
 		E00DE06828A2EF5400C3608C /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06728A2EF5400C3608C /* LanguageModel.swift */; };
 		E00DE06B28A2EFCB00C3608C /* LanguageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06A28A2EFCB00C3608C /* LanguageMapper.swift */; };
 		E00DE06F28A2F0B200C3608C /* TranslationStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06E28A2F0B200C3608C /* TranslationStorageModel.swift */; };
@@ -113,9 +113,9 @@
 		E002B94D28AAEFE400FBCBDD /* LanguagesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesResponse.swift; sourceTree = "<group>"; };
 		E002B94F28AAF0A000FBCBDD /* LanguagesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesApi.swift; sourceTree = "<group>"; };
 		E002B95128AAF0EB00FBCBDD /* AFLanguagesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFLanguagesApi.swift; sourceTree = "<group>"; };
-		E002B95328AAF2DF00FBCBDD /* LanguagesMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesMapper.swift; sourceTree = "<group>"; };
-		E002B95628AC1F7D00FBCBDD /* LanguagesMapperRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesMapperRepository.swift; sourceTree = "<group>"; };
+		E002B95628AC1F7D00FBCBDD /* LanguagesMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesMapper.swift; sourceTree = "<group>"; };
 		E002B95A28AC308200FBCBDD /* LanguageModelTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModelTemp.swift; sourceTree = "<group>"; };
+		E002B95D28AD7F6400FBCBDD /* AnimationFlow+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationFlow+DI.swift"; sourceTree = "<group>"; };
 		E00DE06728A2EF5400C3608C /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		E00DE06A28A2EFCB00C3608C /* LanguageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMapper.swift; sourceTree = "<group>"; };
 		E00DE06E28A2F0B200C3608C /* TranslationStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationStorageModel.swift; sourceTree = "<group>"; };
@@ -199,6 +199,7 @@
 			children = (
 				E002B91228A698CA00FBCBDD /* AnimationFlow.swift */,
 				E002B91428A698FB00FBCBDD /* AnimationStep.swift */,
+				E002B95D28AD7F6400FBCBDD /* AnimationFlow+DI.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -360,7 +361,7 @@
 		E002B95528AC1F6A00FBCBDD /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
-				E002B95628AC1F7D00FBCBDD /* LanguagesMapperRepository.swift */,
+				E002B95628AC1F7D00FBCBDD /* LanguagesMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -571,7 +572,6 @@
 			isa = PBXGroup;
 			children = (
 				E0EAEA26289DA34300F8D918 /* TranslateMapper.swift */,
-				E002B95328AAF2DF00FBCBDD /* LanguagesMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -952,10 +952,11 @@
 				E0EAEA1C289D9BFF00F8D918 /* AFTranslateApi.swift in Sources */,
 				E002B94428A6DD5800FBCBDD /* RxViewModelProtocol.swift in Sources */,
 				F4D82C5A289998D700FFFFA7 /* String+Ext.swift in Sources */,
-				E002B95728AC1F7D00FBCBDD /* LanguagesMapperRepository.swift in Sources */,
+				E002B95728AC1F7D00FBCBDD /* LanguagesMapper.swift in Sources */,
 				E0EAEA4B28A1B14100F8D918 /* DataStorage.swift in Sources */,
 				E0EAEA3928A1A54B00F8D918 /* StorageKeys.swift in Sources */,
 				E00DE07E28A302B300C3608C /* LanguageUseCase.swift in Sources */,
+				E002B95E28AD7F6400FBCBDD /* AnimationFlow+DI.swift in Sources */,
 				E002B93E28A6D69B00FBCBDD /* TrainingViewModel.swift in Sources */,
 				E0EAEA5028A1B72A00F8D918 /* LanguageStorageModel.swift in Sources */,
 				E0EAEA3E28A1A63600F8D918 /* UserDefaultsWrapper.swift in Sources */,
@@ -967,7 +968,6 @@
 				F4D62A1E289710C90000B690 /* ColorScheme.swift in Sources */,
 				E0EAEA27289DA34300F8D918 /* TranslateMapper.swift in Sources */,
 				F4D62A27289719F50000B690 /* TrainingViewController.swift in Sources */,
-				E002B95428AAF2DF00FBCBDD /* LanguagesMapper.swift in Sources */,
 				F4A5B37428A1A20D00D0293E /* CustomTextView.swift in Sources */,
 				F4D82C70289D9EC700FFFFA7 /* Reusable.swift in Sources */,
 				E0EAEA25289DA2AB00F8D918 /* TranslationModel.swift in Sources */,
