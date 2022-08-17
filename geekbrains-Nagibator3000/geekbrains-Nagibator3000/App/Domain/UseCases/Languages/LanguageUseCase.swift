@@ -15,7 +15,11 @@ class LanguageUseCase {
     self.repository = repository
   }
   
-  func get() -> Observable<[Language]> {
+  func load() -> Observable<Bool> {
+    repository.load()
+  }
+  
+  func get() -> Observable<[LanguageModel]> {
     repository.get()
   }
 }

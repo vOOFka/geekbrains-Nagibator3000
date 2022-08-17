@@ -12,6 +12,7 @@ public protocol TranslateApi {
   var path: String { get }
 
   func traslate(translate: TranslateParams) -> Observable<TranslateResponse>
+  
 }
 
 public extension TranslateApi {

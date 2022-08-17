@@ -13,7 +13,7 @@ final class SelectLanguageViewModel {
     
     private(set) var type: LanguageType = .source
     private(set) var selectIndex: Int = 0
-    private(set) var selectLanguage: LanguageModel
+    private(set) var selectLanguage: LanguageModelTemp
     
     init(translateViewModel: TranslateViewModel, type: LanguageType) {
         self.translateViewModel = translateViewModel

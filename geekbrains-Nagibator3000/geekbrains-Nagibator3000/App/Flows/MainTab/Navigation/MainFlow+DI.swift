@@ -11,12 +11,13 @@ import Alamofire
 extension MainFlow {
   func setUpDiContainer() {
     //Remoute
-    container.register(Session.self) { [weak self] _ in
-      guard let self = self else { return Session() }
+    container.register(AFSession.self) { [weak self] _ in
+      guard let self = self else { return AFSession() }
       
-      return Session(
+      return AFSession(
+        baseUrl: WebUrlPath.baseUrl,
         configuration: self.getConfiguration(),
-        serverTrustManager: self.getManager()
+        trustManaget: self.getManager()
       )
     }
     .inObjectScope(.container)
@@ -28,7 +29,7 @@ extension MainFlow {
     
     container.register(AFTranslateApi.self) { container in
       AFTranslateApi(
-        session: container.resolve(Session.self)!,
+        session: container.resolve(AFSession.self)!,
         mapper: container.resolve(AFErrorMapper.self)!
       )
     }
@@ -98,7 +99,8 @@ extension MainFlow {
     ServerTrustManager(
       allHostsMustBeEvaluated: false,
       evaluators: [
-        WebUrlPath.translate : DefaultTrustEvaluator()
+        WebUrlPath.baseUrl : DefaultTrustEvaluator()
+        
       ]
     )
   }
