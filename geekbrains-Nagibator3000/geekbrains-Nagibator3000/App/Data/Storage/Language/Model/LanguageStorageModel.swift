@@ -10,5 +10,4 @@ import Foundation
 struct LanguageStorageModel: Codable {
   var code: String
   var name: String
-  var nativeName: String
 }
