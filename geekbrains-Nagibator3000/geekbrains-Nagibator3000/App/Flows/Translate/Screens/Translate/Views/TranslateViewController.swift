@@ -23,6 +23,7 @@ final class TranslateViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     initialConfig()
     bindViewModel()
   }

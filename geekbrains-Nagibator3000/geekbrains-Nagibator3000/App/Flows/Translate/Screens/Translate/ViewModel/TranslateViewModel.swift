@@ -20,6 +20,7 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
     let onSave: PublishRelay<Void>
     let onShare: PublishRelay<Void>
     let onCopy: PublishRelay<Void>
+    let onLanguageUpdated: PublishRelay<LanguageModel>
   }
   
   struct Output {
@@ -44,6 +45,8 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   private let saved = PublishRelay<Void>()
   private let shared = PublishRelay<Void>()
   private let copied = PublishRelay<Void>()
+  private let languageUpdated = PublishRelay<LanguageModel>()
+  private let languageSelectedIndex = BehaviorSubject<Int>(value: 0)
   
   // Outut
   private let translatedText = BehaviorSubject<TranslationModel>(
@@ -70,7 +73,8 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
       onTranslate: translated,
       onSave: saved,
       onShare: shared,
-      onCopy: copied
+      onCopy: copied,
+      onLanguageUpdated: languageUpdated
     )
     
     output = Output(
@@ -109,18 +113,38 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   private func bindTapLanguages() {
     tapedFromLanguage
       .withLatestFrom(sourceLanguage)
-      .map { language in
-        TranslateStep.openLanguagesRequiredScreen(language: language)
+      .map { [weak self] language in
+        self?.languageSelectedIndex.onNext(0)
+        
+        return TranslateStep.openLanguagesRequiredScreen(language: language)
       }
       .bind(to: steps)
       .disposed(by: disposeBag)
     
     tapedToLanguage
       .withLatestFrom(destinationLanguage)
-      .map { language in
-        TranslateStep.openLanguagesRequiredScreen(language: language)
+      .map { [weak self] language in
+        self?.languageSelectedIndex.onNext(1)
+        
+        return TranslateStep.openLanguagesRequiredScreen(language: language)
       }
       .bind(to: steps)
+      .disposed(by: disposeBag)
+    
+    languageUpdated
+      .withLatestFrom(Observable.combineLatest(languageUpdated, languageSelectedIndex))
+      .bind { [weak self] language, index in
+        switch index {
+        case 0:
+          self?.sourceLanguage.onNext(language)
+          
+        case 1:
+          self?.destinationLanguage.onNext(language)
+          
+        default:
+          break;
+        }
+      }
       .disposed(by: disposeBag)
   }
   

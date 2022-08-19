@@ -28,7 +28,6 @@
 		E002B95028AAF0A000FBCBDD /* LanguagesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B94F28AAF0A000FBCBDD /* LanguagesApi.swift */; };
 		E002B95228AAF0EB00FBCBDD /* AFLanguagesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95128AAF0EB00FBCBDD /* AFLanguagesApi.swift */; };
 		E002B95728AC1F7D00FBCBDD /* LanguagesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95628AC1F7D00FBCBDD /* LanguagesMapper.swift */; };
-		E002B95C28AC308200FBCBDD /* LanguageModelTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95A28AC308200FBCBDD /* LanguageModelTemp.swift */; };
 		E002B95E28AD7F6400FBCBDD /* AnimationFlow+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95D28AD7F6400FBCBDD /* AnimationFlow+DI.swift */; };
 		E00DE06828A2EF5400C3608C /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06728A2EF5400C3608C /* LanguageModel.swift */; };
 		E00DE06B28A2EFCB00C3608C /* LanguageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06A28A2EFCB00C3608C /* LanguageMapper.swift */; };
@@ -38,6 +37,11 @@
 		E00DE07828A2F50500C3608C /* TranslationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE07728A2F50500C3608C /* TranslationRepository.swift */; };
 		E00DE07B28A2FFCC00C3608C /* DictionaryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE07A28A2FFCC00C3608C /* DictionaryUseCase.swift */; };
 		E00DE07E28A302B300C3608C /* LanguageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE07D28A302B300C3608C /* LanguageUseCase.swift */; };
+		E08E48FD28B0078800E667D9 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E48FC28B0078800E667D9 /* RxTableViewCell.swift */; };
+		E08E48FF28B00B8700E667D9 /* RXLanguagesListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E48FE28B00B8700E667D9 /* RXLanguagesListDataSource.swift */; };
+		E08E490128B00C1800E667D9 /* LanguagesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E490028B00C1800E667D9 /* LanguagesListModel.swift */; };
+		E08E490428B00C8C00E667D9 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = E08E490328B00C8C00E667D9 /* RxDataSources */; };
+		E08E490B28B02F0000E667D9 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E490A28B02F0000E667D9 /* Reusable.swift */; };
 		E0EAEA03289C4E5600F8D918 /* TRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA02289C4E5600F8D918 /* TRError.swift */; };
 		E0EAEA05289C4E9F00F8D918 /* GenericNetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA04289C4E9F00F8D918 /* GenericNetworkingError.swift */; };
 		E0EAEA08289C56AE00F8D918 /* AFErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA07289C56AE00F8D918 /* AFErrorMapper.swift */; };
@@ -79,7 +83,6 @@
 		F4D82C5C2899A4BE00FFFFA7 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5B2899A4BE00FFFFA7 /* TranslateViewModel.swift */; };
 		F4D82C602899B1D400FFFFA7 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C5F2899B1D400FFFFA7 /* UIViewController+Ext.swift */; };
 		F4D82C6E289D9D5900FFFFA7 /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C6D289D9D5800FFFFA7 /* SelectLanguageViewController.swift */; };
-		F4D82C70289D9EC700FFFFA7 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C6F289D9EC700FFFFA7 /* Reusable.swift */; };
 		F4D82C72289DA31700FFFFA7 /* SelectLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C71289DA31700FFFFA7 /* SelectLanguageCell.swift */; };
 		F4D82C75289DA45600FFFFA7 /* SelectLanguageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C74289DA45600FFFFA7 /* SelectLanguageCellModel.swift */; };
 		F4D82C79289DA90900FFFFA7 /* SelectLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C78289DA90900FFFFA7 /* SelectLanguageViewModel.swift */; };
@@ -114,7 +117,6 @@
 		E002B94F28AAF0A000FBCBDD /* LanguagesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesApi.swift; sourceTree = "<group>"; };
 		E002B95128AAF0EB00FBCBDD /* AFLanguagesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFLanguagesApi.swift; sourceTree = "<group>"; };
 		E002B95628AC1F7D00FBCBDD /* LanguagesMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesMapper.swift; sourceTree = "<group>"; };
-		E002B95A28AC308200FBCBDD /* LanguageModelTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModelTemp.swift; sourceTree = "<group>"; };
 		E002B95D28AD7F6400FBCBDD /* AnimationFlow+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationFlow+DI.swift"; sourceTree = "<group>"; };
 		E00DE06728A2EF5400C3608C /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		E00DE06A28A2EFCB00C3608C /* LanguageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMapper.swift; sourceTree = "<group>"; };
@@ -124,6 +126,10 @@
 		E00DE07728A2F50500C3608C /* TranslationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRepository.swift; sourceTree = "<group>"; };
 		E00DE07A28A2FFCC00C3608C /* DictionaryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryUseCase.swift; sourceTree = "<group>"; };
 		E00DE07D28A302B300C3608C /* LanguageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageUseCase.swift; sourceTree = "<group>"; };
+		E08E48FC28B0078800E667D9 /* RxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
+		E08E48FE28B00B8700E667D9 /* RXLanguagesListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXLanguagesListDataSource.swift; sourceTree = "<group>"; };
+		E08E490028B00C1800E667D9 /* LanguagesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesListModel.swift; sourceTree = "<group>"; };
+		E08E490A28B02F0000E667D9 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		E0EAEA02289C4E5600F8D918 /* TRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRError.swift; sourceTree = "<group>"; };
 		E0EAEA04289C4E9F00F8D918 /* GenericNetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericNetworkingError.swift; sourceTree = "<group>"; };
 		E0EAEA07289C56AE00F8D918 /* AFErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFErrorMapper.swift; sourceTree = "<group>"; };
@@ -168,7 +174,6 @@
 		F4D82C5B2899A4BE00FFFFA7 /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		F4D82C5F2899B1D400FFFFA7 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		F4D82C6D289D9D5800FFFFA7 /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
-		F4D82C6F289D9EC700FFFFA7 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		F4D82C71289DA31700FFFFA7 /* SelectLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageCell.swift; sourceTree = "<group>"; };
 		F4D82C74289DA45600FFFFA7 /* SelectLanguageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageCellModel.swift; sourceTree = "<group>"; };
 		F4D82C78289DA90900FFFFA7 /* SelectLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewModel.swift; sourceTree = "<group>"; };
@@ -186,6 +191,7 @@
 				F4FE6CAF28A07B8B005D6DDF /* RxSwift in Frameworks */,
 				F4FE6CAD28A07B8B005D6DDF /* RxCocoa in Frameworks */,
 				F4FE6CB228A07BB7005D6DDF /* PinLayout in Frameworks */,
+				E08E490428B00C8C00E667D9 /* RxDataSources in Frameworks */,
 				F4FE6CAA28A07B6D005D6DDF /* Alamofire in Frameworks */,
 				F4FE6CB828A07C05005D6DDF /* Swinject in Frameworks */,
 			);
@@ -354,6 +360,7 @@
 			children = (
 				E002B94328A6DD5800FBCBDD /* RxViewModelProtocol.swift */,
 				E002B94528A6E00900FBCBDD /* RXViewController.swift */,
+				E08E48FC28B0078800E667D9 /* RxTableViewCell.swift */,
 			);
 			path = RXUITools;
 			sourceTree = "<group>";
@@ -364,14 +371,6 @@
 				E002B95628AC1F7D00FBCBDD /* LanguagesMapper.swift */,
 			);
 			path = Mapper;
-			sourceTree = "<group>";
-		};
-		E002B95828AC308200FBCBDD /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				E002B95A28AC308200FBCBDD /* LanguageModelTemp.swift */,
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		E00DE06528A2EF3A00C3608C /* Language */ = {
@@ -448,6 +447,14 @@
 				E00DE07D28A302B300C3608C /* LanguageUseCase.swift */,
 			);
 			path = Languages;
+			sourceTree = "<group>";
+		};
+		E08E48FB28B0076B00E667D9 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				E08E48FE28B00B8700E667D9 /* RXLanguagesListDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		E0EAE9F9289C4C0800F8D918 /* Data */ = {
@@ -713,7 +720,6 @@
 		F4D62A102896FF6D0000B690 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				E002B95828AC308200FBCBDD /* Entity */,
 				E0EAEA5528A1BD0100F8D918 /* Repository */,
 				E0EAE9F9289C4C0800F8D918 /* Data */,
 				F4D62A112896FF760000B690 /* Core */,
@@ -737,9 +743,9 @@
 		F4D62A122896FF860000B690 /* Utils&Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E08E490A28B02F0000E667D9 /* Reusable.swift */,
 				F4D82C59289998D700FFFFA7 /* String+Ext.swift */,
 				F4D82C5F2899B1D400FFFFA7 /* UIViewController+Ext.swift */,
-				F4D82C6F289D9EC700FFFFA7 /* Reusable.swift */,
 				F4A5B37328A1A20D00D0293E /* CustomTextView.swift */,
 				F4A5B37728A5A08100D0293E /* Locale+Ext.swift */,
 				F4F3124528A6DDEC00FE1F20 /* CustomActionsView.swift */,
@@ -831,6 +837,7 @@
 		F4D82C6C289D9A4400FFFFA7 /* SelectLanguage */ = {
 			isa = PBXGroup;
 			children = (
+				E08E48FB28B0076B00E667D9 /* DataSource */,
 				F4D82C77289DA8B900FFFFA7 /* ViewModels */,
 				F4D82C76289DA8AE00FFFFA7 /* Views */,
 			);
@@ -851,6 +858,7 @@
 			children = (
 				F4D82C78289DA90900FFFFA7 /* SelectLanguageViewModel.swift */,
 				F4D82C74289DA45600FFFFA7 /* SelectLanguageCellModel.swift */,
+				E08E490028B00C1800E667D9 /* LanguagesListModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -879,6 +887,7 @@
 				F4FE6CB428A07BDB005D6DDF /* Lottie */,
 				F4FE6CB728A07C05005D6DDF /* Swinject */,
 				E002B91C28A69A7200FBCBDD /* RxFlow */,
+				E08E490328B00C8C00E667D9 /* RxDataSources */,
 			);
 			productName = "geekbrains-Nagibator3000";
 			productReference = E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */;
@@ -916,6 +925,7 @@
 				F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				F4FE6CB628A07C05005D6DDF /* XCRemoteSwiftPackageReference "Swinject" */,
 				E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */,
+				E08E490228B00C8C00E667D9 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = E18A82522893F86000D2B0BB /* Products */;
 			projectDirPath = "";
@@ -962,6 +972,7 @@
 				E0EAEA3E28A1A63600F8D918 /* UserDefaultsWrapper.swift in Sources */,
 				F4D82C6E289D9D5900FFFFA7 /* SelectLanguageViewController.swift in Sources */,
 				E00DE07228A2F15900C3608C /* TranslationMapper.swift in Sources */,
+				E08E490128B00C1800E667D9 /* LanguagesListModel.swift in Sources */,
 				E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */,
 				F4D82C602899B1D400FFFFA7 /* UIViewController+Ext.swift in Sources */,
 				E002B92928A6D3D000FBCBDD /* TranslateFlow.swift in Sources */,
@@ -969,11 +980,11 @@
 				E0EAEA27289DA34300F8D918 /* TranslateMapper.swift in Sources */,
 				F4D62A27289719F50000B690 /* TrainingViewController.swift in Sources */,
 				F4A5B37428A1A20D00D0293E /* CustomTextView.swift in Sources */,
-				F4D82C70289D9EC700FFFFA7 /* Reusable.swift in Sources */,
 				E0EAEA25289DA2AB00F8D918 /* TranslationModel.swift in Sources */,
 				E0EAEA3B28A1A5B200F8D918 /* Mapper.swift in Sources */,
 				E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */,
 				F4F3124628A6DDEC00FE1F20 /* CustomActionsView.swift in Sources */,
+				E08E48FF28B00B8700E667D9 /* RXLanguagesListDataSource.swift in Sources */,
 				E0EAEA21289DA28100F8D918 /* TranslaterUseCase.swift in Sources */,
 				E002B94628A6E00900FBCBDD /* RXViewController.swift in Sources */,
 				E002B92728A6D39800FBCBDD /* TranslateStep.swift in Sources */,
@@ -991,11 +1002,11 @@
 				E18A82552893F86100D2B0BB /* AppDelegate.swift in Sources */,
 				F49F2FD928A8FD0A00F2D6FC /* DictionaryTableViewCell.swift in Sources */,
 				E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */,
+				E08E490B28B02F0000E667D9 /* Reusable.swift in Sources */,
 				E002B93128A6D4EA00FBCBDD /* DictionaryStep.swift in Sources */,
 				E002B93328A6D50B00FBCBDD /* DictionaryFlow.swift in Sources */,
 				E0EAEA5228A1B87800F8D918 /* ObjectBasedAdapter.swift in Sources */,
 				F4D82C79289DA90900FFFFA7 /* SelectLanguageViewModel.swift in Sources */,
-				E002B95C28AC308200FBCBDD /* LanguageModelTemp.swift in Sources */,
 				E0EAEA1A289D93CB00F8D918 /* WebUrlPath.swift in Sources */,
 				E0EAEA08289C56AE00F8D918 /* AFErrorMapper.swift in Sources */,
 				F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */,
@@ -1008,6 +1019,7 @@
 				F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */,
 				F4D82C75289DA45600FFFFA7 /* SelectLanguageCellModel.swift in Sources */,
 				E002B95228AAF0EB00FBCBDD /* AFLanguagesApi.swift in Sources */,
+				E08E48FD28B0078800E667D9 /* RxTableViewCell.swift in Sources */,
 				E002B94E28AAEFE400FBCBDD /* LanguagesResponse.swift in Sources */,
 				E002B91528A698FB00FBCBDD /* AnimationStep.swift in Sources */,
 				F4D82C5C2899A4BE00FFFFA7 /* TranslateViewModel.swift in Sources */,
@@ -1260,6 +1272,14 @@
 				kind = branch;
 			};
 		};
+		E08E490228B00C8C00E667D9 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F4FE6CA828A07B6D005D6DDF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1307,6 +1327,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */;
 			productName = RxFlow;
+		};
+		E08E490328B00C8C00E667D9 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E08E490228B00C8C00E667D9 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		F4FE6CA928A07B6D005D6DDF /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

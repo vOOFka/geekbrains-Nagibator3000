@@ -7,16 +7,12 @@
 
 import Foundation
 
-final class SelectLanguageCellModel {
-    private(set) var language: LanguageModelTemp
-    private(set) var isSelected: Bool
-    
-    init(language: LanguageModelTemp, selected: Bool) {
-        self.language = language
-        self.isSelected = selected
-    }
-    
-    public func selectLanguage() {
-        isSelected.toggle()
-    }
+class SelectLanguageCellModel {
+  let language: LanguageModel
+  let isSelected: Bool
+  
+  init(language: LanguageModel, selected: Bool) {
+    self.language = language
+    self.isSelected = selected
+  }
 }
