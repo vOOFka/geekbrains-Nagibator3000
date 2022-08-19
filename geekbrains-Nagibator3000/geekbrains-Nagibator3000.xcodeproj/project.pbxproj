@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A356E368ED4DA1484A18DCC /* Pods_geekbrains_Nagibator3000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B16BA9883018978E339E88 /* Pods_geekbrains_Nagibator3000.framework */; };
 		E002B91328A698CA00FBCBDD /* AnimationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91228A698CA00FBCBDD /* AnimationFlow.swift */; };
 		E002B91528A698FB00FBCBDD /* AnimationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91428A698FB00FBCBDD /* AnimationStep.swift */; };
 		E002B91A28A6994C00FBCBDD /* AnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91928A6994C00FBCBDD /* AnimationViewModel.swift */; };
@@ -99,6 +100,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3431A828444F5B59E87D399F /* Pods-geekbrains-Nagibator3000.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-geekbrains-Nagibator3000.debug.xcconfig"; path = "Target Support Files/Pods-geekbrains-Nagibator3000/Pods-geekbrains-Nagibator3000.debug.xcconfig"; sourceTree = "<group>"; };
+		390127F5CA4E5C5B79E4D100 /* Pods-geekbrains-Nagibator3000.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-geekbrains-Nagibator3000.release.xcconfig"; path = "Target Support Files/Pods-geekbrains-Nagibator3000/Pods-geekbrains-Nagibator3000.release.xcconfig"; sourceTree = "<group>"; };
+		C3B16BA9883018978E339E88 /* Pods_geekbrains_Nagibator3000.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_geekbrains_Nagibator3000.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E002B91228A698CA00FBCBDD /* AnimationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFlow.swift; sourceTree = "<group>"; };
 		E002B91428A698FB00FBCBDD /* AnimationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationStep.swift; sourceTree = "<group>"; };
 		E002B91928A6994C00FBCBDD /* AnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewModel.swift; sourceTree = "<group>"; };
@@ -198,12 +202,21 @@
 				F44FFB5B28AC5C5900200E63 /* RxDataSources in Frameworks */,
 				F4FE6CAA28A07B6D005D6DDF /* Alamofire in Frameworks */,
 				F4FE6CB828A07C05005D6DDF /* Swinject in Frameworks */,
+				0A356E368ED4DA1484A18DCC /* Pods_geekbrains_Nagibator3000.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BDF3AF928430C92ED197055 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3B16BA9883018978E339E88 /* Pods_geekbrains_Nagibator3000.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E002B91128A698A100FBCBDD /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -701,6 +714,8 @@
 			children = (
 				E18A82532893F86000D2B0BB /* geekbrains-Nagibator3000 */,
 				E18A82522893F86000D2B0BB /* Products */,
+				EA9B602568989F5557F6ACA3 /* Pods */,
+				5BDF3AF928430C92ED197055 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -720,6 +735,16 @@
 				F4D62A132896FF9C0000B690 /* Environments */,
 			);
 			path = "geekbrains-Nagibator3000";
+			sourceTree = "<group>";
+		};
+		EA9B602568989F5557F6ACA3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3431A828444F5B59E87D399F /* Pods-geekbrains-Nagibator3000.debug.xcconfig */,
+				390127F5CA4E5C5B79E4D100 /* Pods-geekbrains-Nagibator3000.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		F4D62A102896FF6D0000B690 /* App */ = {
@@ -875,9 +900,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E18A82652893F86400D2B0BB /* Build configuration list for PBXNativeTarget "geekbrains-Nagibator3000" */;
 			buildPhases = (
+				315AB9779D8E43D59F44A4EE /* [CP] Check Pods Manifest.lock */,
 				E18A824D2893F86000D2B0BB /* Sources */,
 				E18A824E2893F86000D2B0BB /* Frameworks */,
 				E18A824F2893F86000D2B0BB /* Resources */,
+				5A781DF27EE1233A4C0B605A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -957,6 +984,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		315AB9779D8E43D59F44A4EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-geekbrains-Nagibator3000-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A781DF27EE1233A4C0B605A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-geekbrains-Nagibator3000/Pods-geekbrains-Nagibator3000-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-geekbrains-Nagibator3000/Pods-geekbrains-Nagibator3000-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-geekbrains-Nagibator3000/Pods-geekbrains-Nagibator3000-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E18A824D2893F86000D2B0BB /* Sources */ = {
@@ -1191,6 +1260,7 @@
 		};
 		E18A82662893F86400D2B0BB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3431A828444F5B59E87D399F /* Pods-geekbrains-Nagibator3000.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1220,6 +1290,7 @@
 		};
 		E18A82672893F86400D2B0BB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 390127F5CA4E5C5B79E4D100 /* Pods-geekbrains-Nagibator3000.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1271,7 +1342,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */ = {
+		E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow.git";
 			requirement = {
@@ -1295,7 +1366,7 @@
 				kind = branch;
 			};
 		};
-		F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -1303,7 +1374,7 @@
 				kind = branch;
 			};
 		};
-		F4FE6CB028A07BB7005D6DDF /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+		F4FE6CB028A07BB7005D6DDF /* XCRemoteSwiftPackageReference "PinLayout.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/layoutBox/PinLayout.git";
 			requirement = {
@@ -1311,7 +1382,7 @@
 				kind = branch;
 			};
 		};
-		F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
@@ -1319,7 +1390,7 @@
 				kind = branch;
 			};
 		};
-		F4FE6CB628A07C05005D6DDF /* XCRemoteSwiftPackageReference "Swinject" */ = {
+		F4FE6CB628A07C05005D6DDF /* XCRemoteSwiftPackageReference "Swinject.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
 			requirement = {
@@ -1332,7 +1403,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		E002B91C28A69A7200FBCBDD /* RxFlow */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */;
+			package = E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow.git" */;
 			productName = RxFlow;
 		};
 		F44FFB5828AC5C5900200E63 /* Differentiator */ = {
@@ -1347,32 +1418,32 @@
 		};
 		F4FE6CA928A07B6D005D6DDF /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CA828A07B6D005D6DDF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = F4FE6CA828A07B6D005D6DDF /* XCRemoteSwiftPackageReference "Alamofire.git" */;
 			productName = Alamofire;
 		};
 		F4FE6CAC28A07B8B005D6DDF /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift.git" */;
 			productName = RxCocoa;
 		};
 		F4FE6CAE28A07B8B005D6DDF /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift.git" */;
 			productName = RxSwift;
 		};
 		F4FE6CB128A07BB7005D6DDF /* PinLayout */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CB028A07BB7005D6DDF /* XCRemoteSwiftPackageReference "PinLayout" */;
+			package = F4FE6CB028A07BB7005D6DDF /* XCRemoteSwiftPackageReference "PinLayout.git" */;
 			productName = PinLayout;
 		};
 		F4FE6CB428A07BDB005D6DDF /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios.git" */;
 			productName = Lottie;
 		};
 		F4FE6CB728A07C05005D6DDF /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CB628A07C05005D6DDF /* XCRemoteSwiftPackageReference "Swinject" */;
+			package = F4FE6CB628A07C05005D6DDF /* XCRemoteSwiftPackageReference "Swinject.git" */;
 			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
