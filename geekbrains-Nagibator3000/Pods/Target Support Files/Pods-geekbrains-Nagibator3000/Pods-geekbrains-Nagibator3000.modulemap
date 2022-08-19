@@ -1,0 +1,6 @@
+framework module Pods_geekbrains_Nagibator3000 {
+  umbrella header "Pods-geekbrains-Nagibator3000-umbrella.h"
+
+  export *
+  module * { export * }
+}
