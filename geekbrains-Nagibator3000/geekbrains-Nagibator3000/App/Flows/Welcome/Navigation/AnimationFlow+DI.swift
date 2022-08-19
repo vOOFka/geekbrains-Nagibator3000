@@ -11,12 +11,12 @@ import Swinject
 
 extension AnimationFlow {
   func setUpDiContainer() {
-    setuoApi()
+    setupApi()
     setupRepository()
     setupUseCase()
   }
     
-  private func setuoApi() {
+  private func setupApi() {
     container.register(AFSession.self) { [weak self] _ in
       guard let self = self else { return AFSession() }
       
@@ -105,7 +105,6 @@ extension AnimationFlow {
       allHostsMustBeEvaluated: false,
       evaluators: [
         WebUrlPath.baseUrl : DefaultTrustEvaluator()
-        
       ]
     )
   }

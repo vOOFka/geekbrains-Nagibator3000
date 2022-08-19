@@ -25,6 +25,23 @@ class TranslateFlow: Flow {
   }
 
   func navigate(to step: Step) -> FlowContributors {
-    .none
+    guard let step = step as? TranslateStep else { return .none }
+    
+    switch step {
+    case .openShareRequiredScreen(let text):
+        return openShareScreen(text: text)
+      
+    case .openLanguagesRequiredScreen(_):
+      return .none
+    }
+  }
+  
+  private func openShareScreen(text: String) -> FlowContributors {
+    let objectsToShare = [text]
+      let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+      activityVC.excludedActivityTypes = [.airDrop, .addToReadingList]
+      viewController.present(activityVC, animated: true, completion: nil)
+    
+    return .none
   }
 }
