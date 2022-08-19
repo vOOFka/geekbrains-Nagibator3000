@@ -40,8 +40,8 @@ final class DictionaryViewController: UIViewController {
         tableView.setEditing(true, animated: true)
     }
     
-    private static func dataSource() -> RxTableViewSectionedAnimatedDataSource<TranslationSectionModel> {
-        RxTableViewSectionedAnimatedDataSource<TranslationSectionModel>(
+    private static func dataSource() -> RxTableViewSectionedAnimatedDataSource<DictionarySectionModel> {
+        RxTableViewSectionedAnimatedDataSource<DictionarySectionModel>(
             animationConfiguration: AnimationConfiguration(insertAnimation: .middle,
                                                            reloadAnimation: .fade,
                                                            deleteAnimation: .left),

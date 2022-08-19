@@ -1,5 +1,5 @@
 //
-//  TranslationSectionModel.swift
+//  DictionarySectionModel.swift
 //  geekbrains-Nagibator3000
 //
 //  Created by Home on 19.08.2022.
@@ -8,19 +8,19 @@
 import Foundation
 import RxDataSources
 
-struct TranslationSectionModel {
+struct DictionarySectionModel {
     var header: String
     var items: [TranslationModel]
 }
 
-extension TranslationSectionModel: AnimatableSectionModelType {
+extension DictionarySectionModel: AnimatableSectionModelType {
     typealias Item = TranslationModel
     
     var identity: String {
         return header
     }
     
-    init(original: TranslationSectionModel, items: [TranslationModel]) {
+    init(original: DictionarySectionModel, items: [TranslationModel]) {
         self = original
         self.items = items
     }

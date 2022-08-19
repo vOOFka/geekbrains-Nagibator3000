@@ -16,7 +16,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     }
 
     struct Output {
-        let translationsSections: Driver<[TranslationSectionModel]>
+        let translationsSections: Driver<[DictionarySectionModel]>
     }
 
     private(set) var input: Input!
@@ -28,7 +28,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     private let enterScreen = PublishSubject<Void>()
     
     // Output
-    let translationsSections = BehaviorRelay<[TranslationSectionModel]>(value: [])
+    let translationsSections = BehaviorRelay<[DictionarySectionModel]>(value: [])
     
     var steps = PublishRelay<Step>()
     
@@ -51,8 +51,8 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
         bindEnterScreen()
     }
     
-    private func configSections() -> Observable<[TranslationSectionModel]>? {
-        dictionaryUseCase?.get().compactMap { [TranslationSectionModel(header: "", items: $0)] }
+    private func configSections() -> Observable<[DictionarySectionModel]>? {
+        dictionaryUseCase?.get().compactMap { [DictionarySectionModel(header: "", items: $0)] }
     }
     
     private func bindEnterScreen() {
