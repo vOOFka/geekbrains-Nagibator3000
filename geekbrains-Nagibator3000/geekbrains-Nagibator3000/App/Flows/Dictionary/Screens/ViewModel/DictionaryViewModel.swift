@@ -57,7 +57,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     
     private func bindEnterScreen() {
         enterScreen
-            .withLatestFrom(configSections()!)
+            .flatMap { self.configSections()! }
             .bind(to: translationsSections)
             .disposed(by: disposeBag)
     }

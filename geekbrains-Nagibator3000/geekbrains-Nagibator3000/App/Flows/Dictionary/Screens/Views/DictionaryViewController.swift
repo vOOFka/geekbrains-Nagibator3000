@@ -64,10 +64,10 @@ final class DictionaryViewController: UIViewController {
             .bind(to: viewModel.input.enterScreen)
             .disposed(by: disposeBag)
     }
-    
+
     private func bindViewModel() {
-        viewModel.translationsSections
-            .bind(to: tableView.rx.items(dataSource: DictionaryViewController.dataSource()))
+        viewModel.output.translationsSections
+            .drive(tableView.rx.items(dataSource: DictionaryViewController.dataSource()))
             .disposed(by: disposeBag)
     }
     
