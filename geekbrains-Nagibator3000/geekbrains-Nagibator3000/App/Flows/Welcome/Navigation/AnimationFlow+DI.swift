@@ -1,16 +1,22 @@
 //
-//  MainFlow+DI.swift
+//  AnimationFlow+DI.swift
 //  geekbrains-Nagibator3000
 //
-//  Created by Valera Vvedenskiy on 05.08.2022.
+//  Created by Valera Vvedenskiy on 17.08.2022.
 //
 
 import Foundation
 import Alamofire
+import Swinject
 
-extension MainFlow {
+extension AnimationFlow {
   func setUpDiContainer() {
-    //Remoute
+    setupApi()
+    setupRepository()
+    setupUseCase()
+  }
+    
+  private func setupApi() {
     container.register(AFSession.self) { [weak self] _ in
       guard let self = self else { return AFSession() }
       
@@ -27,25 +33,15 @@ extension MainFlow {
     }
     .inObjectScope(.container)
     
-    container.register(AFTranslateApi.self) { container in
-      AFTranslateApi(
+    container.register(AFLanguagesApi.self) { container in
+      AFLanguagesApi(
         session: container.resolve(AFSession.self)!,
         mapper: container.resolve(AFErrorMapper.self)!
       )
     }
-    
-    container.register(TranslateMapper.self) { _ in
-      TranslateMapper()
-    }
-    
-    container.register(TranslaterUseCase.self) { container in
-      TranslaterUseCase(
-        api: container.resolve(AFTranslateApi.self)!,
-        mapper: container.resolve(TranslateMapper.self)!
-      )
-    }
-    
-    //Storage
+  }
+  
+  private func setupRepository() {
     container.register(UserDefaultsWrapper.self) { _ in
       UserDefaultsWrapper()
     }
@@ -53,7 +49,7 @@ extension MainFlow {
     container.register(StorageController.self) { container in
       StorageController(
         userDefaults: container.resolve(UserDefaultsWrapper.self)!,
-        key: StorageKeys.dictionary.rawValue
+        key: StorageKeys.languages.rawValue
       )
     }
     
@@ -68,29 +64,38 @@ extension MainFlow {
       )
     }
     
-    container.register(Mapper<TranslationModel, TranslationStorageModel>.self) { _ in
-      TranslationMapper()
+    container.register(Mapper<LanguageModel, LanguageStorageModel>.self) { _ in
+      LanguageMapper()
     }
     .inObjectScope(.container)
     
-    container.register(ObjectBasedAdapter<TranslationModel, TranslationStorageModel>.self) { container in
-      ObjectBasedAdapter<TranslationModel, TranslationStorageModel>(
+    container.register(ObjectBasedAdapter<LanguageModel, LanguageStorageModel>.self) { container in
+      ObjectBasedAdapter<LanguageModel, LanguageStorageModel>(
         dataStorage: container.resolve(DataStorage.self)!,
-        mapper: container.resolve(Mapper<TranslationModel, TranslationStorageModel>.self)!
+        mapper: container.resolve(Mapper<LanguageModel, LanguageStorageModel>.self)!
       )
     }
     .inObjectScope(.container)
     
-    container.register(TranslationRepository.self) { container in
-      TranslationRepository(
-        objectAdapter: container.resolve(ObjectBasedAdapter<TranslationModel, TranslationStorageModel>.self)!
-      )
+    container.register(LanguagesMapper.self) { _ in
+      LanguagesMapper()
     }
     .inObjectScope(.container)
     
-    container.register(DictionaryUseCase.self) { container in
-      DictionaryUseCase(
-        repository: container.resolve(TranslationRepository.self)!
+    container.register(LanguagesRepository.self) { container in
+      LanguagesRepository(
+        objectAdapter: container.resolve(ObjectBasedAdapter<LanguageModel, LanguageStorageModel>.self)!,
+        api: container.resolve(AFLanguagesApi.self)!,
+        mapper: container.resolve(LanguagesMapper.self)!
+      )
+    }
+    .inObjectScope(.container)
+  }
+  
+  private func setupUseCase() {
+    container.register(LanguageUseCase.self) { container in
+      LanguageUseCase(
+        repository: container.resolve(LanguagesRepository.self)!
       )
     }
   }
@@ -100,7 +105,6 @@ extension MainFlow {
       allHostsMustBeEvaluated: false,
       evaluators: [
         WebUrlPath.baseUrl : DefaultTrustEvaluator()
-        
       ]
     )
   }

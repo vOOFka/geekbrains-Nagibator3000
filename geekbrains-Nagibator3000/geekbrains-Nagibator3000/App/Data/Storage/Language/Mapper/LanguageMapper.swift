@@ -7,8 +7,12 @@
 
 import Foundation
 
-class LanguageMapper: Mapper<Language, LanguageStorageModel> {
-  override func mapFromStorage(model: [LanguageStorageModel]) -> [Language] {
-    model.map { model in Language(code: model.code, name: model.name) }
+class LanguageMapper: Mapper<LanguageModel, LanguageStorageModel> {
+  override func mapFromStorage(model: [LanguageStorageModel]) -> [LanguageModel] {
+    model.map { model in LanguageModel(code: model.code, name: model.name) }
+  }
+  
+  override func mapFromRepository(model: [LanguageModel]) -> [LanguageStorageModel] {
+    model.map { model in LanguageStorageModel(code: model.code, name: model.name) }
   }
 }

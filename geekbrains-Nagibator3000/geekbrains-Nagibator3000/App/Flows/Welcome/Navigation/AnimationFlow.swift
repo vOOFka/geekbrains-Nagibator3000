@@ -7,9 +7,11 @@
 
 import UIKit
 import RxFlow
+import Swinject
 
 class AnimationFlow: Flow {
   var window: UIWindow
+  let container = Container()
   
   var root: Presentable {
     return self.window
@@ -17,6 +19,7 @@ class AnimationFlow: Flow {
   
   init(window: UIWindow) {
     self.window = window
+    setUpDiContainer()
   }
   
   func navigate(to step: Step) -> FlowContributors {
@@ -27,11 +30,15 @@ class AnimationFlow: Flow {
       
     case .goToApp:
       return goToMainApp()
+      
+    // когда создам экран с информацией об ошибках тут будет подключено оно
+    case .error:
+      return .none
     }
   }
   
   private func openAnimationScreen() -> FlowContributors {
-    let viewModel = AnimationViewModel()
+    let viewModel = AnimationViewModel(loadUseCase: container.resolve(LanguageUseCase.self)!)
     let viewController = AnimationViewController()
     viewController.viewModel = viewModel
     self.window.rootViewController = viewController

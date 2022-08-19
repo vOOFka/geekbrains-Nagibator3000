@@ -8,6 +8,7 @@
 import Foundation
 
 public enum WebUrlPath {
-  static let translate = "https://translate.api.cloud.yandex.net/translate/v2/translate"
-  static let languages = "https://translate.api.cloud.yandex.net/translate/v2/languages"
+  static let baseUrl = "https://translate.api.cloud.yandex.net/translate/v2"
+  static let translate = "/translate"
+  static let languages = "/languages"
 }

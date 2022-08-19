@@ -9,4 +9,6 @@ import Foundation
 import RxFlow
 
 enum TranslateStep: Step {
+  case openLanguagesRequiredScreen(language: LanguageModel)
+  case openShareRequiredScreen(text: String)
 }

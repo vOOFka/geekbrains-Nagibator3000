@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E002B8ED28A4435200FBCBDD /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B8EC28A4435200FBCBDD /* LanguageModel.swift */; };
 		E002B91328A698CA00FBCBDD /* AnimationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91228A698CA00FBCBDD /* AnimationFlow.swift */; };
 		E002B91528A698FB00FBCBDD /* AnimationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91428A698FB00FBCBDD /* AnimationStep.swift */; };
 		E002B91A28A6994C00FBCBDD /* AnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91928A6994C00FBCBDD /* AnimationViewModel.swift */; };
@@ -24,7 +23,14 @@
 		E002B94428A6DD5800FBCBDD /* RxViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B94328A6DD5800FBCBDD /* RxViewModelProtocol.swift */; };
 		E002B94628A6E00900FBCBDD /* RXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B94528A6E00900FBCBDD /* RXViewController.swift */; };
 		E002B94A28A6F2A300FBCBDD /*  UINavigationItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B94928A6F2A300FBCBDD /*  UINavigationItem+Ext.swift */; };
-		E00DE06828A2EF5400C3608C /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06728A2EF5400C3608C /* Language.swift */; };
+		E002B94C28AAE99D00FBCBDD /* AFSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B94B28AAE99D00FBCBDD /* AFSession.swift */; };
+		E002B94E28AAEFE400FBCBDD /* LanguagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B94D28AAEFE400FBCBDD /* LanguagesResponse.swift */; };
+		E002B95028AAF0A000FBCBDD /* LanguagesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B94F28AAF0A000FBCBDD /* LanguagesApi.swift */; };
+		E002B95228AAF0EB00FBCBDD /* AFLanguagesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95128AAF0EB00FBCBDD /* AFLanguagesApi.swift */; };
+		E002B95728AC1F7D00FBCBDD /* LanguagesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95628AC1F7D00FBCBDD /* LanguagesMapper.swift */; };
+		E002B95C28AC308200FBCBDD /* LanguageModelTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95A28AC308200FBCBDD /* LanguageModelTemp.swift */; };
+		E002B95E28AD7F6400FBCBDD /* AnimationFlow+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B95D28AD7F6400FBCBDD /* AnimationFlow+DI.swift */; };
+		E00DE06828A2EF5400C3608C /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06728A2EF5400C3608C /* LanguageModel.swift */; };
 		E00DE06B28A2EFCB00C3608C /* LanguageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06A28A2EFCB00C3608C /* LanguageMapper.swift */; };
 		E00DE06F28A2F0B200C3608C /* TranslationStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE06E28A2F0B200C3608C /* TranslationStorageModel.swift */; };
 		E00DE07228A2F15900C3608C /* TranslationMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE07128A2F15900C3608C /* TranslationMapper.swift */; };
@@ -51,10 +57,8 @@
 		E0EAEA4128A1A67800F8D918 /* JSONSerialiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA4028A1A67800F8D918 /* JSONSerialiser.swift */; };
 		E0EAEA4428A1A73B00F8D918 /* StorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA4328A1A73B00F8D918 /* StorageController.swift */; };
 		E0EAEA4B28A1B14100F8D918 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA4A28A1B14100F8D918 /* DataStorage.swift */; };
-		E0EAEA4D28A1B6B100F8D918 /* FileDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA4C28A1B6B100F8D918 /* FileDataStorage.swift */; };
 		E0EAEA5028A1B72A00F8D918 /* LanguageStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA4F28A1B72A00F8D918 /* LanguageStorageModel.swift */; };
 		E0EAEA5228A1B87800F8D918 /* ObjectBasedAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA5128A1B87800F8D918 /* ObjectBasedAdapter.swift */; };
-		E0EAEA5428A1BC0F00F8D918 /* FileObjectBasedAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEA5328A1BC0F00F8D918 /* FileObjectBasedAdapter.swift */; };
 		E18A82552893F86100D2B0BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82542893F86100D2B0BB /* AppDelegate.swift */; };
 		E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82562893F86100D2B0BB /* SceneDelegate.swift */; };
 		E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82582893F86100D2B0BB /* AnimationViewController.swift */; };
@@ -95,7 +99,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E002B8EC28A4435200FBCBDD /* LanguageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		E002B91228A698CA00FBCBDD /* AnimationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFlow.swift; sourceTree = "<group>"; };
 		E002B91428A698FB00FBCBDD /* AnimationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationStep.swift; sourceTree = "<group>"; };
 		E002B91928A6994C00FBCBDD /* AnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewModel.swift; sourceTree = "<group>"; };
@@ -111,7 +114,14 @@
 		E002B94328A6DD5800FBCBDD /* RxViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewModelProtocol.swift; sourceTree = "<group>"; };
 		E002B94528A6E00900FBCBDD /* RXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXViewController.swift; sourceTree = "<group>"; };
 		E002B94928A6F2A300FBCBDD /*  UINavigationItem+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " UINavigationItem+Ext.swift"; sourceTree = "<group>"; };
-		E00DE06728A2EF5400C3608C /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		E002B94B28AAE99D00FBCBDD /* AFSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFSession.swift; sourceTree = "<group>"; };
+		E002B94D28AAEFE400FBCBDD /* LanguagesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesResponse.swift; sourceTree = "<group>"; };
+		E002B94F28AAF0A000FBCBDD /* LanguagesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesApi.swift; sourceTree = "<group>"; };
+		E002B95128AAF0EB00FBCBDD /* AFLanguagesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFLanguagesApi.swift; sourceTree = "<group>"; };
+		E002B95628AC1F7D00FBCBDD /* LanguagesMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesMapper.swift; sourceTree = "<group>"; };
+		E002B95A28AC308200FBCBDD /* LanguageModelTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModelTemp.swift; sourceTree = "<group>"; };
+		E002B95D28AD7F6400FBCBDD /* AnimationFlow+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationFlow+DI.swift"; sourceTree = "<group>"; };
+		E00DE06728A2EF5400C3608C /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		E00DE06A28A2EFCB00C3608C /* LanguageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMapper.swift; sourceTree = "<group>"; };
 		E00DE06E28A2F0B200C3608C /* TranslationStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationStorageModel.swift; sourceTree = "<group>"; };
 		E00DE07128A2F15900C3608C /* TranslationMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationMapper.swift; sourceTree = "<group>"; };
@@ -138,10 +148,8 @@
 		E0EAEA4028A1A67800F8D918 /* JSONSerialiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerialiser.swift; sourceTree = "<group>"; };
 		E0EAEA4328A1A73B00F8D918 /* StorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageController.swift; sourceTree = "<group>"; };
 		E0EAEA4A28A1B14100F8D918 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
-		E0EAEA4C28A1B6B100F8D918 /* FileDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataStorage.swift; sourceTree = "<group>"; };
 		E0EAEA4F28A1B72A00F8D918 /* LanguageStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageStorageModel.swift; sourceTree = "<group>"; };
 		E0EAEA5128A1B87800F8D918 /* ObjectBasedAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectBasedAdapter.swift; sourceTree = "<group>"; };
-		E0EAEA5328A1BC0F00F8D918 /* FileObjectBasedAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileObjectBasedAdapter.swift; sourceTree = "<group>"; };
 		E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "geekbrains-Nagibator3000.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18A82542893F86100D2B0BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E18A82562893F86100D2B0BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,19 +204,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E002B8EB28A4435200FBCBDD /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				E002B8EC28A4435200FBCBDD /* LanguageModel.swift */,
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
 		E002B91128A698A100FBCBDD /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
 				E002B91228A698CA00FBCBDD /* AnimationFlow.swift */,
 				E002B91428A698FB00FBCBDD /* AnimationStep.swift */,
+				E002B95D28AD7F6400FBCBDD /* AnimationFlow+DI.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -369,9 +370,26 @@
 			path = RXUITools;
 			sourceTree = "<group>";
 		};
+		E002B95528AC1F6A00FBCBDD /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				E002B95628AC1F7D00FBCBDD /* LanguagesMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		E002B95828AC308200FBCBDD /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				E002B95A28AC308200FBCBDD /* LanguageModelTemp.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		E00DE06528A2EF3A00C3608C /* Language */ = {
 			isa = PBXGroup;
 			children = (
+				E002B95528AC1F6A00FBCBDD /* Mapper */,
 				E00DE06628A2EF4200C3608C /* Model */,
 				E00DE07328A2F21500C3608C /* LanguagesRepository.swift */,
 			);
@@ -381,7 +399,7 @@
 		E00DE06628A2EF4200C3608C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E00DE06728A2EF5400C3608C /* Language.swift */,
+				E00DE06728A2EF5400C3608C /* LanguageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -457,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				E0EAE9FB289C4C3700F8D918 /* Translater */,
+				E002B94B28AAE99D00FBCBDD /* AFSession.swift */,
 			);
 			path = Remoute;
 			sourceTree = "<group>";
@@ -486,6 +505,7 @@
 				E0EAEA09289C59DB00F8D918 /* Model */,
 				E0EAEA06289C569800F8D918 /* Error */,
 				E0EAEA1B289D9BFF00F8D918 /* AFTranslateApi.swift */,
+				E002B95128AAF0EB00FBCBDD /* AFLanguagesApi.swift */,
 			);
 			path = Alamofire;
 			sourceTree = "<group>";
@@ -511,6 +531,7 @@
 			children = (
 				E0EAEA0B289D91BA00F8D918 /* TranslateResponse.swift */,
 				E0EAEA0D289D91EE00F8D918 /* TranslateParams.swift */,
+				E002B94D28AAEFE400FBCBDD /* LanguagesResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -519,6 +540,7 @@
 			isa = PBXGroup;
 			children = (
 				E0EAEA0F289D92C500F8D918 /* TranslateApi.swift */,
+				E002B94F28AAF0A000FBCBDD /* LanguagesApi.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -621,7 +643,6 @@
 			children = (
 				E0EAEA3A28A1A5B200F8D918 /* Mapper.swift */,
 				E0EAEA5128A1B87800F8D918 /* ObjectBasedAdapter.swift */,
-				E0EAEA5328A1BC0F00F8D918 /* FileObjectBasedAdapter.swift */,
 			);
 			path = Adapter;
 			sourceTree = "<group>";
@@ -654,7 +675,6 @@
 			isa = PBXGroup;
 			children = (
 				E0EAEA4A28A1B14100F8D918 /* DataStorage.swift */,
-				E0EAEA4C28A1B6B100F8D918 /* FileDataStorage.swift */,
 			);
 			path = DataStorage;
 			sourceTree = "<group>";
@@ -705,7 +725,7 @@
 		F4D62A102896FF6D0000B690 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				E002B8EB28A4435200FBCBDD /* Entity */,
+				E002B95828AC308200FBCBDD /* Entity */,
 				E0EAEA5528A1BD0100F8D918 /* Repository */,
 				E0EAE9F9289C4C0800F8D918 /* Data */,
 				F4D62A112896FF760000B690 /* Core */,
@@ -949,10 +969,11 @@
 				E0EAEA1C289D9BFF00F8D918 /* AFTranslateApi.swift in Sources */,
 				E002B94428A6DD5800FBCBDD /* RxViewModelProtocol.swift in Sources */,
 				F4D82C5A289998D700FFFFA7 /* String+Ext.swift in Sources */,
+				E002B95728AC1F7D00FBCBDD /* LanguagesMapper.swift in Sources */,
 				E0EAEA4B28A1B14100F8D918 /* DataStorage.swift in Sources */,
-				E0EAEA5428A1BC0F00F8D918 /* FileObjectBasedAdapter.swift in Sources */,
 				E0EAEA3928A1A54B00F8D918 /* StorageKeys.swift in Sources */,
 				E00DE07E28A302B300C3608C /* LanguageUseCase.swift in Sources */,
+				E002B95E28AD7F6400FBCBDD /* AnimationFlow+DI.swift in Sources */,
 				E002B93E28A6D69B00FBCBDD /* TrainingViewModel.swift in Sources */,
 				F4E6040F28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift in Sources */,
 				E0EAEA5028A1B72A00F8D918 /* LanguageStorageModel.swift in Sources */,
@@ -982,7 +1003,7 @@
 				E0EAEA05289C4E9F00F8D918 /* GenericNetworkingError.swift in Sources */,
 				E00DE07428A2F21500C3608C /* LanguagesRepository.swift in Sources */,
 				E002B93628A6D63100FBCBDD /* TrainingStep.swift in Sources */,
-				E00DE06828A2EF5400C3608C /* Language.swift in Sources */,
+				E00DE06828A2EF5400C3608C /* LanguageModel.swift in Sources */,
 				E0EAEA4128A1A67800F8D918 /* JSONSerialiser.swift in Sources */,
 				E0EAEA4428A1A73B00F8D918 /* StorageController.swift in Sources */,
 				E0EAEA30289DAD7D00F8D918 /* MainFlow+DI.swift in Sources */,
@@ -990,10 +1011,10 @@
 				F49F2FD928A8FD0A00F2D6FC /* DictionaryTableViewCell.swift in Sources */,
 				E18A82572893F86100D2B0BB /* SceneDelegate.swift in Sources */,
 				E002B93128A6D4EA00FBCBDD /* DictionaryStep.swift in Sources */,
-				E0EAEA4D28A1B6B100F8D918 /* FileDataStorage.swift in Sources */,
 				E002B93328A6D50B00FBCBDD /* DictionaryFlow.swift in Sources */,
 				E0EAEA5228A1B87800F8D918 /* ObjectBasedAdapter.swift in Sources */,
 				F4D82C79289DA90900FFFFA7 /* SelectLanguageViewModel.swift in Sources */,
+				E002B95C28AC308200FBCBDD /* LanguageModelTemp.swift in Sources */,
 				E0EAEA1A289D93CB00F8D918 /* WebUrlPath.swift in Sources */,
 				E0EAEA08289C56AE00F8D918 /* AFErrorMapper.swift in Sources */,
 				F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */,
@@ -1005,11 +1026,14 @@
 				E002B92F28A6D45900FBCBDD /* DictionaryViewModel.swift in Sources */,
 				F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */,
 				F4D82C75289DA45600FFFFA7 /* SelectLanguageCellModel.swift in Sources */,
+				E002B95228AAF0EB00FBCBDD /* AFLanguagesApi.swift in Sources */,
+				E002B94E28AAEFE400FBCBDD /* LanguagesResponse.swift in Sources */,
 				E002B91528A698FB00FBCBDD /* AnimationStep.swift in Sources */,
 				F4D82C5C2899A4BE00FFFFA7 /* TranslateViewModel.swift in Sources */,
-				E002B8ED28A4435200FBCBDD /* LanguageModel.swift in Sources */,
+				E002B94C28AAE99D00FBCBDD /* AFSession.swift in Sources */,
 				E002B91A28A6994C00FBCBDD /* AnimationViewModel.swift in Sources */,
 				E0EAEA33289DAD9D00F8D918 /* MainFlow.swift in Sources */,
+				E002B95028AAF0A000FBCBDD /* LanguagesApi.swift in Sources */,
 				E002B93828A6D65100FBCBDD /* TrainingFlow.swift in Sources */,
 				E0EAEA10289D92C500F8D918 /* TranslateApi.swift in Sources */,
 				F4A5B37828A5A08100D0293E /* Locale+Ext.swift in Sources */,
