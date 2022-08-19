@@ -12,9 +12,13 @@ final class DictionaryTableViewCell: UITableViewCell {
     var viewModel: DictionaryTableCellViewModel!
     
     // MARK: - Private properties
+    private var titleFromLabel = UILabel()
+    private var titleToLabel = UILabel()
     private var fromLabel = UILabel()
     private var toLabel = UILabel()
     private var separatorView = UIView()
+    
+    private let onePixelHeight = 1.0 / UIScreen.main.scale
     var disposeBag = DisposeBag()
     
     // MARK: - Init & Lifecycle
@@ -31,6 +35,18 @@ final class DictionaryTableViewCell: UITableViewCell {
     private func initialConfig() {
         selectionStyle = .none
         
+        titleFromLabel.text = Constants.titleFromLabel
+        titleToLabel.text = Constants.titleToLabel
+        titleFromLabel.font = Constants.boldFont
+        titleToLabel.font = Constants.boldFont
+        
+        fromLabel.numberOfLines = 0
+        toLabel.numberOfLines = 0
+        fromLabel.font = Constants.italicFont
+        toLabel.font = Constants.italicFont
+        
+        contentView.addSubview(titleFromLabel)
+        contentView.addSubview(titleToLabel)
         contentView.addSubview(fromLabel)
         contentView.addSubview(toLabel)
         contentView.addSubview(separatorView)
@@ -48,15 +64,16 @@ final class DictionaryTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        titleFromLabel.pin.top(16.0).horizontally().margin(16.0).sizeToFit()
+        fromLabel.pin.below(of: titleFromLabel).horizontally().margin(16.0).sizeToFit(.width)
         
-        let height = 1.0 / UIScreen.main.bounds.width
         
-        fromLabel.pin.top().horizontally().margin(16.0).sizeToFit()
-        toLabel.pin.below(of: fromLabel, aligned: .start).right(16.0).sizeToFit()
+        titleToLabel.pin.below(of: fromLabel).horizontally().margin(16.0).sizeToFit()
+        toLabel.pin.below(of: titleToLabel).horizontally().margin(16.0).sizeToFit(.width)
         
         contentView.pin.height(toLabel.frame.maxY + 16.0)
         
-        separatorView.pin.bottom().horizontally(16.0).height(height)
+        separatorView.pin.bottom().horizontally(16.0).height(onePixelHeight)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -84,4 +101,7 @@ private enum Constants {
     static let titleToLabel = "Translation".localized
     
     static let separatorColor = ColorScheme.greenPantone.color
+    
+    static let boldFont = UIFont.boldSystemFont(ofSize: 16.0)
+    static let italicFont = UIFont.italicSystemFont(ofSize: 14.0)
 }

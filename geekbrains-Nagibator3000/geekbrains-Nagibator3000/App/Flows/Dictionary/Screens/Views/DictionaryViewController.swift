@@ -51,7 +51,7 @@ final class DictionaryViewController: UIViewController {
                 return cell
             },
             canEditRowAtIndexPath: { _, _ in
-                return true
+                return false
             },
             canMoveRowAtIndexPath: { _, _ in
                 return true
