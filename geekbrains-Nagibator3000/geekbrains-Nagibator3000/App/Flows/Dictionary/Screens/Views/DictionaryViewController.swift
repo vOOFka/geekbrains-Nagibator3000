@@ -46,8 +46,8 @@ final class DictionaryViewController: UIViewController {
                                                            reloadAnimation: .fade,
                                                            deleteAnimation: .left),
             configureCell: { _, tableView, indexPath, translation in
-                let cell: DictionaryTableViewCell = tableView.dequeueReusableCell(DictionaryTableViewCell.self, for: indexPath)
-                cell.config(with: translation)
+                var cell: DictionaryTableViewCell = tableView.dequeueReusableCell(DictionaryTableViewCell.self, for: indexPath)
+                cell.bind(to: DictionaryTableCellViewModel(with: translation))
                 return cell
             },
             canEditRowAtIndexPath: { _, _ in

@@ -6,14 +6,15 @@
 //
 
 import UIKit
+import RxSwift
 
 final class DictionaryTableViewCell: UITableViewCell {
-    // MARK: - Public properties
-    public static let reuseIdentifier = "DictionaryTableViewCell"
+    var viewModel: DictionaryTableCellViewModel!
     
     // MARK: - Private properties
     private var fromLabel = UILabel()
     private var toLabel = UILabel()
+    var disposeBag = DisposeBag()
     
     // MARK: - Init & Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -33,14 +34,10 @@ final class DictionaryTableViewCell: UITableViewCell {
         layoutSubviews()
     }
     
-    public func config(with model: TranslationModel) {
-        fromLabel.text = Constants.titleFromLabel + " " + model.fromText
-        toLabel.text = Constants.titleToLabel + " " + model.toText
-    }
-    
     override func prepareForReuse() {
         fromLabel.text = String()
         toLabel.text = String()
+        disposeBag = DisposeBag()
     }
     
     override func layoutSubviews() {
@@ -54,6 +51,18 @@ final class DictionaryTableViewCell: UITableViewCell {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         layoutSubviews()
         return CGSize(width: size.width, height: toLabel.frame.maxY + 12.0)
+    }
+}
+
+extension DictionaryTableViewCell: BindableType {
+    func bindViewModel() {
+        viewModel.text
+            .drive(fromLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.translation
+            .drive(toLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 }
 
