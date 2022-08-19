@@ -6,8 +6,21 @@
 //
 
 import Foundation
+import RxDataSources
 
-public struct TranslationModel {
+public struct TranslationModel: IdentifiableType {
+    public var identity: String {
+            UUID().uuidString
+        }
+    
+    public typealias Identity = String
+    
   let fromText: String
   let toText: String
+}
+
+extension TranslationModel: Equatable {
+    public static func == (lhs: TranslationModel, rhs: TranslationModel) -> Bool {
+        return lhs.identity == rhs.identity
+    }
 }

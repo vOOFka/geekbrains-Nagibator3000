@@ -10,13 +10,13 @@ import RxFlow
 import RxCocoa
 import RxSwift
 
-class DictionaryViewModel: RxViewModelProtocol, Stepper {
+final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     struct Input {
         let enterScreen: PublishSubject<Void>
     }
 
     struct Output {
-        let translations: Driver<[TranslationModel]>
+        let translationsSections: Driver<[TranslationSectionModel]>
     }
 
     private(set) var input: Input!
@@ -28,7 +28,7 @@ class DictionaryViewModel: RxViewModelProtocol, Stepper {
     private let enterScreen = PublishSubject<Void>()
     
     // Output
-    let translations = BehaviorRelay<[TranslationModel]>(value: [])
+    let translationsSections = BehaviorRelay<[TranslationSectionModel]>(value: [])
     
     var steps = PublishRelay<Step>()
     
@@ -41,7 +41,7 @@ class DictionaryViewModel: RxViewModelProtocol, Stepper {
             enterScreen: enterScreen
         )
         output = Output(
-            translations: translations.asDriver(onErrorJustReturn: [])
+            translationsSections: translationsSections.asDriver(onErrorJustReturn: [])
         )
         
         setupBindings()
@@ -51,12 +51,14 @@ class DictionaryViewModel: RxViewModelProtocol, Stepper {
         bindEnterScreen()
     }
     
+    private func configSections() -> Observable<[TranslationSectionModel]>? {
+        dictionaryUseCase?.get().compactMap { [TranslationSectionModel(header: "", items: $0)] }
+    }
+    
     private func bindEnterScreen() {
         enterScreen
-            .flatMap { [weak self] in
-                (self?.dictionaryUseCase?.get().asDriver(onErrorJustReturn: []))!
-            }
-            .bind(to: translations)
+            .withLatestFrom(configSections()!)
+            .bind(to: translationsSections)
             .disposed(by: disposeBag)
     }
 }

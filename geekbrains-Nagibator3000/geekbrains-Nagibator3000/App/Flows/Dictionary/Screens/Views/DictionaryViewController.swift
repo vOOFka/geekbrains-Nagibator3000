@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxDataSources
 
 final class DictionaryViewController: UIViewController {
     var viewModel: DictionaryViewModel!
@@ -35,23 +36,39 @@ final class DictionaryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         tabBarController?.navigationItem.setupTitle(text: Constants.title)
+        tableView.setEditing(true, animated: true)
+    }
+    
+    private static func dataSource() -> RxTableViewSectionedAnimatedDataSource<TranslationSectionModel> {
+        RxTableViewSectionedAnimatedDataSource<TranslationSectionModel>(
+            animationConfiguration: AnimationConfiguration(insertAnimation: .middle,
+                                                           reloadAnimation: .fade,
+                                                           deleteAnimation: .left),
+            configureCell: { _, tableView, indexPath, translation in
+                let cell: DictionaryTableViewCell = tableView.dequeueReusableCell(DictionaryTableViewCell.self, for: indexPath)
+                cell.config(with: translation)
+                return cell
+            },
+            canEditRowAtIndexPath: { _, _ in
+                return true
+            },
+            canMoveRowAtIndexPath: { _, _ in
+                return true
+            }
+        )
     }
     
     private func bindLifeCycle() {
-      rx.viewWillAppear
-        .bind(to: viewModel.input.enterScreen)
-        .disposed(by: disposeBag)
+        rx.viewWillAppear
+            .bind(to: viewModel.input.enterScreen)
+            .disposed(by: disposeBag)
     }
     
     private func bindViewModel() {
-        viewModel.translations.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: DictionaryTableViewCell.reuseIdentifier,
-                                         cellType: DictionaryTableViewCell.self)) {
-                row, translation, cell in
-                cell.config(with: translation)
-            }.disposed(by: disposeBag)
+        viewModel.translationsSections
+            .bind(to: tableView.rx.items(dataSource: DictionaryViewController.dataSource()))
+            .disposed(by: disposeBag)
     }
     
     //MARK: - Layout
