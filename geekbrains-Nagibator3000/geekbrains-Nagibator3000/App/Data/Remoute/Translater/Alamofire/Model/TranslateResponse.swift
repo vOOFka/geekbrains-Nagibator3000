@@ -15,7 +15,7 @@ public struct TranslateResponse: Codable {
 }
 
 public struct Translation: Codable {
-    let text, detectedLanguageCode: String
+    let text: String
 }
 
 public struct Detail: Codable {

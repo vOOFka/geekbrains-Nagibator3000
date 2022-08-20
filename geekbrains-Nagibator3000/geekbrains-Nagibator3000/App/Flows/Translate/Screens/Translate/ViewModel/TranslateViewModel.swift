@@ -27,6 +27,7 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
     let translateText: Driver<TranslationModel>
     let sourceLanguage: Driver<LanguageModel>
     let destinationLanguage: Driver<LanguageModel>
+    let reverseText: PublishRelay<Void>
   }
   
   private(set) var input: Input!
@@ -49,14 +50,15 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   private let languageSelectedIndex = BehaviorSubject<Int>(value: 0)
   
   // Outut
+  let reverseText = PublishRelay<Void>()
   private let translatedText = BehaviorSubject<TranslationModel>(
     value: TranslationModel(fromText: "", toText: "")
   )
   private let sourceLanguage = BehaviorSubject<LanguageModel>(
-    value: LanguageModel(code: "none", name: "select")
+    value: LanguageModel(code: "ru", name: "русский")
   )
   private let destinationLanguage = BehaviorSubject<LanguageModel>(
-    value: LanguageModel(code: "none", name: "select")
+    value: LanguageModel(code: "en", name: "english")
   )
   
   init(
@@ -83,7 +85,8 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
       sourceLanguage: sourceLanguage
         .asDriver(onErrorJustReturn: LanguageModel(code: "none", name: "select")),
       destinationLanguage: destinationLanguage
-        .asDriver(onErrorJustReturn: LanguageModel(code: "none", name: "select"))
+        .asDriver(onErrorJustReturn: LanguageModel(code: "none", name: "select")),
+      reverseText: reverseText
     )
     
     setupBind()
@@ -101,11 +104,15 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   private func bindSwapLanguages() {
     tappedReverseLanguage
       .withLatestFrom(
-        Observable.combineLatest(sourceLanguage, destinationLanguage)
+        Observable.combineLatest(
+          sourceLanguage,
+          destinationLanguage
+        )
       )
       .bind { [weak self] from, to in
         self?.sourceLanguage.onNext(to)
         self?.destinationLanguage.onNext(from)
+        self?.reverseText.accept(Void())
       }
       .disposed(by: disposeBag)
   }

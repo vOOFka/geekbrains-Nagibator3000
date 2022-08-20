@@ -1,7 +1,7 @@
 import UIKit
 
 enum ColorScheme: CaseIterable {
-    case greenPantone, raspberryRose, fuchsiaBlue, white
+    case greenPantone, raspberryRose, fuchsiaBlue, white, black
 
     var color: UIColor {
         switch self {
@@ -13,6 +13,8 @@ enum ColorScheme: CaseIterable {
             return UIColor(red: 129.0/255.0, green: 78.0/255.0, blue: 175.0/255.0, alpha: 1.0)
         case .white:
             return UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 1.0)
+        case .black:
+          return UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
         }
     }
 }
