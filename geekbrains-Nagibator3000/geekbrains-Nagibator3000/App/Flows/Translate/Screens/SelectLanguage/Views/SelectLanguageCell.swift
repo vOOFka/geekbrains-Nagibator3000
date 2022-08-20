@@ -7,22 +7,19 @@
 
 import UIKit
 
-final class SelectLanguageCell: UITableViewCell {   
-    // MARK: - Private properties
-    private var viewModel: SelectLanguageCellModel?
-    private var nameLabel = UILabel()
-    
-    private var iconImageView: UIImageView = {
-        let iconImageView = UIImageView()
-        iconImageView.layer.borderWidth = 1.0
-        iconImageView.layer.borderColor = Constants.greenColor.cgColor
-        iconImageView.layer.cornerRadius = 6.0
-        iconImageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration.init(weight: .bold)
-        return iconImageView
-    }()
-    
-    // MARK: - Init & Lifecycle
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+class SelectLanguageCell: RxTableViewCell<SelectLanguageCellModel> {
+  private var nameLabel = UILabel()
+  
+  private var iconImageView: UIImageView = {
+    let iconImageView = UIImageView()
+    iconImageView.layer.borderWidth = 1.0
+    iconImageView.layer.borderColor = Constants.greenColor.cgColor
+    iconImageView.layer.cornerRadius = 6.0
+    iconImageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration.init(weight: .bold)
+    return iconImageView
+  }()
+  
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initialConfig()
     }
@@ -31,41 +28,32 @@ final class SelectLanguageCell: UITableViewCell {
         super.init(coder: aDecoder)
         initialConfig()
     }
+
+  override func config(item: SelectLanguageCellModel) {
+    nameLabel.text = item.language.name.capitalized
+    iconImageView.image = item.isSelected ? Constants.checkmarkIcon : nil
+  }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
     
-    private func initialConfig() {
-        nameLabel.numberOfLines = 1
-        
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(iconImageView)
-        
-        layoutSubviews()
-    }
-    
-    override func prepareForReuse() {
-        viewModel = nil
-        nameLabel.text = String()
-        iconImageView.image = nil
-    }
-    
-    public func config(with viewModel: SelectLanguageCellModel) {
-        self.viewModel = viewModel
-        
-      nameLabel.text = viewModel.language.nativeName?.capitalized
-        iconImageView.image = viewModel.isSelected ? Constants.checkmarkIcon : nil
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        iconImageView.pin.centerLeft().margin(20.0).height(30.0).width(30.0)
-        nameLabel.pin.after(of: iconImageView, aligned: .center).margin(20.0).right().sizeToFit()
-    }
+    iconImageView.pin.centerLeft().margin(20.0).height(30.0).width(30.0)
+    nameLabel.pin.after(of: iconImageView, aligned: .center).margin(20.0).right().sizeToFit()
+  }
+  
+  private func initialConfig() {
+    nameLabel.numberOfLines = 1
+    selectionStyle = .none
+    contentView.addSubview(nameLabel)
+    contentView.addSubview(iconImageView)
+  }
 }
 
 //MARK: - Constants
 
 private enum Constants {
-    static let checkmarkIcon = UIImage(systemName: "checkmark")?.withTintColor(greenColor, renderingMode: .alwaysOriginal)
-
-    static let whiteColor = ColorScheme.white.color
-    static let greenColor = ColorScheme.greenPantone.color
+  static let checkmarkIcon = UIImage(systemName: "checkmark")?.withTintColor(greenColor, renderingMode: .alwaysOriginal)
+  
+  static let whiteColor = ColorScheme.white.color
+  static let greenColor = ColorScheme.greenPantone.color
 }

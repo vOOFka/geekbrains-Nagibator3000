@@ -11,4 +11,5 @@ import RxFlow
 enum TranslateStep: Step {
   case openLanguagesRequiredScreen(language: LanguageModel)
   case openShareRequiredScreen(text: String)
+  case selectedLanguage(language: LanguageModel)
 }

@@ -12,16 +12,18 @@ import Swinject
 
 class TranslateFlow: Flow {
   var viewController: UIViewController
-  private let container = Container()
+  let container: Container!
 
   var root: Presentable {
     self.viewController
   }
 
   init(
-    viewController: UIViewController
+    viewController: UIViewController,
+    container: Container
   ) {
     self.viewController = viewController
+    self.container = container
   }
 
   func navigate(to step: Step) -> FlowContributors {
@@ -31,8 +33,11 @@ class TranslateFlow: Flow {
     case .openShareRequiredScreen(let text):
         return openShareScreen(text: text)
       
-    case .openLanguagesRequiredScreen(_):
-      return .none
+    case .openLanguagesRequiredScreen(let language):
+      return openLenguagesScreen(language: language)
+      
+    case .selectedLanguage(let language):
+      return updateLanguage(language: language)
     }
   }
   
@@ -42,6 +47,31 @@ class TranslateFlow: Flow {
       activityVC.excludedActivityTypes = [.airDrop, .addToReadingList]
       viewController.present(activityVC, animated: true, completion: nil)
     
+    return .none
+  }
+  
+  private func openLenguagesScreen(language: LanguageModel) -> FlowContributors {
+    let viewModel = SelectLanguageViewModel(
+      carrentLanguages: language,
+      languagesUseCase: container.resolve(LanguageUseCase.self)!
+    )
+    
+    let viewController = SelectLanguageViewController()
+    viewController.viewModel = viewModel
+    self.viewController.present(viewController, animated: true, completion: nil)
+    
+    return .one(flowContributor: .contribute(
+      withNextPresentable: viewController, withNextStepper: viewModel)
+    )
+  }
+  
+  private func updateLanguage(language: LanguageModel) -> FlowContributors {
+    let viewController = self.viewController.presentedViewController
+    viewController?.dismiss(animated: true)
+    
+    guard let traslateVc = self.viewController as? TranslateViewController else { return .none }
+    
+    traslateVc.viewModel.input.onLanguageUpdated.accept(language)
     return .none
   }
 }
