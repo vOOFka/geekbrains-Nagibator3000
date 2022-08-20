@@ -53,7 +53,7 @@ class TranslateFlow: Flow {
   private func openLenguagesScreen(language: LanguageModel) -> FlowContributors {
     let viewModel = SelectLanguageViewModel(
       carrentLanguages: language,
-      languagesUseVase: container.resolve(LanguageUseCase.self)!
+      languagesUseCase: container.resolve(LanguageUseCase.self)!
     )
     
     let viewController = SelectLanguageViewController()

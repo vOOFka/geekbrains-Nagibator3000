@@ -35,9 +35,9 @@ final class SelectLanguageViewModel: RxViewModelProtocol, Stepper {
   // Output
   private let source = BehaviorSubject<[LanguagesListModel]>(value: [])
 
-  init(carrentLanguages: LanguageModel, languagesUseVase: LanguageUseCase) {
+  init(carrentLanguages: LanguageModel, languagesUseCase: LanguageUseCase) {
     self.carrentLanguages = carrentLanguages
-    self.languagesUseVase = languagesUseVase
+    self.languagesUseVase = languagesUseCase
     
     input = Input(enterScreen: enterScreen, selectedCell: selectedCell.asObserver())
     output = Output(source:  source.asDriver(onErrorJustReturn: []))
