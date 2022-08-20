@@ -10,11 +10,11 @@ import RxCocoa
 import RxSwift
 
 class DictionaryTableCellViewModel {
-    var text: Driver<String>
-    var translation: Driver<String>
+    var text: String
+    var translation: String
     
     init(with translation: TranslationModel) {
-        self.text = .just(translation.fromText)
-        self.translation = .just(translation.toText)
+        self.text = translation.fromText
+        self.translation = translation.toText
     }
 }

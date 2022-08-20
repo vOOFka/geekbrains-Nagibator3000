@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-final class DictionaryTableViewCell: UITableViewCell {
+final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewModel> {
     var viewModel: DictionaryTableCellViewModel!
     
     // MARK: - Private properties
@@ -19,7 +19,6 @@ final class DictionaryTableViewCell: UITableViewCell {
     private var separatorView = UIView()
     
     private let onePixelHeight = 1.0 / UIScreen.main.scale
-    var disposeBag = DisposeBag()
     
     // MARK: - Init & Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,6 +55,11 @@ final class DictionaryTableViewCell: UITableViewCell {
         layoutSubviews()
     }
     
+    override func config(item: DictionaryTableCellViewModel) {
+        self.fromLabel.text = item.text
+        self.toLabel.text = item.translation
+    }
+    
     override func prepareForReuse() {
         fromLabel.text = String()
         toLabel.text = String()
@@ -79,18 +83,6 @@ final class DictionaryTableViewCell: UITableViewCell {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         layoutSubviews()
         return CGSize(width: size.width, height: separatorView.frame.maxY)
-    }
-}
-
-extension DictionaryTableViewCell: BindableType {
-    func bindViewModel() {
-        viewModel.text
-            .drive(fromLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        viewModel.translation
-            .drive(toLabel.rx.text)
-            .disposed(by: disposeBag)
     }
 }
 
