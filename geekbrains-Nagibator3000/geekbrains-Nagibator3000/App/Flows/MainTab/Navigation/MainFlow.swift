@@ -11,14 +11,15 @@ import UIKit
 
 final class MainFlow: Flow {
     private(set) var window: UIWindow
-    let container = Container()
+    let container: Container!
     
     var root: Presentable {
         self.window
     }
     
-    init(window: UIWindow) {
+    init(window: UIWindow, container: Container) {
         self.window = window
+        self.container = container
         
         setUpDiContainer()
     }
@@ -79,7 +80,7 @@ final class MainFlow: Flow {
         
         
         // create flows
-        let translateFlow = TranslateFlow(viewController: translateViewController)
+        let translateFlow = TranslateFlow(viewController: translateViewController, container: container)
         let dictionaryFlow = DictionaryFlow(viewController: dictionaryViewController)
         let trainingFlow = TrainingFlow(viewController: trainingViewController)
         

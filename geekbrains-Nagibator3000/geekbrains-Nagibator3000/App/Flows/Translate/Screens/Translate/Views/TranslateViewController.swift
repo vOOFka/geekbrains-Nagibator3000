@@ -23,6 +23,7 @@ final class TranslateViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     initialConfig()
     bindViewModel()
   }
@@ -63,6 +64,8 @@ final class TranslateViewController: UIViewController {
   private func setupTextViews() {
     sourceTextView.delegate = self
     destinationTextView.isEditable = false
+    sourceTextView.textColor = Constants.blackColor
+    destinationTextView.textColor = Constants.blackColor
     
     view.addSubview(sourceTextView)
     view.addSubview(destinationTextView)
@@ -115,6 +118,22 @@ final class TranslateViewController: UIViewController {
       .map { $0.name.capitalized }
       .drive(sourceLanguageButton.rx.title())
       .disposed(by: disposeBag)
+    
+    viewModel.output.reverseText
+      .bind { [weak self] _ in
+        guard let self = self else { return }
+        guard !self.sourceTextView.text.isEmpty,
+              !self.destinationTextView.text.isEmpty else {
+          
+          self.sourceTextView.text = ""
+          self.destinationTextView.text = ""
+          return
+        }
+        let tempValue = self.sourceTextView.text
+        self.sourceTextView.text = self.destinationTextView.text
+        self.destinationTextView.text = tempValue
+      }
+      .disposed(by: disposeBag)
   }
 }
 
@@ -139,7 +158,7 @@ extension TranslateViewController: CustomActionsDelegate {
 extension TranslateViewController: UITextViewDelegate {
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     if text == "\n" {
-      viewModel.input.onTranslate.accept(text)
+      viewModel.input.onTranslate.accept(textView.text)
       textView.resignFirstResponder()
     }
     return true
@@ -156,4 +175,5 @@ private enum Constants {
   static let backgroundColor = ColorScheme.greenPantone.color
   static let whiteColor = ColorScheme.white.color
   static let greenColor = ColorScheme.greenPantone.color
+  static let blackColor = ColorScheme.black.color
 }

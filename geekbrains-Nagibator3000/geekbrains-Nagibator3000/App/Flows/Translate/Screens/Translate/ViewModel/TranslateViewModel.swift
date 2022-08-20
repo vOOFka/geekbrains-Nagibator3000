@@ -20,12 +20,14 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
     let onSave: PublishRelay<Void>
     let onShare: PublishRelay<Void>
     let onCopy: PublishRelay<Void>
+    let onLanguageUpdated: PublishRelay<LanguageModel>
   }
   
   struct Output {
     let translateText: Driver<TranslationModel>
     let sourceLanguage: Driver<LanguageModel>
     let destinationLanguage: Driver<LanguageModel>
+    let reverseText: PublishRelay<Void>
   }
   
   private(set) var input: Input!
@@ -44,16 +46,19 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   private let saved = PublishRelay<Void>()
   private let shared = PublishRelay<Void>()
   private let copied = PublishRelay<Void>()
+  private let languageUpdated = PublishRelay<LanguageModel>()
+  private let languageSelectedIndex = BehaviorSubject<Int>(value: 0)
   
   // Outut
+  let reverseText = PublishRelay<Void>()
   private let translatedText = BehaviorSubject<TranslationModel>(
     value: TranslationModel(fromText: "", toText: "")
   )
   private let sourceLanguage = BehaviorSubject<LanguageModel>(
-    value: LanguageModel(code: "none", name: "select")
+    value: LanguageModel(code: "ru", name: "русский")
   )
   private let destinationLanguage = BehaviorSubject<LanguageModel>(
-    value: LanguageModel(code: "none", name: "select")
+    value: LanguageModel(code: "en", name: "english")
   )
   
   init(
@@ -70,7 +75,8 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
       onTranslate: translated,
       onSave: saved,
       onShare: shared,
-      onCopy: copied
+      onCopy: copied,
+      onLanguageUpdated: languageUpdated
     )
     
     output = Output(
@@ -79,7 +85,8 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
       sourceLanguage: sourceLanguage
         .asDriver(onErrorJustReturn: LanguageModel(code: "none", name: "select")),
       destinationLanguage: destinationLanguage
-        .asDriver(onErrorJustReturn: LanguageModel(code: "none", name: "select"))
+        .asDriver(onErrorJustReturn: LanguageModel(code: "none", name: "select")),
+      reverseText: reverseText
     )
     
     setupBind()
@@ -97,11 +104,15 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   private func bindSwapLanguages() {
     tappedReverseLanguage
       .withLatestFrom(
-        Observable.combineLatest(sourceLanguage, destinationLanguage)
+        Observable.combineLatest(
+          sourceLanguage,
+          destinationLanguage
+        )
       )
       .bind { [weak self] from, to in
         self?.sourceLanguage.onNext(to)
         self?.destinationLanguage.onNext(from)
+        self?.reverseText.accept(Void())
       }
       .disposed(by: disposeBag)
   }
@@ -109,18 +120,38 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   private func bindTapLanguages() {
     tapedFromLanguage
       .withLatestFrom(sourceLanguage)
-      .map { language in
-        TranslateStep.openLanguagesRequiredScreen(language: language)
+      .map { [weak self] language in
+        self?.languageSelectedIndex.onNext(0)
+        
+        return TranslateStep.openLanguagesRequiredScreen(language: language)
       }
       .bind(to: steps)
       .disposed(by: disposeBag)
     
     tapedToLanguage
       .withLatestFrom(destinationLanguage)
-      .map { language in
-        TranslateStep.openLanguagesRequiredScreen(language: language)
+      .map { [weak self] language in
+        self?.languageSelectedIndex.onNext(1)
+        
+        return TranslateStep.openLanguagesRequiredScreen(language: language)
       }
       .bind(to: steps)
+      .disposed(by: disposeBag)
+    
+    languageUpdated
+      .withLatestFrom(Observable.combineLatest(languageUpdated, languageSelectedIndex))
+      .bind { [weak self] language, index in
+        switch index {
+        case 0:
+          self?.sourceLanguage.onNext(language)
+          
+        case 1:
+          self?.destinationLanguage.onNext(language)
+          
+        default:
+          break;
+        }
+      }
       .disposed(by: disposeBag)
   }
   

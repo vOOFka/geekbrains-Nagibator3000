@@ -50,7 +50,7 @@ class AnimationFlow: Flow {
   }
   
   private func goToMainApp() -> FlowContributors {
-    let flow = MainFlow(window: window)
+    let flow = MainFlow(window: window, container: container)
     
     return .one(
       flowContributor: .contribute(
