@@ -89,6 +89,7 @@
 		F4E6040F28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6040E28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift */; };
 		F4E6041128B03280002A4FE8 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6041028B03280002A4FE8 /* BindableType.swift */; };
 		F4E6A29928B157BD00DBD6E3 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6A29828B157BD00DBD6E3 /* RxTableViewCell.swift */; };
+		F4E6A29C28B15A1000DBD6E3 /* RXDictionaryListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6A29B28B15A1000DBD6E3 /* RXDictionaryListDataSource.swift */; };
 		F4F3124628A6DDEC00FE1F20 /* CustomActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3124528A6DDEC00FE1F20 /* CustomActionsView.swift */; };
 		F4FE217228B04D6F005C6171 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE217128B04D6F005C6171 /* Lottie */; };
 		F4FE217828B04D92005C6171 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE217728B04D92005C6171 /* Differentiator */; };
@@ -187,6 +188,7 @@
 		F4E6040E28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTableCellViewModel.swift; sourceTree = "<group>"; };
 		F4E6041028B03280002A4FE8 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		F4E6A29828B157BD00DBD6E3 /* RxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
+		F4E6A29B28B15A1000DBD6E3 /* RXDictionaryListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXDictionaryListDataSource.swift; sourceTree = "<group>"; };
 		F4F3124528A6DDEC00FE1F20 /* CustomActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -300,6 +302,7 @@
 		E002B92A28A6D41E00FBCBDD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F4E6A29A28B159D800DBD6E3 /* DataSource */,
 				E002B92D28A6D43800FBCBDD /* ViewModel */,
 				E002B92C28A6D43100FBCBDD /* Views */,
 			);
@@ -895,6 +898,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		F4E6A29A28B159D800DBD6E3 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				F4E6A29B28B15A1000DBD6E3 /* RXDictionaryListDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1075,6 +1086,7 @@
 				E0EAEA05289C4E9F00F8D918 /* GenericNetworkingError.swift in Sources */,
 				E00DE07428A2F21500C3608C /* LanguagesRepository.swift in Sources */,
 				E002B93628A6D63100FBCBDD /* TrainingStep.swift in Sources */,
+				F4E6A29C28B15A1000DBD6E3 /* RXDictionaryListDataSource.swift in Sources */,
 				E00DE06828A2EF5400C3608C /* LanguageModel.swift in Sources */,
 				E0EAEA4128A1A67800F8D918 /* JSONSerialiser.swift in Sources */,
 				E0EAEA4428A1A73B00F8D918 /* StorageController.swift in Sources */,

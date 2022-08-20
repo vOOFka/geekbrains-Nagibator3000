@@ -11,6 +11,7 @@ import RxDataSources
 
 final class DictionaryViewController: UIViewController {
     var viewModel: DictionaryViewModel!
+    private var dataSource = RXDictionaryListDataSource()
     
     private let disposeBag = DisposeBag()
     private let tableView = UITableView()
@@ -40,25 +41,6 @@ final class DictionaryViewController: UIViewController {
         tableView.setEditing(true, animated: true)
     }
     
-    private static func dataSource() -> RxTableViewSectionedAnimatedDataSource<DictionarySectionModel> {
-        RxTableViewSectionedAnimatedDataSource<DictionarySectionModel>(
-            animationConfiguration: AnimationConfiguration(insertAnimation: .middle,
-                                                           reloadAnimation: .fade,
-                                                           deleteAnimation: .left),
-            configureCell: { _, tableView, indexPath, translation in
-                let cell: DictionaryTableViewCell = tableView.dequeueReusableCell(DictionaryTableViewCell.self, for: indexPath)
-                cell.config(item: DictionaryTableCellViewModel(with: translation))
-                return cell
-            },
-            canEditRowAtIndexPath: { _, _ in
-                return false
-            },
-            canMoveRowAtIndexPath: { _, _ in
-                return true
-            }
-        )
-    }
-    
     private func bindLifeCycle() {
         rx.viewWillAppear
             .bind(to: viewModel.input.enterScreen)
@@ -67,7 +49,7 @@ final class DictionaryViewController: UIViewController {
 
     private func bindViewModel() {
         viewModel.output.translationsSections
-            .drive(tableView.rx.items(dataSource: DictionaryViewController.dataSource()))
+            .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
     
