@@ -82,7 +82,7 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         layoutSubviews()
-        return CGSize(width: size.width, height: separatorView.frame.maxY)
+        return CGSize(width: size.width, height: separatorView.frame.maxY + 1.0)
     }
 }
 
