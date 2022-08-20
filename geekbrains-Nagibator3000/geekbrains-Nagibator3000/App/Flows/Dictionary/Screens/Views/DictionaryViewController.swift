@@ -7,9 +7,11 @@
 
 import UIKit
 import RxSwift
+import RxDataSources
 
 final class DictionaryViewController: UIViewController {
     var viewModel: DictionaryViewModel!
+    private var dataSource = RXDictionaryListDataSource()
     
     private let disposeBag = DisposeBag()
     private let tableView = UITableView()
@@ -35,23 +37,20 @@ final class DictionaryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         tabBarController?.navigationItem.setupTitle(text: Constants.title)
+        tableView.setEditing(true, animated: true)
     }
     
     private func bindLifeCycle() {
-      rx.viewWillAppear
-        .bind(to: viewModel.input.enterScreen)
-        .disposed(by: disposeBag)
+        rx.viewWillAppear
+            .bind(to: viewModel.input.enterScreen)
+            .disposed(by: disposeBag)
     }
-    
+
     private func bindViewModel() {
-        viewModel.translations.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: DictionaryTableViewCell.reuseIdentifier,
-                                         cellType: DictionaryTableViewCell.self)) {
-                row, translation, cell in
-                cell.config(with: translation)
-            }.disposed(by: disposeBag)
+        viewModel.output.translationsSections
+            .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
     
     //MARK: - Layout

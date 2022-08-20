@@ -6,14 +6,19 @@
 //
 
 import UIKit
+import RxSwift
 
-final class DictionaryTableViewCell: UITableViewCell {
-    // MARK: - Public properties
-    public static let reuseIdentifier = "DictionaryTableViewCell"
+final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewModel> {
+    var viewModel: DictionaryTableCellViewModel!
     
     // MARK: - Private properties
+    private var titleFromLabel = UILabel()
+    private var titleToLabel = UILabel()
     private var fromLabel = UILabel()
     private var toLabel = UILabel()
+    private var separatorView = UIView()
+    
+    private let onePixelHeight = 1.0 / UIScreen.main.scale
     
     // MARK: - Init & Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -27,33 +32,57 @@ final class DictionaryTableViewCell: UITableViewCell {
     }
     
     private func initialConfig() {
+        selectionStyle = .none
+        
+        titleFromLabel.text = Constants.titleFromLabel
+        titleToLabel.text = Constants.titleToLabel
+        titleFromLabel.font = Constants.boldFont
+        titleToLabel.font = Constants.boldFont
+        
+        fromLabel.numberOfLines = 0
+        toLabel.numberOfLines = 0
+        fromLabel.font = Constants.italicFont
+        toLabel.font = Constants.italicFont
+        
+        contentView.addSubview(titleFromLabel)
+        contentView.addSubview(titleToLabel)
         contentView.addSubview(fromLabel)
         contentView.addSubview(toLabel)
+        contentView.addSubview(separatorView)
+        
+        separatorView.backgroundColor = Constants.separatorColor
         
         layoutSubviews()
     }
     
-    public func config(with model: TranslationModel) {
-        fromLabel.text = Constants.titleFromLabel + " " + model.fromText
-        toLabel.text = Constants.titleToLabel + " " + model.toText
+    override func config(item: DictionaryTableCellViewModel) {
+        self.fromLabel.text = item.text
+        self.toLabel.text = item.translation
     }
     
     override func prepareForReuse() {
         fromLabel.text = String()
         toLabel.text = String()
+        disposeBag = DisposeBag()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        fromLabel.pin.top().horizontally().margin(20.0).sizeToFit()
-        toLabel.pin.below(of: fromLabel).margin(20.0).sizeToFit()
+        titleFromLabel.pin.top(16.0).horizontally().margin(16.0).sizeToFit()
+        fromLabel.pin.below(of: titleFromLabel).horizontally().margin(16.0).sizeToFit(.width)
         
-        contentView.pin.height(toLabel.frame.maxY + 12.0)
+        
+        titleToLabel.pin.below(of: fromLabel).horizontally().margin(16.0).sizeToFit()
+        toLabel.pin.below(of: titleToLabel).horizontally().margin(16.0).sizeToFit(.width)
+        
+        contentView.pin.height(toLabel.frame.maxY + 16.0)
+        
+        separatorView.pin.bottom().horizontally(16.0).height(onePixelHeight)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         layoutSubviews()
-        return CGSize(width: size.width, height: toLabel.frame.maxY + 12.0)
+        return CGSize(width: size.width, height: separatorView.frame.maxY)
     }
 }
 
@@ -61,5 +90,10 @@ final class DictionaryTableViewCell: UITableViewCell {
 
 private enum Constants {
     static let titleFromLabel = "Text".localized
-    static let titleToLabel = "Translate".localized
+    static let titleToLabel = "Translation".localized
+    
+    static let separatorColor = ColorScheme.greenPantone.color
+    
+    static let boldFont = UIFont.boldSystemFont(ofSize: 16.0)
+    static let italicFont = UIFont.italicSystemFont(ofSize: 14.0)
 }

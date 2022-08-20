@@ -38,7 +38,6 @@
 		E00DE07828A2F50500C3608C /* TranslationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE07728A2F50500C3608C /* TranslationRepository.swift */; };
 		E00DE07B28A2FFCC00C3608C /* DictionaryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE07A28A2FFCC00C3608C /* DictionaryUseCase.swift */; };
 		E00DE07E28A302B300C3608C /* LanguageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE07D28A302B300C3608C /* LanguageUseCase.swift */; };
-		E08E48FD28B0078800E667D9 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E48FC28B0078800E667D9 /* RxTableViewCell.swift */; };
 		E08E48FF28B00B8700E667D9 /* RXLanguagesListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E48FE28B00B8700E667D9 /* RXLanguagesListDataSource.swift */; };
 		E08E490128B00C1800E667D9 /* LanguagesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E490028B00C1800E667D9 /* LanguagesListModel.swift */; };
 		E08E490428B00C8C00E667D9 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = E08E490328B00C8C00E667D9 /* RxDataSources */; };
@@ -71,6 +70,8 @@
 		E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18A825D2893F86400D2B0BB /* Assets.xcassets */; };
 		E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */; };
 		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
+		F42F2EF628B16DEA00B8EEC7 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F2EF528B16DEA00B8EEC7 /* RxTableViewCell.swift */; };
+		F45F435B28B1645300D6D8B6 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F45F435A28B1645300D6D8B6 /* Swinject */; };
 		F49F2FD928A8FD0A00F2D6FC /* DictionaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */; };
 		F4A5B37428A1A20D00D0293E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A5B37328A1A20D00D0293E /* CustomTextView.swift */; };
 		F4A5B37628A58C9300D0293E /* YandexService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A5B37528A58C9300D0293E /* YandexService-Info.plist */; };
@@ -88,13 +89,16 @@
 		F4D82C75289DA45600FFFFA7 /* SelectLanguageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C74289DA45600FFFFA7 /* SelectLanguageCellModel.swift */; };
 		F4D82C79289DA90900FFFFA7 /* SelectLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C78289DA90900FFFFA7 /* SelectLanguageViewModel.swift */; };
 		F4D82C7B289DB64400FFFFA7 /* languages.json in Resources */ = {isa = PBXBuildFile; fileRef = F4D82C7A289DB64400FFFFA7 /* languages.json */; };
+		F4E6040D28B023DA002A4FE8 /* DictionarySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6040C28B023DA002A4FE8 /* DictionarySectionModel.swift */; };
+		F4E6040F28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6040E28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift */; };
+		F4E6041128B03280002A4FE8 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6041028B03280002A4FE8 /* BindableType.swift */; };
+		F4E6A29C28B15A1000DBD6E3 /* RXDictionaryListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6A29B28B15A1000DBD6E3 /* RXDictionaryListDataSource.swift */; };
+		F4E6A29D28B1637500DBD6E3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE6CA928A07B6D005D6DDF /* Alamofire */; };
+		F4E6A29E28B1637500DBD6E3 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE6CAC28A07B8B005D6DDF /* RxCocoa */; };
+		F4E6A29F28B1637500DBD6E3 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE6CAE28A07B8B005D6DDF /* RxSwift */; };
+		F4E6A2A028B1637500DBD6E3 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE6CB128A07BB7005D6DDF /* PinLayout */; };
+		F4E6A2A128B1637500DBD6E3 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE6CB428A07BDB005D6DDF /* Lottie */; };
 		F4F3124628A6DDEC00FE1F20 /* CustomActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3124528A6DDEC00FE1F20 /* CustomActionsView.swift */; };
-		F4FE6CAA28A07B6D005D6DDF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE6CA928A07B6D005D6DDF /* Alamofire */; };
-		F4FE6CAD28A07B8B005D6DDF /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE6CAC28A07B8B005D6DDF /* RxCocoa */; };
-		F4FE6CAF28A07B8B005D6DDF /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE6CAE28A07B8B005D6DDF /* RxSwift */; };
-		F4FE6CB228A07BB7005D6DDF /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE6CB128A07BB7005D6DDF /* PinLayout */; };
-		F4FE6CB528A07BDB005D6DDF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE6CB428A07BDB005D6DDF /* Lottie */; };
-		F4FE6CB828A07C05005D6DDF /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F4FE6CB728A07C05005D6DDF /* Swinject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,7 +134,6 @@
 		E00DE07728A2F50500C3608C /* TranslationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRepository.swift; sourceTree = "<group>"; };
 		E00DE07A28A2FFCC00C3608C /* DictionaryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryUseCase.swift; sourceTree = "<group>"; };
 		E00DE07D28A302B300C3608C /* LanguageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageUseCase.swift; sourceTree = "<group>"; };
-		E08E48FC28B0078800E667D9 /* RxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
 		E08E48FE28B00B8700E667D9 /* RXLanguagesListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXLanguagesListDataSource.swift; sourceTree = "<group>"; };
 		E08E490028B00C1800E667D9 /* LanguagesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesListModel.swift; sourceTree = "<group>"; };
 		E08E490A28B02F0000E667D9 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 		E18A82602893F86400D2B0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E18A82622893F86400D2B0BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		F42F2EF528B16DEA00B8EEC7 /* RxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
 		F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTableViewCell.swift; sourceTree = "<group>"; };
 		F4A5B37328A1A20D00D0293E /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		F4A5B37528A58C9300D0293E /* YandexService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YandexService-Info.plist"; sourceTree = "<group>"; };
@@ -182,6 +186,10 @@
 		F4D82C74289DA45600FFFFA7 /* SelectLanguageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageCellModel.swift; sourceTree = "<group>"; };
 		F4D82C78289DA90900FFFFA7 /* SelectLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewModel.swift; sourceTree = "<group>"; };
 		F4D82C7A289DB64400FFFFA7 /* languages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = languages.json; sourceTree = "<group>"; };
+		F4E6040C28B023DA002A4FE8 /* DictionarySectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionarySectionModel.swift; sourceTree = "<group>"; };
+		F4E6040E28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTableCellViewModel.swift; sourceTree = "<group>"; };
+		F4E6041028B03280002A4FE8 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
+		F4E6A29B28B15A1000DBD6E3 /* RXDictionaryListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXDictionaryListDataSource.swift; sourceTree = "<group>"; };
 		F4F3124528A6DDEC00FE1F20 /* CustomActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,15 +198,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4FE6CB528A07BDB005D6DDF /* Lottie in Frameworks */,
+				F4E6A29F28B1637500DBD6E3 /* RxSwift in Frameworks */,
 				E002B91D28A69A7200FBCBDD /* RxFlow in Frameworks */,
-				F4FE6CAF28A07B8B005D6DDF /* RxSwift in Frameworks */,
-				F4FE6CAD28A07B8B005D6DDF /* RxCocoa in Frameworks */,
-				F4FE6CB228A07BB7005D6DDF /* PinLayout in Frameworks */,
+				F4E6A29D28B1637500DBD6E3 /* Alamofire in Frameworks */,
+				F4E6A29E28B1637500DBD6E3 /* RxCocoa in Frameworks */,
 				E08E490428B00C8C00E667D9 /* RxDataSources in Frameworks */,
-				F4FE6CAA28A07B6D005D6DDF /* Alamofire in Frameworks */,
-				F4FE6CB828A07C05005D6DDF /* Swinject in Frameworks */,
+				F45F435B28B1645300D6D8B6 /* Swinject in Frameworks */,
+				F4E6A2A028B1637500DBD6E3 /* PinLayout in Frameworks */,
 				0A356E368ED4DA1484A18DCC /* Pods_geekbrains_Nagibator3000.framework in Frameworks */,
+				F4E6A2A128B1637500DBD6E3 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +302,7 @@
 		E002B92A28A6D41E00FBCBDD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F4E6A29A28B159D800DBD6E3 /* DataSource */,
 				E002B92D28A6D43800FBCBDD /* ViewModel */,
 				E002B92C28A6D43100FBCBDD /* Views */,
 			);
@@ -321,7 +330,9 @@
 		E002B92D28A6D43800FBCBDD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F4E6040C28B023DA002A4FE8 /* DictionarySectionModel.swift */,
 				E002B92E28A6D45900FBCBDD /* DictionaryViewModel.swift */,
+				F4E6040E28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -373,7 +384,7 @@
 			children = (
 				E002B94328A6DD5800FBCBDD /* RxViewModelProtocol.swift */,
 				E002B94528A6E00900FBCBDD /* RXViewController.swift */,
-				E08E48FC28B0078800E667D9 /* RxTableViewCell.swift */,
+				F42F2EF528B16DEA00B8EEC7 /* RxTableViewCell.swift */,
 			);
 			path = RXUITools;
 			sourceTree = "<group>";
@@ -738,7 +749,6 @@
 				3431A828444F5B59E87D399F /* Pods-geekbrains-Nagibator3000.debug.xcconfig */,
 				390127F5CA4E5C5B79E4D100 /* Pods-geekbrains-Nagibator3000.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -775,6 +785,7 @@
 				F4A5B37728A5A08100D0293E /* Locale+Ext.swift */,
 				F4F3124528A6DDEC00FE1F20 /* CustomActionsView.swift */,
 				E002B94928A6F2A300FBCBDD /*  UINavigationItem+Ext.swift */,
+				F4E6041028B03280002A4FE8 /* BindableType.swift */,
 			);
 			path = "Utils&Helpers";
 			sourceTree = "<group>";
@@ -888,6 +899,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		F4E6A29A28B159D800DBD6E3 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				F4E6A29B28B15A1000DBD6E3 /* RXDictionaryListDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -899,7 +918,7 @@
 				E18A824D2893F86000D2B0BB /* Sources */,
 				E18A824E2893F86000D2B0BB /* Frameworks */,
 				E18A824F2893F86000D2B0BB /* Resources */,
-				5A781DF27EE1233A4C0B605A /* [CP] Embed Pods Frameworks */,
+				B97FEC0FB644F485368A3138 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -912,9 +931,9 @@
 				F4FE6CAE28A07B8B005D6DDF /* RxSwift */,
 				F4FE6CB128A07BB7005D6DDF /* PinLayout */,
 				F4FE6CB428A07BDB005D6DDF /* Lottie */,
-				F4FE6CB728A07C05005D6DDF /* Swinject */,
 				E002B91C28A69A7200FBCBDD /* RxFlow */,
 				E08E490328B00C8C00E667D9 /* RxDataSources */,
+				F45F435A28B1645300D6D8B6 /* Swinject */,
 			);
 			productName = "geekbrains-Nagibator3000";
 			productReference = E18A82512893F86000D2B0BB /* geekbrains-Nagibator3000.app */;
@@ -950,9 +969,9 @@
 				F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift" */,
 				F4FE6CB028A07BB7005D6DDF /* XCRemoteSwiftPackageReference "PinLayout" */,
 				F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				F4FE6CB628A07C05005D6DDF /* XCRemoteSwiftPackageReference "Swinject" */,
 				E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */,
 				E08E490228B00C8C00E667D9 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				F45F435928B1645300D6D8B6 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = E18A82522893F86000D2B0BB /* Products */;
 			projectDirPath = "";
@@ -1002,7 +1021,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5A781DF27EE1233A4C0B605A /* [CP] Embed Pods Frameworks */ = {
+		B97FEC0FB644F485368A3138 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1027,6 +1046,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E002B94028A6D70300FBCBDD /* MainStep.swift in Sources */,
+				F4E6040D28B023DA002A4FE8 /* DictionarySectionModel.swift in Sources */,
 				F4D82C72289DA31700FFFFA7 /* SelectLanguageCell.swift in Sources */,
 				E0EAEA1C289D9BFF00F8D918 /* AFTranslateApi.swift in Sources */,
 				E002B94428A6DD5800FBCBDD /* RxViewModelProtocol.swift in Sources */,
@@ -1037,9 +1057,11 @@
 				E00DE07E28A302B300C3608C /* LanguageUseCase.swift in Sources */,
 				E002B95E28AD7F6400FBCBDD /* AnimationFlow+DI.swift in Sources */,
 				E002B93E28A6D69B00FBCBDD /* TrainingViewModel.swift in Sources */,
+				F4E6040F28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift in Sources */,
 				E0EAEA5028A1B72A00F8D918 /* LanguageStorageModel.swift in Sources */,
 				E0EAEA3E28A1A63600F8D918 /* UserDefaultsWrapper.swift in Sources */,
 				F4D82C6E289D9D5900FFFFA7 /* SelectLanguageViewController.swift in Sources */,
+				F42F2EF628B16DEA00B8EEC7 /* RxTableViewCell.swift in Sources */,
 				E00DE07228A2F15900C3608C /* TranslationMapper.swift in Sources */,
 				E08E490128B00C1800E667D9 /* LanguagesListModel.swift in Sources */,
 				E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */,
@@ -1049,6 +1071,7 @@
 				E0EAEA27289DA34300F8D918 /* TranslateMapper.swift in Sources */,
 				F4D62A27289719F50000B690 /* TrainingViewController.swift in Sources */,
 				F4A5B37428A1A20D00D0293E /* CustomTextView.swift in Sources */,
+				F4E6041128B03280002A4FE8 /* BindableType.swift in Sources */,
 				E0EAEA25289DA2AB00F8D918 /* TranslationModel.swift in Sources */,
 				E0EAEA3B28A1A5B200F8D918 /* Mapper.swift in Sources */,
 				E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */,
@@ -1064,6 +1087,7 @@
 				E0EAEA05289C4E9F00F8D918 /* GenericNetworkingError.swift in Sources */,
 				E00DE07428A2F21500C3608C /* LanguagesRepository.swift in Sources */,
 				E002B93628A6D63100FBCBDD /* TrainingStep.swift in Sources */,
+				F4E6A29C28B15A1000DBD6E3 /* RXDictionaryListDataSource.swift in Sources */,
 				E00DE06828A2EF5400C3608C /* LanguageModel.swift in Sources */,
 				E0EAEA4128A1A67800F8D918 /* JSONSerialiser.swift in Sources */,
 				E0EAEA4428A1A73B00F8D918 /* StorageController.swift in Sources */,
@@ -1088,7 +1112,6 @@
 				F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */,
 				F4D82C75289DA45600FFFFA7 /* SelectLanguageCellModel.swift in Sources */,
 				E002B95228AAF0EB00FBCBDD /* AFLanguagesApi.swift in Sources */,
-				E08E48FD28B0078800E667D9 /* RxTableViewCell.swift in Sources */,
 				E002B94E28AAEFE400FBCBDD /* LanguagesResponse.swift in Sources */,
 				E002B91528A698FB00FBCBDD /* AnimationStep.swift in Sources */,
 				F4D82C5C2899A4BE00FFFFA7 /* TranslateViewModel.swift in Sources */,
@@ -1335,7 +1358,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow.git" */ = {
+		E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow.git";
 			requirement = {
@@ -1351,6 +1374,14 @@
 				kind = branch;
 			};
 		};
+		F45F435928B1645300D6D8B6 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		F4FE6CA828A07B6D005D6DDF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1359,7 +1390,7 @@
 				kind = branch;
 			};
 		};
-		F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift.git" */ = {
+		F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -1367,7 +1398,7 @@
 				kind = branch;
 			};
 		};
-		F4FE6CB028A07BB7005D6DDF /* XCRemoteSwiftPackageReference "PinLayout.git" */ = {
+		F4FE6CB028A07BB7005D6DDF /* XCRemoteSwiftPackageReference "PinLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/layoutBox/PinLayout.git";
 			requirement = {
@@ -1375,17 +1406,9 @@
 				kind = branch;
 			};
 		};
-		F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios.git" */ = {
+		F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		F4FE6CB628A07C05005D6DDF /* XCRemoteSwiftPackageReference "Swinject.git" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Swinject/Swinject.git";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -1396,7 +1419,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		E002B91C28A69A7200FBCBDD /* RxFlow */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow.git" */;
+			package = E002B91B28A69A7200FBCBDD /* XCRemoteSwiftPackageReference "RxFlow" */;
 			productName = RxFlow;
 		};
 		E08E490328B00C8C00E667D9 /* RxDataSources */ = {
@@ -1404,35 +1427,35 @@
 			package = E08E490228B00C8C00E667D9 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
 		};
+		F45F435A28B1645300D6D8B6 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F45F435928B1645300D6D8B6 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
 		F4FE6CA928A07B6D005D6DDF /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CA828A07B6D005D6DDF /* XCRemoteSwiftPackageReference "Alamofire.git" */;
+			package = F4FE6CA828A07B6D005D6DDF /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 		F4FE6CAC28A07B8B005D6DDF /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			package = F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
 		F4FE6CAE28A07B8B005D6DDF /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			package = F4FE6CAB28A07B8B005D6DDF /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 		F4FE6CB128A07BB7005D6DDF /* PinLayout */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CB028A07BB7005D6DDF /* XCRemoteSwiftPackageReference "PinLayout.git" */;
+			package = F4FE6CB028A07BB7005D6DDF /* XCRemoteSwiftPackageReference "PinLayout" */;
 			productName = PinLayout;
 		};
 		F4FE6CB428A07BDB005D6DDF /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios.git" */;
+			package = F4FE6CB328A07BDB005D6DDF /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		F4FE6CB728A07C05005D6DDF /* Swinject */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F4FE6CB628A07C05005D6DDF /* XCRemoteSwiftPackageReference "Swinject.git" */;
-			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
