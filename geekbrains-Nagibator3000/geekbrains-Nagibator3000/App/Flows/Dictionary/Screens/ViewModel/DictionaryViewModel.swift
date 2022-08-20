@@ -32,7 +32,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     
     var steps = PublishRelay<Step>()
     
-    private let dictionaryUseCase: DictionaryUseCase?
+    private let dictionaryUseCase: DictionaryUseCase
     
     init(dictionaryUseCase: DictionaryUseCase) {
         self.dictionaryUseCase = dictionaryUseCase
@@ -51,13 +51,13 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
         bindEnterScreen()
     }
     
-    private func configSections() -> Observable<[DictionarySectionModel]>? {
-        dictionaryUseCase?.get().compactMap { [DictionarySectionModel(header: "", items: $0)] }
+    private func configSections() -> Observable<[DictionarySectionModel]> {
+        dictionaryUseCase.get().compactMap { [DictionarySectionModel(header: "", items: $0)] }
     }
     
     private func bindEnterScreen() {
         enterScreen
-            .flatMap { self.configSections()! }
+            .flatMap { self.configSections() }
             .bind(to: translationsSections)
             .disposed(by: disposeBag)
     }
