@@ -82,8 +82,7 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
         let limit = -UIScreen.main.bounds.width / 3
         
         guard let indexPath = tableView.indexPathForRow(at: location),
-              let cell = tableView.cellForRow(at: indexPath),
-              gesture.direction == .left
+              let cell = tableView.cellForRow(at: indexPath)
         else {
             return
         }
