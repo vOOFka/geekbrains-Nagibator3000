@@ -9,6 +9,8 @@ import RxDataSources
 import UIKit
 
 final class RXDictionaryListDataSource: RxTableViewSectionedAnimatedDataSource<DictionarySectionModel> {
+    weak var swipeDelegate: UIViewController?
+    
     init() {
         super.init(
             animationConfiguration: AnimationConfiguration(insertAnimation: .middle,
@@ -21,7 +23,7 @@ final class RXDictionaryListDataSource: RxTableViewSectionedAnimatedDataSource<D
                 return false
             },
             canMoveRowAtIndexPath: { _, _ in
-                return true
+                return false
             }
         )
     }
@@ -35,4 +37,5 @@ final class RXDictionaryListDataSource: RxTableViewSectionedAnimatedDataSource<D
         cell.config(item: DictionaryTableCellViewModel(with: item))
         return cell
     }
+
 }
