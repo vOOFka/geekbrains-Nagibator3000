@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Toast_Swift
 
 final class TranslateViewController: UIViewController {
   var viewModel: TranslateViewModel!
@@ -134,6 +135,18 @@ final class TranslateViewController: UIViewController {
         self.destinationTextView.text = tempValue
       }
       .disposed(by: disposeBag)
+    
+    viewModel.output.showToast
+      .bind { [weak self] text in
+        self?.showToast(text: text)
+      }
+      .disposed(by: disposeBag)
+  }
+  
+  private func showToast(text: String) {
+    var style = ToastStyle()
+    style.messageColor = Constants.whiteColor
+    self.view.makeToast(text, duration: 4.0, position: .bottom, style: style)
   }
 }
 
