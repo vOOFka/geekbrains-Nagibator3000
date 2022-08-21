@@ -5,3 +5,6 @@
 "Select language" = "Select language";
 "Done" = "Done";
 "Text" = "Text";
+"Copy" = "Translation successfully copied!";
+"Save" = "The word was successfully added to the dictionary!";
+"Save_Faile" = "The word could not be added to the dictionary!";
