@@ -26,8 +26,7 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
     //MARK: - Config
     
     private func initialConfig() {
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
-        swipeLeft.direction = .left
+        let swipeLeft = UIPanGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
         tableView.addGestureRecognizer(swipeLeft)
         
         view.backgroundColor = Constants.backgroundColor
@@ -78,13 +77,34 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: - Actions
     
-    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer,
-           swipeGesture.direction == .left {
-            let location = gesture.location(in: tableView)
-            let indexPath = tableView.indexPathForRow(at: location)
-            if let indexPath = indexPath {
+    @objc func respondToSwipeGesture(gesture: UIPanGestureRecognizer) {
+        let location = gesture.location(in: tableView)
+        let limit = -UIScreen.main.bounds.width / 3
+        
+        guard let indexPath = tableView.indexPathForRow(at: location),
+              let cell = tableView.cellForRow(at: indexPath),
+              gesture.direction == .left
+        else {
+            return
+        }
+        
+        let translation = gesture.translation(in: view)
+        if gesture.state == .changed {
+            cell.transform = CGAffineTransform(translationX: translation.x, y: 0)
+            
+            let alpha = abs((translation.x * 0.99) / limit)
+            print(translation.x, alpha)
+            UIView.animate(withDuration: 0.8, delay: 0.5, options: .curveEaseOut, animations: {
+                cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(alpha)
+            })
+        } else if gesture.state == .ended {
+            if translation.x < limit {
                 self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
+            } else {
+                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseIn) {
+                    cell.transform = .identity
+                    cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(0.0)
+                }
             }
         }
     }
@@ -98,4 +118,5 @@ private enum Constants {
     static let backgroundColor = ColorScheme.raspberryRose.color
     static let whiteColor = ColorScheme.white.color
     static let greenColor = ColorScheme.greenPantone.color
+    static let cellBackgroundColor = ColorScheme.alertRed.color
 }

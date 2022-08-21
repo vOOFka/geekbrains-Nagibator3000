@@ -48,8 +48,9 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         contentView.addSubview(toLabel)
         contentView.addSubview(separatorView)
         
+        backgroundColor = Constants.backgroundColor
+        
         separatorView.backgroundColor = Constants.separatorColor
-
         layoutSubviews()
     }
     
@@ -93,6 +94,7 @@ private enum Constants {
     static let titleToLabel = "Translation".localized
     
     static let separatorColor = ColorScheme.greenPantone.color
+    static let backgroundColor = ColorScheme.alertRed.color
     
     static let boldFont = UIFont.boldSystemFont(ofSize: 16.0)
     static let italicFont = UIFont.italicSystemFont(ofSize: 14.0)
