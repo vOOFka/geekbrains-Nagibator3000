@@ -13,12 +13,13 @@ import RxSwift
 final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     struct Input {
         let enterScreen: PublishSubject<Void>
+        let onDeleteItem: PublishRelay<TranslationModel>
     }
-
+    
     struct Output {
         let translationsSections: Driver<[DictionarySectionModel]>
     }
-
+    
     private(set) var input: Input!
     private(set) var output: Output!
     
@@ -26,19 +27,21 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     
     // Input
     private let enterScreen = PublishSubject<Void>()
+    private let deleteItem = PublishRelay<TranslationModel>()
     
     // Output
     let translationsSections = BehaviorRelay<[DictionarySectionModel]>(value: [])
     
     var steps = PublishRelay<Step>()
     
-    private let dictionaryUseCase: DictionaryUseCase
+    let dictionaryUseCase: DictionaryUseCase
     
     init(dictionaryUseCase: DictionaryUseCase) {
         self.dictionaryUseCase = dictionaryUseCase
         
         input = Input(
-            enterScreen: enterScreen
+            enterScreen: enterScreen,
+            onDeleteItem: deleteItem
         )
         output = Output(
             translationsSections: translationsSections.asDriver(onErrorJustReturn: [])
@@ -49,6 +52,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     
     private func setupBindings() {
         bindEnterScreen()
+        bindDeleteItem()
     }
     
     private func configSections() -> Observable<[DictionarySectionModel]> {
@@ -60,5 +64,34 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
             .flatMap { self.configSections() }
             .bind(to: translationsSections)
             .disposed(by: disposeBag)
+    }
+    
+    private func deleteFromRepositiry(model: TranslationModel) {
+        dictionaryUseCase.delete(model: model)
+            .subscribe { event in
+                switch event {
+                case.next(_):
+                    // ToDo  тоста об успешном удалении текста
+                    print("+++ ok")
+                    break
+                    
+                case .error(let error):
+                    print(error)
+                    break
+                    
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindDeleteItem() {
+        deleteItem
+            .bind { [weak self] model in
+                self?.deleteFromRepositiry(model: model)
+            }
+            .disposed(by: disposeBag)
+        
     }
 }

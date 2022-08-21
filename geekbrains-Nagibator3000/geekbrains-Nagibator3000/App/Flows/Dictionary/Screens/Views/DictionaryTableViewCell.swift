@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewModel> {
-    var viewModel: DictionaryTableCellViewModel!
+    var viewModel: DictionaryTableCellViewModel?
     
     // MARK: - Private properties
     private var titleFromLabel = UILabel()
@@ -31,13 +31,7 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         initialConfig()
     }
     
-    private func initialConfig() {
-//        selectionStyle = .none
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
-        swipeLeft.direction = .left
-        self.contentView.addGestureRecognizer(swipeLeft)
-        
+    private func initialConfig() {       
         titleFromLabel.text = Constants.titleFromLabel
         titleToLabel.text = Constants.titleToLabel
         titleFromLabel.font = Constants.boldFont
@@ -62,6 +56,7 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
     override func config(item: DictionaryTableCellViewModel) {
         self.fromLabel.text = item.text
         self.toLabel.text = item.translation
+        self.viewModel = item
     }
     
     override func prepareForReuse() {
@@ -89,24 +84,6 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         return CGSize(width: size.width, height: separatorView.frame.maxY + 1.0)
     }
     
-    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-
-            switch swipeGesture.direction {
-            case .right:
-                print("Swiped right")
-            case .down:
-                print("Swiped down")
-            case .left:
-                print("Swiped left")
-            case .up:
-                print("Swiped up")
-            default:
-                break
-            }
-        }
-    }
 }
 
 //MARK: - Constants

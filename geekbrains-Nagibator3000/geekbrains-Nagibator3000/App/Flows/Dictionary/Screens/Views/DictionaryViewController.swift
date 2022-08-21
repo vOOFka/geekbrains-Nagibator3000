@@ -26,6 +26,10 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
     //MARK: - Config
     
     private func initialConfig() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        swipeLeft.direction = .left
+        tableView.addGestureRecognizer(swipeLeft)
+        
         view.backgroundColor = Constants.backgroundColor
         
         view.addSubview(tableView)
@@ -55,26 +59,14 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        tableView.rx.itemSelected
-            .subscribe(onNext: { indexPath in
-                print(indexPath)
-            }).disposed(by: disposeBag)
-        
         tableView.rx.itemDeleted
-            .subscribe {
-                print($0)
-            }
+            .subscribe(onNext: { [unowned self] indexPath in
+                if let cell = dataSource.tableView(tableView, cellForRowAt: indexPath) as? DictionaryTableViewCell,
+                   let translationModel = cell.viewModel?.translationModel {
+                    viewModel.input.onDeleteItem.accept(translationModel)
+                }
+            })
             .disposed(by: disposeBag)
-        
-//        tableView.rx.itemDeleted.asDriver()
-//            .drive(onNext: { [unowned self] indexPath in
-//                if let cell = dataSource.tableView(tableView, cellForRowAt: indexPath) as? DictionaryTableViewCell,
-//                   let model = cell.viewModel {
-//                    let translationModel = TranslationModel(fromText: model.text, toText: model.translation)
-//                    _ = self.viewModel.dictionaryUseCase.delete(model: translationModel)
-//                }
-//            })
-//            .disposed(by: disposeBag)
     }
     
     //MARK: - Layout
@@ -83,42 +75,21 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLayoutSubviews()
         tableView.pin.all()
     }
+    
+    //MARK: - Actions
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer,
+           swipeGesture.direction == .left {
+            print("Swiped left")
+            let location = gesture.location(in: tableView)
+            let indexPath = tableView.indexPathForRow(at: location)
+            if let indexPath = indexPath {
+                self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
+            }
+        }
+    }
 }
-
-//extension DictionaryViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView,
-//                   leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
-//            print("deleting", indexPath)
-//            completionHandler(true)
-//        }
-//        deleteAction.image = UIImage(systemName: "trash")
-//        deleteAction.backgroundColor = .systemRed
-//        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-//        return configuration
-//    }
-//
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
-//    -> UISwipeActionsConfiguration? {
-//        let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
-//            print("deleting", indexPath)
-////            tableView.rx.itemDeleted.asDriver()
-////                .drive(onNext: { [unowned self] indexPath in
-////                    if let cell = dataSource.tableView(tableView, cellForRowAt: indexPath) as? DictionaryTableViewCell,
-////                       let model = cell.viewModel {
-////                        let translationModel = TranslationModel(fromText: model.text, toText: model.translation)
-////                        _ = self.viewModel.dictionaryUseCase.delete(model: translationModel)
-////                    }
-////                })
-////                .disposed(by: self.disposeBag)
-//            completionHandler(true)
-//        }
-//        deleteAction.image = UIImage(systemName: "trash")
-//        deleteAction.backgroundColor = .systemRed
-//        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-//        return configuration
-//    }
-//}
 
 //MARK: - Constants
 
