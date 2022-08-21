@@ -21,7 +21,7 @@ final class RXDictionaryListDataSource: RxTableViewSectionedAnimatedDataSource<D
                 return false
             },
             canMoveRowAtIndexPath: { _, _ in
-                return true
+                return false
             }
         )
     }
