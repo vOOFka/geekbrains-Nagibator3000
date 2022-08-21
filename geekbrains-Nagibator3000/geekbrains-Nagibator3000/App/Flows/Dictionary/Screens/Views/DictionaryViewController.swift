@@ -89,7 +89,8 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
         }
         
         let translation = gesture.translation(in: view)
-        if gesture.state == .changed {
+        if gesture.state == .changed &&
+            translation.x < 0 {
             cell.transform = CGAffineTransform(translationX: translation.x, y: 0)
             
             let alpha = abs((translation.x * 0.6) / limit)
