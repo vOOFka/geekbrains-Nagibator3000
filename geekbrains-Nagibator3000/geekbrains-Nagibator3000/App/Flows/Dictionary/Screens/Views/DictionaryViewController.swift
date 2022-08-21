@@ -92,8 +92,7 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
         if gesture.state == .changed {
             cell.transform = CGAffineTransform(translationX: translation.x, y: 0)
             
-            let alpha = abs((translation.x * 0.99) / limit)
-            print(translation.x, alpha)
+            let alpha = abs((translation.x * 0.6) / limit)
             UIView.animate(withDuration: 0.8, delay: 0.5, options: .curveEaseOut, animations: {
                 cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(alpha)
             })

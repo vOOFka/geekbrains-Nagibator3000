@@ -14,7 +14,7 @@ enum ColorScheme: CaseIterable {
         case .white:
             return UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         case .alertRed:
-            return UIColor(red: 255.0/255.0, green: 99.0/255.0, blue: 71.0/255.0, alpha: 0.0)
+            return UIColor(red: 178.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 0.0)
         case .black:
             return UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
         }

@@ -63,6 +63,7 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
     override func prepareForReuse() {
         fromLabel.text = String()
         toLabel.text = String()
+        backgroundColor = Constants.backgroundColor
         disposeBag = DisposeBag()
     }
     
