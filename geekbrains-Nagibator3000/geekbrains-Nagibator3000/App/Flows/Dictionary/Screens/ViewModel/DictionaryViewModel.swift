@@ -68,11 +68,15 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     
     private func deleteFromRepositiry(model: TranslationModel) {
         dictionaryUseCase.delete(model: model)
-            .subscribe { event in
+            .subscribe { [weak self] event in
                 switch event {
                 case.next(_):
-                    // ToDo  тоста об успешном удалении текста
-                    print("+++ ok")
+                    guard let self = self else {
+                        return
+                    }
+                    self.configSections()
+                        .bind(to: self.translationsSections)
+                        .disposed(by: self.disposeBag)
                     break
                     
                 case .error(let error):
@@ -87,11 +91,10 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     }
     
     private func bindDeleteItem() {
-        deleteItem
+        deleteItem        
             .bind { [weak self] model in
                 self?.deleteFromRepositiry(model: model)
             }
             .disposed(by: disposeBag)
-        
     }
 }

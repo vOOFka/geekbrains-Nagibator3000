@@ -81,7 +81,6 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer,
            swipeGesture.direction == .left {
-            print("Swiped left")
             let location = gesture.location(in: tableView)
             let indexPath = tableView.indexPathForRow(at: location)
             if let indexPath = indexPath {
