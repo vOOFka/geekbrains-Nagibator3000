@@ -32,7 +32,11 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
     }
     
     private func initialConfig() {
-        selectionStyle = .none
+//        selectionStyle = .none
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        swipeLeft.direction = .left
+        self.contentView.addGestureRecognizer(swipeLeft)
         
         titleFromLabel.text = Constants.titleFromLabel
         titleToLabel.text = Constants.titleToLabel
@@ -51,7 +55,7 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         contentView.addSubview(separatorView)
         
         separatorView.backgroundColor = Constants.separatorColor
-        
+
         layoutSubviews()
     }
     
@@ -83,6 +87,25 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         layoutSubviews()
         return CGSize(width: size.width, height: separatorView.frame.maxY + 1.0)
+    }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+
+            switch swipeGesture.direction {
+            case .right:
+                print("Swiped right")
+            case .down:
+                print("Swiped down")
+            case .left:
+                print("Swiped left")
+            case .up:
+                print("Swiped up")
+            default:
+                break
+            }
+        }
     }
 }
 

@@ -9,6 +9,8 @@ import RxDataSources
 import UIKit
 
 final class RXDictionaryListDataSource: RxTableViewSectionedAnimatedDataSource<DictionarySectionModel> {
+    weak var swipeDelegate: UIViewController?
+    
     init() {
         super.init(
             animationConfiguration: AnimationConfiguration(insertAnimation: .middle,
@@ -33,12 +35,7 @@ final class RXDictionaryListDataSource: RxTableViewSectionedAnimatedDataSource<D
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(DictionaryTableViewCell.self, for: indexPath)
         cell.config(item: DictionaryTableCellViewModel(with: item))
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.labelSwipedLeft(sender:)))
-        cell.textLabel?.addGestureRecognizer(swipeLeft)
         return cell
     }
-    
-    @objc func labelSwipedLeft(sender: UITapGestureRecognizer) {
-        print("labelSwipedLeft called")
-      }
+
 }
