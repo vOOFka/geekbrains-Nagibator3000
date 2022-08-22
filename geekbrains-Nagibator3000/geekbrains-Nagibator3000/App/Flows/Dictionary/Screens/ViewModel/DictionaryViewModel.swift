@@ -66,17 +66,20 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
             .disposed(by: disposeBag)
     }
     
+    private func reloadSections() {
+        configSections()
+            .bind(to: self.translationsSections)
+            .disposed(by: self.disposeBag)
+    }
+    
     private func deleteFromRepositiry(model: TranslationModel) {
         dictionaryUseCase.delete(model: model)
             .subscribe { [weak self] event in
                 switch event {
-                case.next(_):
-                    guard let self = self else {
-                        return
-                    }
-                    self.configSections()
-                        .bind(to: self.translationsSections)
-                        .disposed(by: self.disposeBag)
+                case.next(let completed):
+                    if completed {
+                        self?.reloadSections()
+                    }                    
                     break
                     
                 case .error(let error):
