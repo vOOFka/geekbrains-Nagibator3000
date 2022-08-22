@@ -73,6 +73,7 @@
 		E1A528D828B25B2A00A23F61 /* Pods_geekbrains_Nagibator3000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B16BA9883018978E339E88 /* Pods_geekbrains_Nagibator3000.framework */; };
 		E1A528E328B3AA7200A23F61 /* TrainingOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A528E228B3AA7200A23F61 /* TrainingOverlayView.xib */; };
 		F42F2EF628B16DEA00B8EEC7 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F2EF528B16DEA00B8EEC7 /* RxTableViewCell.swift */; };
+		F42F2F1F28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F2F1E28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift */; };
 		F45F435B28B1645300D6D8B6 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F45F435A28B1645300D6D8B6 /* Swinject */; };
 		F49F2FD928A8FD0A00F2D6FC /* DictionaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */; };
 		F4A5B37428A1A20D00D0293E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A5B37328A1A20D00D0293E /* CustomTextView.swift */; };
@@ -171,6 +172,7 @@
 		E1A528D628B2598200A23F61 /* TrainingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingOverlayView.swift; sourceTree = "<group>"; };
 		E1A528E228B3AA7200A23F61 /* TrainingOverlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingOverlayView.xib; sourceTree = "<group>"; };
 		F42F2EF528B16DEA00B8EEC7 /* RxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
+		F42F2F1E28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+Ext.swift"; sourceTree = "<group>"; };
 		F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTableViewCell.swift; sourceTree = "<group>"; };
 		F4A5B37328A1A20D00D0293E /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		F4A5B37528A58C9300D0293E /* YandexService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YandexService-Info.plist"; sourceTree = "<group>"; };
@@ -790,6 +792,7 @@
 				F4F3124528A6DDEC00FE1F20 /* CustomActionsView.swift */,
 				E002B94928A6F2A300FBCBDD /*  UINavigationItem+Ext.swift */,
 				F4E6041028B03280002A4FE8 /* BindableType.swift */,
+				F42F2F1E28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift */,
 			);
 			path = "Utils&Helpers";
 			sourceTree = "<group>";
@@ -1113,6 +1116,7 @@
 				E00DE06F28A2F0B200C3608C /* TranslationStorageModel.swift in Sources */,
 				E0EAEA0E289D91EE00F8D918 /* TranslateParams.swift in Sources */,
 				E002B92F28A6D45900FBCBDD /* DictionaryViewModel.swift in Sources */,
+				F42F2F1F28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift in Sources */,
 				F4D62A232897199D0000B690 /* TranslateViewController.swift in Sources */,
 				F4D82C75289DA45600FFFFA7 /* SelectLanguageCellModel.swift in Sources */,
 				E002B95228AAF0EB00FBCBDD /* AFLanguagesApi.swift in Sources */,

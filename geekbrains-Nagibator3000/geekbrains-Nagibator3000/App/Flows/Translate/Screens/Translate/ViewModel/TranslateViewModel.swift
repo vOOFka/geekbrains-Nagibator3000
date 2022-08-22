@@ -253,5 +253,5 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
 private enum Constants {
   static let copyText = "Copy".localized
   static let saveText = "Save".localized
-  static let saveFailText = "Save_Faile".localized
+  static let saveFailText = "Save_Failed".localized
 }
