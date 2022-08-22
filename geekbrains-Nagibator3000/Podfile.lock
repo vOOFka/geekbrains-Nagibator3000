@@ -2,19 +2,23 @@ PODS:
   - Koloda (5.0.1):
     - pop (~> 1.0)
   - pop (1.0.12)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Koloda
+  - Toast-Swift
 
 SPEC REPOS:
   trunk:
     - Koloda
     - pop
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Koloda: d07b9199a383abc5898b62aa945a599f5e7c0c4b
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 55a4ce72e8c7a6c82166c0f50c8aa6b2f079ca98
+PODFILE CHECKSUM: e2ec3ede24cb8e1fb02af1306d533893dd13fc43
 
 COCOAPODS: 1.11.3

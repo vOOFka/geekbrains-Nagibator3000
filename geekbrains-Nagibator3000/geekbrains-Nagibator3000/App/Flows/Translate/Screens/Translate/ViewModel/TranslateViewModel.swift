@@ -28,6 +28,7 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
     let sourceLanguage: Driver<LanguageModel>
     let destinationLanguage: Driver<LanguageModel>
     let reverseText: PublishRelay<Void>
+    let showToast: PublishRelay<String>
   }
   
   private(set) var input: Input!
@@ -51,6 +52,7 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   
   // Outut
   let reverseText = PublishRelay<Void>()
+  let showToast = PublishRelay<String>()
   private let translatedText = BehaviorSubject<TranslationModel>(
     value: TranslationModel(fromText: "", toText: "")
   )
@@ -86,7 +88,8 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
         .asDriver(onErrorJustReturn: LanguageModel(code: "none", name: "select")),
       destinationLanguage: destinationLanguage
         .asDriver(onErrorJustReturn: LanguageModel(code: "none", name: "select")),
-      reverseText: reverseText
+      reverseText: reverseText,
+      showToast: showToast
     )
     
     setupBind()
@@ -184,9 +187,8 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
 
   private func bindCopy() {
     copied
-      .bind { _ in
-        // ToDo в будущем тут будет вызов тоста об успешном копирования текста
-      }
+      .map { _ in Constants.copyText }
+      .bind(to: showToast)
       .disposed(by: disposeBag)
   }
   
@@ -225,14 +227,19 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   
   public func saveToDictionary(model: TranslationModel) {
     dictionaryUseCase.add(model: model)
-      .subscribe { event in
+      .subscribe { [weak self] event in
         switch event {
-        case.next(_):
-          // ToDo  в будущем тут будет вызов тоста об успешном сохранении текста
+        case.next(let completed):
+          if completed {
+            self?.showToast.accept(Constants.saveText)
+            break
+          }
+          
+          self?.showToast.accept(Constants.saveFailText)
           break
           
         case .error(let error):
-          print(error)
+          self?.showToast.accept(error.localizedDescription)
           break
           
         default:
@@ -241,4 +248,10 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
       }
       .disposed(by: disposeBag)
   }
+}
+
+private enum Constants {
+  static let copyText = "Copy".localized
+  static let saveText = "Save".localized
+  static let saveFailText = "Save_Faile".localized
 }
