@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A356E368ED4DA1484A18DCC /* Pods_geekbrains_Nagibator3000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B16BA9883018978E339E88 /* Pods_geekbrains_Nagibator3000.framework */; };
 		E002B91328A698CA00FBCBDD /* AnimationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91228A698CA00FBCBDD /* AnimationFlow.swift */; };
 		E002B91528A698FB00FBCBDD /* AnimationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91428A698FB00FBCBDD /* AnimationStep.swift */; };
 		E002B91A28A6994C00FBCBDD /* AnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91928A6994C00FBCBDD /* AnimationViewModel.swift */; };
@@ -70,6 +69,9 @@
 		E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18A825D2893F86400D2B0BB /* Assets.xcassets */; };
 		E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */; };
 		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
+		E1A528D728B2598200A23F61 /* TrainingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A528D628B2598200A23F61 /* TrainingOverlayView.swift */; };
+		E1A528D828B25B2A00A23F61 /* Pods_geekbrains_Nagibator3000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B16BA9883018978E339E88 /* Pods_geekbrains_Nagibator3000.framework */; };
+		E1A528E328B3AA7200A23F61 /* TrainingOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A528E228B3AA7200A23F61 /* TrainingOverlayView.xib */; };
 		F42F2EF628B16DEA00B8EEC7 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F2EF528B16DEA00B8EEC7 /* RxTableViewCell.swift */; };
 		F45F435B28B1645300D6D8B6 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F45F435A28B1645300D6D8B6 /* Swinject */; };
 		F49F2FD928A8FD0A00F2D6FC /* DictionaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */; };
@@ -167,6 +169,8 @@
 		E18A82602893F86400D2B0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E18A82622893F86400D2B0BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		E1A528D628B2598200A23F61 /* TrainingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingOverlayView.swift; sourceTree = "<group>"; };
+		E1A528E228B3AA7200A23F61 /* TrainingOverlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingOverlayView.xib; sourceTree = "<group>"; };
 		F42F2EF528B16DEA00B8EEC7 /* RxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
 		F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTableViewCell.swift; sourceTree = "<group>"; };
 		F4A5B37328A1A20D00D0293E /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
@@ -205,8 +209,8 @@
 				E08E490428B00C8C00E667D9 /* RxDataSources in Frameworks */,
 				F45F435B28B1645300D6D8B6 /* Swinject in Frameworks */,
 				F4E6A2A028B1637500DBD6E3 /* PinLayout in Frameworks */,
-				0A356E368ED4DA1484A18DCC /* Pods_geekbrains_Nagibator3000.framework in Frameworks */,
 				F4E6A2A128B1637500DBD6E3 /* Lottie in Frameworks */,
+				E1A528D828B25B2A00A23F61 /* Pods_geekbrains_Nagibator3000.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +363,8 @@
 			isa = PBXGroup;
 			children = (
 				F4D62A26289719F50000B690 /* TrainingViewController.swift */,
+				E1A528D628B2598200A23F61 /* TrainingOverlayView.swift */,
+				E1A528E228B3AA7200A23F61 /* TrainingOverlayView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -990,6 +996,7 @@
 				E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */,
 				F4D82C7B289DB64400FFFFA7 /* languages.json in Resources */,
 				F4D62A2C2897210D0000B690 /* Localizable.strings in Resources */,
+				E1A528E328B3AA7200A23F61 /* TrainingOverlayView.xib in Resources */,
 				E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */,
 				E18A825C2893F86100D2B0BB /* Main.storyboard in Resources */,
 				F4A5B37628A58C9300D0293E /* YandexService-Info.plist in Resources */,
@@ -1054,6 +1061,7 @@
 				E002B95728AC1F7D00FBCBDD /* LanguagesMapper.swift in Sources */,
 				E0EAEA4B28A1B14100F8D918 /* DataStorage.swift in Sources */,
 				E0EAEA3928A1A54B00F8D918 /* StorageKeys.swift in Sources */,
+				E1A528D728B2598200A23F61 /* TrainingOverlayView.swift in Sources */,
 				E00DE07E28A302B300C3608C /* LanguageUseCase.swift in Sources */,
 				E002B95E28AD7F6400FBCBDD /* AnimationFlow+DI.swift in Sources */,
 				E002B93E28A6D69B00FBCBDD /* TrainingViewModel.swift in Sources */,

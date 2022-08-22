@@ -20,11 +20,12 @@ final class TrainingViewController: UIViewController {
         }
         return array
   }()
-    
+   
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = ColorScheme.white.color
     view.addSubview(kolodaView)
+    kolodaView.backgroundColor = ColorScheme.greenPantone.color
     kolodaView.dataSource = self
     kolodaView.delegate = self
   }
@@ -53,5 +54,8 @@ extension TrainingViewController: KolodaViewDataSource {
     
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
         return .default
+    }
+    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
+        return Bundle.main.loadNibNamed("TrainingOverlayView", owner: self, options: nil)?[0] as? OverlayView
     }
 }
