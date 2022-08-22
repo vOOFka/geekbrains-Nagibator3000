@@ -11,7 +11,7 @@ import Koloda
 private var numberOfCards: Int = 6
 final class TrainingViewController: UIViewController {
   var viewModel: TrainingViewModel!
-  var kolodaView = KolodaView(frame: CGRect(x: 70, y: 100, width: 250, height: 400))
+  var kolodaView = KolodaView(frame: CGRect(x: 0, y: 0, width: 250, height: 400))
     
   fileprivate var images: [UIImage] = {
         var array: [UIImage] = []
@@ -24,6 +24,7 @@ final class TrainingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = ColorScheme.white.color
+    kolodaView.center = self.view.center
     view.addSubview(kolodaView)
     kolodaView.backgroundColor = ColorScheme.greenPantone.color
     kolodaView.dataSource = self
