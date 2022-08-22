@@ -18,6 +18,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     
     struct Output {
         let translationsSections: Driver<[DictionarySectionModel]>
+        let showToast: PublishRelay<String>
     }
     
     private(set) var input: Input!
@@ -31,6 +32,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     
     // Output
     let translationsSections = BehaviorRelay<[DictionarySectionModel]>(value: [])
+    let showToast = PublishRelay<String>()
     
     var steps = PublishRelay<Step>()
     
@@ -44,7 +46,8 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
             onDeleteItem: deleteItem
         )
         output = Output(
-            translationsSections: translationsSections.asDriver(onErrorJustReturn: [])
+            translationsSections: translationsSections.asDriver(onErrorJustReturn: []),
+            showToast: showToast
         )
         
         setupBindings()
@@ -77,9 +80,10 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
             .subscribe { [weak self] event in
                 switch event {
                 case.next(let completed):
-                    if completed {
-                        self?.reloadSections()
-                    }                    
+                    self?.reloadSections()                    
+                    if !completed {
+                        self?.showToast.accept(Constants.deleteFailText)
+                    }
                     break
                     
                 case .error(let error):
@@ -100,4 +104,8 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
             }
             .disposed(by: disposeBag)
     }
+}
+
+private enum Constants {
+  static let deleteFailText = "Delete_Failed".localized
 }

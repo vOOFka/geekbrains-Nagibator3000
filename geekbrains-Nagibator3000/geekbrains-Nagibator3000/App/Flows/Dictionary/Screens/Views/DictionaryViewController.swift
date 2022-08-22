@@ -8,8 +8,9 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import Toast_Swift
 
-final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
+final class DictionaryViewController: UIViewController {
     var viewModel: DictionaryViewModel!
     private var dataSource = RXDictionaryListDataSource()
     
@@ -55,9 +56,6 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        tableView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
-        
         tableView.rx.itemDeleted
             .subscribe(onNext: { [unowned self] indexPath in
                 if let cell = dataSource.tableView(tableView, cellForRowAt: indexPath) as? DictionaryTableViewCell,
@@ -66,6 +64,18 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
                 }
             })
             .disposed(by: disposeBag)
+        
+        viewModel.output.showToast
+          .bind { [weak self] text in
+            self?.showToast(text: text)
+          }
+          .disposed(by: disposeBag)
+    }
+    
+    private func showToast(text: String) {
+      var style = ToastStyle()
+      style.messageColor = Constants.whiteColor
+      self.view.makeToast(text, duration: 4.0, position: .bottom, style: style)
     }
     
     //MARK: - Layout
@@ -82,7 +92,8 @@ final class DictionaryViewController: UIViewController, UIScrollViewDelegate {
         let limit = -UIScreen.main.bounds.width / 3
         
         guard let indexPath = tableView.indexPathForRow(at: location),
-              let cell = tableView.cellForRow(at: indexPath)
+              let cell = tableView.cellForRow(at: indexPath),
+              gesture.direction == .left
         else {
             return
         }

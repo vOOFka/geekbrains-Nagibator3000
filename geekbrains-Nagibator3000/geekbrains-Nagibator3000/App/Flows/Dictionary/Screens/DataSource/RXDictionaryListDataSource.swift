@@ -12,7 +12,7 @@ final class RXDictionaryListDataSource: RxTableViewSectionedAnimatedDataSource<D
     init() {
         super.init(
             animationConfiguration: AnimationConfiguration(insertAnimation: .middle,
-                                                           reloadAnimation: .fade,
+                                                           reloadAnimation: .automatic,
                                                            deleteAnimation: .left),
             configureCell: { _, tableView, indexPath, translation in
                 RXDictionaryListDataSource.getCell(item: translation, tableView: tableView, indexPath: indexPath)
