@@ -16,12 +16,6 @@ final class RXDictionaryListDataSource: RxTableViewSectionedAnimatedDataSource<D
                                                            deleteAnimation: .left),
             configureCell: { _, tableView, indexPath, translation in
                 RXDictionaryListDataSource.getCell(item: translation, tableView: tableView, indexPath: indexPath)
-            },
-            canEditRowAtIndexPath: { _, _ in
-                return false
-            },
-            canMoveRowAtIndexPath: { _, _ in
-                return false
             }
         )
     }
