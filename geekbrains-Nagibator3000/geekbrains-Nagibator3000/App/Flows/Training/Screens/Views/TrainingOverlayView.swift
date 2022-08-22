@@ -20,9 +20,9 @@ class TrainingOverlayView: OverlayView {
         didSet {
             switch overlayState {
             case .left?:
-               overlayImageView.backgroundColor = .green
+               overlayImageView.backgroundColor = .red
             case .right?:
-                overlayImageView.backgroundColor = .red
+                overlayImageView.backgroundColor = .green
             default:
                 overlayImageView.image = nil
             }
