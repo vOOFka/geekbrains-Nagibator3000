@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewModel> {
-    var viewModel: DictionaryTableCellViewModel!
+    var viewModel: DictionaryTableCellViewModel?
     
     // MARK: - Private properties
     private var titleFromLabel = UILabel()
@@ -31,9 +31,7 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         initialConfig()
     }
     
-    private func initialConfig() {
-        selectionStyle = .none
-        
+    private func initialConfig() {       
         titleFromLabel.text = Constants.titleFromLabel
         titleToLabel.text = Constants.titleToLabel
         titleFromLabel.font = Constants.boldFont
@@ -50,19 +48,22 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         contentView.addSubview(toLabel)
         contentView.addSubview(separatorView)
         
-        separatorView.backgroundColor = Constants.separatorColor
+        backgroundColor = Constants.backgroundColor
         
+        separatorView.backgroundColor = Constants.separatorColor
         layoutSubviews()
     }
     
     override func config(item: DictionaryTableCellViewModel) {
         self.fromLabel.text = item.text
         self.toLabel.text = item.translation
+        self.viewModel = item
     }
     
     override func prepareForReuse() {
         fromLabel.text = String()
         toLabel.text = String()
+        backgroundColor = Constants.backgroundColor
         disposeBag = DisposeBag()
     }
     
@@ -82,8 +83,9 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         layoutSubviews()
-        return CGSize(width: size.width, height: separatorView.frame.maxY)
+        return CGSize(width: size.width, height: separatorView.frame.maxY + 1.0)
     }
+    
 }
 
 //MARK: - Constants
@@ -93,6 +95,7 @@ private enum Constants {
     static let titleToLabel = "Translation".localized
     
     static let separatorColor = ColorScheme.greenPantone.color
+    static let backgroundColor = ColorScheme.alertRed.color
     
     static let boldFont = UIFont.boldSystemFont(ofSize: 16.0)
     static let italicFont = UIFont.italicSystemFont(ofSize: 14.0)

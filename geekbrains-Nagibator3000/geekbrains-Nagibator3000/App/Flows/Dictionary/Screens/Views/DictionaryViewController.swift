@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import Toast_Swift
 
 final class DictionaryViewController: UIViewController {
     var viewModel: DictionaryViewModel!
@@ -26,6 +27,9 @@ final class DictionaryViewController: UIViewController {
     //MARK: - Config
     
     private func initialConfig() {
+        let swipeLeft = UIPanGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        tableView.addGestureRecognizer(swipeLeft)
+        
         view.backgroundColor = Constants.backgroundColor
         
         view.addSubview(tableView)
@@ -51,6 +55,27 @@ final class DictionaryViewController: UIViewController {
         viewModel.output.translationsSections
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        tableView.rx.itemDeleted
+            .subscribe(onNext: { [unowned self] indexPath in
+                if let cell = dataSource.tableView(tableView, cellForRowAt: indexPath) as? DictionaryTableViewCell,
+                   let translationModel = cell.viewModel?.translationModel {
+                    viewModel.input.onDeleteItem.accept(translationModel)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.output.showToast
+          .bind { [weak self] text in
+            self?.showToast(text: text)
+          }
+          .disposed(by: disposeBag)
+    }
+    
+    private func showToast(text: String) {
+      var style = ToastStyle()
+      style.messageColor = Constants.whiteColor
+      self.view.makeToast(text, duration: 4.0, position: .bottom, style: style)
     }
     
     //MARK: - Layout
@@ -58,6 +83,40 @@ final class DictionaryViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.pin.all()
+    }
+    
+    //MARK: - Actions
+    
+    @objc func respondToSwipeGesture(gesture: UIPanGestureRecognizer) {
+        let location = gesture.location(in: tableView)
+        let limit = -UIScreen.main.bounds.width / 3
+        
+        guard let indexPath = tableView.indexPathForRow(at: location),
+              let cell = tableView.cellForRow(at: indexPath),
+              gesture.direction == .left
+        else {
+            return
+        }
+        
+        let translation = gesture.translation(in: view)
+        if gesture.state == .changed &&
+            translation.x < 0 {
+            cell.transform = CGAffineTransform(translationX: translation.x, y: 0)
+            
+            let alpha = abs((translation.x * 0.6) / limit)
+            UIView.animate(withDuration: 0.8, delay: 0.5, options: .curveEaseOut, animations: {
+                cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(alpha)
+            })
+        } else if gesture.state == .ended {
+            if translation.x < limit {
+                self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
+            } else {
+                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseIn) {
+                    cell.transform = .identity
+                    cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(0.0)
+                }
+            }
+        }
     }
 }
 
@@ -69,4 +128,5 @@ private enum Constants {
     static let backgroundColor = ColorScheme.raspberryRose.color
     static let whiteColor = ColorScheme.white.color
     static let greenColor = ColorScheme.greenPantone.color
+    static let cellBackgroundColor = ColorScheme.alertRed.color
 }
