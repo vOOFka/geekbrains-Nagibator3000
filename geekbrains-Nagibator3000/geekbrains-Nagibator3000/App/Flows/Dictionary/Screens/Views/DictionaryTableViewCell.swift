@@ -78,25 +78,30 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         super.layoutSubviews()
         
         let mainWidth = UIScreen.main.bounds.width
-        let state = true//viewModel?.isPrepareForDelete ?? false
-        let width = (state) ? mainWidth - 100.0 : mainWidth
+     //   let state = viewModel?.isPrepareForDelete ?? false
+        let width = mainWidth //(state) ? mainWidth - 100.0 : mainWidth
         
-        titleFromLabel.pin.top(16.0).horizontally().margin(16.0).sizeToFit()
-        fromLabel.pin.below(of: titleFromLabel).horizontally().margin(16.0).sizeToFit()
+        titleFromLabel.pin.top(16.0).horizontally().margin(16.0).sizeToFit(.width)
+        fromLabel.pin.below(of: titleFromLabel).horizontally().margin(16.0).sizeToFit(.width)
         
         
-        titleToLabel.pin.below(of: fromLabel).horizontally().margin(16.0).sizeToFit()
-        toLabel.pin.below(of: titleToLabel).horizontally().margin(16.0).sizeToFit()
+        titleToLabel.pin.below(of: fromLabel).horizontally().margin(16.0).sizeToFit(.width)
+        toLabel.pin.below(of: titleToLabel).horizontally().margin(16.0).sizeToFit(.width)
         
         holderView.pin.height(toLabel.frame.maxY + 32.0).width(width)
-        contentView.pin.height(toLabel.frame.maxY + 32.0).width(mainWidth)
+        contentView.pin.height(toLabel.frame.maxY + 32.0).width(mainWidth + 100.0)
         
         separatorView.pin.bottom().left(16.0).height(onePixelHeight).width(width - 32.0)
         
-        if state {
-            deleteView.pin.after(of: holderView).width(100.0).height(contentView.frame.maxY + 1.0)
-            iconTrash.pin.center().width(30.0).height(30.0)
-        }
+        deleteView.pin.after(of: holderView).width(100.0).height(contentView.frame.maxY + 1.0)
+        iconTrash.pin.center().width(30.0).height(30.0)
+        
+//        if state {
+//            deleteView.pin.after(of: holderView).width(100.0).height(contentView.frame.maxY + 1.0)
+//            iconTrash.pin.center().width(30.0).height(30.0)
+//        } else {
+//            deleteView.pin.size(.zero)
+//        }
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {

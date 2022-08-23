@@ -16,6 +16,7 @@ final class DictionaryViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     private let tableView = UITableView()
+    private var isMovedCells: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,10 @@ final class DictionaryViewController: UIViewController {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
         swipeLeft.direction = .left
         tableView.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        swipeRight.direction = .right
+        tableView.addGestureRecognizer(swipeRight)
         
         view.backgroundColor = Constants.backgroundColor
         
@@ -46,6 +51,10 @@ final class DictionaryViewController: UIViewController {
         tableView.setEditing(true, animated: true)
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("I'm scrolling!")
+    }
+    
     private func bindLifeCycle() {
         rx.viewWillAppear
             .bind(to: viewModel.input.enterScreen)
@@ -55,6 +64,12 @@ final class DictionaryViewController: UIViewController {
     private func bindViewModel() {
         viewModel.output.translationsSections
             .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        tableView.rx.didScroll
+            .subscribe(onNext: { [unowned self] _ in
+                self.getBackCells()
+            })
             .disposed(by: disposeBag)
         
         tableView.rx.itemDeleted
@@ -79,6 +94,21 @@ final class DictionaryViewController: UIViewController {
       self.view.makeToast(text, duration: 4.0, position: .bottom, style: style)
     }
     
+    private func getBackCells() {
+        guard isMovedCells == true else {
+            return
+        }
+        self.tableView.visibleCells.forEach { cell in
+            if let cell = cell as? DictionaryTableViewCell,
+               (cell.viewModel?.isPrepareForDelete == true) {
+                UIView.animate(withDuration: 0.1) {
+                    cell.pin.left()
+                }
+            }
+        }
+        self.isMovedCells = false
+    }
+    
     //MARK: - Layout
     
     override func viewDidLayoutSubviews() {
@@ -89,49 +119,30 @@ final class DictionaryViewController: UIViewController {
     //MARK: - Actions
     
     @objc func respondToSwipeGesture(gesture: UISwipeGestureRecognizer) {
-   //     gesture.cancelsTouchesInView = false
-        
         let location = gesture.location(in: tableView)
-        let width = UIScreen.main.bounds.width
-
+   
         guard let indexPath = tableView.indexPathForRow(at: location),
-              let cell = tableView.cellForRow(at: indexPath)
+              let cell = tableView.cellForRow(at: indexPath) as? DictionaryTableViewCell
         else {
             return
         }
         
         if gesture.direction == .left {
-            UIView.animate(withDuration: 0.9) {
-                cell.pin.width(width * 0.8)
+            if cell.viewModel?.isPrepareForDelete == false {
+                cell.viewModel?.state()
             }
         }
         
         if gesture.direction == .right {
-            
+            if cell.viewModel?.isPrepareForDelete == true {
+                cell.viewModel?.state()
+            }
         }
-
-//        let translation = gesture.translation(in: view)
-//        print(translation.x)
-//
-//        if gesture.state == .changed && translation.x < 0 {
-//            cell.transform = CGAffineTransform(translationX: translation.x, y: 0)
-//
-//            let alpha = abs((translation.x * 0.6) / limit)
-//            UIView.animate(withDuration: 0.8, delay: 0.5, options: .curveEaseOut, animations: {
-//                cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(alpha)
-//            })
-//        }
-//
-//        if gesture.state == .ended {
-//            if translation.x < limit {
-//                self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
-//            } else {
-//                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseIn) {
-//                    cell.transform = .identity
-//                    cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(0.0)
-//                }
-//            }
-//        }
+        
+        UIView.animate(withDuration: 0.8) { [weak self] in
+            cell.pin.left(-100.0)
+            self?.isMovedCells = true
+        }
     }
 }
 
