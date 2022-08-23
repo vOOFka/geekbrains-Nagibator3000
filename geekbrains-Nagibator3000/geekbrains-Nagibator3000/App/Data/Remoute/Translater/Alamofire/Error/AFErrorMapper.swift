@@ -16,6 +16,9 @@ public class AFErrorMapper {
     case .responseValidationFailed(let reason):
       return responseValidationFailed(reason)
 
+    case .sessionTaskFailed(let error):
+      return sessionTaskFailed(error)
+
     case .responseSerializationFailed(let reason):
       return responseSerializationFailed(reason)
 
@@ -23,7 +26,11 @@ public class AFErrorMapper {
       return OtherError()
     }
   }
-
+  
+  public func sessionTaskFailed(_ error: Error) -> GenericNetworkingError {
+    InternetConnectionLost()
+  }
+  
   private func responseValidationFailed(_ reason: AFError.ResponseValidationFailureReason) -> GenericNetworkingError {
     switch reason {
     case .unacceptableStatusCode(code: let code):
@@ -44,6 +51,9 @@ public class AFErrorMapper {
 
     case 403:
       return Forbidden()
+      
+    case 500...599:
+      return ConnectionLost(code)
 
     default:
       return OtherError()

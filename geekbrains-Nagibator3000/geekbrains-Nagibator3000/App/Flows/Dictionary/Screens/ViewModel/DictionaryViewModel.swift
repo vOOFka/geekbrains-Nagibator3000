@@ -11,99 +11,114 @@ import RxCocoa
 import RxSwift
 
 final class DictionaryViewModel: RxViewModelProtocol, Stepper {
-    struct Input {
-        let enterScreen: PublishSubject<Void>
-        let onDeleteItem: PublishRelay<TranslationModel>
-    }
+  struct Input {
+    let enterScreen: PublishSubject<Void>
+    let onDeleteItem: PublishRelay<TranslationModel>
+  }
+  
+  struct Output {
+    let translationsSections: Driver<[DictionarySectionModel]>
+    let showToast: PublishRelay<String>
+  }
+  
+  private(set) var input: Input!
+  private(set) var output: Output!
+  
+  private let disposeBag = DisposeBag()
+  
+  // Input
+  private let enterScreen = PublishSubject<Void>()
+  private let deleteItem = PublishRelay<TranslationModel>()
+  
+  // Output
+  let translationsSections = BehaviorRelay<[DictionarySectionModel]>(value: [])
+  let showToast = PublishRelay<String>()
+  
+  var steps = PublishRelay<Step>()
+  
+  let dictionaryUseCase: DictionaryUseCase
+  
+  init(dictionaryUseCase: DictionaryUseCase) {
+    self.dictionaryUseCase = dictionaryUseCase
     
-    struct Output {
-        let translationsSections: Driver<[DictionarySectionModel]>
-        let showToast: PublishRelay<String>
-    }
+    input = Input(
+      enterScreen: enterScreen,
+      onDeleteItem: deleteItem
+    )
+    output = Output(
+      translationsSections: translationsSections.asDriver(onErrorJustReturn: []),
+      showToast: showToast
+    )
     
-    private(set) var input: Input!
-    private(set) var output: Output!
-    
-    private let disposeBag = DisposeBag()
-    
-    // Input
-    private let enterScreen = PublishSubject<Void>()
-    private let deleteItem = PublishRelay<TranslationModel>()
-    
-    // Output
-    let translationsSections = BehaviorRelay<[DictionarySectionModel]>(value: [])
-    let showToast = PublishRelay<String>()
-    
-    var steps = PublishRelay<Step>()
-    
-    let dictionaryUseCase: DictionaryUseCase
-    
-    init(dictionaryUseCase: DictionaryUseCase) {
-        self.dictionaryUseCase = dictionaryUseCase
+    setupBindings()
+  }
+  
+  private func setupBindings() {
+    bindEnterScreen()
+    bindDeleteItem()
+  }
+  
+  private func configSections() -> Observable<[DictionarySectionModel]> {
+    dictionaryUseCase.get().compactMap { [DictionarySectionModel(header: "", items: $0)] }
+  }
+  
+  private func bindEnterScreen() {
+    enterScreen
+      .flatMap { self.configSections() }
+      .bind(to: translationsSections)
+      .disposed(by: disposeBag)
+  }
+  
+  private func reloadSections() {
+    configSections()
+      .bind(to: self.translationsSections)
+      .disposed(by: self.disposeBag)
+  }
+  
+  private func deleteFromRepositiry(model: TranslationModel) {
+    dictionaryUseCase.delete(model: model)
+      .subscribe { [weak self] event in
+        guard let self = self else { return }
         
-        input = Input(
-            enterScreen: enterScreen,
-            onDeleteItem: deleteItem
-        )
-        output = Output(
-            translationsSections: translationsSections.asDriver(onErrorJustReturn: []),
-            showToast: showToast
-        )
-        
-        setupBindings()
+        switch event {
+        case.next(let completed):
+          self.reloadSections()
+          if !completed {
+            self.showToast.accept(Constants.deleteFailText)
+          }
+          break
+          
+        case .error(let error):
+          self.steps.accept(TranslateStep.error(self.map(error: error)))
+          break
+          
+        default:
+          break
+        }
+      }
+      .disposed(by: disposeBag)
+  }
+  
+  private func bindDeleteItem() {
+    deleteItem
+      .bind { [weak self] model in
+        self?.deleteFromRepositiry(model: model)
+      }
+      .disposed(by: disposeBag)
+  }
+  
+  private func map(error: Error) -> ErrorType {
+    switch error {
+    case _ as Unauthorized:
+      return .unauthorized
+      
+    case _ as InternetConnectionLost:
+      return .internetConnectionLost
+      
+    default:
+      return .otherError
     }
-    
-    private func setupBindings() {
-        bindEnterScreen()
-        bindDeleteItem()
-    }
-    
-    private func configSections() -> Observable<[DictionarySectionModel]> {
-        dictionaryUseCase.get().compactMap { [DictionarySectionModel(header: "", items: $0)] }
-    }
-    
-    private func bindEnterScreen() {
-        enterScreen
-        .map { _ in DictionaryStep.error(.otherError)}
-        .bind(to: steps)
-        .disposed(by: disposeBag)
-    }
-    
-    private func reloadSections() {
-        configSections()
-            .bind(to: self.translationsSections)
-            .disposed(by: self.disposeBag)
-    }
-    
-    private func deleteFromRepositiry(model: TranslationModel) {
-        dictionaryUseCase.delete(model: model)
-            .subscribe { [weak self] event in
-                switch event {
-                case.next(let completed):
-                    self?.reloadSections()                    
-                    if !completed {
-                        self?.showToast.accept(Constants.deleteFailText)
-                    }
-                    break
-                    
-                case .error(let error):
-                    print(error)
-                    break
-                    
-                default:
-                    break
-                }
-            }
-            .disposed(by: disposeBag)
-    }
-    
-    private func bindDeleteItem() {
-        deleteItem        
-            .bind { [weak self] model in
-                self?.deleteFromRepositiry(model: model)
-            }
-            .disposed(by: disposeBag)
-    }
+  }
 }
 
 private enum Constants {

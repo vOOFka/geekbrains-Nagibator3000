@@ -7,6 +7,7 @@
 
 import UIKit
 import RxFlow
+import RxSwift
 import RxRelay
 import PinLayout
 
@@ -20,6 +21,7 @@ class ErrorViewController: UIViewController, Stepper {
   private var titleLabel = UILabel()
   private var messageLabel = UILabel()
   private var confirmButton = UIButton()
+  private let disposeBag = DisposeBag()
 
   init(
     with error: ErrorType
@@ -55,20 +57,11 @@ class ErrorViewController: UIViewController, Stepper {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-      
-      titleLabel.text = "dasdasdasdasdasdasdd"
-      messageLabel.text = "dasdasdasdasdasdasdddasdasdasdasdasdasdddasdasdasdasdasdasdddasdasdasdasdasdasdddasdasdasdasdasdasdddasdasdasdasdasdasdd"
-      confirmButton.setTitle("sdasdasdasdsad", for: .normal)
-      
-      titleLabel.numberOfLines = 0
-      messageLabel.numberOfLines = 0
-      
-      titleLabel.textAlignment = .center
-      messageLabel.textAlignment = .center
-      
+    
     setupMainView()
     setupMainHolder()
     setupConfirmButton()
+    setupLabels()
   }
 
   override func viewDidLayoutSubviews() {
@@ -79,18 +72,14 @@ class ErrorViewController: UIViewController, Stepper {
       titleLabel.pin.top().horizontally().margin(16.0).sizeToFit(.width)
       messageLabel.pin.below(of: titleLabel).horizontally().margin(16.0).sizeToFit(.width)
       
-      confirmButton.pin.below(of: messageLabel).horizontally().margin(16.0).height(44.0)
+      confirmButton.pin.below(of: messageLabel).horizontally().margin(16.0).height(48.0)
       
       mainHolderView.pin.center().height(confirmButton.frame.maxY + 16.0)
       view.pin.all()
   }
   
-  @IBAction private func onConfirmButtonTapped(_ sender: UIButton) {
-    dismiss(animated: true)
-  }
-
   private func setupMainView() {
-    view.backgroundColor = Constants.mainViewBackgroundColor
+    view.backgroundColor = Constants.backgroundColor
     view.addSubview(mainHolderView)
   }
 
@@ -99,14 +88,30 @@ class ErrorViewController: UIViewController, Stepper {
     mainHolderView.addSubview(messageLabel)
     mainHolderView.addSubview(confirmButton)
     
-    mainHolderView.backgroundColor = ColorScheme.greenPantone.color
+    mainHolderView.backgroundColor = Constants.greenColor
     mainHolderView.layer.cornerRadius = Constants.mainStackLayerCornerRadius
   }
 
   private func setupConfirmButton() {
-    confirmButton.backgroundColor = Constants.confirmButtonBackgroundColor
-    confirmButton.setTitleColor(ColorScheme.white.color, for: .normal)
+    confirmButton.setTitle(confirmButtonText, for: .normal)
+    confirmButton.backgroundColor = Constants.whiteColor
+    confirmButton.setTitleColor(Constants.blackColor, for: .normal)
     confirmButton.layer.cornerRadius = Constants.confirmButtonLayerCornerRadius
+    confirmButton.rx.tap
+      .map { _ in ErrorStep.close }
+      .bind(to: steps)
+      .disposed(by: disposeBag)
+  }
+  
+  private func setupLabels() {
+    titleLabel.text = titleText.uppercased()
+    messageLabel.text = messageText
+    
+    titleLabel.numberOfLines = 0
+    messageLabel.numberOfLines = 0
+    
+    titleLabel.textAlignment = .center
+    messageLabel.textAlignment = .center
   }
 }
 
@@ -125,10 +130,10 @@ private enum Constants {
   static let otherErrorMessage = "Error.OtherError.Message".localized
 
   // Colors
-  static let mainViewBackgroundColor = UIColor.black.withAlphaComponent(0.4)
-  static let confirmButtonBackgroundColor = UIColor.yellow
-  static let titleLabelForegroundColor = ColorScheme.white.color
-  static let messageLabelForeground = ColorScheme.white.color
+  static let backgroundColor = UIColor.black.withAlphaComponent(0.4)
+  static let whiteColor = ColorScheme.white.color
+  static let blackColor = ColorScheme.black.color
+  static let greenColor = ColorScheme.greenPantone.color.withAlphaComponent(0.8)
 
   // Sizes
   static let mainStackLayerCornerRadius: CGFloat = 16

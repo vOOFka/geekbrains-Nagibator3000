@@ -15,7 +15,7 @@ class LanguageUseCase {
     self.repository = repository
   }
   
-  func load() -> Observable<Bool> {
+  func load() -> Completable {
     repository.load()
   }
   

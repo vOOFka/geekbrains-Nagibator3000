@@ -12,4 +12,5 @@ enum TranslateStep: Step {
   case openLanguagesRequiredScreen(language: LanguageModel)
   case openShareRequiredScreen(text: String)
   case selectedLanguage(language: LanguageModel)
+  case error(ErrorType)
 }

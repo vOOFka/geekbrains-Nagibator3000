@@ -12,13 +12,15 @@ import UIKit
 
 class ErrorFlow: Flow {
   var viewController: UIViewController
+  var isClouseApp: Bool
 
   var root: Presentable {
     self.viewController
   }
 
-  init(viewController: UIViewController) {
+  init(viewController: UIViewController, isClouseApp: Bool = false) {
     self.viewController = viewController
+    self.isClouseApp = isClouseApp
   }
 
   func navigate(to step: Step) -> FlowContributors {
@@ -27,6 +29,9 @@ class ErrorFlow: Flow {
     switch step {
     case .error(let type):
       return navigateToError(error: type)
+      
+    case .close:
+      return closeApp()
     }
   }
 
@@ -38,6 +43,19 @@ class ErrorFlow: Flow {
       withNextPresentable: errorVc,
       withNextStepper: errorVc)
     )
+  }
+  
+  private func closeApp() -> FlowContributors {
+    guard isClouseApp else {
+      viewController.dismiss(animated: true)
+      return .none
+    }
+
+    viewController.dismiss(animated: true) {
+      exit(0)
+    }
+    
+    return .none
   }
 
   private func present(viewController: UIViewController ) {

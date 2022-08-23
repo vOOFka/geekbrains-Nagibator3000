@@ -12,4 +12,5 @@ import RxFlow
 
 enum ErrorStep: Step {
   case error(type: ErrorType)
+  case close
 }
