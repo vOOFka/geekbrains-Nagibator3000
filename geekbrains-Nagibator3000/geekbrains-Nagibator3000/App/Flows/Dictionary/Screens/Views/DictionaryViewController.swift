@@ -27,7 +27,8 @@ final class DictionaryViewController: UIViewController {
     //MARK: - Config
     
     private func initialConfig() {
-        let swipeLeft = UIPanGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        swipeLeft.direction = .left
         tableView.addGestureRecognizer(swipeLeft)
         
         view.backgroundColor = Constants.backgroundColor
@@ -87,36 +88,50 @@ final class DictionaryViewController: UIViewController {
     
     //MARK: - Actions
     
-    @objc func respondToSwipeGesture(gesture: UIPanGestureRecognizer) {
-        let location = gesture.location(in: tableView)
-        let limit = -UIScreen.main.bounds.width / 3
+    @objc func respondToSwipeGesture(gesture: UISwipeGestureRecognizer) {
+   //     gesture.cancelsTouchesInView = false
         
+        let location = gesture.location(in: tableView)
+        let width = UIScreen.main.bounds.width
+
         guard let indexPath = tableView.indexPathForRow(at: location),
-              let cell = tableView.cellForRow(at: indexPath),
-              gesture.direction == .left
+              let cell = tableView.cellForRow(at: indexPath)
         else {
             return
         }
         
-        let translation = gesture.translation(in: view)
-        if gesture.state == .changed &&
-            translation.x < 0 {
-            cell.transform = CGAffineTransform(translationX: translation.x, y: 0)
-            
-            let alpha = abs((translation.x * 0.6) / limit)
-            UIView.animate(withDuration: 0.8, delay: 0.5, options: .curveEaseOut, animations: {
-                cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(alpha)
-            })
-        } else if gesture.state == .ended {
-            if translation.x < limit {
-                self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
-            } else {
-                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseIn) {
-                    cell.transform = .identity
-                    cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(0.0)
-                }
+        if gesture.direction == .left {
+            UIView.animate(withDuration: 0.9) {
+                cell.pin.width(width * 0.8)
             }
         }
+        
+        if gesture.direction == .right {
+            
+        }
+
+//        let translation = gesture.translation(in: view)
+//        print(translation.x)
+//
+//        if gesture.state == .changed && translation.x < 0 {
+//            cell.transform = CGAffineTransform(translationX: translation.x, y: 0)
+//
+//            let alpha = abs((translation.x * 0.6) / limit)
+//            UIView.animate(withDuration: 0.8, delay: 0.5, options: .curveEaseOut, animations: {
+//                cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(alpha)
+//            })
+//        }
+//
+//        if gesture.state == .ended {
+//            if translation.x < limit {
+//                self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
+//            } else {
+//                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseIn) {
+//                    cell.transform = .identity
+//                    cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(0.0)
+//                }
+//            }
+//        }
     }
 }
 
