@@ -9,3 +9,14 @@
 "Save" = "Текст успешно добавлен в словарь!";
 "Save_Failed" = "Текст не удалось добавить в словарь!";
 "Delete_Failed" = "Что-то не так! Текст не удален из словаря!";
+
+// MARK: - Error
+"Error.InternetError.Title" = "Internet connection lost";
+"Error.InternetError.Message" = "Please check the internet connection and try again.";
+"Error.ConfirmButton.Title" = "OK";
+"Error.ConnectionLost.Title" = "Connection lost";
+"Error.ConnectionLost.Message" = "Connection has been lost. Please try again later.";
+"Error.Unauthorized.Title" = "Account is not authorised";
+"Error.Unauthorized.Message" = "Your account is not authorized. Please sign in.";
+"Error.OtherError.Title" = "Oops!";
+"Error.OtherError.Message" = "Oops! Something has gone wrong. Please try again.";

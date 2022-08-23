@@ -64,9 +64,9 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     
     private func bindEnterScreen() {
         enterScreen
-            .flatMap { self.configSections() }
-            .bind(to: translationsSections)
-            .disposed(by: disposeBag)
+        .map { _ in DictionaryStep.error(.otherError)}
+        .bind(to: steps)
+        .disposed(by: disposeBag)
     }
     
     private func reloadSections() {
