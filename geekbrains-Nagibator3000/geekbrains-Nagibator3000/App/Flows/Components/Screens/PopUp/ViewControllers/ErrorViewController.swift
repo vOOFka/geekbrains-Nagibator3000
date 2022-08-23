@@ -16,7 +16,7 @@ class ErrorViewController: UIViewController, Stepper {
   var messageText: String
   var confirmButtonText: String
 
-  private var mainStackView = UIStackView()
+  private var mainHolderView = UIView()
   private var titleLabel = UILabel()
   private var messageLabel = UILabel()
   private var confirmButton = UIButton()
@@ -55,15 +55,34 @@ class ErrorViewController: UIViewController, Stepper {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+      
+      titleLabel.text = "dasdasdasdasdasdasdd"
+      messageLabel.text = "dasdasdasdasdasdasdddasdasdasdasdasdasdddasdasdasdasdasdasdddasdasdasdasdasdasdddasdasdasdasdasdasdddasdasdasdasdasdasdd"
+      confirmButton.setTitle("sdasdasdasdsad", for: .normal)
+      
+      titleLabel.numberOfLines = 0
+      messageLabel.numberOfLines = 0
+      
+      titleLabel.textAlignment = .center
+      messageLabel.textAlignment = .center
+      
     setupMainView()
-    setupMainStack()
+    setupMainHolder()
     setupConfirmButton()
   }
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    
+      let mainWidth = UIScreen.main.bounds.width
+      mainHolderView.pin.width(mainWidth * 0.8)
+      
+      titleLabel.pin.top().horizontally().margin(16.0).sizeToFit(.width)
+      messageLabel.pin.below(of: titleLabel).horizontally().margin(16.0).sizeToFit(.width)
+      
+      confirmButton.pin.below(of: messageLabel).horizontally().margin(16.0).height(44.0)
+      
+      mainHolderView.pin.center().height(confirmButton.frame.maxY + 16.0)
+      view.pin.all()
   }
   
   @IBAction private func onConfirmButtonTapped(_ sender: UIButton) {
@@ -72,12 +91,16 @@ class ErrorViewController: UIViewController, Stepper {
 
   private func setupMainView() {
     view.backgroundColor = Constants.mainViewBackgroundColor
+    view.addSubview(mainHolderView)
   }
 
-  private func setupMainStack() {
-    mainStackView.backgroundColor = ColorScheme.greenPantone.color
-    mainStackView.layer.cornerRadius = Constants.mainStackLayerCornerRadius
-    view.addSubview(mainStackView)
+  private func setupMainHolder() {
+    mainHolderView.addSubview(titleLabel)
+    mainHolderView.addSubview(messageLabel)
+    mainHolderView.addSubview(confirmButton)
+    
+    mainHolderView.backgroundColor = ColorScheme.greenPantone.color
+    mainHolderView.layer.cornerRadius = Constants.mainStackLayerCornerRadius
   }
 
   private func setupConfirmButton() {
