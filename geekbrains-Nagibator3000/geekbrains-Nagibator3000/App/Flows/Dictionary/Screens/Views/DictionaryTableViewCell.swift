@@ -19,7 +19,7 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
     private var toLabel = UILabel()
     private var separatorView = UIView()
     
-    private var deleteView = UIView()
+    var deleteView = UIView()
     private var iconTrash = UIImageView(image: Constants.deleteIcon)
         
     private let onePixelHeight = 1.0 / UIScreen.main.scale
@@ -35,7 +35,7 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         initialConfig()
     }
     
-    private func initialConfig() {       
+    private func initialConfig() {
         titleFromLabel.text = Constants.titleFromLabel
         titleToLabel.text = Constants.titleToLabel
         titleFromLabel.font = Constants.boldFont
@@ -56,9 +56,10 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         holderView.addSubview(fromLabel)
         holderView.addSubview(toLabel)
         holderView.addSubview(separatorView)
-       
+        
         deleteView.backgroundColor = Constants.deleteBackgroundColor
         separatorView.backgroundColor = Constants.separatorColor
+      
         layoutSubviews()
     }
     
@@ -76,10 +77,7 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let mainWidth = UIScreen.main.bounds.width
-     //   let state = viewModel?.isPrepareForDelete ?? false
-        let width = mainWidth //(state) ? mainWidth - 100.0 : mainWidth
+        let width = UIScreen.main.bounds.width
         
         titleFromLabel.pin.top(16.0).horizontally().margin(16.0).sizeToFit(.width)
         fromLabel.pin.below(of: titleFromLabel).horizontally().margin(16.0).sizeToFit(.width)
@@ -89,26 +87,18 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         toLabel.pin.below(of: titleToLabel).horizontally().margin(16.0).sizeToFit(.width)
         
         holderView.pin.height(toLabel.frame.maxY + 32.0).width(width)
-        contentView.pin.height(toLabel.frame.maxY + 32.0).width(mainWidth + 100.0)
+        contentView.pin.height(toLabel.frame.maxY + 32.0).width(width + 100.0)
         
         separatorView.pin.bottom().left(16.0).height(onePixelHeight).width(width - 32.0)
         
         deleteView.pin.after(of: holderView).width(100.0).height(contentView.frame.maxY + 1.0)
         iconTrash.pin.center().width(30.0).height(30.0)
-        
-//        if state {
-//            deleteView.pin.after(of: holderView).width(100.0).height(contentView.frame.maxY + 1.0)
-//            iconTrash.pin.center().width(30.0).height(30.0)
-//        } else {
-//            deleteView.pin.size(.zero)
-//        }
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         layoutSubviews()
         return CGSize(width: size.width, height: separatorView.frame.maxY + 1.0)
     }
-    
 }
 
 //MARK: - Constants

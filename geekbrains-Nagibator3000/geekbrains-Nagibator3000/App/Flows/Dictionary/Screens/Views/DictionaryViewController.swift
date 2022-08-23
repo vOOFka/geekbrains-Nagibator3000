@@ -51,10 +51,6 @@ final class DictionaryViewController: UIViewController {
         tableView.setEditing(true, animated: true)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("I'm scrolling!")
-    }
-    
     private func bindLifeCycle() {
         rx.viewWillAppear
             .bind(to: viewModel.input.enterScreen)
@@ -99,14 +95,22 @@ final class DictionaryViewController: UIViewController {
             return
         }
         self.tableView.visibleCells.forEach { cell in
-            if let cell = cell as? DictionaryTableViewCell,
-               (cell.viewModel?.isPrepareForDelete == true) {
-                UIView.animate(withDuration: 0.1) {
-                    cell.pin.left()
-                }
+            UIView.animate(withDuration: 0.1) {
+                cell.pin.left()
             }
         }
         self.isMovedCells = false
+    }
+    
+    private func configDeleteActions() {
+//        guard isMovedCells == true else {
+//            return
+//        }
+//        self.tableView.visibleCells.forEach { cell in
+//            if let cell = cell as? DictionaryTableViewCell {
+//                cell.deleteView.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+//            }
+//        }
     }
     
     //MARK: - Layout
@@ -128,20 +132,46 @@ final class DictionaryViewController: UIViewController {
         }
         
         if gesture.direction == .left {
-            if cell.viewModel?.isPrepareForDelete == false {
-                cell.viewModel?.state()
+            UIView.animate(withDuration: 0.8) { [weak self] in
+                guard let self = self else { return }
+                cell.pin.left(-100.0)
+                self.isMovedCells = true
+                self.configDeleteActions()
+                
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+                let frame = cell.frame
+                let view = UIView(frame: CGRect(x: frame.maxX,
+                                                y: frame.origin.y + (self.navigationController?.navigationBar.frame.maxY ?? 0.0),
+                                                width: 100.0,
+                                                height: frame.height))
+                view.tag = indexPath.row
+                self.view.addSubview(view)
+                view.addGestureRecognizer(tap)
             }
         }
         
         if gesture.direction == .right {
-            if cell.viewModel?.isPrepareForDelete == true {
-                cell.viewModel?.state()
+            UIView.animate(withDuration: 0.8) {
+                cell.pin.left()
             }
         }
         
-        UIView.animate(withDuration: 0.8) { [weak self] in
-            cell.pin.left(-100.0)
-            self?.isMovedCells = true
+
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        guard let senderView = sender.view else {
+            return
+        }
+        let indexPath = IndexPath(row: senderView.tag, section: 0)
+        
+        if (tableView.cellForRow(at: indexPath) != nil) {
+            tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
+            view.subviews.forEach { view in
+                if view.tag == senderView.tag {
+                    view.removeFromSuperview()
+                }
+            }
         }
     }
 }
