@@ -124,6 +124,15 @@ final class DictionaryViewController: UIViewController {
         }
     }
     
+    private func removeSingleActionView(_ tag: Int) {
+        view.subviews.forEach { view in
+            if view.accessibilityIdentifier == "handleDeleteTap",
+               view.tag == tag {
+                view.removeFromSuperview()
+            }
+        }
+    }
+    
     private func removeAllDeleteActionsView() {
         view.subviews.forEach { view in
             if view.accessibilityIdentifier == "handleDeleteTap" {
@@ -163,9 +172,7 @@ final class DictionaryViewController: UIViewController {
             UIView.animate(withDuration: 0.8) { [weak self] in
                 guard let self = self else { return }
                 cell.pin.left()
-                if let existView = self.view.subviews.first(where: { $0.tag == indexPath.row }) {
-                    existView.removeFromSuperview()
-                }
+                self.removeSingleActionView(indexPath.row)
             }
         }
     }
