@@ -56,7 +56,7 @@ final class DictionaryViewController: UIViewController {
             .bind(to: viewModel.input.enterScreen)
             .disposed(by: disposeBag)
     }
-
+    
     private func bindViewModel() {
         viewModel.output.translationsSections
             .drive(tableView.rx.items(dataSource: dataSource))
@@ -73,21 +73,22 @@ final class DictionaryViewController: UIViewController {
                 if let cell = dataSource.tableView(tableView, cellForRowAt: indexPath) as? DictionaryTableViewCell,
                    let translationModel = cell.viewModel?.translationModel {
                     viewModel.input.onDeleteItem.accept(translationModel)
+                    removeAllDeleteActionsView()
                 }
             })
             .disposed(by: disposeBag)
         
         viewModel.output.showToast
-          .bind { [weak self] text in
-            self?.showToast(text: text)
-          }
-          .disposed(by: disposeBag)
+            .bind { [weak self] text in
+                self?.showToast(text: text)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func showToast(text: String) {
-      var style = ToastStyle()
-      style.messageColor = Constants.whiteColor
-      self.view.makeToast(text, duration: 4.0, position: .bottom, style: style)
+        var style = ToastStyle()
+        style.messageColor = Constants.whiteColor
+        self.view.makeToast(text, duration: 4.0, position: .bottom, style: style)
     }
     
     private func getBackCells() {
@@ -104,24 +105,28 @@ final class DictionaryViewController: UIViewController {
     }
     
     private func configDeleteAction(_ cell: DictionaryTableViewCell, _ indexPath: IndexPath) {
-        if let existView = view.subviews.first(where: { $0.tag == indexPath.row + 1 }) {
+        if let existView = view.subviews.first(where: { $0.tag == indexPath.row }),
+           existView.accessibilityIdentifier == "handleDeleteTap" {
             existView.removeFromSuperview()
         }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         let frame = cell.frame
-        let view = UIView(frame: CGRect(x: frame.maxX,
-                                        y: frame.origin.y + (navigationController?.navigationBar.frame.maxY ?? 0.0),
-                                        width: 100.0,
-                                        height: frame.height))
-        view.tag = indexPath.row + 1
-        self.view.addSubview(view)
-        view.addGestureRecognizer(tap)
+        if let globalPoint = cell.superview?.convert(cell.frame.origin, to: nil) {
+            let view = UIView(frame: CGRect(x: globalPoint.x + frame.maxX + 100,
+                                            y: globalPoint.y,
+                                            width: 100.0,
+                                            height: frame.size.height))
+            view.tag = indexPath.row
+            view.accessibilityIdentifier = "handleDeleteTap"
+            self.view.addSubview(view)
+            view.addGestureRecognizer(tap)
+        }
     }
     
     private func removeAllDeleteActionsView() {
         view.subviews.forEach { view in
-            if view.tag != 0 {
+            if view.accessibilityIdentifier == "handleDeleteTap" {
                 view.removeFromSuperview()
             }
         }
@@ -138,7 +143,7 @@ final class DictionaryViewController: UIViewController {
     
     @objc func respondToSwipeGesture(gesture: UISwipeGestureRecognizer) {
         let location = gesture.location(in: tableView)
-   
+        
         guard let indexPath = tableView.indexPathForRow(at: location),
               let cell = tableView.cellForRow(at: indexPath) as? DictionaryTableViewCell
         else {
@@ -158,7 +163,9 @@ final class DictionaryViewController: UIViewController {
             UIView.animate(withDuration: 0.8) { [weak self] in
                 guard let self = self else { return }
                 cell.pin.left()
-                self.configDeleteAction(cell, indexPath)
+                if let existView = self.view.subviews.first(where: { $0.tag == indexPath.row }) {
+                    existView.removeFromSuperview()
+                }
             }
         }
     }
@@ -167,16 +174,10 @@ final class DictionaryViewController: UIViewController {
         guard let senderView = sender.view else {
             return
         }
-        let indexPath = IndexPath(row: senderView.tag - 1, section: 0)
+        let indexPath = IndexPath(row: senderView.tag, section: 0)
         
         if (tableView.cellForRow(at: indexPath) != nil) {
-            print(indexPath)
-            //tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
-            view.subviews.forEach { view in
-                if view.tag == senderView.tag + 1 {
-                    view.removeFromSuperview()
-                }
-            }
+            tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
         }
     }
 }
