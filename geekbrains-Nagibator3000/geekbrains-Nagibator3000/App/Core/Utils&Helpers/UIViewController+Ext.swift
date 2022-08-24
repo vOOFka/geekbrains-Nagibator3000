@@ -13,6 +13,7 @@ extension UIViewController {
         
         customNavBarAppearance.configureWithOpaqueBackground()
         customNavBarAppearance.backgroundColor = Constants.greenColor
+        customNavBarAppearance.shadowColor = Constants.greenColor
         
         customNavBarAppearance.titleTextAttributes = [.foregroundColor: Constants.whiteColor]
         customNavBarAppearance.largeTitleTextAttributes = [.foregroundColor: Constants.whiteColor]

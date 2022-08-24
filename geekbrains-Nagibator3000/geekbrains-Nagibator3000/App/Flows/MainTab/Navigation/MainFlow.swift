@@ -64,7 +64,7 @@ final class MainFlow: Flow {
         )
         
         let trainingItem = UITabBarItem(
-            title: Constants.titleTranslateViewController,
+            title: Constants.titleTrainingViewController,
             image: UIImage(systemName: Constants.iconTrainingViewController),
             selectedImage: nil
         )
