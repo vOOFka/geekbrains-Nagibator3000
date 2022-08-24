@@ -16,15 +16,16 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
     let onTapFromLanguage: PublishRelay<Void>
     let onTapToLanguage: PublishRelay<Void>
     let onReverseLanguage: PublishRelay<Void>
-    let onTranslate: PublishRelay<String>
+    let onTranslate: PublishRelay<Void>
     let onSave: PublishRelay<Void>
     let onShare: PublishRelay<Void>
     let onCopy: PublishRelay<Void>
+    let onText: AnyObserver<String>
     let onLanguageUpdated: PublishRelay<LanguageModel>
   }
   
   struct Output {
-    let translateText: Driver<TranslationModel>
+    let translateText: Driver<String>
     let sourceLanguage: Driver<LanguageModel>
     let destinationLanguage: Driver<LanguageModel>
     let reverseText: PublishRelay<Void>
@@ -43,19 +44,18 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   private let tapedFromLanguage = PublishRelay<Void>()
   private let tapedToLanguage = PublishRelay<Void>()
   private let tappedReverseLanguage = PublishRelay<Void>()
-  private let translated = PublishRelay<String>()
+  private let translated = PublishRelay<Void>()
   private let saved = PublishRelay<Void>()
   private let shared = PublishRelay<Void>()
   private let copied = PublishRelay<Void>()
   private let languageUpdated = PublishRelay<LanguageModel>()
   private let languageSelectedIndex = BehaviorSubject<Int>(value: 0)
+  private let texted = BehaviorSubject<String>(value: "")
   
   // Outut
   let reverseText = PublishRelay<Void>()
   let showToast = PublishRelay<String>()
-  private let translatedText = BehaviorSubject<TranslationModel>(
-    value: TranslationModel(fromText: "", toText: "")
-  )
+  private let translatedText = BehaviorSubject<String>(value: "")
   private let sourceLanguage = BehaviorSubject<LanguageModel>(
     value: LanguageModel(code: "ru", name: "русский")
   )
@@ -78,12 +78,12 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
       onSave: saved,
       onShare: shared,
       onCopy: copied,
+      onText: texted.asObserver(),
       onLanguageUpdated: languageUpdated
     )
     
     output = Output(
-      translateText: translatedText
-        .asDriver(onErrorJustReturn: TranslationModel(fromText: "", toText: "")),
+      translateText: translatedText.asDriver(onErrorJustReturn: ""),
       sourceLanguage: sourceLanguage
         .asDriver(onErrorJustReturn: LanguageModel(code: "none", name: "select")),
       destinationLanguage: destinationLanguage
@@ -162,7 +162,7 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
     translated
       .withLatestFrom(
         Observable.combineLatest(
-          translated,
+          texted,
           sourceLanguage,
           destinationLanguage
         )
@@ -178,9 +178,10 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   
   private func bindSave() {
     saved
-      .withLatestFrom(translatedText)
-      .bind { [weak self] text in
-        self?.saveToDictionary(model: text)
+      .withLatestFrom(Observable.combineLatest(texted, translatedText))
+      .map { fromText, toText in TranslationModel(fromText: fromText, toText: toText) }
+      .bind { [weak self] model in
+        self?.saveToDictionary(model: model)
       }
       .disposed(by: disposeBag)
   }
@@ -195,7 +196,7 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   private func bindShare() {
     shared
       .withLatestFrom(translatedText)
-      .map { model in TranslateStep.openShareRequiredScreen(text: model.toText)}
+      .map { text in TranslateStep.openShareRequiredScreen(text: text)}
       .bind(to: steps)
       .disposed(by: disposeBag)
   }
@@ -212,7 +213,7 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
         guard let self = self else { return }
         switch event {
         case .next(let translate):
-          self.translatedText.onNext(translate)
+          self.translatedText.onNext(translate.toText)
           break
           
         case .error(let error):
@@ -227,6 +228,25 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   }
   
   public func saveToDictionary(model: TranslationModel) {
+    guard !model.fromText.isEmpty,
+          !model.toText.isEmpty else {
+      
+      self.showToast.accept(Constants.saveEmtyFailText)
+      return
+    }
+    
+    textIsExisted(model: model)
+      .subscribe(onNext: { [weak self] isExisted in
+        if isExisted {
+          self?.showToast.accept(Constants.saveExistsFailText)
+        } else {
+          self?.save(model: model)
+        }
+      })
+      .disposed(by: disposeBag)
+  }
+  
+  private func save(model: TranslationModel) {
     dictionaryUseCase.add(model: model)
       .subscribe { [weak self] event in
         guard let self = self else { return }
@@ -252,6 +272,16 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
       .disposed(by: disposeBag)
   }
   
+  private func textIsExisted(model: TranslationModel) ->  Observable<Bool> {
+    dictionaryUseCase.get()
+      .map { array in
+        let index = array
+          .firstIndex { value in value.fromText == model.fromText && value.toText == model.toText }
+        
+        return index != nil
+    }
+  }
+  
   private func map(error: Error) -> ErrorType {
    switch error {
    case _ as Unauthorized:
@@ -269,5 +299,7 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
 private enum Constants {
   static let copyText = "Copy".localized
   static let saveText = "Save".localized
+  static let saveEmtyFailText = "Save.Error.Empty".localized
+  static let saveExistsFailText = "Save.Error.Existed".localized
   static let saveFailText = "Save_Failed".localized
 }

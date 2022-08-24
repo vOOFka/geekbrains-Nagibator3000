@@ -106,7 +106,6 @@ final class TranslateViewController: UIViewController {
       .disposed(by: disposeBag)
     
     viewModel.output.translateText
-      .map { $0.toText }
       .drive(destinationTextView.rx.text)
       .disposed(by: disposeBag)
     
@@ -146,6 +145,7 @@ final class TranslateViewController: UIViewController {
   private func showToast(text: String) {
     var style = ToastStyle()
     style.messageColor = Constants.whiteColor
+    style.messageAlignment = .center
     self.view.makeToast(text, duration: 4.0, position: .bottom, style: style)
   }
 }
@@ -170,8 +170,9 @@ extension TranslateViewController: CustomActionsDelegate {
 
 extension TranslateViewController: UITextViewDelegate {
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    viewModel.input.onText.onNext(textView.text)
     if text == "\n" {
-      viewModel.input.onTranslate.accept(textView.text)
+      viewModel.input.onTranslate.accept(Void())
       textView.resignFirstResponder()
     }
     return true
