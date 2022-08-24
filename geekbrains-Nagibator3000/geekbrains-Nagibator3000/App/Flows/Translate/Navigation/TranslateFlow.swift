@@ -38,6 +38,13 @@ class TranslateFlow: Flow {
       
     case .selectedLanguage(let language):
       return updateLanguage(language: language)
+      
+    case .error(let type):
+      let flow = ErrorFlow(viewController: viewController)
+      return .one(flowContributor: .contribute(
+        withNextPresentable: flow,
+        withNextStepper: OneStepper(withSingleStep: ErrorStep.error(type: type))
+      ))
     }
   }
   

@@ -64,16 +64,27 @@ class AnimationViewModel: RxViewModelProtocol, Stepper {
   private func loadLanguages() {
     loadUseCase.load()
       .delay(.seconds(2), scheduler: MainScheduler.instance)
-      .map { [weak self] completed in
-        self?.stopAnimation.accept(Void())
+      .subscribe(onCompleted: { [weak self] in
+        self?.steps.accept(AnimationStep.goToApp)
+      }, onError: { [weak self] error in
+        guard let self = self else { return }
         
-        guard completed else {
-          return AnimationStep.error
-        }
-        
-        return AnimationStep.goToApp
-      }
-      .bind(to: self.steps)
+        self.stopAnimation.accept(Void())
+        self.steps.accept(AnimationStep.error(self.map(error: error)))
+      })
       .disposed(by: disposeBag)
   }
+  
+  private func map(error: Error) -> ErrorType {
+   switch error {
+   case _ as Unauthorized:
+     return .unauthorized
+
+   case _ as InternetConnectionLost:
+     return .internetConnectionLost
+     
+   default:
+     return .otherError
+   }
+ }
 }
