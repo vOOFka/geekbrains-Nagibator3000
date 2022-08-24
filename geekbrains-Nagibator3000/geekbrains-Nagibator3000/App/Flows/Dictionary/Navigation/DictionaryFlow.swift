@@ -12,15 +12,19 @@ import Swinject
 
 class DictionaryFlow: Flow {
   var viewController: UIViewController
-  private let container = Container()
+  private let container: Container!
 
   var root: Presentable {
     self.viewController
   }
 
-  init(viewController: UIViewController) {
-    self.viewController = viewController
-  }
+    init(
+      viewController: UIViewController,
+      container: Container
+    ) {
+      self.viewController = viewController
+      self.container = container
+    }
 
   func navigate(to step: Step) -> FlowContributors {
     guard let step = step as? DictionaryStep else { return .none }
@@ -33,20 +37,21 @@ class DictionaryFlow: Flow {
         withNextStepper: OneStepper(withSingleStep: ErrorStep.error(type: type))
       ))
     case .translate:
-        return openTranslateScreen()!
+        return openTranslateScreen()
     }
   }
     
-    private func openTranslateScreen() -> FlowContributors? {
-        if let tabBarViewControllers = self.viewController.tabBarController?.viewControllers,
-           let translateViewController = tabBarViewControllers.compactMap({ $0 as? TranslateViewController }).first,
-           let viewModel = translateViewController.viewModel {
-               self.viewController.present(translateViewController, animated: true, completion: nil)
-               
-               return .one(flowContributor: .contribute(
-                withNextPresentable: translateViewController, withNextStepper: viewModel)
-               )
-           }
-        return nil
+    private func openTranslateScreen() -> FlowContributors {
+        let translateViewModel = TranslateViewModel(
+            translaterUseCase: container.resolve(TranslaterUseCase.self)!,
+            dictionaryUseCase: container.resolve(DictionaryUseCase.self)!
+        )
+        let translateViewController = TranslateViewController()
+        translateViewController.viewModel = translateViewModel
+        viewController.navigationController?.pushViewController(translateViewController, animated: true)
+        
+        return .one(flowContributor: .contribute(
+            withNextPresentable: translateViewController, withNextStepper: translateViewModel)
+        )
     }
 }

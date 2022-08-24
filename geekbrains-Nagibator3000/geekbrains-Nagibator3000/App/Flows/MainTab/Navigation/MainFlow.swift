@@ -81,7 +81,7 @@ final class MainFlow: Flow {
         
         // create flows
         let translateFlow = TranslateFlow(viewController: translateViewController, container: container)
-        let dictionaryFlow = DictionaryFlow(viewController: dictionaryViewController)
+        let dictionaryFlow = DictionaryFlow(viewController: dictionaryViewController, container: container)
         let trainingFlow = TrainingFlow(viewController: trainingViewController)
         
         let tabController = MainTabBarViewController()
