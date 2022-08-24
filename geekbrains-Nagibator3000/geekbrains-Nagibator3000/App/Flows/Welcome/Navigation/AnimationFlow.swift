@@ -30,10 +30,13 @@ class AnimationFlow: Flow {
       
     case .goToApp:
       return goToMainApp()
-      
-    // когда создам экран с информацией об ошибках тут будет подключено оно
-    case .error:
-      return .none
+
+    case .error(let type):
+      let flow = ErrorFlow(viewController: window.rootViewController!, isClouseApp: true)
+      return .one(flowContributor: .contribute(
+        withNextPresentable: flow,
+        withNextStepper: OneStepper(withSingleStep: ErrorStep.error(type: type))
+      ))
     }
   }
   

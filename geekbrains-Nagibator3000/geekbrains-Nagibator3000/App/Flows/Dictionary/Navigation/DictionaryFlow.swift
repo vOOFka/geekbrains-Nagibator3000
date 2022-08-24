@@ -18,13 +18,20 @@ class DictionaryFlow: Flow {
     self.viewController
   }
 
-  init(
-    viewController: UIViewController
-  ) {
+  init(viewController: UIViewController) {
     self.viewController = viewController
   }
 
   func navigate(to step: Step) -> FlowContributors {
-    .none
+    guard let step = step as? DictionaryStep else { return .none }
+
+    switch step {
+    case .error(let type):
+      let flow = ErrorFlow(viewController: viewController)
+      return .one(flowContributor: .contribute(
+        withNextPresentable: flow,
+        withNextStepper: OneStepper(withSingleStep: ErrorStep.error(type: type))
+      ))
+    }
   }
 }

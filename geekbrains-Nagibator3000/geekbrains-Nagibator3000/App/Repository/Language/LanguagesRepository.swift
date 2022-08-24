@@ -24,8 +24,8 @@ class LanguagesRepository {
     self.mapper = mapper
   }
 
-  func load() -> Observable<Bool> {
-    Observable<Bool>.create { [weak self] observable in
+  func load() -> Completable {
+    Completable.create { [weak self] completable in
       guard let self = self else { return Disposables.create() }
       
       self.api.get()
@@ -36,13 +36,16 @@ class LanguagesRepository {
           case .next(let values):
             self.objectAdapter.write(model: self.mapper.map(response: values))
               .subscribe(onNext: { completed in
-                observable.onNext(completed)
-                observable.onCompleted()
+                if completed {
+                  completable(.completed)
+                } else {
+                  completable(.error(OtherError()))
+                }
               })
               .disposed(by: self.disposeBag)
             
           case .error(let error):
-            observable.onError(error)
+            completable(.error(error))
             
           default:
             break
