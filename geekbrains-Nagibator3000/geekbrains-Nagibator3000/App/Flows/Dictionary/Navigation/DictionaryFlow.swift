@@ -48,7 +48,11 @@ class DictionaryFlow: Flow {
         )
         let translateViewController = TranslateViewController()
         translateViewController.viewModel = translateViewModel
-        viewController.navigationController?.pushViewController(translateViewController, animated: true)
+        
+        if let tabBarViewController = self.viewController.tabBarController,
+           let translateViewController = tabBarViewController.viewControllers?.compactMap({ $0 as? TranslateViewController }).first {
+            tabBarViewController.selectedViewController = translateViewController
+        }
         
         return .one(flowContributor: .contribute(
             withNextPresentable: translateViewController, withNextStepper: translateViewModel)
