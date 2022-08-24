@@ -10,5 +10,5 @@ import RxFlow
 enum AnimationStep: Step {
     case animationScreen
     case goToApp
-    case error
+    case error(ErrorType)
 }

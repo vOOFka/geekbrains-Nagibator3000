@@ -9,4 +9,5 @@ import Foundation
 import RxFlow
 
 enum DictionaryStep: Step {
+  case error(ErrorType)
 }

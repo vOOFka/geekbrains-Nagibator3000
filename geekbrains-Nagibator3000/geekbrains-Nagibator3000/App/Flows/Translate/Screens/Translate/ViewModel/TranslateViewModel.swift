@@ -209,13 +209,14 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
     
     translaterUseCase.traslate(fromText: text, params: tanslateParams)
       .subscribe { [weak self] event in
+        guard let self = self else { return }
         switch event {
         case .next(let translate):
-          self?.translatedText.onNext(translate)
+          self.translatedText.onNext(translate)
           break
           
         case .error(let error):
-          print(error)
+          self.steps.accept(TranslateStep.error(self.map(error: error)))
           break
           
         default:
@@ -228,18 +229,20 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   public func saveToDictionary(model: TranslationModel) {
     dictionaryUseCase.add(model: model)
       .subscribe { [weak self] event in
+        guard let self = self else { return }
+        
         switch event {
         case.next(let completed):
           if completed {
-            self?.showToast.accept(Constants.saveText)
+            self.showToast.accept(Constants.saveText)
             break
           }
           
-          self?.showToast.accept(Constants.saveFailText)
+          self.showToast.accept(Constants.saveFailText)
           break
           
         case .error(let error):
-          self?.showToast.accept(error.localizedDescription)
+          self.steps.accept(TranslateStep.error(self.map(error: error)))
           break
           
         default:
@@ -248,6 +251,19 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
       }
       .disposed(by: disposeBag)
   }
+  
+  private func map(error: Error) -> ErrorType {
+   switch error {
+   case _ as Unauthorized:
+     return .unauthorized
+
+   case _ as InternetConnectionLost:
+     return .internetConnectionLost
+     
+   default:
+     return .otherError
+   }
+ }
 }
 
 private enum Constants {

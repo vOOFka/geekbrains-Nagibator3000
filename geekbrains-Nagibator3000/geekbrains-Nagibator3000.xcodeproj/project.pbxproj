@@ -37,6 +37,10 @@
 		E00DE07828A2F50500C3608C /* TranslationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE07728A2F50500C3608C /* TranslationRepository.swift */; };
 		E00DE07B28A2FFCC00C3608C /* DictionaryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE07A28A2FFCC00C3608C /* DictionaryUseCase.swift */; };
 		E00DE07E28A302B300C3608C /* LanguageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DE07D28A302B300C3608C /* LanguageUseCase.swift */; };
+		E035AA9D28B4FF11002F287C /* ErrorStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E035AA9828B4FF11002F287C /* ErrorStep.swift */; };
+		E035AA9E28B4FF11002F287C /* ErrorFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E035AA9928B4FF11002F287C /* ErrorFlow.swift */; };
+		E035AA9F28B4FF11002F287C /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E035AA9B28B4FF11002F287C /* ErrorViewController.swift */; };
+		E035AAA028B4FF11002F287C /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E035AA9C28B4FF11002F287C /* ErrorType.swift */; };
 		E08E48FF28B00B8700E667D9 /* RXLanguagesListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E48FE28B00B8700E667D9 /* RXLanguagesListDataSource.swift */; };
 		E08E490128B00C1800E667D9 /* LanguagesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E490028B00C1800E667D9 /* LanguagesListModel.swift */; };
 		E08E490428B00C8C00E667D9 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = E08E490328B00C8C00E667D9 /* RxDataSources */; };
@@ -136,6 +140,10 @@
 		E00DE07728A2F50500C3608C /* TranslationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRepository.swift; sourceTree = "<group>"; };
 		E00DE07A28A2FFCC00C3608C /* DictionaryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryUseCase.swift; sourceTree = "<group>"; };
 		E00DE07D28A302B300C3608C /* LanguageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageUseCase.swift; sourceTree = "<group>"; };
+		E035AA9828B4FF11002F287C /* ErrorStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorStep.swift; sourceTree = "<group>"; };
+		E035AA9928B4FF11002F287C /* ErrorFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorFlow.swift; sourceTree = "<group>"; };
+		E035AA9B28B4FF11002F287C /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		E035AA9C28B4FF11002F287C /* ErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 		E08E48FE28B00B8700E667D9 /* RXLanguagesListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXLanguagesListDataSource.swift; sourceTree = "<group>"; };
 		E08E490028B00C1800E667D9 /* LanguagesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesListModel.swift; sourceTree = "<group>"; };
 		E08E490A28B02F0000E667D9 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -380,6 +388,7 @@
 		E002B94128A6DD3000FBCBDD /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E035AA9528B4FF11002F287C /* Screens */,
 				E002B94228A6DD4400FBCBDD /* RXUITools */,
 			);
 			path = Components;
@@ -477,6 +486,41 @@
 				E00DE07D28A302B300C3608C /* LanguageUseCase.swift */,
 			);
 			path = Languages;
+			sourceTree = "<group>";
+		};
+		E035AA9528B4FF11002F287C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E035AA9628B4FF11002F287C /* PopUp */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E035AA9628B4FF11002F287C /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				E035AA9728B4FF11002F287C /* Navigation */,
+				E035AA9A28B4FF11002F287C /* ViewControllers */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
+		E035AA9728B4FF11002F287C /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E035AA9828B4FF11002F287C /* ErrorStep.swift */,
+				E035AA9928B4FF11002F287C /* ErrorFlow.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		E035AA9A28B4FF11002F287C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E035AA9B28B4FF11002F287C /* ErrorViewController.swift */,
+				E035AA9C28B4FF11002F287C /* ErrorType.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		E08E48FB28B0076B00E667D9 /* DataSource */ = {
@@ -1064,6 +1108,7 @@
 				E00DE07E28A302B300C3608C /* LanguageUseCase.swift in Sources */,
 				E002B95E28AD7F6400FBCBDD /* AnimationFlow+DI.swift in Sources */,
 				E002B93E28A6D69B00FBCBDD /* TrainingViewModel.swift in Sources */,
+				E035AA9E28B4FF11002F287C /* ErrorFlow.swift in Sources */,
 				F4E6040F28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift in Sources */,
 				E0EAEA5028A1B72A00F8D918 /* LanguageStorageModel.swift in Sources */,
 				E0EAEA3E28A1A63600F8D918 /* UserDefaultsWrapper.swift in Sources */,
@@ -1083,6 +1128,7 @@
 				E0EAEA3B28A1A5B200F8D918 /* Mapper.swift in Sources */,
 				E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */,
 				F4F3124628A6DDEC00FE1F20 /* CustomActionsView.swift in Sources */,
+				E035AAA028B4FF11002F287C /* ErrorType.swift in Sources */,
 				E08E48FF28B00B8700E667D9 /* RXLanguagesListDataSource.swift in Sources */,
 				E0EAEA21289DA28100F8D918 /* TranslaterUseCase.swift in Sources */,
 				E002B94628A6E00900FBCBDD /* RXViewController.swift in Sources */,
@@ -1112,6 +1158,7 @@
 				F4D62A25289719D10000B690 /* DictionaryViewController.swift in Sources */,
 				E0EAEA03289C4E5600F8D918 /* TRError.swift in Sources */,
 				E002B91328A698CA00FBCBDD /* AnimationFlow.swift in Sources */,
+				E035AA9F28B4FF11002F287C /* ErrorViewController.swift in Sources */,
 				E00DE07828A2F50500C3608C /* TranslationRepository.swift in Sources */,
 				E00DE06F28A2F0B200C3608C /* TranslationStorageModel.swift in Sources */,
 				E0EAEA0E289D91EE00F8D918 /* TranslateParams.swift in Sources */,
@@ -1127,6 +1174,7 @@
 				E002B91A28A6994C00FBCBDD /* AnimationViewModel.swift in Sources */,
 				E0EAEA33289DAD9D00F8D918 /* MainFlow.swift in Sources */,
 				E002B95028AAF0A000FBCBDD /* LanguagesApi.swift in Sources */,
+				E035AA9D28B4FF11002F287C /* ErrorStep.swift in Sources */,
 				E002B93828A6D65100FBCBDD /* TrainingFlow.swift in Sources */,
 				E0EAEA10289D92C500F8D918 /* TranslateApi.swift in Sources */,
 				F4A5B37828A5A08100D0293E /* Locale+Ext.swift in Sources */,

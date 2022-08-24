@@ -30,6 +30,18 @@ public class HTTPError: GenericNetworkingError {
   }
 }
 
+public class InternetConnectionLost: GenericNetworkingError {
+  init(file: StaticString = #filePath, line: UInt = #line) {
+    super.init("Internet connection lost", file: file)
+  }
+}
+
+public class ConnectionLost: HTTPError {
+  init(_ code: Int, file: StaticString = #filePath, line: UInt = #line) {
+    super.init(code, "Connection lost", file: file)
+  }
+}
+
 public class BadRequest: HTTPError {
   init(file: StaticString = #filePath) {
     super.init(400, "Bad request", file: file)
