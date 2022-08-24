@@ -32,6 +32,21 @@ class DictionaryFlow: Flow {
         withNextPresentable: flow,
         withNextStepper: OneStepper(withSingleStep: ErrorStep.error(type: type))
       ))
+    case .translate:
+        return openTranslateScreen()!
     }
   }
+    
+    private func openTranslateScreen() -> FlowContributors? {
+        if let tabBarViewControllers = self.viewController.tabBarController?.viewControllers,
+           let translateViewController = tabBarViewControllers.compactMap({ $0 as? TranslateViewController }).first,
+           let viewModel = translateViewController.viewModel {
+               self.viewController.present(translateViewController, animated: true, completion: nil)
+               
+               return .one(flowContributor: .contribute(
+                withNextPresentable: translateViewController, withNextStepper: viewModel)
+               )
+           }
+        return nil
+    }
 }

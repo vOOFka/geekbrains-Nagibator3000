@@ -32,6 +32,7 @@ final class TranslateViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     tabBarController?.navigationItem.setupTitle(text: Constants.title)
+    tabBarController?.navigationItem.rightBarButtonItems?.removeAll()
   }
   
   override func viewDidLayoutSubviews() {
