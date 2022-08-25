@@ -22,9 +22,9 @@ class TrainingOverlayView: OverlayView {
         didSet {
             switch overlayState {
             case .left?:
-               overlayImageView.backgroundColor = .red
+                overlayImageView.backgroundColor = Constants.redColor
             case .right?:
-                overlayImageView.backgroundColor = .green
+                overlayImageView.backgroundColor = Constants.greenColor
             default:
                 overlayImageView.image = nil
             }
@@ -32,3 +32,9 @@ class TrainingOverlayView: OverlayView {
     }
 }
 
+//MARK: - Constants
+
+private enum Constants {
+    static let greenColor = ColorScheme.greenPantone.color
+    static let redColor = ColorScheme.alertRed.color
+}
