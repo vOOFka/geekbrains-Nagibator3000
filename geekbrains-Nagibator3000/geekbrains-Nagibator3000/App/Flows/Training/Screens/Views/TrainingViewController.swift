@@ -34,7 +34,7 @@ final class TrainingViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    tabBarController?.navigationItem.setupTitle(text: String(localized: "Training"))
+    tabBarController?.navigationItem.setupTitle(text: "Training".localized)
   }
 }
 
