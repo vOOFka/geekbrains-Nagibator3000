@@ -8,32 +8,36 @@
 import UIKit
 import Koloda
 
-private var numberOfCards: Int = 6
 final class TrainingViewController: UIViewController {
-  var viewModel: TrainingViewModel!
-  var kolodaView = KolodaView(frame: CGRect(x: 70, y: 100, width: 250, height: 400))
+    var viewModel: TrainingViewModel!
+    var kolodaView = KolodaView(frame: CGRect(x: 0, y: 0, width: 250, height: 400))
     
-  fileprivate var images: [UIImage] = {
-        var array: [UIImage] = []
-        for index in 0..<numberOfCards {
-            array.append(UIImage(named: "\(index + 1)")!)
-        }
-        return array
-  }()
+    private let trainingCards: [UIView] = [
+        "This is very very long text. This is very very long text. This is very very long text. This is very very long text. This is very very long text.This is very very long text.This is very very long text.This is very very long text.This is very very long text.",
+        "Cъешь ещё этих мягких французских булок, да выпей чаю",
+        "Выбранный нами инновационный путь определил дальнейшее развитие",
+        "Логотип крупнейшей компании по производству мыльных пузырей продолжает удивлять"
+    ]
+        .compactMap{ TrainingCardView(with: String($0), translate: String($0)) }
     
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    view.backgroundColor = ColorScheme.white.color
-    view.addSubview(kolodaView)
-    kolodaView.dataSource = self
-    kolodaView.delegate = self
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = ColorScheme.white.color
+        view.addSubview(kolodaView)
+        kolodaView.dataSource = self
+        kolodaView.delegate = self
+    }
     
-    tabBarController?.navigationItem.setupTitle(text: "Training".localized)
-  }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.navigationItem.setupTitle(text: "Training".localized)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        kolodaView.pin.center()
+    }
 }
 
 extension TrainingViewController: KolodaViewDelegate {
@@ -44,14 +48,17 @@ extension TrainingViewController: KolodaViewDelegate {
 
 extension TrainingViewController: KolodaViewDataSource {
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        return UIImageView(image: images[Int(index)])
+        return trainingCards[index]
     }
     
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
-        return images.count
+        return trainingCards.count
     }
     
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
         return .default
+    }
+    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
+        return TrainingOverlayView()
     }
 }

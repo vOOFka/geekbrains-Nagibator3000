@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A356E368ED4DA1484A18DCC /* Pods_geekbrains_Nagibator3000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B16BA9883018978E339E88 /* Pods_geekbrains_Nagibator3000.framework */; };
 		E002B91328A698CA00FBCBDD /* AnimationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91228A698CA00FBCBDD /* AnimationFlow.swift */; };
 		E002B91528A698FB00FBCBDD /* AnimationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91428A698FB00FBCBDD /* AnimationStep.swift */; };
 		E002B91A28A6994C00FBCBDD /* AnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002B91928A6994C00FBCBDD /* AnimationViewModel.swift */; };
@@ -74,6 +73,8 @@
 		E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18A825D2893F86400D2B0BB /* Assets.xcassets */; };
 		E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18A825F2893F86400D2B0BB /* LaunchScreen.storyboard */; };
 		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
+		E1A528D728B2598200A23F61 /* TrainingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A528D628B2598200A23F61 /* TrainingOverlayView.swift */; };
+		E1A528D828B25B2A00A23F61 /* Pods_geekbrains_Nagibator3000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B16BA9883018978E339E88 /* Pods_geekbrains_Nagibator3000.framework */; };
 		F42F2EF628B16DEA00B8EEC7 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F2EF528B16DEA00B8EEC7 /* RxTableViewCell.swift */; };
 		F42F2F1F28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F2F1E28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift */; };
 		F45F435B28B1645300D6D8B6 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F45F435A28B1645300D6D8B6 /* Swinject */; };
@@ -93,6 +94,7 @@
 		F4D82C72289DA31700FFFFA7 /* SelectLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C71289DA31700FFFFA7 /* SelectLanguageCell.swift */; };
 		F4D82C75289DA45600FFFFA7 /* SelectLanguageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C74289DA45600FFFFA7 /* SelectLanguageCellModel.swift */; };
 		F4D82C79289DA90900FFFFA7 /* SelectLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C78289DA90900FFFFA7 /* SelectLanguageViewModel.swift */; };
+		F4DB8F1828B80A47001144FC /* TrainingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB8F1728B80A47001144FC /* TrainingCardView.swift */; };
 		F4E6040D28B023DA002A4FE8 /* DictionarySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6040C28B023DA002A4FE8 /* DictionarySectionModel.swift */; };
 		F4E6040F28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6040E28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift */; };
 		F4E6041128B03280002A4FE8 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6041028B03280002A4FE8 /* BindableType.swift */; };
@@ -175,6 +177,7 @@
 		E18A82602893F86400D2B0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E18A82622893F86400D2B0BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		E1A528D628B2598200A23F61 /* TrainingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingOverlayView.swift; sourceTree = "<group>"; };
 		F42F2EF528B16DEA00B8EEC7 /* RxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
 		F42F2F1E28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+Ext.swift"; sourceTree = "<group>"; };
 		F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTableViewCell.swift; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 		F4D82C71289DA31700FFFFA7 /* SelectLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageCell.swift; sourceTree = "<group>"; };
 		F4D82C74289DA45600FFFFA7 /* SelectLanguageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageCellModel.swift; sourceTree = "<group>"; };
 		F4D82C78289DA90900FFFFA7 /* SelectLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewModel.swift; sourceTree = "<group>"; };
+		F4DB8F1728B80A47001144FC /* TrainingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCardView.swift; sourceTree = "<group>"; };
 		F4E6040C28B023DA002A4FE8 /* DictionarySectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionarySectionModel.swift; sourceTree = "<group>"; };
 		F4E6040E28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTableCellViewModel.swift; sourceTree = "<group>"; };
 		F4E6041028B03280002A4FE8 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
@@ -213,8 +217,8 @@
 				E08E490428B00C8C00E667D9 /* RxDataSources in Frameworks */,
 				F45F435B28B1645300D6D8B6 /* Swinject in Frameworks */,
 				F4E6A2A028B1637500DBD6E3 /* PinLayout in Frameworks */,
-				0A356E368ED4DA1484A18DCC /* Pods_geekbrains_Nagibator3000.framework in Frameworks */,
 				F4E6A2A128B1637500DBD6E3 /* Lottie in Frameworks */,
+				E1A528D828B25B2A00A23F61 /* Pods_geekbrains_Nagibator3000.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +371,8 @@
 			isa = PBXGroup;
 			children = (
 				F4D62A26289719F50000B690 /* TrainingViewController.swift */,
+				E1A528D628B2598200A23F61 /* TrainingOverlayView.swift */,
+				F4DB8F1728B80A47001144FC /* TrainingCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1097,6 +1103,8 @@
 				E002B95728AC1F7D00FBCBDD /* LanguagesMapper.swift in Sources */,
 				E0EAEA4B28A1B14100F8D918 /* DataStorage.swift in Sources */,
 				E0EAEA3928A1A54B00F8D918 /* StorageKeys.swift in Sources */,
+				E1A528D728B2598200A23F61 /* TrainingOverlayView.swift in Sources */,
+				F4DB8F1828B80A47001144FC /* TrainingCardView.swift in Sources */,
 				E00DE07E28A302B300C3608C /* LanguageUseCase.swift in Sources */,
 				E002B95E28AD7F6400FBCBDD /* AnimationFlow+DI.swift in Sources */,
 				E002B93E28A6D69B00FBCBDD /* TrainingViewModel.swift in Sources */,
