@@ -12,16 +12,12 @@ final class TrainingViewController: UIViewController {
   var viewModel: TrainingViewModel!
   var kolodaView = KolodaView(frame: CGRect(x: 0, y: 0, width: 250, height: 400))
     
-    private let images: [UIImage] = Array(0...5).compactMap{ UIImage(named: String($0 + 1)) }
+    private let trainingCards: [UIView] = Array(0...5).compactMap{ TrainingCardView(with: String($0), translate: String($0)) }
    
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = ColorScheme.white.color
-  //  kolodaView.center = self.view.center
     view.addSubview(kolodaView)
-   // kolodaView.backgroundColor = ColorScheme.greenPantone.color
-   //   kolodaView.layer.cornerRadius = 30.0
-   //   kolodaView.clipsToBounds = true
     kolodaView.dataSource = self
     kolodaView.delegate = self
   }
@@ -46,14 +42,11 @@ extension TrainingViewController: KolodaViewDelegate {
 
 extension TrainingViewController: KolodaViewDataSource {
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        let image = UIImageView(image: images[Int(index)])
-        image.layer.cornerRadius = 30.0
-        image.clipsToBounds = true
-        return image
+        return trainingCards[index]
     }
     
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
-        return images.count
+        return trainingCards.count
     }
     
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
