@@ -228,14 +228,17 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
   }
   
   public func saveToDictionary(model: TranslationModel) {
-    guard !model.fromText.isEmpty,
-          !model.toText.isEmpty else {
+    let fromText = model.fromText.trimmingCharacters(in: .whitespaces)
+    let toText = model.toText.trimmingCharacters(in: .whitespaces)
+
+    guard !fromText.isEmpty ,
+          !toText.isEmpty else {
       
       self.showToast.accept(Constants.saveEmtyFailText)
       return
     }
     
-    textIsExisted(model: model)
+    textIsExisted(model: TranslationModel(fromText: fromText, toText: toText))
       .subscribe(onNext: { [weak self] isExisted in
         if isExisted {
           self?.showToast.accept(Constants.saveExistsFailText)
