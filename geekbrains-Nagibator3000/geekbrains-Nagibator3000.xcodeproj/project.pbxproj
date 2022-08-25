@@ -75,7 +75,6 @@
 		E18A82692893F9BD00D2B0BB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */; };
 		E1A528D728B2598200A23F61 /* TrainingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A528D628B2598200A23F61 /* TrainingOverlayView.swift */; };
 		E1A528D828B25B2A00A23F61 /* Pods_geekbrains_Nagibator3000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B16BA9883018978E339E88 /* Pods_geekbrains_Nagibator3000.framework */; };
-		E1A528E328B3AA7200A23F61 /* TrainingOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A528E228B3AA7200A23F61 /* TrainingOverlayView.xib */; };
 		F42F2EF628B16DEA00B8EEC7 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F2EF528B16DEA00B8EEC7 /* RxTableViewCell.swift */; };
 		F42F2F1F28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F2F1E28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift */; };
 		F45F435B28B1645300D6D8B6 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F45F435A28B1645300D6D8B6 /* Swinject */; };
@@ -178,7 +177,6 @@
 		E18A82622893F86400D2B0BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E18A82682893F9BD00D2B0BB /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		E1A528D628B2598200A23F61 /* TrainingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingOverlayView.swift; sourceTree = "<group>"; };
-		E1A528E228B3AA7200A23F61 /* TrainingOverlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingOverlayView.xib; sourceTree = "<group>"; };
 		F42F2EF528B16DEA00B8EEC7 /* RxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
 		F42F2F1E28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+Ext.swift"; sourceTree = "<group>"; };
 		F49F2FD828A8FD0A00F2D6FC /* DictionaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTableViewCell.swift; sourceTree = "<group>"; };
@@ -372,7 +370,6 @@
 			children = (
 				F4D62A26289719F50000B690 /* TrainingViewController.swift */,
 				E1A528D628B2598200A23F61 /* TrainingOverlayView.swift */,
-				E1A528E228B3AA7200A23F61 /* TrainingOverlayView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1039,7 +1036,6 @@
 			files = (
 				E18A82612893F86400D2B0BB /* LaunchScreen.storyboard in Resources */,
 				F4D62A2C2897210D0000B690 /* Localizable.strings in Resources */,
-				E1A528E328B3AA7200A23F61 /* TrainingOverlayView.xib in Resources */,
 				E18A825E2893F86400D2B0BB /* Assets.xcassets in Resources */,
 				E18A825C2893F86100D2B0BB /* Main.storyboard in Resources */,
 				F4A5B37628A58C9300D0293E /* YandexService-Info.plist in Resources */,

@@ -60,6 +60,6 @@ extension TrainingViewController: KolodaViewDataSource {
         return .default
     }
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
-        return Bundle.main.loadNibNamed("TrainingOverlayView", owner: self, options: nil)?[0] as? OverlayView
+        return TrainingOverlayView()
     }
 }
