@@ -12,12 +12,16 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
     var viewModel: DictionaryTableCellViewModel?
     
     // MARK: - Private properties
+    private var holderView = UIView()
     private var titleFromLabel = UILabel()
     private var titleToLabel = UILabel()
     private var fromLabel = UILabel()
     private var toLabel = UILabel()
     private var separatorView = UIView()
     
+    var deleteView = UIView()
+    private var iconTrash = UIImageView(image: Constants.deleteIcon)
+        
     private let onePixelHeight = 1.0 / UIScreen.main.scale
     
     // MARK: - Init & Lifecycle
@@ -31,7 +35,7 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         initialConfig()
     }
     
-    private func initialConfig() {       
+    private func initialConfig() {
         titleFromLabel.text = Constants.titleFromLabel
         titleToLabel.text = Constants.titleToLabel
         titleFromLabel.font = Constants.boldFont
@@ -42,15 +46,20 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
         fromLabel.font = Constants.italicFont
         toLabel.font = Constants.italicFont
         
-        contentView.addSubview(titleFromLabel)
-        contentView.addSubview(titleToLabel)
-        contentView.addSubview(fromLabel)
-        contentView.addSubview(toLabel)
-        contentView.addSubview(separatorView)
+        contentView.addSubview(holderView)
+        contentView.addSubview(deleteView)
         
-        backgroundColor = Constants.backgroundColor
+        deleteView.addSubview(iconTrash)
         
+        holderView.addSubview(titleFromLabel)
+        holderView.addSubview(titleToLabel)
+        holderView.addSubview(fromLabel)
+        holderView.addSubview(toLabel)
+        holderView.addSubview(separatorView)
+        
+        deleteView.backgroundColor = Constants.deleteBackgroundColor
         separatorView.backgroundColor = Constants.separatorColor
+      
         layoutSubviews()
     }
     
@@ -63,29 +72,33 @@ final class DictionaryTableViewCell: RxTableViewCell<DictionaryTableCellViewMode
     override func prepareForReuse() {
         fromLabel.text = String()
         toLabel.text = String()
-        backgroundColor = Constants.backgroundColor
         disposeBag = DisposeBag()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        titleFromLabel.pin.top(16.0).horizontally().margin(16.0).sizeToFit()
+        let width = UIScreen.main.bounds.width
+        
+        titleFromLabel.pin.top(16.0).horizontally().margin(16.0).sizeToFit(.width)
         fromLabel.pin.below(of: titleFromLabel).horizontally().margin(16.0).sizeToFit(.width)
         
         
-        titleToLabel.pin.below(of: fromLabel).horizontally().margin(16.0).sizeToFit()
+        titleToLabel.pin.below(of: fromLabel).horizontally().margin(16.0).sizeToFit(.width)
         toLabel.pin.below(of: titleToLabel).horizontally().margin(16.0).sizeToFit(.width)
         
-        contentView.pin.height(toLabel.frame.maxY + 16.0)
+        holderView.pin.height(toLabel.frame.maxY + 32.0).width(width)
+        contentView.pin.height(toLabel.frame.maxY + 32.0).width(width + 100.0)
         
-        separatorView.pin.bottom().horizontally(16.0).height(onePixelHeight)
+        separatorView.pin.bottom().left(16.0).height(onePixelHeight).width(width - 32.0)
+        
+        deleteView.pin.after(of: holderView).width(100.0).height(contentView.frame.maxY + 1.0)
+        iconTrash.pin.center().width(30.0).height(30.0)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         layoutSubviews()
         return CGSize(width: size.width, height: separatorView.frame.maxY + 1.0)
     }
-    
 }
 
 //MARK: - Constants
@@ -95,7 +108,9 @@ private enum Constants {
     static let titleToLabel = "Translation".localized
     
     static let separatorColor = ColorScheme.greenPantone.color
-    static let backgroundColor = ColorScheme.alertRed.color
+    static let deleteBackgroundColor = ColorScheme.alertRed.color
+    
+    static let deleteIcon = UIImage(systemName: "trash")?.withTintColor(.white, renderingMode: .alwaysOriginal)
     
     static let boldFont = UIFont.boldSystemFont(ofSize: 16.0)
     static let italicFont = UIFont.italicSystemFont(ofSize: 14.0)
