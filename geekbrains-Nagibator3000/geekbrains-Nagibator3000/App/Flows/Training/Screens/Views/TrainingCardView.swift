@@ -43,6 +43,16 @@ final public class TrainingCardView: UIView {
         fromLabel.font = Constants.italicFont
         toLabel.font = Constants.italicFont
         
+        titleFromLabel.textColor = Constants.whiteColor
+        titleToLabel.textColor = Constants.whiteColor
+        fromLabel.textColor = Constants.whiteColor
+        toLabel.textColor = Constants.whiteColor
+        
+        titleFromLabel.textAlignment = .center
+        titleToLabel.textAlignment = .center
+        fromLabel.textAlignment = .justified
+        toLabel.textAlignment = .justified
+        
         fromLabel.numberOfLines = 0
         toLabel.numberOfLines = 0        
     }
