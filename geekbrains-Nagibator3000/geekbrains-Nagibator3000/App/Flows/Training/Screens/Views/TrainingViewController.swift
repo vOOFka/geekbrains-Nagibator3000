@@ -8,34 +8,33 @@
 import UIKit
 import Koloda
 
-private var numberOfCards: Int = 6
 final class TrainingViewController: UIViewController {
   var viewModel: TrainingViewModel!
   var kolodaView = KolodaView(frame: CGRect(x: 0, y: 0, width: 250, height: 400))
     
-  fileprivate var images: [UIImage] = {
-        var array: [UIImage] = []
-        for index in 0..<numberOfCards {
-            array.append(UIImage(named: "\(index + 1)")!)
-        }
-        return array
-  }()
+    private let images: [UIImage] = Array(0...5).compactMap{ UIImage(named: String($0 + 1)) }
    
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = ColorScheme.white.color
-    kolodaView.center = self.view.center
+  //  kolodaView.center = self.view.center
     view.addSubview(kolodaView)
-    kolodaView.backgroundColor = ColorScheme.greenPantone.color
+   // kolodaView.backgroundColor = ColorScheme.greenPantone.color
+   //   kolodaView.layer.cornerRadius = 30.0
+   //   kolodaView.clipsToBounds = true
     kolodaView.dataSource = self
     kolodaView.delegate = self
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
     tabBarController?.navigationItem.setupTitle(text: String(localized: "Training"))
   }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        kolodaView.pin.center()
+    }
 }
 
 extension TrainingViewController: KolodaViewDelegate {
@@ -46,7 +45,10 @@ extension TrainingViewController: KolodaViewDelegate {
 
 extension TrainingViewController: KolodaViewDataSource {
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        return UIImageView(image: images[Int(index)])
+        let image = UIImageView(image: images[Int(index)])
+        image.layer.cornerRadius = 30.0
+        image.clipsToBounds = true
+        return image
     }
     
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
