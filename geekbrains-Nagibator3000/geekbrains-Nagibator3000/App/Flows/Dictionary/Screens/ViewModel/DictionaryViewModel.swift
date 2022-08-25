@@ -104,11 +104,11 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
   }
     
     private func bindAddItem() {
-        addItem
-            .subscribe({ event in
-                self.steps.accept(DictionaryStep.translate)
-            })
-            .disposed(by: disposeBag)
+      addItem
+        .subscribe({ event in
+          self.steps.accept(DictionaryStep.translate)
+        })
+        .disposed(by: disposeBag)
     }
   
   private func bindDeleteItem() {
