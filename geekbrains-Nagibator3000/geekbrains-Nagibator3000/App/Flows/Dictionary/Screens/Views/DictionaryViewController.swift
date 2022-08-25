@@ -16,6 +16,7 @@ final class DictionaryViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     private let tableView = UITableView()
+    private var isMovedCells: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,13 @@ final class DictionaryViewController: UIViewController {
     //MARK: - Config
     
     private func initialConfig() {
-        let swipeLeft = UIPanGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        swipeLeft.direction = .left
         tableView.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        swipeRight.direction = .right
+        tableView.addGestureRecognizer(swipeRight)
         
         view.backgroundColor = Constants.backgroundColor
         
@@ -50,10 +56,16 @@ final class DictionaryViewController: UIViewController {
             .bind(to: viewModel.input.enterScreen)
             .disposed(by: disposeBag)
     }
-
+    
     private func bindViewModel() {
         viewModel.output.translationsSections
             .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        tableView.rx.didScroll
+            .subscribe(onNext: { [unowned self] _ in
+                self.getBackCells()
+            })
             .disposed(by: disposeBag)
         
         tableView.rx.itemDeleted
@@ -61,21 +73,72 @@ final class DictionaryViewController: UIViewController {
                 if let cell = dataSource.tableView(tableView, cellForRowAt: indexPath) as? DictionaryTableViewCell,
                    let translationModel = cell.viewModel?.translationModel {
                     viewModel.input.onDeleteItem.accept(translationModel)
+                    removeAllDeleteActionsView()
                 }
             })
             .disposed(by: disposeBag)
         
         viewModel.output.showToast
-          .bind { [weak self] text in
-            self?.showToast(text: text)
-          }
-          .disposed(by: disposeBag)
+            .bind { [weak self] text in
+                self?.showToast(text: text)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func showToast(text: String) {
-      var style = ToastStyle()
-      style.messageColor = Constants.whiteColor
-      self.view.makeToast(text, duration: 4.0, position: .bottom, style: style)
+        var style = ToastStyle()
+        style.messageColor = Constants.whiteColor
+        self.view.makeToast(text, duration: 4.0, position: .bottom, style: style)
+    }
+    
+    private func getBackCells() {
+        guard isMovedCells == true else {
+            return
+        }
+        self.tableView.visibleCells.forEach { cell in
+            UIView.animate(withDuration: 0.1) {
+                cell.pin.left()
+            }
+            removeAllDeleteActionsView()
+        }
+        self.isMovedCells = false
+    }
+    
+    private func configDeleteAction(_ cell: DictionaryTableViewCell, _ indexPath: IndexPath) {
+        if let existView = view.subviews.first(where: { $0.tag == indexPath.row }),
+           existView.accessibilityIdentifier == "handleDeleteTap" {
+            existView.removeFromSuperview()
+        }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let frame = cell.frame
+        if let globalPoint = cell.superview?.convert(cell.frame.origin, to: nil) {
+            let view = UIView(frame: CGRect(x: globalPoint.x + frame.maxX + 100,
+                                            y: globalPoint.y,
+                                            width: 100.0,
+                                            height: frame.size.height))
+            view.tag = indexPath.row
+            view.accessibilityIdentifier = "handleDeleteTap"
+            self.view.addSubview(view)
+            view.addGestureRecognizer(tap)
+        }
+    }
+    
+    private func removeSingleActionView(_ tag: Int) {
+        view.subviews.forEach { view in
+            if view.accessibilityIdentifier == "handleDeleteTap",
+               view.tag == tag {
+                view.removeFromSuperview()
+            }
+        }
+    }
+    
+    private func removeAllDeleteActionsView() {
+        view.subviews.forEach { view in
+            if view.accessibilityIdentifier == "handleDeleteTap" {
+                view.removeFromSuperview()
+            }
+        }
     }
     
     //MARK: - Layout
@@ -87,35 +150,41 @@ final class DictionaryViewController: UIViewController {
     
     //MARK: - Actions
     
-    @objc func respondToSwipeGesture(gesture: UIPanGestureRecognizer) {
+    @objc func respondToSwipeGesture(gesture: UISwipeGestureRecognizer) {
         let location = gesture.location(in: tableView)
-        let limit = -UIScreen.main.bounds.width / 3
         
         guard let indexPath = tableView.indexPathForRow(at: location),
-              let cell = tableView.cellForRow(at: indexPath),
-              gesture.direction == .left
+              let cell = tableView.cellForRow(at: indexPath) as? DictionaryTableViewCell
         else {
             return
         }
         
-        let translation = gesture.translation(in: view)
-        if gesture.state == .changed &&
-            translation.x < 0 {
-            cell.transform = CGAffineTransform(translationX: translation.x, y: 0)
-            
-            let alpha = abs((translation.x * 0.6) / limit)
-            UIView.animate(withDuration: 0.8, delay: 0.5, options: .curveEaseOut, animations: {
-                cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(alpha)
-            })
-        } else if gesture.state == .ended {
-            if translation.x < limit {
-                self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
-            } else {
-                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseIn) {
-                    cell.transform = .identity
-                    cell.backgroundColor = Constants.cellBackgroundColor.withAlphaComponent(0.0)
-                }
+        if gesture.direction == .left {
+            UIView.animate(withDuration: 0.8) { [weak self] in
+                guard let self = self else { return }
+                cell.pin.left(-100.0)
+                self.isMovedCells = true
+                self.configDeleteAction(cell, indexPath)
             }
+        }
+        
+        if gesture.direction == .right {
+            UIView.animate(withDuration: 0.8) { [weak self] in
+                guard let self = self else { return }
+                cell.pin.left()
+                self.removeSingleActionView(indexPath.row)
+            }
+        }
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        guard let senderView = sender.view else {
+            return
+        }
+        let indexPath = IndexPath(row: senderView.tag, section: 0)
+        
+        if (tableView.cellForRow(at: indexPath) != nil) {
+            tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
         }
     }
 }
