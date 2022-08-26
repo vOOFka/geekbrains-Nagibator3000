@@ -36,7 +36,7 @@ class TranslationRepository {
       .map { translations -> [TranslationModel] in
         let index = translations.firstIndex { translation in
           translation.toText == model.toText
-          && translation.fromText == model.toText
+          && translation.fromText == model.fromText
         }
         guard let index = index else { return translations }
         

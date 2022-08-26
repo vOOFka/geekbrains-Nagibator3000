@@ -11,6 +11,7 @@
 "Save.Error.Empty" = "All fields must be filled in to save.";
 "Save.Error.Existed" = "A text with this translation already exists.";
 "Delete_Failed" = "Something wrong! The text not deleted from the dictionary!";
+"Save.Error.Count" = "The text should not exceed 150 characters.";
 
 // MARK: - Error
 "Error.InternetError.Title" = "Internet connection lost";
