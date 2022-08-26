@@ -10,9 +10,18 @@ import Koloda
 import RxCocoa
 import RxSwift
 import Lottie
+import RxFlow
 
-final class TrainingViewController: UIViewController {
-    private var animationView: AnimationView!
+final class TrainingViewController: UIViewController, Stepper {
+  private var loadingAnimationView: AnimationView!
+  private var cupAnimationView: AnimationView!
+  
+  private var emptyHolderView = UIView()
+  private var addButton = UIButton()
+  private var emptyLabel = UILabel()
+    
+  var steps = PublishRelay<Step>()
+    
   var viewModel: TrainingViewModel!
   var kolodaView = KolodaView(frame: CGRect(x: 0, y: 0, width: 250, height: 400))
   
@@ -27,13 +36,15 @@ final class TrainingViewController: UIViewController {
     kolodaView.delegate = self
     bindLifeCycle()
     bindSource()
-      setupAnimation()
+      setupLoadingAnimationView()
+      setupCupAnimationView()
+      configEmptyHolderView()
+      bindStates()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
-    tabBarController?.navigationItem.setupTitle(text: "Training".localized)
+    tabBarController?.navigationItem.setupTitle(text: Constants.title)
   }
   
   override func viewDidLayoutSubviews() {
@@ -62,15 +73,17 @@ final class TrainingViewController: UIViewController {
             switch state {
             case .load:
                 self?.kolodaView.isHidden = true
-                self?.animationView.isHidden = false
-                self?.animationView.play()
+                self?.loadingAnimationView.isHidden = false
+                self?.loadingAnimationView.pin.center()
+                self?.loadingAnimationView.play()
             case .empty:
-                self?.animationView.isHidden = true
-                self?.animationView.stop()
-                self?.kolodaView.isHidden = false
+                self?.loadingAnimationView.isHidden = true
+                self?.loadingAnimationView.stop()
+                self?.emptyHolderView.isHidden = false
+                self?.kolodaView.isHidden = true
             case .completed:
-                self?.animationView.isHidden = true
-                self?.animationView.stop()
+                self?.loadingAnimationView.isHidden = true
+                self?.loadingAnimationView.stop()
                 self?.kolodaView.isHidden = false
             }
         }
@@ -102,15 +115,73 @@ extension TrainingViewController: KolodaViewDataSource {
   }
 }
 
-extension TrainingViewController {
-    private func setupAnimation() {
-      animationView = AnimationView(name: "Book")
-      animationView.frame = view.bounds
-      animationView.backgroundColor = .white
-      animationView.contentMode = .scaleAspectFit
-      animationView.loopMode = .autoReverse
-      animationView.animationSpeed = 1.1
-      view.addSubview(animationView)
-    }
+// MARK: - Empty holder view
 
+extension TrainingViewController {
+    private func configEmptyHolderView() {
+        emptyLabel.text = Constants.emptyLabelText
+        emptyLabel.font = Constants.boldFont
+        emptyLabel.numberOfLines = 0
+        emptyLabel.textAlignment = .center
+        
+        addButton.setTitle(Constants.titleAddButton, for: .normal)
+        addButton.setTitle("Add button tap!!!", for: .highlighted)
+        addButton.backgroundColor = Constants.blueColor
+        addButton.setTitleColor(Constants.whiteColor, for: .normal)
+        addButton.layer.cornerRadius = 6.0
+        addButton.clipsToBounds = true
+        addButton.addTarget(self, action:#selector(addButtonTap), for: .touchUpInside)
+        
+        emptyHolderView.addSubview(emptyLabel)
+        emptyHolderView.addSubview(addButton)
+        view.addSubview(emptyHolderView)
+        
+        emptyHolderView.pin.all()
+        emptyLabel.pin.vCenter(-50.0).horizontally(20.0).sizeToFit(.width)
+        addButton.pin.below(of: emptyLabel, aligned: .center).height(44.0).width(emptyLabel.frame.width * 0.7).margin(20.0)
+        
+        emptyHolderView.isHidden = true
+    }
+    
+    @objc private func addButtonTap(sender: UIButton) {
+        viewModel.input.onAdd.accept(Void())
+    }
+}
+
+// MARK: - Animations
+
+extension TrainingViewController {
+    private func setupLoadingAnimationView() {
+        loadingAnimationView = AnimationView(name: "ProcessingCircle")
+        configDefaults(with: loadingAnimationView)
+    }
+    
+    private func setupCupAnimationView() {
+        cupAnimationView = AnimationView(name: "Cup")
+        configDefaults(with: cupAnimationView)
+    }
+    
+    private func configDefaults(with animationView: AnimationView) {
+        animationView.pin.height(200.0).width(200.0)
+        animationView.backgroundColor = Constants.whiteColor
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .autoReverse
+        animationView.animationSpeed = 1.1
+        view.addSubview(animationView)
+        animationView.isHidden = true
+    }
+}
+
+//MARK: - Constants
+
+private enum Constants {
+    static let title = "Training".localized
+    static let emptyLabelText = "Your dictionary is empty, add words and come back!".localized
+    static let titleAddButton = "Add".localized
+    
+    static let whiteColor = ColorScheme.white.color
+    static let blackColor = ColorScheme.black.color
+    static let blueColor = ColorScheme.fuchsiaBlue.color
+    
+    static let boldFont = UIFont.boldSystemFont(ofSize: 20.0)
 }

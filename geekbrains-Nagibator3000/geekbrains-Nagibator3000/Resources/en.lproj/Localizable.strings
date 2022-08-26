@@ -5,6 +5,7 @@
 "Select language" = "Select language";
 "Done" = "Done";
 "Text" = "Text";
+"Add" = "Add";
 "Copy" = "Translation successfully copied!";
 "Save" = "The text was successfully added to the dictionary!";
 "Save_Failed" = "The text could not be added to the dictionary!";
@@ -12,6 +13,7 @@
 "Save.Error.Existed" = "A text with this translation already exists.";
 "Delete_Failed" = "Something wrong! The text not deleted from the dictionary!";
 "Save.Error.Count" = "The text should not exceed 150 characters.";
+"Your dictionary is empty, add words and come back!" = "Your dictionary is empty, add words and come back!";
 
 // MARK: - Error
 "Error.InternetError.Title" = "Internet connection lost";

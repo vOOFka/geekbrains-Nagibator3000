@@ -16,6 +16,7 @@ class TrainingViewModel: RxViewModelProtocol, Stepper {
   
   struct Input {
     let enterScreen: PublishSubject<Void>
+    let onAdd: PublishRelay<Void>
   }
   
   struct Output {
@@ -31,6 +32,7 @@ class TrainingViewModel: RxViewModelProtocol, Stepper {
   
   // Input
   private let enterScreen = PublishSubject<Void>()
+  private let tapAdd = PublishRelay<Void>()
   
   // Output
   let source = BehaviorRelay<[TranslationModel]>(value: [])
@@ -40,7 +42,8 @@ class TrainingViewModel: RxViewModelProtocol, Stepper {
     self.dictionaryUseCase = dictionaryUseCase
     
     input = Input(
-      enterScreen: enterScreen
+      enterScreen: enterScreen,
+      onAdd: tapAdd
     )
     output = Output(
       source: source.asDriver(onErrorJustReturn: []),
@@ -52,6 +55,7 @@ class TrainingViewModel: RxViewModelProtocol, Stepper {
   
   private func setupBindings() {
     bindEnterScreen()
+    bindAdd()
   }
     
     private func bindEnterScreen() {
@@ -89,6 +93,13 @@ class TrainingViewModel: RxViewModelProtocol, Stepper {
                   }.disposed(by: self.disposeBag)
             return Disposables.create()
         }
+    }
+    
+    private func bindAdd() {
+      tapAdd
+        .map { _ in TrainingStep.translate }
+        .bind(to: steps)
+        .disposed(by: disposeBag)
     }
 }
 
