@@ -238,6 +238,13 @@ final class TranslateViewModel: RxViewModelProtocol, Stepper {
       return
     }
     
+    guard (fromText.count < 150) ,
+          (toText.count < 150) else {
+      
+      self.showToast.accept(Constants.saveErrorCount)
+      return
+    }
+    
     textIsExisted(model: TranslationModel(fromText: fromText, toText: toText))
       .subscribe(onNext: { [weak self] isExisted in
         if isExisted {
@@ -305,4 +312,5 @@ private enum Constants {
   static let saveEmtyFailText = "Save.Error.Empty".localized
   static let saveExistsFailText = "Save.Error.Existed".localized
   static let saveFailText = "Save_Failed".localized
+  static let saveErrorCount = "Save.Error.Count".localized
 }
