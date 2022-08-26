@@ -49,6 +49,7 @@ final class DictionaryViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.navigationItem.setupTitle(text: Constants.title)
         tableView.setEditing(true, animated: true)
+        setupNavbarButton()
     }
     
     private func bindLifeCycle() {
@@ -141,6 +142,11 @@ final class DictionaryViewController: UIViewController {
         }
     }
     
+    private func setupNavbarButton() {
+        let addButton = UIBarButtonItem(image: Constants.addIcon, style: .plain, target: self, action: #selector(addTapped))
+        tabBarController?.navigationItem.rightBarButtonItems = [addButton]
+    }
+    
     //MARK: - Layout
     
     override func viewDidLayoutSubviews() {
@@ -187,6 +193,10 @@ final class DictionaryViewController: UIViewController {
             tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
         }
     }
+    
+    @objc private func addTapped() {
+        viewModel.input.onAddItem.accept(Void())
+    }
 }
 
 //MARK: - Constants
@@ -198,4 +208,6 @@ private enum Constants {
     static let whiteColor = ColorScheme.white.color
     static let greenColor = ColorScheme.greenPantone.color
     static let cellBackgroundColor = ColorScheme.alertRed.color
+    
+    static let addIcon = UIImage(systemName: "plus")?.withTintColor(whiteColor, renderingMode: .alwaysOriginal)
 }
