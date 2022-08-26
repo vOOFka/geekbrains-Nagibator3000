@@ -126,7 +126,6 @@ extension TrainingViewController {
         emptyLabel.textAlignment = .center
         
         addButton.setTitle(Constants.titleAddButton, for: .normal)
-        addButton.setTitle("Add button tap!!!", for: .highlighted)
         addButton.backgroundColor = Constants.blueColor
         addButton.setTitleColor(Constants.whiteColor, for: .normal)
         addButton.layer.cornerRadius = 6.0
