@@ -14,6 +14,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
   struct Input {
     let enterScreen: PublishSubject<Void>
     let onDeleteItem: PublishRelay<TranslationModel>
+    let onAddItem: PublishRelay<Void>
   }
   
   struct Output {
@@ -29,6 +30,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
   // Input
   private let enterScreen = PublishSubject<Void>()
   private let deleteItem = PublishRelay<TranslationModel>()
+  private let addItem = PublishRelay<Void>()
   
   // Output
   let translationsSections = BehaviorRelay<[DictionarySectionModel]>(value: [])
@@ -43,7 +45,8 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     
     input = Input(
       enterScreen: enterScreen,
-      onDeleteItem: deleteItem
+      onDeleteItem: deleteItem,
+      onAddItem: addItem
     )
     output = Output(
       translationsSections: translationsSections.asDriver(onErrorJustReturn: []),
@@ -55,6 +58,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
   
   private func setupBindings() {
     bindEnterScreen()
+    bindAddItem()
     bindDeleteItem()
   }
   
@@ -89,7 +93,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
           break
           
         case .error(let error):
-          self.steps.accept(TranslateStep.error(self.map(error: error)))
+          self.steps.accept(DictionaryStep.error(self.map(error: error)))
           break
           
         default:
@@ -98,6 +102,14 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
       }
       .disposed(by: disposeBag)
   }
+    
+    private func bindAddItem() {
+      addItem
+        .subscribe({ event in
+          self.steps.accept(DictionaryStep.translate)
+        })
+        .disposed(by: disposeBag)
+    }
   
   private func bindDeleteItem() {
     deleteItem

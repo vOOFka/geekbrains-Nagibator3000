@@ -9,4 +9,6 @@ import Foundation
 import RxFlow
 
 enum TrainingStep: Step {
+    case translate
+    case error(ErrorType)
 }

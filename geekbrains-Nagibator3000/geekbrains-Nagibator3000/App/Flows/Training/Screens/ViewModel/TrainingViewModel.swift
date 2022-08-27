@@ -16,10 +16,12 @@ class TrainingViewModel: RxViewModelProtocol, Stepper {
   
   struct Input {
     let enterScreen: PublishSubject<Void>
+    let onAdd: PublishRelay<Void>
   }
   
   struct Output {
     let source: Driver<[TranslationModel]>
+    let state: Driver<States>
   }
   
   private(set) var input: Input!
@@ -30,18 +32,22 @@ class TrainingViewModel: RxViewModelProtocol, Stepper {
   
   // Input
   private let enterScreen = PublishSubject<Void>()
+  private let tapAdd = PublishRelay<Void>()
   
   // Output
   let source = BehaviorRelay<[TranslationModel]>(value: [])
+  let state = BehaviorRelay<States>(value: .load)
   
   init(dictionaryUseCase: DictionaryUseCase) {
     self.dictionaryUseCase = dictionaryUseCase
     
     input = Input(
-      enterScreen: enterScreen
+      enterScreen: enterScreen,
+      onAdd: tapAdd
     )
     output = Output(
-      source: source.asDriver(onErrorJustReturn: [])
+      source: source.asDriver(onErrorJustReturn: []),
+      state: state.asDriver(onErrorJustReturn: .empty)
     )
     
     setupBindings()
@@ -49,13 +55,54 @@ class TrainingViewModel: RxViewModelProtocol, Stepper {
   
   private func setupBindings() {
     bindEnterScreen()
+    bindAdd()
   }
-  
-  private func bindEnterScreen() {
-    enterScreen
-      .flatMap { self.dictionaryUseCase.get() }
-      .bind(to: source)
-      .disposed(by: disposeBag)
-  }
+    
+    private func bindEnterScreen() {
+        enterScreen
+            .bind { action in
+                self.state.accept(.load)
+                self.loadDict()
+                    .bind(to: self.source)
+                    .disposed(by: self.disposeBag)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func loadDict() -> Observable<[TranslationModel]> {
+        Observable<[TranslationModel]>.create { [weak self] observable in
+            guard let self = self else { return Disposables.create() }
+            self.dictionaryUseCase.get()
+                .delay(.seconds(5), scheduler: MainScheduler.instance)
+                  .subscribe { event in
+                    switch event {
+                    case .next(let values):
+                        if values.isEmpty {
+                            self.state.accept(.empty)
+                        } else {
+                            self.state.accept(.completed)
+                            observable.onNext(values)
+                            observable.onCompleted()
+                        }
+                        
+                    case .error(let error):
+                        observable.onError(error)
+                    default:
+                      break
+                    }
+                  }.disposed(by: self.disposeBag)
+            return Disposables.create()
+        }
+    }
+    
+    private func bindAdd() {
+      tapAdd
+        .map { _ in TrainingStep.translate }
+        .bind(to: steps)
+        .disposed(by: disposeBag)
+    }
 }
 
+enum States {
+    case load, empty, completed
+}

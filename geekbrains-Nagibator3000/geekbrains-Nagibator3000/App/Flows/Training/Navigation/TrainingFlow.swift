@@ -24,7 +24,22 @@ class TrainingFlow: Flow {
     self.viewController = viewController
   }
 
-  func navigate(to step: Step) -> FlowContributors {
-    .none
-  }
+    func navigate(to step: Step) -> FlowContributors {
+        guard let step = step as? TrainingStep else { return .none }
+        
+        switch step {
+        case .error(let type):
+            let flow = ErrorFlow(viewController: viewController)
+            return .one(flowContributor: .contribute(
+                withNextPresentable: flow,
+                withNextStepper: OneStepper(withSingleStep: ErrorStep.error(type: type))
+            ))
+        case .translate:            
+            return openTranslateScreen()
+        }
+    }
+    
+    private func openTranslateScreen() -> FlowContributors {
+        return .end(forwardToParentFlowWithStep: MainStep.goToApp)
+    }
 }

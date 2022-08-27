@@ -12,15 +12,19 @@ import Swinject
 
 class DictionaryFlow: Flow {
   var viewController: UIViewController
-  private let container = Container()
+  private let container: Container!
 
   var root: Presentable {
     self.viewController
   }
 
-  init(viewController: UIViewController) {
-    self.viewController = viewController
-  }
+    init(
+      viewController: UIViewController,
+      container: Container
+    ) {
+      self.viewController = viewController
+      self.container = container
+    }
 
   func navigate(to step: Step) -> FlowContributors {
     guard let step = step as? DictionaryStep else { return .none }
@@ -32,6 +36,12 @@ class DictionaryFlow: Flow {
         withNextPresentable: flow,
         withNextStepper: OneStepper(withSingleStep: ErrorStep.error(type: type))
       ))
+    case .translate:
+        return openTranslateScreen()
     }
   }
+    
+    private func openTranslateScreen() -> FlowContributors {
+      return .end(forwardToParentFlowWithStep: MainStep.goToApp)
+    }
 }
