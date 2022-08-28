@@ -11,6 +11,8 @@ import RxDataSources
 import Toast_Swift
 
 final class DictionaryViewController: UIViewController {
+    private var loadingAnimationView = ProcessingCircleView()
+    
     var viewModel: DictionaryViewModel!
     private var dataSource = RXDictionaryListDataSource()
     
@@ -23,6 +25,7 @@ final class DictionaryViewController: UIViewController {
         initialConfig()
         bindLifeCycle()
         bindViewModel()
+        bindStates()
     }
     
     //MARK: - Config
@@ -43,6 +46,8 @@ final class DictionaryViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         
         tableView.registerClass(DictionaryTableViewCell.self)
+        
+        setupLoadingAnimationView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +89,29 @@ final class DictionaryViewController: UIViewController {
                 self?.showToast(text: text)
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func bindStates() {
+        viewModel.output.state
+        .drive { [weak self] state in
+            switch state {
+            case .load:
+                self?.tableView.isHidden = true
+                self?.loadingAnimationView.isHidden = false
+                self?.loadingAnimationView.pin.center()
+                self?.loadingAnimationView.play()
+            case .empty:
+                self?.loadingAnimationView.isHidden = true
+                self?.loadingAnimationView.stop()
+              //  self?.emptyHolderView.isHidden = false
+                self?.tableView.isHidden = true
+            case .completed:
+                self?.loadingAnimationView.isHidden = true
+                self?.loadingAnimationView.stop()
+                self?.tableView.isHidden = false
+            }
+        }
+        .disposed(by: disposeBag)
     }
     
     private func showToast(text: String) {
@@ -152,6 +180,7 @@ final class DictionaryViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.pin.all()
+        loadingAnimationView.pin.all()
     }
     
     //MARK: - Actions
@@ -196,6 +225,15 @@ final class DictionaryViewController: UIViewController {
     
     @objc private func addTapped() {
         viewModel.input.onAddItem.accept(Void())
+    }
+}
+
+// MARK: - Animations
+
+extension DictionaryViewController {
+    private func setupLoadingAnimationView() {
+        view.addSubview(loadingAnimationView)
+        loadingAnimationView.isHidden = true
     }
 }
 
