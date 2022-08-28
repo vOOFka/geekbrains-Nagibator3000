@@ -143,7 +143,7 @@ extension TrainingViewController {
   }
   
   private func configDefaults(with animationView: AnimationView) {
-    animationView.pin.height(200.0).width(200.0)
+    animationView.pin.height(400.0).width(400.0)
     animationView.backgroundColor = Constants.whiteColor
     animationView.contentMode = .scaleAspectFit
     animationView.loopMode = .playOnce
