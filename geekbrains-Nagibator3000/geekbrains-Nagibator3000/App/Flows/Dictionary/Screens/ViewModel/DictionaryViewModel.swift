@@ -20,7 +20,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
   struct Output {
     let translationsSections: Driver<[DictionarySectionModel]>
     let showToast: PublishRelay<String>
-      let state: Driver<States>
+    let state: Driver<States>
   }
   
   private(set) var input: Input!
@@ -36,7 +36,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
   // Output
   let translationsSections = BehaviorRelay<[DictionarySectionModel]>(value: [])
   let showToast = PublishRelay<String>()
-    let state = BehaviorRelay<States>(value: .load)
+  let state = BehaviorRelay<States>(value: .empty)
   
   var steps = PublishRelay<Step>()
   
@@ -69,11 +69,11 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
       Observable<[DictionarySectionModel]>.create { [weak self] observable in
           guard let self = self else { return Disposables.create() }
           self.dictionaryUseCase.get().compactMap { [DictionarySectionModel(header: "", items: $0)] }
-              .delay(.seconds(2), scheduler: MainScheduler.instance)
                 .subscribe { event in
                   switch event {
                   case .next(let values):
-                      if values.isEmpty {
+                      if let items = values.first?.items,
+                         items.isEmpty {
                           self.state.accept(.empty)
                       } else {
                           self.state.accept(.completed)

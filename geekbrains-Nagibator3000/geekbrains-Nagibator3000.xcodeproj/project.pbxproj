@@ -95,7 +95,7 @@
 		F4D82C75289DA45600FFFFA7 /* SelectLanguageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C74289DA45600FFFFA7 /* SelectLanguageCellModel.swift */; };
 		F4D82C79289DA90900FFFFA7 /* SelectLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D82C78289DA90900FFFFA7 /* SelectLanguageViewModel.swift */; };
 		F4DB8F1828B80A47001144FC /* TrainingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB8F1728B80A47001144FC /* TrainingCardView.swift */; };
-		F4DB8F1B28BBD566001144FC /* ProcessingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB8F1A28BBD566001144FC /* ProcessingCircleView.swift */; };
+		F4DB8F1E28BBDE9D001144FC /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB8F1D28BBDE9D001144FC /* EmptyStateView.swift */; };
 		F4E6040D28B023DA002A4FE8 /* DictionarySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6040C28B023DA002A4FE8 /* DictionarySectionModel.swift */; };
 		F4E6040F28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6040E28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift */; };
 		F4E6041128B03280002A4FE8 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6041028B03280002A4FE8 /* BindableType.swift */; };
@@ -199,7 +199,7 @@
 		F4D82C74289DA45600FFFFA7 /* SelectLanguageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageCellModel.swift; sourceTree = "<group>"; };
 		F4D82C78289DA90900FFFFA7 /* SelectLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewModel.swift; sourceTree = "<group>"; };
 		F4DB8F1728B80A47001144FC /* TrainingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCardView.swift; sourceTree = "<group>"; };
-		F4DB8F1A28BBD566001144FC /* ProcessingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingCircleView.swift; sourceTree = "<group>"; };
+		F4DB8F1D28BBDE9D001144FC /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		F4E6040C28B023DA002A4FE8 /* DictionarySectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionarySectionModel.swift; sourceTree = "<group>"; };
 		F4E6040E28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTableCellViewModel.swift; sourceTree = "<group>"; };
 		F4E6041028B03280002A4FE8 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
@@ -390,7 +390,7 @@
 		E002B94128A6DD3000FBCBDD /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				F4DB8F1928BBD547001144FC /* Animations */,
+				F4DB8F1C28BBDE57001144FC /* CustomViews */,
 				E035AA9528B4FF11002F287C /* Screens */,
 				E002B94228A6DD4400FBCBDD /* RXUITools */,
 			);
@@ -834,9 +834,7 @@
 				E08E490A28B02F0000E667D9 /* Reusable.swift */,
 				F4D82C59289998D700FFFFA7 /* String+Ext.swift */,
 				F4D82C5F2899B1D400FFFFA7 /* UIViewController+Ext.swift */,
-				F4A5B37328A1A20D00D0293E /* CustomTextView.swift */,
 				F4A5B37728A5A08100D0293E /* Locale+Ext.swift */,
-				F4F3124528A6DDEC00FE1F20 /* CustomActionsView.swift */,
 				E002B94928A6F2A300FBCBDD /*  UINavigationItem+Ext.swift */,
 				F4E6041028B03280002A4FE8 /* BindableType.swift */,
 				F42F2F1E28B2B61000B8EEC7 /* UIPanGestureRecognizer+Ext.swift */,
@@ -952,12 +950,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		F4DB8F1928BBD547001144FC /* Animations */ = {
+		F4DB8F1C28BBDE57001144FC /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				F4DB8F1A28BBD566001144FC /* ProcessingCircleView.swift */,
+				F4A5B37328A1A20D00D0293E /* CustomTextView.swift */,
+				F4F3124528A6DDEC00FE1F20 /* CustomActionsView.swift */,
+				F4DB8F1D28BBDE9D001144FC /* EmptyStateView.swift */,
 			);
-			path = Animations;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		F4E6A29A28B159D800DBD6E3 /* DataSource */ = {
@@ -1119,7 +1119,6 @@
 				E00DE07E28A302B300C3608C /* LanguageUseCase.swift in Sources */,
 				E002B95E28AD7F6400FBCBDD /* AnimationFlow+DI.swift in Sources */,
 				E002B93E28A6D69B00FBCBDD /* TrainingViewModel.swift in Sources */,
-				F4DB8F1B28BBD566001144FC /* ProcessingCircleView.swift in Sources */,
 				E035AA9E28B4FF11002F287C /* ErrorFlow.swift in Sources */,
 				F4E6040F28B02F4A002A4FE8 /* DictionaryTableCellViewModel.swift in Sources */,
 				E0EAEA5028A1B72A00F8D918 /* LanguageStorageModel.swift in Sources */,
@@ -1128,6 +1127,7 @@
 				F42F2EF628B16DEA00B8EEC7 /* RxTableViewCell.swift in Sources */,
 				E00DE07228A2F15900C3608C /* TranslationMapper.swift in Sources */,
 				E08E490128B00C1800E667D9 /* LanguagesListModel.swift in Sources */,
+				F4DB8F1E28BBDE9D001144FC /* EmptyStateView.swift in Sources */,
 				E18A82592893F86100D2B0BB /* AnimationViewController.swift in Sources */,
 				F4D82C602899B1D400FFFFA7 /* UIViewController+Ext.swift in Sources */,
 				E002B92928A6D3D000FBCBDD /* TranslateFlow.swift in Sources */,

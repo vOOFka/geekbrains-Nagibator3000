@@ -11,10 +11,10 @@ import RxDataSources
 import Toast_Swift
 
 final class DictionaryViewController: UIViewController {
-    private var loadingAnimationView = ProcessingCircleView()
-    
     var viewModel: DictionaryViewModel!
     private var dataSource = RXDictionaryListDataSource()
+    
+    private var emptyStateView = EmptyStateView()
     
     private let disposeBag = DisposeBag()
     private let tableView = UITableView()
@@ -26,6 +26,7 @@ final class DictionaryViewController: UIViewController {
         bindLifeCycle()
         bindViewModel()
         bindStates()
+        configEmptyStateView()
     }
     
     //MARK: - Config
@@ -46,8 +47,6 @@ final class DictionaryViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         
         tableView.registerClass(DictionaryTableViewCell.self)
-        
-        setupLoadingAnimationView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,19 +94,13 @@ final class DictionaryViewController: UIViewController {
         viewModel.output.state
         .drive { [weak self] state in
             switch state {
-            case .load:
-                self?.tableView.isHidden = true
-                self?.loadingAnimationView.isHidden = false
-                self?.loadingAnimationView.pin.center()
-                self?.loadingAnimationView.play()
             case .empty:
-                self?.loadingAnimationView.isHidden = true
-                self?.loadingAnimationView.stop()
-              //  self?.emptyHolderView.isHidden = false
+                self?.emptyStateView.isHidden = false
+                self?.emptyStateView.pin.all()
                 self?.tableView.isHidden = true
-            case .completed:
-                self?.loadingAnimationView.isHidden = true
-                self?.loadingAnimationView.stop()
+                
+            case .load, .completed:
+                self?.emptyStateView.isHidden = true
                 self?.tableView.isHidden = false
             }
         }
@@ -180,7 +173,6 @@ final class DictionaryViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.pin.all()
-        loadingAnimationView.pin.all()
     }
     
     //MARK: - Actions
@@ -228,13 +220,17 @@ final class DictionaryViewController: UIViewController {
     }
 }
 
-// MARK: - Animations
+// MARK: - Empty state view
 
 extension DictionaryViewController {
-    private func setupLoadingAnimationView() {
-        view.addSubview(loadingAnimationView)
-        loadingAnimationView.isHidden = true
-    }
+  private func configEmptyStateView() {
+    emptyStateView.addButton.addTarget(self, action:#selector(addButtonTap), for: .touchUpInside)
+    view.addSubview(emptyStateView)
+  }
+  
+  @objc private func addButtonTap(sender: UIButton) {
+    viewModel.input.onAddItem.accept(Void())
+  }
 }
 
 //MARK: - Constants
@@ -242,7 +238,7 @@ extension DictionaryViewController {
 private enum Constants {
     static let title = "Dictionary".localized
     
-    static let backgroundColor = ColorScheme.raspberryRose.color
+    static let backgroundColor = whiteColor
     static let whiteColor = ColorScheme.white.color
     static let greenColor = ColorScheme.greenPantone.color
     static let cellBackgroundColor = ColorScheme.alertRed.color

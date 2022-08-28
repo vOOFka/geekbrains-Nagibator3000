@@ -38,7 +38,7 @@ class TrainingViewModel: RxViewModelProtocol, Stepper {
   
   // Output
   let source = BehaviorRelay<[TranslationModel]>(value: [])
-  let state = BehaviorRelay<States>(value: .load)
+  let state = BehaviorRelay<States>(value: .empty)
   
   init(dictionaryUseCase: DictionaryUseCase) {
     self.dictionaryUseCase = dictionaryUseCase
