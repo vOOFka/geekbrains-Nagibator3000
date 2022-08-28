@@ -20,6 +20,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
   struct Output {
     let translationsSections: Driver<[DictionarySectionModel]>
     let showToast: PublishRelay<String>
+    let state: Driver<States>
   }
   
   private(set) var input: Input!
@@ -35,6 +36,7 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
   // Output
   let translationsSections = BehaviorRelay<[DictionarySectionModel]>(value: [])
   let showToast = PublishRelay<String>()
+  let state = BehaviorRelay<States>(value: .empty)
   
   var steps = PublishRelay<Step>()
   
@@ -50,7 +52,8 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
     )
     output = Output(
       translationsSections: translationsSections.asDriver(onErrorJustReturn: []),
-      showToast: showToast
+      showToast: showToast,
+      state: state.asDriver(onErrorJustReturn: .empty)
     )
     
     setupBindings()
@@ -63,13 +66,39 @@ final class DictionaryViewModel: RxViewModelProtocol, Stepper {
   }
   
   private func configSections() -> Observable<[DictionarySectionModel]> {
-    dictionaryUseCase.get().compactMap { [DictionarySectionModel(header: "", items: $0)] }
+      Observable<[DictionarySectionModel]>.create { [weak self] observable in
+          guard let self = self else { return Disposables.create() }
+          self.dictionaryUseCase.get().compactMap { [DictionarySectionModel(header: "", items: $0)] }
+                .subscribe { event in
+                  switch event {
+                  case .next(let values):
+                      if let items = values.first?.items,
+                         items.isEmpty {
+                          self.state.accept(.empty)
+                      } else {
+                          self.state.accept(.completed)
+                          observable.onNext(values)
+                          observable.onCompleted()
+                      }
+                      
+                  case .error(let error):
+                      observable.onError(error)
+                  default:
+                    break
+                  }
+                }.disposed(by: self.disposeBag)
+          return Disposables.create()
+      }    
   }
   
   private func bindEnterScreen() {
     enterScreen
-      .flatMap { self.configSections() }
-      .bind(to: translationsSections)
+          .bind { action in
+              self.state.accept(.load)
+              self.configSections()
+                  .bind(to: self.translationsSections)
+                  .disposed(by: self.disposeBag)
+          }
       .disposed(by: disposeBag)
   }
   

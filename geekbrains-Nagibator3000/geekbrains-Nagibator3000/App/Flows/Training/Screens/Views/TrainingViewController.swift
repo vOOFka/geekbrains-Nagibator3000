@@ -14,10 +14,8 @@ import RxFlow
 
 final class TrainingViewController: UIViewController, Stepper {
   private var cupAnimationView: AnimationView!
-  
-  private var emptyHolderView = UIView()
-  private var addButton = UIButton()
-  private var emptyLabel = UILabel()
+    
+  private var emptyStateView = EmptyStateView()
   
   var steps = PublishRelay<Step>()
   
@@ -36,7 +34,7 @@ final class TrainingViewController: UIViewController, Stepper {
     bindLifeCycle()
     bindSource()
     setupCupAnimationView()
-    configEmptyHolderView()
+    configEmptyStateView()
     bindStates()
   }
   
@@ -69,16 +67,17 @@ final class TrainingViewController: UIViewController, Stepper {
         switch state {
         case .load:
           self?.kolodaView.isHidden = false
-          self?.emptyHolderView.isHidden = true
+          self?.emptyStateView.isHidden = true
           self?.cupAnimationView.isHidden = true
           
         case .empty:
-          self?.emptyHolderView.isHidden = false
+          self?.emptyStateView.isHidden = false
+          self?.emptyStateView.pin.all()
           self?.kolodaView.isHidden = true
           self?.cupAnimationView.isHidden = true
           
         case .completed:
-          self?.emptyHolderView.isHidden = true
+          self?.emptyStateView.isHidden = true
           self?.cupAnimationView.isHidden = true
           self?.kolodaView.isHidden = false
         }
@@ -91,7 +90,7 @@ final class TrainingViewController: UIViewController, Stepper {
 extension TrainingViewController: KolodaViewDelegate {
   func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
     kolodaView.isHidden = true
-    emptyHolderView.isHidden = true
+    emptyStateView.isHidden = true
     cupAnimationView.pin.center()
     cupAnimationView.isHidden = false
     cupAnimationView.play()
@@ -122,31 +121,12 @@ extension TrainingViewController: KolodaViewDataSource {
   }
 }
 
-// MARK: - Empty holder view
+// MARK: - Empty state view
 
 extension TrainingViewController {
-  private func configEmptyHolderView() {
-    emptyLabel.text = Constants.emptyLabelText
-    emptyLabel.font = Constants.boldFont
-    emptyLabel.numberOfLines = 0
-    emptyLabel.textAlignment = .center
-    
-    addButton.setTitle(Constants.titleAddButton, for: .normal)
-    addButton.backgroundColor = Constants.blueColor
-    addButton.setTitleColor(Constants.whiteColor, for: .normal)
-    addButton.layer.cornerRadius = 6.0
-    addButton.clipsToBounds = true
-    addButton.addTarget(self, action:#selector(addButtonTap), for: .touchUpInside)
-    
-    emptyHolderView.addSubview(emptyLabel)
-    emptyHolderView.addSubview(addButton)
-    view.addSubview(emptyHolderView)
-    
-    emptyHolderView.pin.all()
-    emptyLabel.pin.vCenter(-50.0).horizontally(20.0).sizeToFit(.width)
-    addButton.pin.below(of: emptyLabel, aligned: .center).height(44.0).width(emptyLabel.frame.width * 0.7).margin(20.0)
-    
-    emptyHolderView.isHidden = true
+  private func configEmptyStateView() {
+    emptyStateView.addButton.addTarget(self, action:#selector(addButtonTap), for: .touchUpInside)
+    view.addSubview(emptyStateView)
   }
   
   @objc private func addButtonTap(sender: UIButton) {
@@ -163,7 +143,7 @@ extension TrainingViewController {
   }
   
   private func configDefaults(with animationView: AnimationView) {
-    animationView.pin.height(200.0).width(200.0)
+    animationView.pin.height(400.0).width(400.0)
     animationView.backgroundColor = Constants.whiteColor
     animationView.contentMode = .scaleAspectFit
     animationView.loopMode = .playOnce

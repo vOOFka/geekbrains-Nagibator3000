@@ -14,6 +14,8 @@ final class DictionaryViewController: UIViewController {
     var viewModel: DictionaryViewModel!
     private var dataSource = RXDictionaryListDataSource()
     
+    private var emptyStateView = EmptyStateView()
+    
     private let disposeBag = DisposeBag()
     private let tableView = UITableView()
     private var isMovedCells: Bool = false
@@ -23,6 +25,8 @@ final class DictionaryViewController: UIViewController {
         initialConfig()
         bindLifeCycle()
         bindViewModel()
+        bindStates()
+        configEmptyStateView()
     }
     
     //MARK: - Config
@@ -84,6 +88,23 @@ final class DictionaryViewController: UIViewController {
                 self?.showToast(text: text)
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func bindStates() {
+        viewModel.output.state
+        .drive { [weak self] state in
+            switch state {
+            case .empty:
+                self?.emptyStateView.isHidden = false
+                self?.emptyStateView.pin.all()
+                self?.tableView.isHidden = true
+                
+            case .load, .completed:
+                self?.emptyStateView.isHidden = true
+                self?.tableView.isHidden = false
+            }
+        }
+        .disposed(by: disposeBag)
     }
     
     private func showToast(text: String) {
@@ -199,12 +220,25 @@ final class DictionaryViewController: UIViewController {
     }
 }
 
+// MARK: - Empty state view
+
+extension DictionaryViewController {
+  private func configEmptyStateView() {
+    emptyStateView.addButton.addTarget(self, action:#selector(addButtonTap), for: .touchUpInside)
+    view.addSubview(emptyStateView)
+  }
+  
+  @objc private func addButtonTap(sender: UIButton) {
+    viewModel.input.onAddItem.accept(Void())
+  }
+}
+
 //MARK: - Constants
 
 private enum Constants {
     static let title = "Dictionary".localized
     
-    static let backgroundColor = ColorScheme.raspberryRose.color
+    static let backgroundColor = whiteColor
     static let whiteColor = ColorScheme.white.color
     static let greenColor = ColorScheme.greenPantone.color
     static let cellBackgroundColor = ColorScheme.alertRed.color
