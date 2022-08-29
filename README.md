@@ -11,13 +11,25 @@ Project for the course "Team development on Swift"
 - UIKit
 - Lottie
 - RxFlow
+- RxSwift
+- RxCocoa
+- RxDataSources
 - Swinject
+- Alomafire
 - PinLayout
-- KolodaView
+- Koloda
 
 ### Планируемый API переводчика:
 https://docs.microsoft.com/en-gb/azure/cognitive-services/translator/
 
-### Планируемый дизайн проекта:
-![telegram-cloud-photo-size-2-5404547650423996204-y](https://user-images.githubusercontent.com/85764504/181625573-477ad950-25a7-4f3b-b30b-8fc383ca6257.jpg)
-![telegram-cloud-photo-size-2-5404547650423996207-y](https://user-images.githubusercontent.com/85764504/181625626-cef579a3-5c66-4201-8a73-45f9273c31b6.jpg)
+### Дизайн проекта:
+<img width="328" alt="Снимок экрана 2022-08-26 в 11 24 17" src="https://user-images.githubusercontent.com/77745444/187147523-99faca75-f7cb-40aa-b4ba-70fd7d675e4d.png">
+
+<img width="334" alt="Снимок экрана 2022-08-26 в 11 29 23" src="https://user-images.githubusercontent.com/77745444/187147575-23d7fb4c-6cab-49b9-a34f-d3e0c06bc4e5.png">
+
+<img width="329" alt="Снимок экрана 2022-08-26 в 16 55 48" src="https://user-images.githubusercontent.com/77745444/187147672-848b3eb7-5e27-4b21-9ef8-07cffdf3426e.png">
+
+
+<img width="330" alt="Снимок экрана 2022-08-26 в 11 54 54" src="https://user-images.githubusercontent.com/77745444/187147631-0d7d140c-9de9-4284-b5ad-bcf8594eb211.png">
+
+<img width="327" alt="Снимок экрана 2022-08-26 в 17 01 32" src="https://user-images.githubusercontent.com/77745444/187147693-8566872f-4c17-4dd7-8a90-f617cb51703e.png">
